@@ -17,7 +17,8 @@
 - 历史路径难度已从手工代理替换为 48 队世界杯历史记录特征快照。
 - 入境旅行距离、入境时区差、小组赛旅行距离、休息天数、时区跨度、跨境次数、海拔和场馆环境负担已由 FIFA 小组赛赛程、场馆坐标、代表性出发地和场馆地理快照计算，不再使用纯手工代理值。
 - 名单公告状态已拆到 `data/squad_announcement_status.csv`；截至 2026-05-30，本地已标记 32 队公布 26 人名单，但 FIFA 最终确认仍待 2026-06-02。
-- 阵容身价、平均年龄、伤病风险和俱乐部分布已拆到 `data/squad_profile_snapshot.csv`，当前仍标注为暂定代理，便于后续用球员级 26 人名单逐队替换。
+- 已新增 `data/squads_2026.csv`，从公开 squad tracker 导入 31 队、806 名球员的 26 人名单行；平均年龄和俱乐部分布已按球员行聚合，身价和伤病仍保留代理/待补字段。
+- 阵容身价、平均年龄、伤病风险和俱乐部分布已拆到 `data/squad_profile_snapshot.csv`；有球员行的队伍使用球员级聚合，未确认 26 人名单的队伍仍使用暂定代理。
 - 已提供 `data/squads_2026_template.csv` 和聚合脚本，官方/暂定名单填入后可自动生成阵容身价、平均年龄、伤病风险和俱乐部分布。
 - 球队氛围已拆成 `data/team_context_snapshot.csv`，由领导连续性、教练稳定、近期势头和压力风险合成，仍保持低权重。
 
@@ -112,6 +113,18 @@ node scripts/export-data-snapshots.mjs
 回写已公布 26 人名单的公告状态：
 
 ```bash
+node scripts/apply-squad-announcement-status.mjs
+node scripts/build-team-context-snapshot.mjs
+node scripts/apply-team-context-snapshot.mjs
+node scripts/export-data-snapshots.mjs
+```
+
+从 Wikipedia squad tracker 抓取已确认 26 人名单并生成球员级 CSV：
+
+```bash
+node scripts/fetch-wikipedia-squads.mjs
+node scripts/aggregate-squads.mjs
+node scripts/apply-squad-profiles.mjs
 node scripts/apply-squad-announcement-status.mjs
 node scripts/build-team-context-snapshot.mjs
 node scripts/apply-team-context-snapshot.mjs

@@ -1,0 +1,807 @@
+team,slot,player,position,age,club,league,market_value_m,caps,goals,injury_status,expected_role,list_status,source_url,snapshot_date
+South Africa,1,Ronwen Williams,GK,34,Mamelodi Sundowns,RSA,,62,0,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#South_Africa,2026-05-30
+South Africa,2,Ricardo Goss,GK,32,Siwelele,RSA,,4,0,unknown,reserve,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#South_Africa,2026-05-30
+South Africa,3,Sipho Chaine,GK,29,Orlando Pirates,RSA,,3,0,unknown,reserve,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#South_Africa,2026-05-30
+South Africa,4,Aubrey Modiba,DF,30,Mamelodi Sundowns,RSA,,44,3,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#South_Africa,2026-05-30
+South Africa,5,Khuliso Mudau,DF,31,Mamelodi Sundowns,RSA,,32,1,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#South_Africa,2026-05-30
+South Africa,6,Nkosinathi Sibisi,DF,30,Orlando Pirates,RSA,,19,0,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#South_Africa,2026-05-30
+South Africa,7,Mbekezeli Mbokazi,DF,20,Chicago Fire FC,MLS,,10,1,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#South_Africa,2026-05-30
+South Africa,8,Ime Okon,DF,22,Hannover 96,Bundesliga,,7,1,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#South_Africa,2026-05-30
+South Africa,9,Samukele Kabini,DF,22,Molde,NOR,,5,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#South_Africa,2026-05-30
+South Africa,10,Khulumani Ndamane,DF,22,Mamelodi Sundowns,RSA,,5,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#South_Africa,2026-05-30
+South Africa,11,Thabang Matuludi,DF,27,Polokwane City,RSA,,2,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#South_Africa,2026-05-30
+South Africa,12,Kamogelo Sebelebele,DF,23,Orlando Pirates,RSA,,2,0,unknown,squad,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#South_Africa,2026-05-30
+South Africa,13,Bradley Cross,DF,25,Kaizer Chiefs,RSA,,0,0,unknown,squad,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#South_Africa,2026-05-30
+South Africa,14,Olwethu Makhanya,DF,22,Philadelphia Union,MLS,,0,0,unknown,squad,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#South_Africa,2026-05-30
+South Africa,15,Teboho Mokoena,MF,29,Mamelodi Sundowns,RSA,,51,9,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#South_Africa,2026-05-30
+South Africa,16,Sphephelo Sithole,MF,27,Tondela,Primeira Liga,,27,1,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#South_Africa,2026-05-30
+South Africa,17,Thalente Mbatha,MF,26,Orlando Pirates,RSA,,14,3,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#South_Africa,2026-05-30
+South Africa,18,Jayden Adams,MF,25,Mamelodi Sundowns,RSA,,4,0,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#South_Africa,2026-05-30
+South Africa,19,Themba Zwane,FW,36,Mamelodi Sundowns,RSA,,53,12,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#South_Africa,2026-05-30
+South Africa,20,Lyle Foster,FW,26,Burnley,Premier League,,26,10,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#South_Africa,2026-05-30
+South Africa,21,Evidence Makgopa,FW,26,Orlando Pirates,RSA,,26,6,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#South_Africa,2026-05-30
+South Africa,22,Oswin Appollis,FW,24,Orlando Pirates,RSA,,25,8,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#South_Africa,2026-05-30
+South Africa,23,Iqraam Rayners,FW,30,Mamelodi Sundowns,RSA,,13,4,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#South_Africa,2026-05-30
+South Africa,24,Relebohile Mofokeng,FW,21,Orlando Pirates,RSA,,12,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#South_Africa,2026-05-30
+South Africa,25,Thapelo Maseko,FW,22,AEL Limassol,CYP,,9,1,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#South_Africa,2026-05-30
+South Africa,26,Tshepang Moremi,FW,25,Orlando Pirates,RSA,,9,1,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#South_Africa,2026-05-30
+Korea Republic,1,Kim Seung-gyu,GK,35,FC Tokyo,J1 League,,85,0,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#South_Korea,2026-05-30
+Korea Republic,2,Jo Hyeon-woo,GK,34,Ulsan HD,K League 1,,47,0,unknown,reserve,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#South_Korea,2026-05-30
+Korea Republic,3,Song Bum-keun,GK,28,Jeonbuk Hyundai Motors,K League 1,,2,0,unknown,reserve,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#South_Korea,2026-05-30
+Korea Republic,4,Kim Min-jae,DF,29,Bayern Munich,Bundesliga,,77,4,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#South_Korea,2026-05-30
+Korea Republic,5,Kim Moon-hwan,DF,30,Daejeon Hana Citizen,K League 1,,34,0,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#South_Korea,2026-05-30
+Korea Republic,6,Seol Young-woo,DF,27,Red Star Belgrade,SRB,,32,0,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#South_Korea,2026-05-30
+Korea Republic,7,Cho Yu-min,DF,29,Sharjah,UAE,,18,0,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#South_Korea,2026-05-30
+Korea Republic,8,Lee Tae-seok,DF,23,Austria Wien,AUT,,14,1,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#South_Korea,2026-05-30
+Korea Republic,9,Park Jin-seob,DF,30,Zhejiang FC,CHN,,12,1,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#South_Korea,2026-05-30
+Korea Republic,10,Kim Tae-hyeon,DF,25,Kashima Antlers,J1 League,,7,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#South_Korea,2026-05-30
+Korea Republic,11,Lee Han-beom,DF,23,Midtjylland,DEN,,6,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#South_Korea,2026-05-30
+Korea Republic,12,Jens Castrop,DF,22,Borussia Mönchengladbach,Bundesliga,,5,0,unknown,squad,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#South_Korea,2026-05-30
+Korea Republic,13,Lee Ki-hyuk,DF,25,Gangwon FC,K League 1,,1,0,unknown,squad,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#South_Korea,2026-05-30
+Korea Republic,14,Lee Jae-sung,MF,33,Mainz 05,Bundesliga,,103,15,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#South_Korea,2026-05-30
+Korea Republic,15,Hwang Hee-chan,MF,30,Wolverhampton Wanderers,Premier League,,77,16,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#South_Korea,2026-05-30
+Korea Republic,16,Hwang In-beom,MF,29,Feyenoord,Eredivisie,,71,6,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#South_Korea,2026-05-30
+Korea Republic,17,Lee Kang-in,MF,25,Paris Saint-Germain,Ligue 1,,46,11,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#South_Korea,2026-05-30
+Korea Republic,18,Paik Seung-ho,MF,29,Birmingham City,Premier League,,25,3,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#South_Korea,2026-05-30
+Korea Republic,19,Kim Jin-gyu,MF,29,Jeonbuk Hyundai Motors,K League 1,,20,3,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#South_Korea,2026-05-30
+Korea Republic,20,Lee Dong-gyeong,MF,28,Ulsan HD,K League 1,,16,3,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#South_Korea,2026-05-30
+Korea Republic,21,Bae Jun-ho,MF,22,Stoke City,Premier League,,12,2,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#South_Korea,2026-05-30
+Korea Republic,22,Eom Ji-sung,MF,24,Swansea City,WAL,,8,2,unknown,squad,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#South_Korea,2026-05-30
+Korea Republic,23,Yang Hyun-jun,MF,24,Celtic,SCO,,8,0,unknown,squad,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#South_Korea,2026-05-30
+Korea Republic,24,Son Heung-min,FW,33,Los Angeles FC,MLS,,142,54,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#South_Korea,2026-05-30
+Korea Republic,25,Cho Gue-sung,FW,28,Midtjylland,DEN,,42,10,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#South_Korea,2026-05-30
+Korea Republic,26,Oh Hyeon-gyu,FW,25,Beşiktaş,TUR,,26,6,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#South_Korea,2026-05-30
+Bosnia and Herzegovina,1,Nikola Vasilj,GK,30,FC St. Pauli,Bundesliga,,25,0,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Bosnia_and_Herzegovina,2026-05-30
+Bosnia and Herzegovina,2,Martin Zlomislić,GK,27,Rijeka,CRO,,2,0,unknown,reserve,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Bosnia_and_Herzegovina,2026-05-30
+Bosnia and Herzegovina,3,Osman Hadžikić,GK,30,Slaven Belupo,CRO,,0,0,unknown,reserve,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Bosnia_and_Herzegovina,2026-05-30
+Bosnia and Herzegovina,4,Sead Kolašinac,DF,32,Atalanta,Serie A,,64,0,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Bosnia_and_Herzegovina,2026-05-30
+Bosnia and Herzegovina,5,Dennis Hadžikadunić,DF,27,Sampdoria,Serie A,,30,0,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Bosnia_and_Herzegovina,2026-05-30
+Bosnia and Herzegovina,6,Amar Dedić,DF,23,Benfica,Primeira Liga,,26,1,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Bosnia_and_Herzegovina,2026-05-30
+Bosnia and Herzegovina,7,Nikola Katić,DF,29,Schalke 04,Bundesliga,,15,1,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Bosnia_and_Herzegovina,2026-05-30
+Bosnia and Herzegovina,8,Tarik Muharemović,DF,23,Sassuolo,Serie A,,12,1,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Bosnia_and_Herzegovina,2026-05-30
+Bosnia and Herzegovina,9,Nihad Mujakić,DF,28,Gaziantep,TUR,,10,1,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Bosnia_and_Herzegovina,2026-05-30
+Bosnia and Herzegovina,10,Stjepan Radeljić,DF,28,Rijeka,CRO,,4,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Bosnia_and_Herzegovina,2026-05-30
+Bosnia and Herzegovina,11,Nidal Čelik,DF,19,Lens,Ligue 1,,0,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Bosnia_and_Herzegovina,2026-05-30
+Bosnia and Herzegovina,12,Amir Hadžiahmetović,MF,29,Hull City,Premier League,,34,0,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Bosnia_and_Herzegovina,2026-05-30
+Bosnia and Herzegovina,13,Benjamin Tahirović,MF,23,Brøndby,DEN,,26,2,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Bosnia_and_Herzegovina,2026-05-30
+Bosnia and Herzegovina,14,Armin Gigović,MF,24,Young Boys,SUI,,18,1,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Bosnia_and_Herzegovina,2026-05-30
+Bosnia and Herzegovina,15,Dženis Burnić,MF,28,Karlsruher SC,Bundesliga,,18,0,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Bosnia_and_Herzegovina,2026-05-30
+Bosnia and Herzegovina,16,Ivan Bašić,MF,24,Astana,KAZ,,15,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Bosnia_and_Herzegovina,2026-05-30
+Bosnia and Herzegovina,17,Esmir Bajraktarević,MF,21,PSV Eindhoven,Eredivisie,,14,1,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Bosnia_and_Herzegovina,2026-05-30
+Bosnia and Herzegovina,18,Amar Memić,MF,25,Viktoria Plzeň,CZE,,11,1,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Bosnia_and_Herzegovina,2026-05-30
+Bosnia and Herzegovina,19,Ivan Šunjić,MF,29,Pafos,CYP,,11,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Bosnia_and_Herzegovina,2026-05-30
+Bosnia and Herzegovina,20,Kerim Alajbegović,MF,18,Red Bull Salzburg,AUT,,8,1,unknown,squad,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Bosnia_and_Herzegovina,2026-05-30
+Bosnia and Herzegovina,21,Ermin Mahmić,MF,21,Slovan Liberec,CZE,,0,0,unknown,squad,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Bosnia_and_Herzegovina,2026-05-30
+Bosnia and Herzegovina,22,Edin Džeko,FW,40,Schalke 04,Bundesliga,,148,73,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Bosnia_and_Herzegovina,2026-05-30
+Bosnia and Herzegovina,23,Ermedin Demirović,FW,28,VfB Stuttgart,Bundesliga,,38,4,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Bosnia_and_Herzegovina,2026-05-30
+Bosnia and Herzegovina,24,Samed Baždar,FW,22,Jagiellonia Białystok,POL,,11,1,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Bosnia_and_Herzegovina,2026-05-30
+Bosnia and Herzegovina,25,Haris Tabaković,FW,31,Borussia Mönchengladbach,Bundesliga,,10,4,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Bosnia_and_Herzegovina,2026-05-30
+Bosnia and Herzegovina,26,Jovo Lukić,FW,27,Universitatea Cluj,ROU,,1,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Bosnia_and_Herzegovina,2026-05-30
+Canada,1,Dayne St. Clair,GK,29,Inter Miami CF,MLS,,19,0,unknown,starter,association_final,https://news.canadasoccer.com/canada-soccer-announces-canmnt-squad-for-fifa-world-cup-2026,2026-05-30
+Canada,2,Alistair Johnston,DF,27,Celtic,SCO,,56,1,unknown,starter,association_final,https://news.canadasoccer.com/canada-soccer-announces-canmnt-squad-for-fifa-world-cup-2026,2026-05-30
+Canada,3,Luc de Fougerolles,DF,20,Dender,BEL,,11,0,unknown,starter,association_final,https://news.canadasoccer.com/canada-soccer-announces-canmnt-squad-for-fifa-world-cup-2026,2026-05-30
+Canada,4,Alfie Jones,DF,28,Middlesbrough,Premier League,,1,0,unknown,starter,association_final,https://news.canadasoccer.com/canada-soccer-announces-canmnt-squad-for-fifa-world-cup-2026,2026-05-30
+Canada,5,Joel Waterman,DF,30,Chicago Fire FC,MLS,,17,0,unknown,starter,association_final,https://news.canadasoccer.com/canada-soccer-announces-canmnt-squad-for-fifa-world-cup-2026,2026-05-30
+Canada,6,Mathieu Choinière,MF,27,Los Angeles FC,MLS,,22,0,unknown,starter,association_final,https://news.canadasoccer.com/canada-soccer-announces-canmnt-squad-for-fifa-world-cup-2026,2026-05-30
+Canada,7,Stephen Eustáquio,MF,29,Los Angeles FC,MLS,,54,4,unknown,starter,association_final,https://news.canadasoccer.com/canada-soccer-announces-canmnt-squad-for-fifa-world-cup-2026,2026-05-30
+Canada,8,Ismaël Koné,MF,23,Sassuolo,Serie A,,38,4,unknown,starter,association_final,https://news.canadasoccer.com/canada-soccer-announces-canmnt-squad-for-fifa-world-cup-2026,2026-05-30
+Canada,9,Cyle Larin,FW,31,Southampton,Premier League,,88,30,unknown,starter,association_final,https://news.canadasoccer.com/canada-soccer-announces-canmnt-squad-for-fifa-world-cup-2026,2026-05-30
+Canada,10,Jonathan David,FW,26,Juventus,Serie A,,75,39,unknown,starter,association_final,https://news.canadasoccer.com/canada-soccer-announces-canmnt-squad-for-fifa-world-cup-2026,2026-05-30
+Canada,11,Liam Millar,MF,26,Hull City,Premier League,,39,1,unknown,starter,association_final,https://news.canadasoccer.com/canada-soccer-announces-canmnt-squad-for-fifa-world-cup-2026,2026-05-30
+Canada,12,Tani Oluwaseyi,FW,26,Villarreal,La Liga,,22,2,unknown,starter,association_final,https://news.canadasoccer.com/canada-soccer-announces-canmnt-squad-for-fifa-world-cup-2026,2026-05-30
+Canada,13,Derek Cornelius,DF,28,Rangers,SCO,,42,1,unknown,rotation,association_final,https://news.canadasoccer.com/canada-soccer-announces-canmnt-squad-for-fifa-world-cup-2026,2026-05-30
+Canada,14,Jacob Shaffelburg,MF,26,Los Angeles FC,MLS,,31,6,unknown,rotation,association_final,https://news.canadasoccer.com/canada-soccer-announces-canmnt-squad-for-fifa-world-cup-2026,2026-05-30
+Canada,15,Moïse Bombito,DF,26,Nice,Ligue 1,,19,0,unknown,rotation,association_final,https://news.canadasoccer.com/canada-soccer-announces-canmnt-squad-for-fifa-world-cup-2026,2026-05-30
+Canada,16,Maxime Crépeau,GK,32,Orlando City SC,MLS,,30,0,unknown,reserve,association_final,https://news.canadasoccer.com/canada-soccer-announces-canmnt-squad-for-fifa-world-cup-2026,2026-05-30
+Canada,17,Tajon Buchanan,MF,27,Villarreal,La Liga,,58,8,unknown,rotation,association_final,https://news.canadasoccer.com/canada-soccer-announces-canmnt-squad-for-fifa-world-cup-2026,2026-05-30
+Canada,18,Owen Goodman,GK,22,Barnsley,Premier League,,0,0,unknown,reserve,association_final,https://news.canadasoccer.com/canada-soccer-announces-canmnt-squad-for-fifa-world-cup-2026,2026-05-30
+Canada,19,Alphonso Davies,DF,25,Bayern Munich,Bundesliga,,58,15,unknown,rotation,association_final,https://news.canadasoccer.com/canada-soccer-announces-canmnt-squad-for-fifa-world-cup-2026,2026-05-30
+Canada,20,Ali Ahmed,MF,25,Norwich City,Premier League,,24,1,unknown,rotation,association_final,https://news.canadasoccer.com/canada-soccer-announces-canmnt-squad-for-fifa-world-cup-2026,2026-05-30
+Canada,21,Jonathan Osorio,MF,33,Toronto FC,MLS,,89,9,unknown,rotation,association_final,https://news.canadasoccer.com/canada-soccer-announces-canmnt-squad-for-fifa-world-cup-2026,2026-05-30
+Canada,22,Richie Laryea,DF,31,Toronto FC,MLS,,73,1,unknown,rotation,association_final,https://news.canadasoccer.com/canada-soccer-announces-canmnt-squad-for-fifa-world-cup-2026,2026-05-30
+Canada,23,Niko Sigur,DF,22,Hajduk Split,CRO,,17,2,unknown,squad,association_final,https://news.canadasoccer.com/canada-soccer-announces-canmnt-squad-for-fifa-world-cup-2026,2026-05-30
+Canada,24,Promise David,FW,24,Union Saint-Gilloise,BEL,,8,3,unknown,starter,association_final,https://news.canadasoccer.com/canada-soccer-announces-canmnt-squad-for-fifa-world-cup-2026,2026-05-30
+Canada,25,Nathan Saliba,MF,22,Anderlecht,BEL,,13,2,unknown,squad,association_final,https://news.canadasoccer.com/canada-soccer-announces-canmnt-squad-for-fifa-world-cup-2026,2026-05-30
+Canada,26,Marcelo Flores,MF,22,UANL,Liga MX,,2,0,unknown,squad,association_final,https://news.canadasoccer.com/canada-soccer-announces-canmnt-squad-for-fifa-world-cup-2026,2026-05-30
+Switzerland,1,Gregor Kobel,GK,28,Borussia Dortmund,Bundesliga,,20,0,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Switzerland,2026-05-30
+Switzerland,2,Miro Muheim,DF,28,Hamburger SV,Bundesliga,,8,0,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Switzerland,2026-05-30
+Switzerland,3,Silvan Widmer,DF,33,Mainz 05,Bundesliga,,58,5,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Switzerland,2026-05-30
+Switzerland,4,Nico Elvedi,DF,29,Borussia Mönchengladbach,Bundesliga,,65,3,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Switzerland,2026-05-30
+Switzerland,5,Manuel Akanji,DF,30,Inter Milan,Serie A,,79,4,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Switzerland,2026-05-30
+Switzerland,6,Denis Zakaria,MF,29,Monaco,Ligue 1,,63,3,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Switzerland,2026-05-30
+Switzerland,7,Breel Embolo,FW,29,Rennes,Ligue 1,,85,23,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Switzerland,2026-05-30
+Switzerland,8,Remo Freuler,MF,34,Bologna,Serie A,,86,11,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Switzerland,2026-05-30
+Switzerland,9,Johan Manzambi,MF,20,SC Freiburg,Bundesliga,,10,3,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Switzerland,2026-05-30
+Switzerland,10,Granit Xhaka,MF,33,Sunderland,Premier League,,144,16,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Switzerland,2026-05-30
+Switzerland,11,Dan Ndoye,FW,25,Nottingham Forest,Premier League,,29,6,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Switzerland,2026-05-30
+Switzerland,12,Yvon Mvogo,GK,32,Lorient,Ligue 1,,12,0,unknown,reserve,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Switzerland,2026-05-30
+Switzerland,13,Ricardo Rodriguez,DF,33,Real Betis,La Liga,,136,9,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Switzerland,2026-05-30
+Switzerland,14,Ardon Jashari,MF,23,Milan,Serie A,,6,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Switzerland,2026-05-30
+Switzerland,15,Djibril Sow,MF,29,Sevilla,La Liga,,50,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Switzerland,2026-05-30
+Switzerland,16,Christian Fassnacht,MF,32,Young Boys,SUI,,21,4,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Switzerland,2026-05-30
+Switzerland,17,Rubén Vargas,FW,27,Sevilla,La Liga,,60,11,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Switzerland,2026-05-30
+Switzerland,18,Eray Cömert,DF,28,Valencia,La Liga,,20,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Switzerland,2026-05-30
+Switzerland,19,Noah Okafor,FW,26,Leeds United,Premier League,,24,2,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Switzerland,2026-05-30
+Switzerland,20,Michel Aebischer,MF,29,Pisa,Serie A,,38,2,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Switzerland,2026-05-30
+Switzerland,21,Marvin Keller,GK,23,Young Boys,SUI,,0,0,unknown,reserve,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Switzerland,2026-05-30
+Switzerland,22,Fabian Rieder,MF,24,FC Augsburg,Bundesliga,,27,1,unknown,squad,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Switzerland,2026-05-30
+Switzerland,23,Zeki Amdouni,FW,25,Burnley,Premier League,,27,11,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Switzerland,2026-05-30
+Switzerland,24,Aurèle Amenda,DF,22,Eintracht Frankfurt,Bundesliga,,6,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Switzerland,2026-05-30
+Switzerland,25,Luca Jaquez,DF,23,VfB Stuttgart,Bundesliga,,2,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Switzerland,2026-05-30
+Switzerland,26,Cedric Itten,FW,29,Fortuna Düsseldorf,Bundesliga,,13,5,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Switzerland,2026-05-30
+Brazil,1,Alisson,GK,33,Liverpool,Premier League,,76,0,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Brazil,2026-05-30
+Brazil,2,Ederson,GK,32,Fenerbahçe,TUR,,31,0,unknown,reserve,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Brazil,2026-05-30
+Brazil,3,Weverton,GK,38,Grêmio,Brasileirao,,10,0,unknown,reserve,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Brazil,2026-05-30
+Brazil,4,Marquinhos,DF,32,Paris Saint-Germain,Ligue 1,,104,7,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Brazil,2026-05-30
+Brazil,5,Danilo Luiz,DF,34,Flamengo,Brasileirao,,68,1,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Brazil,2026-05-30
+Brazil,6,Alex Sandro,DF,35,Flamengo,Brasileirao,,43,2,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Brazil,2026-05-30
+Brazil,7,Gabriel Magalhães,DF,28,Arsenal,Premier League,,17,1,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Brazil,2026-05-30
+Brazil,8,Bremer,DF,29,Juventus,Serie A,,6,1,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Brazil,2026-05-30
+Brazil,9,Wesley,DF,22,Roma,Serie A,,6,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Brazil,2026-05-30
+Brazil,10,Roger Ibañez,DF,27,Al-Ahli,Saudi Pro League,,5,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Brazil,2026-05-30
+Brazil,11,Douglas Santos,DF,32,Zenit Saint Petersburg,RUS,,5,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Brazil,2026-05-30
+Brazil,12,Léo Pereira,DF,30,Flamengo,Brasileirao,,2,0,unknown,squad,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Brazil,2026-05-30
+Brazil,13,Casemiro,MF,34,Manchester United,Premier League,,84,8,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Brazil,2026-05-30
+Brazil,14,Lucas Paquetá,MF,28,Flamengo,Brasileirao,,61,12,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Brazil,2026-05-30
+Brazil,15,Bruno Guimarães,MF,28,Newcastle United,Premier League,,41,2,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Brazil,2026-05-30
+Brazil,16,Fabinho,MF,32,Al-Ittihad,Saudi Pro League,,31,0,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Brazil,2026-05-30
+Brazil,17,Danilo Santos,MF,25,Botafogo,Brasileirao,,2,1,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Brazil,2026-05-30
+Brazil,18,Neymar,FW,34,Santos,Brasileirao,,128,79,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Brazil,2026-05-30
+Brazil,19,Vinícius Júnior,FW,25,Real Madrid,La Liga,,47,8,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Brazil,2026-05-30
+Brazil,20,Raphinha,FW,29,Barcelona,La Liga,,37,11,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Brazil,2026-05-30
+Brazil,21,Gabriel Martinelli,FW,24,Arsenal,Premier League,,22,4,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Brazil,2026-05-30
+Brazil,22,Matheus Cunha,FW,27,Manchester United,Premier League,,21,1,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Brazil,2026-05-30
+Brazil,23,Endrick,FW,19,Lyon,Ligue 1,,15,3,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Brazil,2026-05-30
+Brazil,24,Luiz Henrique,FW,25,Zenit Saint Petersburg,RUS,,13,2,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Brazil,2026-05-30
+Brazil,25,Igor Thiago,FW,24,Brentford,Premier League,,2,1,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Brazil,2026-05-30
+Brazil,26,Rayan,FW,19,Bournemouth,Premier League,,1,0,unknown,squad,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Brazil,2026-05-30
+Haiti,1,Johny Placide,GK,38,Bastia,Ligue 1,,79,0,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Haiti,2026-05-30
+Haiti,2,Alexandre Pierre,GK,25,Sochaux,Ligue 1,,14,0,unknown,reserve,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Haiti,2026-05-30
+Haiti,3,Josué Duverger,GK,26,Cosmos Koblenz,Bundesliga,,6,0,unknown,reserve,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Haiti,2026-05-30
+Haiti,4,Ricardo Adé,DF,36,LDU Quito,ECU,,57,2,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Haiti,2026-05-30
+Haiti,5,Carlens Arcus,DF,29,Angers,Ligue 1,,51,1,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Haiti,2026-05-30
+Haiti,6,Martin Expérience,DF,27,Nancy,Ligue 1,,19,0,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Haiti,2026-05-30
+Haiti,7,Jean-Kévin Duverne,DF,28,Gent,BEL,,15,1,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Haiti,2026-05-30
+Haiti,8,Duke Lacroix,DF,32,Colorado Springs Switchbacks,MLS,,14,2,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Haiti,2026-05-30
+Haiti,9,Wilguens Paugain,DF,24,Zulte Waregem,BEL,,6,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Haiti,2026-05-30
+Haiti,10,Hannes Delcroix,DF,27,Lugano,SUI,,5,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Haiti,2026-05-30
+Haiti,11,Keeto Thermoncy,DF,20,Young Boys,SUI,,1,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Haiti,2026-05-30
+Haiti,12,Leverton Pierre,MF,28,Vizela,Primeira Liga,,33,0,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Haiti,2026-05-30
+Haiti,13,Danley Jean Jacques,MF,26,Philadelphia Union,MLS,,28,6,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Haiti,2026-05-30
+Haiti,14,Carl Sainté,MF,23,El Paso Locomotive FC,MLS,,25,0,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Haiti,2026-05-30
+Haiti,15,Jean-Ricner Bellegarde,MF,27,Wolverhampton Wanderers,Premier League,,8,0,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Haiti,2026-05-30
+Haiti,16,Woodensky Pierre,MF,21,Violette,HAI,,1,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Haiti,2026-05-30
+Haiti,17,Dominique Simon,MF,25,Tatran Prešov,SVK,,0,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Haiti,2026-05-30
+Haiti,18,Duckens Nazon,FW,32,Esteghlal,IRN,,76,44,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Haiti,2026-05-30
+Haiti,19,Frantzdy Pierrot,FW,31,Çaykur Rizespor,TUR,,49,33,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Haiti,2026-05-30
+Haiti,20,Derrick Etienne Jr.,FW,29,Toronto FC,MLS,,46,8,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Haiti,2026-05-30
+Haiti,21,Louicius Deedson,FW,25,FC Dallas,MLS,,30,10,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Haiti,2026-05-30
+Haiti,22,Ruben Providence,FW,24,Almere City,Eredivisie,,13,2,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Haiti,2026-05-30
+Haiti,23,Josué Casimir,FW,24,Auxerre,Ligue 1,,5,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Haiti,2026-05-30
+Haiti,24,Yassin Fortuné,FW,27,Vizela,Primeira Liga,,3,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Haiti,2026-05-30
+Haiti,25,Wilson Isidor,FW,25,Sunderland,Premier League,,2,1,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Haiti,2026-05-30
+Haiti,26,Lenny Joseph,FW,25,Ferencváros,HUN,,0,0,unknown,squad,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Haiti,2026-05-30
+Morocco,1,Yassine Bounou,GK,35,Al-Hilal,Saudi Pro League,,89,0,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Morocco,2026-05-30
+Morocco,2,Munir Mohamedi,GK,37,RS Berkane,MAR,,51,0,unknown,reserve,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Morocco,2026-05-30
+Morocco,3,Ahmed Reda Tagnaouti,GK,30,AS FAR,MAR,,3,0,unknown,reserve,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Morocco,2026-05-30
+Morocco,4,Achraf Hakimi,DF,27,Paris Saint-Germain,Ligue 1,,95,11,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Morocco,2026-05-30
+Morocco,5,Nayef Aguerd,DF,30,Marseille,Ligue 1,,64,2,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Morocco,2026-05-30
+Morocco,6,Noussair Mazraoui,DF,28,Manchester United,Premier League,,43,2,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Morocco,2026-05-30
+Morocco,7,Youssef Belammari,DF,27,Al Ahly,EGY,,16,0,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Morocco,2026-05-30
+Morocco,8,Anass Salah-Eddine,DF,24,PSV Eindhoven,Eredivisie,,8,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Morocco,2026-05-30
+Morocco,9,Chadi Riad,DF,22,Crystal Palace,Premier League,,4,1,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Morocco,2026-05-30
+Morocco,10,Issa Diop,DF,29,Fulham,Premier League,,2,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Morocco,2026-05-30
+Morocco,11,Zakaria El Ouahdi,DF,24,Genk,BEL,,2,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Morocco,2026-05-30
+Morocco,12,Redouane Halhal,DF,23,Mechelen,BEL,,1,0,unknown,squad,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Morocco,2026-05-30
+Morocco,13,Sofyan Amrabat,MF,29,Real Betis,La Liga,,73,0,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Morocco,2026-05-30
+Morocco,14,Azzedine Ounahi,MF,26,Girona,La Liga,,47,9,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Morocco,2026-05-30
+Morocco,15,Bilal El Khannouss,MF,22,VfB Stuttgart,Bundesliga,,35,3,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Morocco,2026-05-30
+Morocco,16,Ismael Saibari,MF,25,PSV Eindhoven,Eredivisie,,28,7,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Morocco,2026-05-30
+Morocco,17,Neil El Aynaoui,MF,24,Roma,Serie A,,15,2,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Morocco,2026-05-30
+Morocco,18,Samir El Mourabet,MF,19,Strasbourg,Ligue 1,,2,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Morocco,2026-05-30
+Morocco,19,Ayyoub Bouaddi,MF,18,Lille,Ligue 1,,1,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Morocco,2026-05-30
+Morocco,20,Ayoub El Kaabi,FW,32,Olympiacos,GRE,,69,34,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Morocco,2026-05-30
+Morocco,21,Soufiane Rahimi,FW,30,Al Ain,UAE,,35,11,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Morocco,2026-05-30
+Morocco,22,Abde Ezzalzouli,FW,24,Real Betis,La Liga,,35,2,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Morocco,2026-05-30
+Morocco,23,Brahim Díaz,FW,26,Real Madrid,La Liga,,24,13,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Morocco,2026-05-30
+Morocco,24,Chemsdine Talbi,FW,21,Sunderland,Premier League,,5,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Morocco,2026-05-30
+Morocco,25,Gessime Yassine,FW,20,Strasbourg,Ligue 1,,3,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Morocco,2026-05-30
+Morocco,26,Ayoube Amaimouni,FW,21,Eintracht Frankfurt,Bundesliga,,0,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Morocco,2026-05-30
+Scotland,1,Craig Gordon,GK,43,Heart of Midlothian,SCO,,83,0,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Scotland,2026-05-30
+Scotland,2,Angus Gunn,GK,30,Nottingham Forest,Premier League,,21,0,unknown,reserve,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Scotland,2026-05-30
+Scotland,3,Liam Kelly,GK,30,Rangers,SCO,,2,0,unknown,reserve,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Scotland,2026-05-30
+Scotland,4,Andy Robertson,DF,32,Liverpool,Premier League,,92,4,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Scotland,2026-05-30
+Scotland,5,Grant Hanley,DF,34,Hibernian,SCO,,66,2,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Scotland,2026-05-30
+Scotland,6,Kieran Tierney,DF,29,Celtic,SCO,,55,2,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Scotland,2026-05-30
+Scotland,7,Scott McKenna,DF,29,Dinamo Zagreb,CRO,,49,1,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Scotland,2026-05-30
+Scotland,8,Jack Hendry,DF,31,Al-Ettifaq,Saudi Pro League,,37,3,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Scotland,2026-05-30
+Scotland,9,Nathan Patterson,DF,24,Everton,Premier League,,25,1,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Scotland,2026-05-30
+Scotland,10,Anthony Ralston,DF,27,Celtic,SCO,,25,1,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Scotland,2026-05-30
+Scotland,11,John Souttar,DF,29,Rangers,SCO,,22,2,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Scotland,2026-05-30
+Scotland,12,Aaron Hickey,DF,24,Brentford,Premier League,,19,0,unknown,squad,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Scotland,2026-05-30
+Scotland,13,Dominic Hyam,DF,30,Wrexham,WAL,,2,0,unknown,squad,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Scotland,2026-05-30
+Scotland,14,John McGinn,MF,31,Aston Villa,Premier League,,85,20,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Scotland,2026-05-30
+Scotland,15,Scott McTominay,MF,29,Napoli,Serie A,,69,14,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Scotland,2026-05-30
+Scotland,16,Ryan Christie,MF,31,Bournemouth,Premier League,,66,9,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Scotland,2026-05-30
+Scotland,17,Kenny McLean,MF,34,Norwich City,Premier League,,56,3,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Scotland,2026-05-30
+Scotland,18,Billy Gilmour,MF,25,Napoli,Serie A,,45,2,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Scotland,2026-05-30
+Scotland,19,Lewis Ferguson,MF,26,Bologna,Serie A,,23,1,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Scotland,2026-05-30
+Scotland,20,Ben Gannon-Doak,MF,20,Bournemouth,Premier League,,12,1,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Scotland,2026-05-30
+Scotland,21,Findlay Curtis,MF,20,Kilmarnock,SCO,,1,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Scotland,2026-05-30
+Scotland,22,Lyndon Dykes,FW,30,Charlton Athletic,Premier League,,50,10,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Scotland,2026-05-30
+Scotland,23,Ché Adams,FW,29,Torino,Serie A,,46,11,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Scotland,2026-05-30
+Scotland,24,Lawrence Shankland,FW,30,Heart of Midlothian,SCO,,18,4,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Scotland,2026-05-30
+Scotland,25,George Hirst,FW,27,Ipswich Town,Premier League,,8,1,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Scotland,2026-05-30
+Scotland,26,Ross Stewart,FW,29,Southampton,Premier League,,2,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Scotland,2026-05-30
+USA,1,Matt Turner,GK,31,New England Revolution,MLS,,53,0,unknown,starter,association_final,https://www.ussoccer.com/stories/2026/05/usmnt-head-coach-mauricio-pochettino-names-26-player-roster-for-fifa-world-cup-2026,2026-05-30
+USA,2,Sergiño Dest,DF,25,PSV Eindhoven,Eredivisie,,37,2,unknown,starter,association_final,https://www.ussoccer.com/stories/2026/05/usmnt-head-coach-mauricio-pochettino-names-26-player-roster-for-fifa-world-cup-2026,2026-05-30
+USA,3,Chris Richards,DF,26,Crystal Palace,Premier League,,36,3,unknown,starter,association_final,https://www.ussoccer.com/stories/2026/05/usmnt-head-coach-mauricio-pochettino-names-26-player-roster-for-fifa-world-cup-2026,2026-05-30
+USA,4,Tyler Adams,MF,27,Bournemouth,Premier League,,52,2,unknown,starter,association_final,https://www.ussoccer.com/stories/2026/05/usmnt-head-coach-mauricio-pochettino-names-26-player-roster-for-fifa-world-cup-2026,2026-05-30
+USA,5,Antonee Robinson,DF,28,Fulham,Premier League,,52,4,unknown,starter,association_final,https://www.ussoccer.com/stories/2026/05/usmnt-head-coach-mauricio-pochettino-names-26-player-roster-for-fifa-world-cup-2026,2026-05-30
+USA,6,Auston Trusty,DF,27,Celtic,SCO,,6,0,unknown,starter,association_final,https://www.ussoccer.com/stories/2026/05/usmnt-head-coach-mauricio-pochettino-names-26-player-roster-for-fifa-world-cup-2026,2026-05-30
+USA,7,Giovanni Reyna,MF,23,Borussia Mönchengladbach,Bundesliga,,36,9,unknown,starter,association_final,https://www.ussoccer.com/stories/2026/05/usmnt-head-coach-mauricio-pochettino-names-26-player-roster-for-fifa-world-cup-2026,2026-05-30
+USA,8,Weston McKennie,MF,27,Juventus,Serie A,,64,12,unknown,starter,association_final,https://www.ussoccer.com/stories/2026/05/usmnt-head-coach-mauricio-pochettino-names-26-player-roster-for-fifa-world-cup-2026,2026-05-30
+USA,9,Ricardo Pepi,FW,23,PSV Eindhoven,Eredivisie,,35,13,unknown,starter,association_final,https://www.ussoccer.com/stories/2026/05/usmnt-head-coach-mauricio-pochettino-names-26-player-roster-for-fifa-world-cup-2026,2026-05-30
+USA,10,Christian Pulisic,FW,27,Milan,Serie A,,84,32,unknown,starter,association_final,https://www.ussoccer.com/stories/2026/05/usmnt-head-coach-mauricio-pochettino-names-26-player-roster-for-fifa-world-cup-2026,2026-05-30
+USA,11,Brenden Aaronson,FW,25,Leeds United,Premier League,,57,9,unknown,starter,association_final,https://www.ussoccer.com/stories/2026/05/usmnt-head-coach-mauricio-pochettino-names-26-player-roster-for-fifa-world-cup-2026,2026-05-30
+USA,12,Miles Robinson,DF,29,FC Cincinnati,MLS,,38,3,unknown,rotation,association_final,https://www.ussoccer.com/stories/2026/05/usmnt-head-coach-mauricio-pochettino-names-26-player-roster-for-fifa-world-cup-2026,2026-05-30
+USA,13,Tim Ream,DF,38,Charlotte FC,MLS,,80,1,unknown,rotation,association_final,https://www.ussoccer.com/stories/2026/05/usmnt-head-coach-mauricio-pochettino-names-26-player-roster-for-fifa-world-cup-2026,2026-05-30
+USA,14,Sebastian Berhalter,MF,25,Vancouver Whitecaps FC,MLS,,11,1,unknown,starter,association_final,https://www.ussoccer.com/stories/2026/05/usmnt-head-coach-mauricio-pochettino-names-26-player-roster-for-fifa-world-cup-2026,2026-05-30
+USA,15,Cristian Roldan,MF,31,Seattle Sounders FC,MLS,,45,0,unknown,rotation,association_final,https://www.ussoccer.com/stories/2026/05/usmnt-head-coach-mauricio-pochettino-names-26-player-roster-for-fifa-world-cup-2026,2026-05-30
+USA,16,Alex Freeman,DF,21,Villarreal,La Liga,,15,2,unknown,rotation,association_final,https://www.ussoccer.com/stories/2026/05/usmnt-head-coach-mauricio-pochettino-names-26-player-roster-for-fifa-world-cup-2026,2026-05-30
+USA,17,Malik Tillman,MF,24,Bayer Leverkusen,Bundesliga,,28,3,unknown,rotation,association_final,https://www.ussoccer.com/stories/2026/05/usmnt-head-coach-mauricio-pochettino-names-26-player-roster-for-fifa-world-cup-2026,2026-05-30
+USA,18,Maximilian Arfsten,DF,25,Columbus Crew,MLS,,18,1,unknown,rotation,association_final,https://www.ussoccer.com/stories/2026/05/usmnt-head-coach-mauricio-pochettino-names-26-player-roster-for-fifa-world-cup-2026,2026-05-30
+USA,19,Haji Wright,FW,28,Coventry City,Premier League,,20,7,unknown,starter,association_final,https://www.ussoccer.com/stories/2026/05/usmnt-head-coach-mauricio-pochettino-names-26-player-roster-for-fifa-world-cup-2026,2026-05-30
+USA,20,Folarin Balogun,FW,24,Monaco,Ligue 1,,25,8,unknown,rotation,association_final,https://www.ussoccer.com/stories/2026/05/usmnt-head-coach-mauricio-pochettino-names-26-player-roster-for-fifa-world-cup-2026,2026-05-30
+USA,21,Timothy Weah,FW,26,Marseille,Ligue 1,,49,7,unknown,rotation,association_final,https://www.ussoccer.com/stories/2026/05/usmnt-head-coach-mauricio-pochettino-names-26-player-roster-for-fifa-world-cup-2026,2026-05-30
+USA,22,Mark McKenzie,DF,27,Toulouse,Ligue 1,,27,0,unknown,squad,association_final,https://www.ussoccer.com/stories/2026/05/usmnt-head-coach-mauricio-pochettino-names-26-player-roster-for-fifa-world-cup-2026,2026-05-30
+USA,23,Joe Scally,DF,23,Borussia Mönchengladbach,Bundesliga,,24,0,unknown,squad,association_final,https://www.ussoccer.com/stories/2026/05/usmnt-head-coach-mauricio-pochettino-names-26-player-roster-for-fifa-world-cup-2026,2026-05-30
+USA,24,Matt Freese,GK,27,New York City FC,MLS,,14,0,unknown,reserve,association_final,https://www.ussoccer.com/stories/2026/05/usmnt-head-coach-mauricio-pochettino-names-26-player-roster-for-fifa-world-cup-2026,2026-05-30
+USA,25,Chris Brady,GK,22,Chicago Fire FC,MLS,,0,0,unknown,reserve,association_final,https://www.ussoccer.com/stories/2026/05/usmnt-head-coach-mauricio-pochettino-names-26-player-roster-for-fifa-world-cup-2026,2026-05-30
+USA,26,Alejandro Zendejas,FW,28,América,Liga MX,,13,2,unknown,rotation,association_final,https://www.ussoccer.com/stories/2026/05/usmnt-head-coach-mauricio-pochettino-names-26-player-roster-for-fifa-world-cup-2026,2026-05-30
+Curacao,1,Eloy Room,GK,37,Miami FC,MLS,,70,0,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Cura%C3%A7ao,2026-05-30
+Curacao,2,Shurandy Sambo,DF,24,Sparta Rotterdam,Eredivisie,,7,0,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Cura%C3%A7ao,2026-05-30
+Curacao,3,Juriën Gaari,DF,32,Abha,Saudi Pro League,,58,1,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Cura%C3%A7ao,2026-05-30
+Curacao,4,Roshon van Eijma,DF,28,RKC Waalwijk,Eredivisie,,27,1,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Cura%C3%A7ao,2026-05-30
+Curacao,5,Sherel Floranus,DF,27,PEC Zwolle,Eredivisie,,26,0,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Cura%C3%A7ao,2026-05-30
+Curacao,6,Godfried Roemeratoe,MF,26,RKC Waalwijk,Eredivisie,,26,1,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Cura%C3%A7ao,2026-05-30
+Curacao,7,Juninho Bacuna,MF,28,Volendam,Eredivisie,,47,14,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Cura%C3%A7ao,2026-05-30
+Curacao,8,Livano Comenencia,MF,22,Zürich,SUI,,18,1,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Cura%C3%A7ao,2026-05-30
+Curacao,9,Jürgen Locadia,FW,32,Miami FC,MLS,,12,1,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Cura%C3%A7ao,2026-05-30
+Curacao,10,Leandro Bacuna,MF,34,Iğdır,TUR,,70,16,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Cura%C3%A7ao,2026-05-30
+Curacao,11,Jeremy Antonisse,FW,24,Kifisia,GRE,,25,3,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Cura%C3%A7ao,2026-05-30
+Curacao,12,Sontje Hansen,FW,24,Middlesbrough,Premier League,,5,1,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Cura%C3%A7ao,2026-05-30
+Curacao,13,Tyrese Noslin,MF,23,Telstar,Eredivisie,,5,1,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Cura%C3%A7ao,2026-05-30
+Curacao,14,Kenji Gorré,FW,31,Maccabi Haifa,ISR,,37,6,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Cura%C3%A7ao,2026-05-30
+Curacao,15,Ar'jany Martha,MF,22,Rotherham United,Premier League,,8,2,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Cura%C3%A7ao,2026-05-30
+Curacao,16,Jearl Margaritha,FW,26,Beveren,BEL,,21,5,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Cura%C3%A7ao,2026-05-30
+Curacao,17,Brandley Kuwas,FW,33,Volendam,Eredivisie,,34,2,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Cura%C3%A7ao,2026-05-30
+Curacao,18,Armando Obispo,DF,27,PSV Eindhoven,Eredivisie,,4,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Cura%C3%A7ao,2026-05-30
+Curacao,19,Gervane Kastaneer,FW,30,Terengganu,MAS,,27,9,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Cura%C3%A7ao,2026-05-30
+Curacao,20,Joshua Brenet,DF,32,Kayserispor,TUR,,17,1,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Cura%C3%A7ao,2026-05-30
+Curacao,21,Tahith Chong,FW,26,Sheffield United,Premier League,,4,2,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Cura%C3%A7ao,2026-05-30
+Curacao,22,Kevin Felida,MF,26,Den Bosch,Eredivisie,,19,1,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Cura%C3%A7ao,2026-05-30
+Curacao,23,Riechedly Bazoer,DF,29,Konyaspor,TUR,,3,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Cura%C3%A7ao,2026-05-30
+Curacao,24,Deveron Fonville,DF,23,NEC,Eredivisie,,0,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Cura%C3%A7ao,2026-05-30
+Curacao,25,Tyrick Bodak,GK,24,Telstar,Eredivisie,,4,0,unknown,reserve,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Cura%C3%A7ao,2026-05-30
+Curacao,26,Trevor Doornbusch,GK,26,VVV-Venlo,Eredivisie,,7,0,unknown,reserve,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Cura%C3%A7ao,2026-05-30
+Germany,1,Manuel Neuer,GK,40,Bayern Munich,Bundesliga,,124,0,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Germany,2026-05-30
+Germany,2,Antonio Rüdiger,DF,33,Real Madrid,La Liga,,82,3,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Germany,2026-05-30
+Germany,3,Waldemar Anton,DF,29,Borussia Dortmund,Bundesliga,,12,0,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Germany,2026-05-30
+Germany,4,Jonathan Tah,DF,30,Bayern Munich,Bundesliga,,45,1,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Germany,2026-05-30
+Germany,5,Aleksandar Pavlović,MF,22,Bayern Munich,Bundesliga,,9,1,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Germany,2026-05-30
+Germany,6,Joshua Kimmich,MF,31,Bayern Munich,Bundesliga,,108,10,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Germany,2026-05-30
+Germany,7,Kai Havertz,FW,27,Arsenal,Premier League,,57,21,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Germany,2026-05-30
+Germany,8,Leon Goretzka,MF,31,Bayern Munich,Bundesliga,,69,15,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Germany,2026-05-30
+Germany,9,Jamie Leweling,MF,25,VfB Stuttgart,Bundesliga,,4,1,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Germany,2026-05-30
+Germany,10,Jamal Musiala,MF,23,Bayern Munich,Bundesliga,,40,8,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Germany,2026-05-30
+Germany,11,Nick Woltemade,FW,24,Newcastle United,Premier League,,10,4,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Germany,2026-05-30
+Germany,12,Oliver Baumann,GK,36,TSG Hoffenheim,Bundesliga,,11,0,unknown,reserve,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Germany,2026-05-30
+Germany,13,Pascal Groß,MF,34,Brighton & Hove Albion,Premier League,,18,1,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Germany,2026-05-30
+Germany,14,Maximilian Beier,FW,23,Borussia Dortmund,Bundesliga,,7,0,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Germany,2026-05-30
+Germany,15,Nico Schlotterbeck,DF,26,Borussia Dortmund,Bundesliga,,25,0,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Germany,2026-05-30
+Germany,16,Angelo Stiller,MF,25,VfB Stuttgart,Bundesliga,,7,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Germany,2026-05-30
+Germany,17,Florian Wirtz,MF,23,Liverpool,Premier League,,39,10,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Germany,2026-05-30
+Germany,18,Nathaniel Brown,DF,22,Eintracht Frankfurt,Bundesliga,,3,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Germany,2026-05-30
+Germany,19,Leroy Sané,MF,30,Galatasaray,TUR,,74,16,unknown,squad,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Germany,2026-05-30
+Germany,20,Nadiem Amiri,MF,29,Mainz 05,Bundesliga,,9,1,unknown,squad,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Germany,2026-05-30
+Germany,21,Alexander Nübel,GK,29,VfB Stuttgart,Bundesliga,,3,0,unknown,reserve,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Germany,2026-05-30
+Germany,22,David Raum,DF,28,RB Leipzig,Bundesliga,,36,1,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Germany,2026-05-30
+Germany,23,Felix Nmecha,MF,25,Borussia Dortmund,Bundesliga,,6,1,unknown,squad,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Germany,2026-05-30
+Germany,24,Malick Thiaw,DF,24,Newcastle United,Premier League,,5,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Germany,2026-05-30
+Germany,25,Lennart Karl,MF,18,Bayern Munich,Bundesliga,,2,0,unknown,squad,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Germany,2026-05-30
+Germany,26,Deniz Undav,FW,29,VfB Stuttgart,Bundesliga,,7,4,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Germany,2026-05-30
+Cote d'Ivoire,1,Yahia Fofana,GK,25,Çaykur Rizespor,TUR,,34,0,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Ivory_Coast,2026-05-30
+Cote d'Ivoire,2,Alban Lafont,GK,27,Panathinaikos,GRE,,4,0,unknown,reserve,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Ivory_Coast,2026-05-30
+Cote d'Ivoire,3,Mohamed Koné,GK,24,Charleroi,BEL,,0,0,unknown,reserve,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Ivory_Coast,2026-05-30
+Cote d'Ivoire,4,Ghislain Konan,DF,30,Gil Vicente,Primeira Liga,,53,0,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Ivory_Coast,2026-05-30
+Cote d'Ivoire,5,Odilon Kossounou,DF,25,Atalanta,Serie A,,35,0,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Ivory_Coast,2026-05-30
+Cote d'Ivoire,6,Wilfried Singo,DF,25,Galatasaray,TUR,,33,1,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Ivory_Coast,2026-05-30
+Cote d'Ivoire,7,Evan Ndicka,DF,26,Roma,Serie A,,28,0,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Ivory_Coast,2026-05-30
+Cote d'Ivoire,8,Emmanuel Agbadou,DF,29,Beşiktaş,TUR,,19,2,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Ivory_Coast,2026-05-30
+Cote d'Ivoire,9,Guéla Doué,DF,23,Strasbourg,Ligue 1,,19,2,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Ivory_Coast,2026-05-30
+Cote d'Ivoire,10,Ousmane Diomande,DF,22,Sporting CP,Primeira Liga,,14,1,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Ivory_Coast,2026-05-30
+Cote d'Ivoire,11,Christopher Opéri,DF,29,İstanbul Başakşehir,TUR,,11,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Ivory_Coast,2026-05-30
+Cote d'Ivoire,12,Franck Kessié,MF,29,Al-Ahli,Saudi Pro League,,102,15,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Ivory_Coast,2026-05-30
+Cote d'Ivoire,13,Jean Michaël Seri,MF,34,Maribor,SVN,,65,4,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Ivory_Coast,2026-05-30
+Cote d'Ivoire,14,Ibrahim Sangaré,MF,28,Nottingham Forest,Premier League,,57,12,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Ivory_Coast,2026-05-30
+Cote d'Ivoire,15,Seko Fofana,MF,31,Porto,Primeira Liga,,31,7,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Ivory_Coast,2026-05-30
+Cote d'Ivoire,16,Christ Inao Oulaï,MF,20,Trabzonspor,TUR,,8,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Ivory_Coast,2026-05-30
+Cote d'Ivoire,17,Parfait Guiagon,MF,25,Charleroi,BEL,,5,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Ivory_Coast,2026-05-30
+Cote d'Ivoire,18,Nicolas Pépé,FW,31,Villarreal,La Liga,,54,12,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Ivory_Coast,2026-05-30
+Cote d'Ivoire,19,Oumar Diakité,FW,22,Cercle Brugge,BEL,,28,6,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Ivory_Coast,2026-05-30
+Cote d'Ivoire,20,Simon Adingra,FW,24,Monaco,Ligue 1,,28,5,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Ivory_Coast,2026-05-30
+Cote d'Ivoire,21,Evann Guessand,FW,24,Crystal Palace,Premier League,,21,4,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Ivory_Coast,2026-05-30
+Cote d'Ivoire,22,Amad Diallo,FW,23,Manchester United,Premier League,,18,5,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Ivory_Coast,2026-05-30
+Cote d'Ivoire,23,Yan Diomande,FW,19,RB Leipzig,Bundesliga,,9,3,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Ivory_Coast,2026-05-30
+Cote d'Ivoire,24,Bazoumana Touré,FW,20,TSG Hoffenheim,Bundesliga,,5,2,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Ivory_Coast,2026-05-30
+Cote d'Ivoire,25,Elye Wahi,FW,23,Nice,Ligue 1,,1,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Ivory_Coast,2026-05-30
+Cote d'Ivoire,26,Ange-Yoan Bonny,FW,22,Inter Milan,Serie A,,0,0,unknown,squad,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Ivory_Coast,2026-05-30
+Japan,1,Zion Suzuki,GK,23,Parma,Serie A,,23,0,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Japan,2026-05-30
+Japan,2,Yukinari Sugawara,DF,25,Werder Bremen,Bundesliga,,20,2,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Japan,2026-05-30
+Japan,3,Shōgo Taniguchi,DF,34,Sint-Truiden,BEL,,37,1,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Japan,2026-05-30
+Japan,4,Kō Itakura,DF,29,Ajax,Eredivisie,,39,2,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Japan,2026-05-30
+Japan,5,Yūto Nagatomo,DF,39,FC Tokyo,J1 League,,144,4,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Japan,2026-05-30
+Japan,6,Wataru Endo,MF,33,Liverpool,Premier League,,72,4,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Japan,2026-05-30
+Japan,7,Ao Tanaka,MF,27,Leeds United,Premier League,,37,8,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Japan,2026-05-30
+Japan,8,Takefusa Kubo,MF,25,Real Sociedad,La Liga,,48,7,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Japan,2026-05-30
+Japan,9,Keisuke Gotō,FW,21,Sint-Truiden,BEL,,3,0,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Japan,2026-05-30
+Japan,10,Ritsu Dōan,MF,27,Eintracht Frankfurt,Bundesliga,,64,11,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Japan,2026-05-30
+Japan,11,Daizen Maeda,FW,28,Celtic,SCO,,27,4,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Japan,2026-05-30
+Japan,12,Keisuke Ōsako,GK,26,Sanfrecce Hiroshima,J1 League,,11,0,unknown,reserve,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Japan,2026-05-30
+Japan,13,Keito Nakamura,MF,25,Reims,Ligue 1,,24,10,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Japan,2026-05-30
+Japan,14,Junya Itō,MF,33,Genk,BEL,,68,15,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Japan,2026-05-30
+Japan,15,Daichi Kamada,MF,29,Crystal Palace,Premier League,,49,12,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Japan,2026-05-30
+Japan,16,Tsuyoshi Watanabe,DF,29,Feyenoord,Eredivisie,,10,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Japan,2026-05-30
+Japan,17,Yuito Suzuki,FW,24,SC Freiburg,Bundesliga,,6,0,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Japan,2026-05-30
+Japan,18,Ayase Ueda,FW,27,Feyenoord,Eredivisie,,38,16,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Japan,2026-05-30
+Japan,19,Kōki Ogawa,FW,28,NEC,Eredivisie,,14,10,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Japan,2026-05-30
+Japan,20,Ayumu Seko,DF,26,Le Havre,Ligue 1,,13,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Japan,2026-05-30
+Japan,21,Hiroki Itō,DF,27,Bayern Munich,Bundesliga,,23,1,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Japan,2026-05-30
+Japan,22,Takehiro Tomiyasu,DF,27,Ajax,Eredivisie,,42,1,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Japan,2026-05-30
+Japan,23,Tomoki Hayakawa,GK,27,Kashima Antlers,J1 League,,3,0,unknown,reserve,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Japan,2026-05-30
+Japan,24,Kaishū Sano,MF,25,Mainz 05,Bundesliga,,12,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Japan,2026-05-30
+Japan,25,Junnosuke Suzuki,DF,22,Copenhagen,DEN,,6,0,unknown,squad,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Japan,2026-05-30
+Japan,26,Kento Shiogai,FW,21,VfL Wolfsburg,Bundesliga,,1,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Japan,2026-05-30
+Netherlands,1,Bart Verbruggen,GK,23,Brighton & Hove Albion,Premier League,,27,0,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Netherlands,2026-05-30
+Netherlands,2,Mark Flekken,GK,32,Bayer Leverkusen,Bundesliga,,11,0,unknown,reserve,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Netherlands,2026-05-30
+Netherlands,3,Robin Roefs,GK,23,Sunderland,Premier League,,0,0,unknown,reserve,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Netherlands,2026-05-30
+Netherlands,4,Virgil van Dijk,DF,34,Liverpool,Premier League,,90,12,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Netherlands,2026-05-30
+Netherlands,5,Denzel Dumfries,DF,30,Inter Milan,Serie A,,71,11,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Netherlands,2026-05-30
+Netherlands,6,Nathan Aké,DF,31,Manchester City,Premier League,,58,5,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Netherlands,2026-05-30
+Netherlands,7,Jurriën Timber,DF,24,Arsenal,Premier League,,23,0,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Netherlands,2026-05-30
+Netherlands,8,Micky van de Ven,DF,25,Tottenham Hotspur,Premier League,,19,1,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Netherlands,2026-05-30
+Netherlands,9,Mats Wieffer,DF,26,Brighton & Hove Albion,Premier League,,14,1,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Netherlands,2026-05-30
+Netherlands,10,Jan Paul van Hecke,DF,26,Brighton & Hove Albion,Premier League,,10,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Netherlands,2026-05-30
+Netherlands,11,Jorrel Hato,DF,20,Chelsea,Premier League,,7,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Netherlands,2026-05-30
+Netherlands,12,Frenkie de Jong,MF,29,Barcelona,La Liga,,64,2,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Netherlands,2026-05-30
+Netherlands,13,Marten de Roon,MF,35,Atalanta,Serie A,,42,1,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Netherlands,2026-05-30
+Netherlands,14,Tijjani Reijnders,MF,27,Manchester City,Premier League,,30,7,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Netherlands,2026-05-30
+Netherlands,15,Teun Koopmeiners,MF,28,Juventus,Serie A,,27,3,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Netherlands,2026-05-30
+Netherlands,16,Ryan Gravenberch,MF,24,Liverpool,Premier League,,25,1,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Netherlands,2026-05-30
+Netherlands,17,Justin Kluivert,MF,27,Bournemouth,Premier League,,11,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Netherlands,2026-05-30
+Netherlands,18,Quinten Timber,MF,24,Marseille,Ligue 1,,10,1,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Netherlands,2026-05-30
+Netherlands,19,Guus Til,MF,28,PSV Eindhoven,Eredivisie,,6,1,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Netherlands,2026-05-30
+Netherlands,20,Memphis Depay,FW,32,Corinthians,Brasileirao,,108,55,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Netherlands,2026-05-30
+Netherlands,21,Wout Weghorst,FW,33,Ajax,Eredivisie,,51,14,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Netherlands,2026-05-30
+Netherlands,22,Donyell Malen,FW,27,Roma,Serie A,,51,13,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Netherlands,2026-05-30
+Netherlands,23,Cody Gakpo,FW,27,Liverpool,Premier League,,48,19,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Netherlands,2026-05-30
+Netherlands,24,Noa Lang,FW,26,Galatasaray,TUR,,15,3,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Netherlands,2026-05-30
+Netherlands,25,Brian Brobbey,FW,24,Sunderland,Premier League,,10,1,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Netherlands,2026-05-30
+Netherlands,26,Crysencio Summerville,FW,24,West Ham United,Premier League,,0,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Netherlands,2026-05-30
+Sweden,1,Jacob Widell Zetterström,GK,27,Derby County,Premier League,,2,0,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Sweden,2026-05-30
+Sweden,2,Gustaf Lagerbielke,DF,26,Braga,Primeira Liga,,9,2,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Sweden,2026-05-30
+Sweden,3,Victor Lindelöf,DF,31,Aston Villa,Premier League,,75,3,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Sweden,2026-05-30
+Sweden,4,Isak Hien,DF,27,Atalanta,Serie A,,27,0,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Sweden,2026-05-30
+Sweden,5,Gabriel Gudmundsson,DF,27,Leeds United,Premier League,,23,0,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Sweden,2026-05-30
+Sweden,6,Emil Holm,DF,26,Juventus,Serie A,,16,2,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Sweden,2026-05-30
+Sweden,7,Lucas Bergvall,MF,20,Tottenham Hotspur,Premier League,,8,0,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Sweden,2026-05-30
+Sweden,8,Daniel Svensson,DF,24,Borussia Dortmund,Bundesliga,,11,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Sweden,2026-05-30
+Sweden,9,Alexander Isak,FW,26,Liverpool,Premier League,,56,16,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Sweden,2026-05-30
+Sweden,10,Benjamin Nygren,FW,24,Celtic,SCO,,9,3,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Sweden,2026-05-30
+Sweden,11,Anthony Elanga,FW,24,Newcastle United,Premier League,,28,6,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Sweden,2026-05-30
+Sweden,12,Viktor Johansson,GK,27,Stoke City,Premier League,,12,0,unknown,reserve,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Sweden,2026-05-30
+Sweden,13,Ken Sema,MF,32,Pafos,CYP,,32,5,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Sweden,2026-05-30
+Sweden,14,Hjalmar Ekdal,DF,27,Burnley,Premier League,,11,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Sweden,2026-05-30
+Sweden,15,Carl Starfelt,DF,31,Celta Vigo,La Liga,,17,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Sweden,2026-05-30
+Sweden,16,Jesper Karlström,MF,30,Udinese,Serie A,,23,0,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Sweden,2026-05-30
+Sweden,17,Viktor Gyökeres,FW,28,Arsenal,Premier League,,32,19,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Sweden,2026-05-30
+Sweden,18,Yasin Ayari,MF,22,Brighton & Hove Albion,Premier League,,19,3,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Sweden,2026-05-30
+Sweden,19,Mattias Svanberg,MF,27,VfL Wolfsburg,Bundesliga,,39,2,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Sweden,2026-05-30
+Sweden,20,Eric Smith,DF,29,FC St. Pauli,Bundesliga,,0,0,unknown,squad,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Sweden,2026-05-30
+Sweden,21,Alexander Bernhardsson,FW,27,Holstein Kiel,Bundesliga,,9,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Sweden,2026-05-30
+Sweden,22,Besfort Zeneli,MF,23,Union Saint-Gilloise,BEL,,6,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Sweden,2026-05-30
+Sweden,23,Kristoffer Nordfeldt,GK,36,AIK,SWE,,20,0,unknown,reserve,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Sweden,2026-05-30
+Sweden,24,Elliot Stroud,DF,23,Mjällby AIF,SWE,,0,0,unknown,squad,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Sweden,2026-05-30
+Sweden,25,Gustaf Nilsson,FW,29,Club Brugge,BEL,,8,3,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Sweden,2026-05-30
+Sweden,26,Taha Ali,FW,27,Malmö FF,SWE,,1,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Sweden,2026-05-30
+Tunisia,1,Aymen Dahmen,GK,29,CS Sfaxien,TUN,,37,0,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Tunisia,2026-05-30
+Tunisia,2,Sabri Ben Hessen,GK,29,Étoile du Sahel,TUN,,2,0,unknown,reserve,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Tunisia,2026-05-30
+Tunisia,3,Mouhib Chamakh,GK,24,Club Africain,TUN,,1,0,unknown,reserve,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Tunisia,2026-05-30
+Tunisia,4,Montassar Talbi,DF,28,Lorient,Ligue 1,,62,4,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Tunisia,2026-05-30
+Tunisia,5,Dylan Bronn,DF,30,Servette,SUI,,52,2,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Tunisia,2026-05-30
+Tunisia,6,Ali Abdi,DF,32,Nice,Ligue 1,,45,7,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Tunisia,2026-05-30
+Tunisia,7,Yan Valery,DF,27,Young Boys,SUI,,21,0,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Tunisia,2026-05-30
+Tunisia,8,Mohamed Amine Ben Hamida,DF,30,Espérance de Tunis,TUN,,12,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Tunisia,2026-05-30
+Tunisia,9,Moutaz Neffati,DF,21,IFK Norrköping,SWE,,5,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Tunisia,2026-05-30
+Tunisia,10,Omar Rekik,DF,24,Maribor,SVN,,4,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Tunisia,2026-05-30
+Tunisia,11,Adem Arous,DF,21,Kasımpaşa,TUR,,1,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Tunisia,2026-05-30
+Tunisia,12,Raed Chikhaoui,DF,22,US Monastir,TUN,,0,0,unknown,squad,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Tunisia,2026-05-30
+Tunisia,13,Ellyes Skhiri,MF,31,Eintracht Frankfurt,Bundesliga,,81,4,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Tunisia,2026-05-30
+Tunisia,14,Hannibal Mejbri,MF,23,Burnley,Premier League,,44,1,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Tunisia,2026-05-30
+Tunisia,15,Anis Ben Slimane,MF,25,Norwich City,Premier League,,39,4,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Tunisia,2026-05-30
+Tunisia,16,Mortadha Ben Ouanes,MF,31,Kasımpaşa,TUR,,17,0,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Tunisia,2026-05-30
+Tunisia,17,Ismaël Gharbi,MF,22,FC Augsburg,Bundesliga,,15,2,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Tunisia,2026-05-30
+Tunisia,18,Hadj Mahmoud,MF,26,Lugano,SUI,,7,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Tunisia,2026-05-30
+Tunisia,19,Rani Khedira,MF,32,Union Berlin,Bundesliga,,2,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Tunisia,2026-05-30
+Tunisia,20,Elias Achouri,FW,27,Copenhagen,DEN,,29,4,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Tunisia,2026-05-30
+Tunisia,21,Firas Chaouat,FW,30,Club Africain,TUN,,28,6,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Tunisia,2026-05-30
+Tunisia,22,Hazem Mastouri,FW,28,Dynamo Makhachkala,RUS,,18,4,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Tunisia,2026-05-30
+Tunisia,23,Elias Saad,FW,26,Hannover 96,Bundesliga,,14,4,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Tunisia,2026-05-30
+Tunisia,24,Sebastian Tounekti,FW,23,Celtic,SCO,,10,1,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Tunisia,2026-05-30
+Tunisia,25,Khalil Ayari,FW,21,Paris Saint-Germain Youth,Ligue 1,,2,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Tunisia,2026-05-30
+Tunisia,26,Rayan Elloumi,FW,18,Vancouver Whitecaps FC,MLS,,2,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Tunisia,2026-05-30
+Belgium,1,Thibaut Courtois,GK,34,Real Madrid,La Liga,,107,0,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Belgium,2026-05-30
+Belgium,2,Senne Lammens,GK,23,Manchester United,Premier League,,2,0,unknown,reserve,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Belgium,2026-05-30
+Belgium,3,Mike Penders,GK,20,Strasbourg,Ligue 1,,0,0,unknown,reserve,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Belgium,2026-05-30
+Belgium,4,Thomas Meunier,DF,34,Lille,Ligue 1,,78,10,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Belgium,2026-05-30
+Belgium,5,Timothy Castagne,DF,30,Fulham,Premier League,,62,2,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Belgium,2026-05-30
+Belgium,6,Arthur Theate,DF,26,Eintracht Frankfurt,Bundesliga,,32,1,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Belgium,2026-05-30
+Belgium,7,Zeno Debast,DF,22,Sporting CP,Primeira Liga,,26,1,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Belgium,2026-05-30
+Belgium,8,Maxim De Cuyper,DF,25,Brighton & Hove Albion,Premier League,,17,4,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Belgium,2026-05-30
+Belgium,9,Brandon Mechele,DF,33,Club Brugge,BEL,,7,1,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Belgium,2026-05-30
+Belgium,10,Koni De Winter,DF,23,Milan,Serie A,,7,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Belgium,2026-05-30
+Belgium,11,Joaquin Seys,DF,21,Club Brugge,BEL,,4,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Belgium,2026-05-30
+Belgium,12,Nathan Ngoy,DF,23,Lille,Ligue 1,,2,0,unknown,squad,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Belgium,2026-05-30
+Belgium,13,Axel Witsel,MF,37,Girona,La Liga,,136,12,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Belgium,2026-05-30
+Belgium,14,Kevin De Bruyne,MF,34,Napoli,Serie A,,117,36,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Belgium,2026-05-30
+Belgium,15,Youri Tielemans,MF,29,Aston Villa,Premier League,,83,12,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Belgium,2026-05-30
+Belgium,16,Hans Vanaken,MF,33,Club Brugge,BEL,,32,7,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Belgium,2026-05-30
+Belgium,17,Amadou Onana,MF,24,Aston Villa,Premier League,,27,1,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Belgium,2026-05-30
+Belgium,18,Nicolas Raskin,MF,25,Rangers,SCO,,11,1,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Belgium,2026-05-30
+Belgium,19,Romelu Lukaku,FW,33,Napoli,Serie A,,124,89,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Belgium,2026-05-30
+Belgium,20,Leandro Trossard,FW,31,Arsenal,Premier League,,50,11,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Belgium,2026-05-30
+Belgium,21,Jérémy Doku,FW,24,Manchester City,Premier League,,41,7,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Belgium,2026-05-30
+Belgium,22,Dodi Lukébakio,FW,28,Benfica,Primeira Liga,,29,5,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Belgium,2026-05-30
+Belgium,23,Charles De Ketelaere,FW,25,Atalanta,Serie A,,28,5,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Belgium,2026-05-30
+Belgium,24,Alexis Saelemaekers,FW,26,Milan,Serie A,,23,2,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Belgium,2026-05-30
+Belgium,25,Diego Moreira,FW,21,Strasbourg,Ligue 1,,2,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Belgium,2026-05-30
+Belgium,26,Matias Fernandez-Pardo,FW,21,Lille,Ligue 1,,0,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Belgium,2026-05-30
+New Zealand,1,Max Crocombe,GK,32,Millwall,Premier League,,22,0,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#New_Zealand,2026-05-30
+New Zealand,2,Tim Payne,DF,32,Wellington Phoenix,NZL,,49,3,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#New_Zealand,2026-05-30
+New Zealand,3,Francis de Vries,DF,31,Auckland FC,NZL,,18,1,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#New_Zealand,2026-05-30
+New Zealand,4,Tyler Bindon,DF,21,Sheffield United,Premier League,,23,3,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#New_Zealand,2026-05-30
+New Zealand,5,Michael Boxall,DF,37,Minnesota United FC,MLS,,61,1,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#New_Zealand,2026-05-30
+New Zealand,6,Joe Bell,MF,27,Viking,NOR,,31,1,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#New_Zealand,2026-05-30
+New Zealand,7,Matthew Garbett,MF,24,Peterborough United,Premier League,,35,5,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#New_Zealand,2026-05-30
+New Zealand,8,Marko Stamenić,MF,24,Swansea City,WAL,,37,3,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#New_Zealand,2026-05-30
+New Zealand,9,Chris Wood,FW,34,Nottingham Forest,Premier League,,88,45,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#New_Zealand,2026-05-30
+New Zealand,10,Sarpreet Singh,MF,27,Wellington Phoenix,NZL,,26,3,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#New_Zealand,2026-05-30
+New Zealand,11,Elijah Just,MF,26,Motherwell,SCO,,42,9,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#New_Zealand,2026-05-30
+New Zealand,12,Alex Paulsen,GK,23,Lechia Gdańsk,POL,,6,0,unknown,reserve,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#New_Zealand,2026-05-30
+New Zealand,13,Liberato Cacace,DF,25,Wrexham,WAL,,35,1,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#New_Zealand,2026-05-30
+New Zealand,14,Alex Rufer,MF,29,Wellington Phoenix,NZL,,24,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#New_Zealand,2026-05-30
+New Zealand,15,Nando Pijnaker,DF,27,Auckland FC,NZL,,23,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#New_Zealand,2026-05-30
+New Zealand,16,Finn Surman,DF,22,Portland Timbers,MLS,,17,2,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#New_Zealand,2026-05-30
+New Zealand,17,Kosta Barbarouses,FW,36,Western Sydney Wanderers,A-League,,74,10,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#New_Zealand,2026-05-30
+New Zealand,18,Ben Waine,FW,25,Port Vale,Premier League,,30,9,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#New_Zealand,2026-05-30
+New Zealand,19,Ben Old,MF,23,Saint-Étienne,Ligue 1,,22,2,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#New_Zealand,2026-05-30
+New Zealand,20,Callum McCowatt,MF,27,Silkeborg,DEN,,30,4,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#New_Zealand,2026-05-30
+New Zealand,21,Jesse Randall,FW,23,Auckland FC,NZL,,9,2,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#New_Zealand,2026-05-30
+New Zealand,22,Michael Woud,GK,27,Auckland FC,NZL,,6,0,unknown,reserve,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#New_Zealand,2026-05-30
+New Zealand,23,Ryan Thomas,MF,31,PEC Zwolle,Eredivisie,,25,3,unknown,squad,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#New_Zealand,2026-05-30
+New Zealand,24,Callan Elliot,DF,26,Auckland FC,NZL,,9,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#New_Zealand,2026-05-30
+New Zealand,25,Lachlan Bayliss,MF,23,Newcastle Jets,A-League,,2,0,unknown,squad,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#New_Zealand,2026-05-30
+New Zealand,26,Tommy Smith,DF,36,Braintree Town,Premier League,,56,2,unknown,squad,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#New_Zealand,2026-05-30
+Cabo Verde,1,Vozinha,GK,40,Chaves,Primeira Liga,,85,0,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Cape_Verde,2026-05-30
+Cabo Verde,2,Márcio Rosa,GK,29,Montana,BUL,,10,0,unknown,reserve,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Cape_Verde,2026-05-30
+Cabo Verde,3,CJ dos Santos,GK,25,San Diego FC,MLS,,0,0,unknown,reserve,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Cape_Verde,2026-05-30
+Cabo Verde,4,Stopira,DF,38,Torreense,Primeira Liga,,60,4,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Cape_Verde,2026-05-30
+Cabo Verde,5,Roberto Lopes,DF,33,Shamrock Rovers,IRL,,44,0,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Cape_Verde,2026-05-30
+Cabo Verde,6,João Paulo,DF,28,FCSB,ROU,,40,1,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Cape_Verde,2026-05-30
+Cabo Verde,7,Diney,DF,31,Al Bataeh,UAE,,29,2,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Cape_Verde,2026-05-30
+Cabo Verde,8,Logan Costa,DF,25,Villarreal,La Liga,,26,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Cape_Verde,2026-05-30
+Cabo Verde,9,Steven Moreira,DF,31,Columbus Crew,MLS,,18,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Cape_Verde,2026-05-30
+Cabo Verde,10,Wagner Pina,DF,23,Trabzonspor,TUR,,12,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Cape_Verde,2026-05-30
+Cabo Verde,11,Sidny Lopes Cabral,DF,22,Benfica,Primeira Liga,,8,3,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Cape_Verde,2026-05-30
+Cabo Verde,12,Kelvin Pires,DF,26,SJK,FIN,,4,1,unknown,squad,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Cape_Verde,2026-05-30
+Cabo Verde,13,Jamiro Monteiro,MF,32,PEC Zwolle,Eredivisie,,53,5,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Cape_Verde,2026-05-30
+Cabo Verde,14,Kevin Pina,MF,29,Krasnodar,RUS,,30,2,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Cape_Verde,2026-05-30
+Cabo Verde,15,Deroy Duarte,MF,26,Ludogorets Razgrad,BUL,,30,0,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Cape_Verde,2026-05-30
+Cabo Verde,16,Telmo Arcanjo,MF,24,Vitória de Guimarães,Primeira Liga,,14,1,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Cape_Verde,2026-05-30
+Cabo Verde,17,Laros Duarte,MF,29,Puskás Akadémia,HUN,,12,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Cape_Verde,2026-05-30
+Cabo Verde,18,Yannick Semedo,MF,30,Farense,Primeira Liga,,10,1,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Cape_Verde,2026-05-30
+Cabo Verde,19,Ryan Mendes,FW,36,Iğdır,TUR,,94,22,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Cape_Verde,2026-05-30
+Cabo Verde,20,Garry Rodrigues,FW,35,Apollon Limassol,CYP,,59,9,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Cape_Verde,2026-05-30
+Cabo Verde,21,Willy Semedo,FW,32,Omonia,CYP,,36,2,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Cape_Verde,2026-05-30
+Cabo Verde,22,Jovane Cabral,FW,27,Estrela Amadora,Primeira Liga,,25,2,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Cape_Verde,2026-05-30
+Cabo Verde,23,Gilson Benchimol,FW,24,Akron Tolyatti,RUS,,21,5,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Cape_Verde,2026-05-30
+Cabo Verde,24,Dailon Livramento,FW,25,Casa Pia,Primeira Liga,,20,7,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Cape_Verde,2026-05-30
+Cabo Verde,25,Hélio Varela,FW,24,Maccabi Tel Aviv,ISR,,19,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Cape_Verde,2026-05-30
+Cabo Verde,26,Nuno da Costa,FW,35,İstanbul Başakşehir,TUR,,7,1,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Cape_Verde,2026-05-30
+Spain,1,Unai Simón,GK,29,Athletic Bilbao,La Liga,,57,0,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Spain,2026-05-30
+Spain,2,David Raya,GK,30,Arsenal,Premier League,,12,0,unknown,reserve,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Spain,2026-05-30
+Spain,3,Joan Garcia,GK,25,Barcelona,La Liga,,1,0,unknown,reserve,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Spain,2026-05-30
+Spain,4,Aymeric Laporte,DF,32,Athletic Bilbao,La Liga,,44,2,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Spain,2026-05-30
+Spain,5,Marc Cucurella,DF,27,Chelsea,Premier League,,23,1,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Spain,2026-05-30
+Spain,6,Marcos Llorente,DF,31,Atlético Madrid,La Liga,,23,0,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Spain,2026-05-30
+Spain,7,Eric García,DF,25,Barcelona,La Liga,,19,0,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Spain,2026-05-30
+Spain,8,Pedro Porro,DF,26,Tottenham Hotspur,Premier League,,16,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Spain,2026-05-30
+Spain,9,Álex Grimaldo,DF,30,Bayer Leverkusen,Bundesliga,,12,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Spain,2026-05-30
+Spain,10,Pau Cubarsí,DF,19,Barcelona,La Liga,,11,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Spain,2026-05-30
+Spain,11,Marc Pubill,DF,22,Atlético Madrid,La Liga,,0,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Spain,2026-05-30
+Spain,12,Rodri,MF,29,Manchester City,Premier League,,61,4,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Spain,2026-05-30
+Spain,13,Mikel Merino,MF,29,Arsenal,Premier League,,41,10,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Spain,2026-05-30
+Spain,14,Fabián Ruiz,MF,30,Paris Saint-Germain,Ligue 1,,41,6,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Spain,2026-05-30
+Spain,15,Pedri,MF,23,Barcelona,La Liga,,40,5,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Spain,2026-05-30
+Spain,16,Gavi,MF,21,Barcelona,La Liga,,28,5,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Spain,2026-05-30
+Spain,17,Martín Zubimendi,MF,27,Arsenal,Premier League,,25,3,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Spain,2026-05-30
+Spain,18,Álex Baena,MF,24,Atlético Madrid,La Liga,,15,2,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Spain,2026-05-30
+Spain,19,Ferran Torres,FW,26,Barcelona,La Liga,,55,23,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Spain,2026-05-30
+Spain,20,Mikel Oyarzabal,FW,29,Real Sociedad,La Liga,,52,24,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Spain,2026-05-30
+Spain,21,Dani Olmo,FW,28,Barcelona,La Liga,,48,12,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Spain,2026-05-30
+Spain,22,Nico Williams,FW,23,Athletic Bilbao,La Liga,,30,6,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Spain,2026-05-30
+Spain,23,Lamine Yamal,FW,18,Barcelona,La Liga,,25,6,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Spain,2026-05-30
+Spain,24,Yéremy Pino,FW,23,Crystal Palace,Premier League,,21,4,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Spain,2026-05-30
+Spain,25,Borja Iglesias,FW,33,Celta Vigo,La Liga,,6,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Spain,2026-05-30
+Spain,26,Víctor Muñoz,FW,22,Osasuna,La Liga,,2,1,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Spain,2026-05-30
+France,1,Brice Samba,GK,32,Rennes,Ligue 1,,4,0,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#France,2026-05-30
+France,2,Malo Gusto,DF,23,Chelsea,Premier League,,9,0,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#France,2026-05-30
+France,3,Lucas Digne,DF,32,Aston Villa,Premier League,,56,0,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#France,2026-05-30
+France,4,Dayot Upamecano,DF,27,Bayern Munich,Bundesliga,,36,2,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#France,2026-05-30
+France,5,Jules Koundé,DF,27,Barcelona,La Liga,,46,0,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#France,2026-05-30
+France,6,Manu Koné,MF,25,Roma,Serie A,,12,0,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#France,2026-05-30
+France,7,Ousmane Dembélé,FW,29,Paris Saint-Germain,Ligue 1,,58,7,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#France,2026-05-30
+France,8,Aurélien Tchouaméni,MF,26,Real Madrid,La Liga,,44,3,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#France,2026-05-30
+France,9,Marcus Thuram,FW,28,Inter Milan,Serie A,,33,3,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#France,2026-05-30
+France,10,Kylian Mbappé,FW,27,Real Madrid,La Liga,,96,56,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#France,2026-05-30
+France,11,Michael Olise,FW,24,Bayern Munich,Bundesliga,,15,4,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#France,2026-05-30
+France,12,Bradley Barcola,FW,23,Paris Saint-Germain,Ligue 1,,18,3,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#France,2026-05-30
+France,13,N'Golo Kanté,MF,35,Fenerbahçe,TUR,,67,2,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#France,2026-05-30
+France,14,Adrien Rabiot,MF,31,Milan,Serie A,,57,7,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#France,2026-05-30
+France,15,Ibrahima Konaté,DF,27,Liverpool,Premier League,,27,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#France,2026-05-30
+France,16,Mike Maignan,GK,30,Milan,Serie A,,38,0,unknown,reserve,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#France,2026-05-30
+France,17,William Saliba,DF,25,Arsenal,Premier League,,31,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#France,2026-05-30
+France,18,Warren Zaïre-Emery,MF,20,Paris Saint-Germain,Ligue 1,,10,1,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#France,2026-05-30
+France,19,Théo Hernandez,DF,28,Al-Hilal,Saudi Pro League,,42,2,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#France,2026-05-30
+France,20,Désiré Doué,FW,21,Paris Saint-Germain,Ligue 1,,6,2,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#France,2026-05-30
+France,21,Lucas Hernandez,DF,30,Paris Saint-Germain,Ligue 1,,41,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#France,2026-05-30
+France,22,Jean-Philippe Mateta,FW,28,Crystal Palace,Premier League,,3,2,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#France,2026-05-30
+France,23,Robin Risser,GK,21,Lens,Ligue 1,,0,0,unknown,reserve,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#France,2026-05-30
+France,24,Rayan Cherki,FW,22,Manchester City,Premier League,,5,1,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#France,2026-05-30
+France,25,Maghnes Akliouche,FW,24,Monaco,Ligue 1,,7,1,unknown,squad,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#France,2026-05-30
+France,26,Maxence Lacroix,DF,26,Crystal Palace,Premier League,,2,0,unknown,squad,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#France,2026-05-30
+Norway,1,Ørjan Nyland,GK,35,Sevilla,La Liga,,69,0,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Norway,2026-05-30
+Norway,2,Morten Thorsby,MF,30,Cremonese,Serie A,,30,0,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Norway,2026-05-30
+Norway,3,Kristoffer Ajer,DF,28,Brentford,Premier League,,50,2,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Norway,2026-05-30
+Norway,4,Leo Østigård,DF,26,Genoa,Serie A,,36,1,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Norway,2026-05-30
+Norway,5,David Møller Wolfe,DF,24,Wolverhampton Wanderers,Premier League,,20,1,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Norway,2026-05-30
+Norway,6,Patrick Berg,MF,28,Bodø/Glimt,NOR,,41,0,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Norway,2026-05-30
+Norway,7,Alexander Sørloth,FW,30,Atlético Madrid,La Liga,,70,26,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Norway,2026-05-30
+Norway,8,Sander Berge,MF,28,Fulham,Premier League,,64,1,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Norway,2026-05-30
+Norway,9,Erling Haaland,FW,25,Manchester City,Premier League,,49,55,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Norway,2026-05-30
+Norway,10,Martin Ødegaard,MF,27,Arsenal,Premier League,,67,4,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Norway,2026-05-30
+Norway,11,Jørgen Strand Larsen,FW,26,Crystal Palace,Premier League,,26,4,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Norway,2026-05-30
+Norway,12,Sander Tangvik,GK,23,Hamburger SV,Bundesliga,,0,0,unknown,reserve,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Norway,2026-05-30
+Norway,13,Egil Selvik,GK,28,Watford,Premier League,,6,0,unknown,reserve,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Norway,2026-05-30
+Norway,14,Fredrik Aursnes,MF,30,Benfica,Primeira Liga,,20,1,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Norway,2026-05-30
+Norway,15,Fredrik André Bjørkan,DF,27,Bodø/Glimt,NOR,,19,1,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Norway,2026-05-30
+Norway,16,Marcus Holmgren Pedersen,DF,25,Torino,Serie A,,31,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Norway,2026-05-30
+Norway,17,Torbjørn Heggem,DF,27,Bologna,Serie A,,13,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Norway,2026-05-30
+Norway,18,Kristian Thorstvedt,MF,27,Sassuolo,Serie A,,35,4,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Norway,2026-05-30
+Norway,19,Thelo Aasgaard,MF,24,Rangers,SCO,,6,5,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Norway,2026-05-30
+Norway,20,Antonio Nusa,MF,21,RB Leipzig,Bundesliga,,22,7,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Norway,2026-05-30
+Norway,21,Andreas Schjelderup,MF,22,Benfica,Primeira Liga,,10,1,unknown,squad,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Norway,2026-05-30
+Norway,22,Oscar Bobb,MF,22,Fulham,Premier League,,18,2,unknown,squad,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Norway,2026-05-30
+Norway,23,Jens Petter Hauge,MF,26,Bodø/Glimt,NOR,,14,1,unknown,squad,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Norway,2026-05-30
+Norway,24,Sondre Langås,DF,25,Derby County,Premier League,,2,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Norway,2026-05-30
+Norway,25,Henrik Falchener,DF,23,Viking,NOR,,1,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Norway,2026-05-30
+Norway,26,Julian Ryerson,DF,28,Borussia Dortmund,Bundesliga,,41,1,unknown,squad,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Norway,2026-05-30
+Argentina,1,Juan Musso,GK,32,Atlético Madrid,La Liga,,3,0,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Argentina,2026-05-30
+Argentina,2,Leonardo Balerdi,DF,27,Marseille,Ligue 1,,11,0,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Argentina,2026-05-30
+Argentina,3,Nicolás Tagliafico,DF,33,Lyon,Ligue 1,,75,1,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Argentina,2026-05-30
+Argentina,4,Gonzalo Montiel,DF,29,River Plate,Argentine Primera Division,,38,2,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Argentina,2026-05-30
+Argentina,5,Leandro Paredes,MF,31,Boca Juniors,Argentine Primera Division,,77,5,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Argentina,2026-05-30
+Argentina,6,Lisandro Martínez,DF,28,Manchester United,Premier League,,26,1,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Argentina,2026-05-30
+Argentina,7,Rodrigo De Paul,MF,32,Inter Miami CF,MLS,,85,2,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Argentina,2026-05-30
+Argentina,8,Valentín Barco,MF,21,Strasbourg,Ligue 1,,2,1,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Argentina,2026-05-30
+Argentina,9,Julián Alvarez,FW,26,Atlético Madrid,La Liga,,51,14,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Argentina,2026-05-30
+Argentina,10,Lionel Messi,FW,38,Inter Miami CF,MLS,,198,116,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Argentina,2026-05-30
+Argentina,11,Giovani Lo Celso,MF,30,Real Betis,La Liga,,65,4,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Argentina,2026-05-30
+Argentina,12,Gerónimo Rulli,GK,34,Marseille,Ligue 1,,7,0,unknown,reserve,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Argentina,2026-05-30
+Argentina,13,Cristian Romero,DF,28,Tottenham Hotspur,Premier League,,49,3,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Argentina,2026-05-30
+Argentina,14,Exequiel Palacios,MF,27,Bayer Leverkusen,Bundesliga,,38,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Argentina,2026-05-30
+Argentina,15,Nicolás González,FW,28,Atlético Madrid,La Liga,,50,6,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Argentina,2026-05-30
+Argentina,16,Thiago Almada,FW,25,Atlético Madrid,La Liga,,14,4,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Argentina,2026-05-30
+Argentina,17,Giuliano Simeone,FW,23,Atlético Madrid,La Liga,,11,1,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Argentina,2026-05-30
+Argentina,18,Nico Paz,FW,21,Como,Serie A,,8,1,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Argentina,2026-05-30
+Argentina,19,Nicolás Otamendi,DF,38,Benfica,Primeira Liga,,130,8,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Argentina,2026-05-30
+Argentina,20,Alexis Mac Allister,MF,27,Liverpool,Premier League,,44,6,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Argentina,2026-05-30
+Argentina,21,José Manuel López,FW,25,Palmeiras,Brasileirao,,3,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Argentina,2026-05-30
+Argentina,22,Lautaro Martínez,FW,28,Inter Milan,Serie A,,75,36,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Argentina,2026-05-30
+Argentina,23,Emiliano Martínez,GK,33,Aston Villa,Premier League,,59,0,unknown,reserve,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Argentina,2026-05-30
+Argentina,24,Enzo Fernández,MF,25,Chelsea,Premier League,,40,6,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Argentina,2026-05-30
+Argentina,25,Facundo Medina,DF,27,Marseille,Ligue 1,,7,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Argentina,2026-05-30
+Argentina,26,Nahuel Molina,DF,28,Atlético Madrid,La Liga,,58,1,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Argentina,2026-05-30
+Austria,1,Alexander Schlager,GK,30,Red Bull Salzburg,AUT,,25,0,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Austria,2026-05-30
+Austria,2,David Affengruber,DF,25,Elche,La Liga,,1,0,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Austria,2026-05-30
+Austria,3,Kevin Danso,DF,27,Tottenham Hotspur,Premier League,,31,0,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Austria,2026-05-30
+Austria,4,Xaver Schlager,MF,28,RB Leipzig,Bundesliga,,50,4,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Austria,2026-05-30
+Austria,5,Stefan Posch,DF,29,Mainz 05,Bundesliga,,51,5,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Austria,2026-05-30
+Austria,6,Nicolas Seiwald,MF,25,RB Leipzig,Bundesliga,,46,1,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Austria,2026-05-30
+Austria,7,Marko Arnautović,FW,37,Red Star Belgrade,SRB,,132,47,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Austria,2026-05-30
+Austria,8,David Alaba,DF,33,Real Madrid,La Liga,,112,15,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Austria,2026-05-30
+Austria,9,Marcel Sabitzer,MF,32,Borussia Dortmund,Bundesliga,,97,25,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Austria,2026-05-30
+Austria,10,Florian Grillitsch,MF,30,Braga,Primeira Liga,,58,1,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Austria,2026-05-30
+Austria,11,Michael Gregoritsch,FW,32,FC Augsburg,Bundesliga,,74,24,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Austria,2026-05-30
+Austria,12,Florian Wiegele,GK,25,Viktoria Plzeň,CZE,,1,0,unknown,reserve,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Austria,2026-05-30
+Austria,13,Patrick Pentz,GK,29,Brøndby,DEN,,18,0,unknown,reserve,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Austria,2026-05-30
+Austria,14,Saša Kalajdžić,FW,28,LASK,AUT,,21,4,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Austria,2026-05-30
+Austria,15,Philipp Lienhart,DF,29,SC Freiburg,Bundesliga,,40,3,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Austria,2026-05-30
+Austria,16,Phillipp Mwene,DF,32,Mainz 05,Bundesliga,,29,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Austria,2026-05-30
+Austria,17,Carney Chukwuemeka,MF,22,Borussia Dortmund,Bundesliga,,2,1,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Austria,2026-05-30
+Austria,18,Romano Schmid,MF,26,Werder Bremen,Bundesliga,,33,3,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Austria,2026-05-30
+Austria,19,Christoph Baumgartner,MF,26,RB Leipzig,Bundesliga,,58,19,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Austria,2026-05-30
+Austria,20,Konrad Laimer,MF,29,Bayern Munich,Bundesliga,,56,7,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Austria,2026-05-30
+Austria,21,Patrick Wimmer,MF,25,VfL Wolfsburg,Bundesliga,,30,1,unknown,squad,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Austria,2026-05-30
+Austria,22,Alexander Prass,DF,25,TSG Hoffenheim,Bundesliga,,18,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Austria,2026-05-30
+Austria,23,Marco Friedl,DF,28,Werder Bremen,Bundesliga,,10,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Austria,2026-05-30
+Austria,24,Paul Wanner,MF,20,PSV Eindhoven,Eredivisie,,2,0,unknown,squad,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Austria,2026-05-30
+Austria,25,Michael Svoboda,DF,27,Venezia,Serie A,,4,0,unknown,squad,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Austria,2026-05-30
+Austria,26,Alessandro Schöpf,MF,32,Wolfsberger AC,AUT,,35,6,unknown,squad,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Austria,2026-05-30
+Colombia,1,David Ospina,GK,37,Atlético Nacional,COL,,129,0,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Colombia,2026-05-30
+Colombia,2,Camilo Vargas,GK,37,Atlas,Liga MX,,40,0,unknown,reserve,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Colombia,2026-05-30
+Colombia,3,Álvaro Montero,GK,31,Vélez Sarsfield,Argentine Primera Division,,11,0,unknown,reserve,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Colombia,2026-05-30
+Colombia,4,Davinson Sánchez,DF,29,Galatasaray,TUR,,77,3,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Colombia,2026-05-30
+Colombia,5,Santiago Arias,DF,34,Independiente,Argentine Primera Division,,66,0,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Colombia,2026-05-30
+Colombia,6,Yerry Mina,DF,31,Cagliari,Serie A,,52,8,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Colombia,2026-05-30
+Colombia,7,Daniel Muñoz,DF,30,Crystal Palace,Premier League,,44,3,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Colombia,2026-05-30
+Colombia,8,Johan Mojica,DF,33,Mallorca,La Liga,,43,1,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Colombia,2026-05-30
+Colombia,9,Jhon Lucumí,DF,27,Bologna,Serie A,,35,1,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Colombia,2026-05-30
+Colombia,10,Deiver Machado,DF,32,Nantes,Ligue 1,,14,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Colombia,2026-05-30
+Colombia,11,Willer Ditta,DF,29,Cruz Azul,Liga MX,,3,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Colombia,2026-05-30
+Colombia,12,James Rodríguez,MF,34,Minnesota United FC,MLS,,124,31,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Colombia,2026-05-30
+Colombia,13,Jefferson Lerma,MF,31,Crystal Palace,Premier League,,64,5,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Colombia,2026-05-30
+Colombia,14,Juan Fernando Quintero,MF,33,River Plate,Argentine Primera Division,,47,6,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Colombia,2026-05-30
+Colombia,15,Jhon Arias,MF,28,Palmeiras,Brasileirao,,36,4,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Colombia,2026-05-30
+Colombia,16,Richard Ríos,MF,26,Benfica,Primeira Liga,,30,2,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Colombia,2026-05-30
+Colombia,17,Kevin Castaño,MF,25,River Plate,Argentine Primera Division,,24,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Colombia,2026-05-30
+Colombia,18,Jorge Carrascal,MF,28,Flamengo,Brasileirao,,22,2,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Colombia,2026-05-30
+Colombia,19,Jaminton Campaz,MF,26,Rosario Central,Argentine Primera Division,,9,1,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Colombia,2026-05-30
+Colombia,20,Juan Portilla,MF,27,Athletico Paranaense,Brasileirao,,8,0,unknown,squad,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Colombia,2026-05-30
+Colombia,21,Gustavo Puerta,MF,22,Racing Santander,La Liga,,4,1,unknown,squad,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Colombia,2026-05-30
+Colombia,22,Luis Díaz,FW,29,Bayern Munich,Bundesliga,,72,21,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Colombia,2026-05-30
+Colombia,23,Jhon Córdoba,FW,33,Krasnodar,RUS,,21,6,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Colombia,2026-05-30
+Colombia,24,Luis Suárez,FW,28,Sporting CP,Primeira Liga,,10,4,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Colombia,2026-05-30
+Colombia,25,Cucho Hernández,FW,27,Real Betis,La Liga,,7,2,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Colombia,2026-05-30
+Colombia,26,Andrés Gómez,FW,23,Vasco da Gama,Brasileirao,,6,2,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Colombia,2026-05-30
+Congo DR,1,Lionel Mpasi,GK,31,Le Havre,Ligue 1,,27,0,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#DR_Congo,2026-05-30
+Congo DR,2,Timothy Fayulu,GK,26,Noah,ARM,,3,0,unknown,reserve,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#DR_Congo,2026-05-30
+Congo DR,3,Matthieu Epolo,GK,21,Standard Liège,BEL,,1,0,unknown,reserve,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#DR_Congo,2026-05-30
+Congo DR,4,Chancel Mbemba,DF,31,Lille,Ligue 1,,107,7,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#DR_Congo,2026-05-30
+Congo DR,5,Arthur Masuaku,DF,32,Lens,Ligue 1,,44,4,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#DR_Congo,2026-05-30
+Congo DR,6,Gédéon Kalulu,DF,28,Aris Limassol,CYP,,27,0,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#DR_Congo,2026-05-30
+Congo DR,7,Joris Kayembe,DF,31,Genk,BEL,,24,0,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#DR_Congo,2026-05-30
+Congo DR,8,Dylan Batubinsika,DF,30,AEL,GRE,,14,1,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#DR_Congo,2026-05-30
+Congo DR,9,Axel Tuanzebe,DF,28,Burnley,Premier League,,12,1,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#DR_Congo,2026-05-30
+Congo DR,10,Aaron Wan-Bissaka,DF,28,West Ham United,Premier League,,10,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#DR_Congo,2026-05-30
+Congo DR,11,Steve Kapuadi,DF,28,Widzew Łódź,POL,,3,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#DR_Congo,2026-05-30
+Congo DR,12,Samuel Moutoussamy,MF,29,Atromitos,GRE,,56,0,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#DR_Congo,2026-05-30
+Congo DR,13,Edo Kayembe,MF,28,Watford,Premier League,,41,2,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#DR_Congo,2026-05-30
+Congo DR,14,Charles Pickel,MF,29,Espanyol,La Liga,,33,1,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#DR_Congo,2026-05-30
+Congo DR,15,Gaël Kakuta,MF,34,AEL,GRE,,30,5,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#DR_Congo,2026-05-30
+Congo DR,16,Noah Sadiki,MF,21,Sunderland,Premier League,,18,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#DR_Congo,2026-05-30
+Congo DR,17,Aaron Tshibola,MF,31,Kilmarnock,SCO,,16,1,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#DR_Congo,2026-05-30
+Congo DR,18,Ngal'ayel Mukau,MF,21,Lille,Ligue 1,,12,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#DR_Congo,2026-05-30
+Congo DR,19,Brian Cipenga,MF,28,Castellón,La Liga,,7,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#DR_Congo,2026-05-30
+Congo DR,20,Cédric Bakambu,FW,35,Real Betis,La Liga,,68,21,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#DR_Congo,2026-05-30
+Congo DR,21,Meschak Elia,FW,28,Alanyaspor,TUR,,68,12,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#DR_Congo,2026-05-30
+Congo DR,22,Théo Bongonda,FW,30,Spartak Moscow,RUS,,37,7,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#DR_Congo,2026-05-30
+Congo DR,23,Fiston Mayele,FW,31,Pyramids,EGY,,37,6,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#DR_Congo,2026-05-30
+Congo DR,24,Yoane Wissa,FW,29,Newcastle United,Premier League,,36,9,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#DR_Congo,2026-05-30
+Congo DR,25,Nathanaël Mbuku,FW,24,Montpellier,Ligue 1,,17,2,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#DR_Congo,2026-05-30
+Congo DR,26,Simon Banza,FW,29,Al Jazira,UAE,,14,2,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#DR_Congo,2026-05-30
+Portugal,1,Diogo Costa,GK,26,Porto,Primeira Liga,,42,0,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Portugal,2026-05-30
+Portugal,2,José Sá,GK,33,Wolverhampton Wanderers,Premier League,,4,0,unknown,reserve,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Portugal,2026-05-30
+Portugal,3,Rui Silva,GK,32,Sporting CP,Primeira Liga,,2,0,unknown,reserve,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Portugal,2026-05-30
+Portugal,4,Rúben Dias,DF,29,Manchester City,Premier League,,74,3,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Portugal,2026-05-30
+Portugal,5,João Cancelo,DF,32,Barcelona,La Liga,,66,12,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Portugal,2026-05-30
+Portugal,6,Nélson Semedo,DF,32,Fenerbahçe,TUR,,48,0,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Portugal,2026-05-30
+Portugal,7,Nuno Mendes,DF,23,Paris Saint-Germain,Ligue 1,,43,1,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Portugal,2026-05-30
+Portugal,8,Diogo Dalot,DF,27,Manchester United,Premier League,,33,3,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Portugal,2026-05-30
+Portugal,9,Gonçalo Inácio,DF,24,Sporting CP,Primeira Liga,,20,2,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Portugal,2026-05-30
+Portugal,10,Matheus Nunes,DF,27,Manchester City,Premier League,,19,2,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Portugal,2026-05-30
+Portugal,11,Renato Veiga,DF,22,Villarreal,La Liga,,11,1,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Portugal,2026-05-30
+Portugal,12,Tomás Araújo,DF,24,Benfica,Primeira Liga,,3,0,unknown,squad,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Portugal,2026-05-30
+Portugal,13,Bernardo Silva,MF,31,Manchester City,Premier League,,107,14,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Portugal,2026-05-30
+Portugal,14,Bruno Fernandes,MF,31,Manchester United,Premier League,,87,28,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Portugal,2026-05-30
+Portugal,15,Rúben Neves,MF,29,Al-Hilal,Saudi Pro League,,65,1,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Portugal,2026-05-30
+Portugal,16,Vitinha,MF,26,Paris Saint-Germain,Ligue 1,,37,0,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Portugal,2026-05-30
+Portugal,17,João Neves,MF,21,Paris Saint-Germain,Ligue 1,,21,3,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Portugal,2026-05-30
+Portugal,18,Samú Costa,MF,25,Mallorca,La Liga,,4,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Portugal,2026-05-30
+Portugal,19,Cristiano Ronaldo,FW,41,Al-Nassr,Saudi Pro League,,226,143,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Portugal,2026-05-30
+Portugal,20,João Félix,FW,26,Al-Nassr,Saudi Pro League,,52,12,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Portugal,2026-05-30
+Portugal,21,Rafael Leão,FW,27,Milan,Serie A,,43,5,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Portugal,2026-05-30
+Portugal,22,Gonçalo Guedes,FW,29,Real Sociedad,La Liga,,33,7,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Portugal,2026-05-30
+Portugal,23,Gonçalo Ramos,FW,24,Paris Saint-Germain,Ligue 1,,24,10,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Portugal,2026-05-30
+Portugal,24,Pedro Neto,FW,26,Chelsea,Premier League,,23,2,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Portugal,2026-05-30
+Portugal,25,Francisco Trincão,FW,26,Sporting CP,Primeira Liga,,17,3,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Portugal,2026-05-30
+Portugal,26,Francisco Conceição,FW,23,Juventus,Serie A,,15,3,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Portugal,2026-05-30
+Croatia,1,Dominik Livaković,GK,31,Dinamo Zagreb,CRO,,73,0,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Croatia,2026-05-30
+Croatia,2,Dominik Kotarski,GK,26,Copenhagen,DEN,,3,0,unknown,reserve,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Croatia,2026-05-30
+Croatia,3,Ivor Pandur,GK,26,Hull City,Premier League,,0,0,unknown,reserve,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Croatia,2026-05-30
+Croatia,4,Joško Gvardiol,DF,24,Manchester City,Premier League,,46,4,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Croatia,2026-05-30
+Croatia,5,Duje Ćaleta-Car,DF,29,Real Sociedad,La Liga,,38,1,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Croatia,2026-05-30
+Croatia,6,Josip Šutalo,DF,26,Ajax,Eredivisie,,31,0,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Croatia,2026-05-30
+Croatia,7,Josip Stanišić,DF,26,Bayern Munich,Bundesliga,,29,0,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Croatia,2026-05-30
+Croatia,8,Marin Pongračić,DF,28,Fiorentina,Serie A,,18,0,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Croatia,2026-05-30
+Croatia,9,Martin Erlić,DF,28,Midtjylland,DEN,,12,1,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Croatia,2026-05-30
+Croatia,10,Luka Vušković,DF,19,Hamburger SV,Bundesliga,,4,1,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Croatia,2026-05-30
+Croatia,11,Luka Modrić,MF,40,Milan,Serie A,,196,28,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Croatia,2026-05-30
+Croatia,12,Mateo Kovačić,MF,32,Manchester City,Premier League,,111,5,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Croatia,2026-05-30
+Croatia,13,Mario Pašalić,MF,31,Atalanta,Serie A,,83,11,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Croatia,2026-05-30
+Croatia,14,Nikola Vlašić,MF,28,Torino,Serie A,,61,10,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Croatia,2026-05-30
+Croatia,15,Luka Sučić,MF,23,Real Sociedad,La Liga,,19,1,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Croatia,2026-05-30
+Croatia,16,Martin Baturina,MF,23,Como,Serie A,,17,1,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Croatia,2026-05-30
+Croatia,17,Kristijan Jakić,MF,29,FC Augsburg,Bundesliga,,16,2,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Croatia,2026-05-30
+Croatia,18,Petar Sučić,MF,22,Inter Milan,Serie A,,15,1,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Croatia,2026-05-30
+Croatia,19,Nikola Moro,MF,28,Bologna,Serie A,,9,0,unknown,squad,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Croatia,2026-05-30
+Croatia,20,Toni Fruk,MF,25,Rijeka,CRO,,7,1,unknown,squad,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Croatia,2026-05-30
+Croatia,21,Ivan Perišić,FW,37,PSV Eindhoven,Eredivisie,,152,38,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Croatia,2026-05-30
+Croatia,22,Andrej Kramarić,FW,34,TSG Hoffenheim,Bundesliga,,114,36,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Croatia,2026-05-30
+Croatia,23,Ante Budimir,FW,34,Osasuna,La Liga,,36,6,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Croatia,2026-05-30
+Croatia,24,Marco Pašalić,FW,25,Orlando City,MLS,,13,1,unknown,starter,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Croatia,2026-05-30
+Croatia,25,Petar Musa,FW,28,FC Dallas,MLS,,10,1,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Croatia,2026-05-30
+Croatia,26,Igor Matanović,FW,23,SC Freiburg,Bundesliga,,8,2,unknown,rotation,association_final,https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads#Croatia,2026-05-30
+England,1,Jordan Pickford,GK,32,Everton,Premier League,,82,0,unknown,starter,association_final,https://www.englandfootball.com/articles/2026/May/22/england-mens-world-cup-2026-squad-named-by-thomas-tuchel-20262205,2026-05-30
+England,2,Dean Henderson,GK,29,Crystal Palace,Premier League,,4,0,unknown,reserve,association_final,https://www.englandfootball.com/articles/2026/May/22/england-mens-world-cup-2026-squad-named-by-thomas-tuchel-20262205,2026-05-30
+England,3,James Trafford,GK,23,Manchester City,Premier League,,1,0,unknown,reserve,association_final,https://www.englandfootball.com/articles/2026/May/22/england-mens-world-cup-2026-squad-named-by-thomas-tuchel-20262205,2026-05-30
+England,4,John Stones,DF,32,Manchester City,Premier League,,87,3,unknown,starter,association_final,https://www.englandfootball.com/articles/2026/May/22/england-mens-world-cup-2026-squad-named-by-thomas-tuchel-20262205,2026-05-30
+England,5,Marc Guéhi,DF,25,Manchester City,Premier League,,27,1,unknown,starter,association_final,https://www.englandfootball.com/articles/2026/May/22/england-mens-world-cup-2026-squad-named-by-thomas-tuchel-20262205,2026-05-30
+England,6,Reece James,DF,26,Chelsea,Premier League,,22,1,unknown,starter,association_final,https://www.englandfootball.com/articles/2026/May/22/england-mens-world-cup-2026-squad-named-by-thomas-tuchel-20262205,2026-05-30
+England,7,Ezri Konsa,DF,28,Aston Villa,Premier League,,18,1,unknown,starter,association_final,https://www.englandfootball.com/articles/2026/May/22/england-mens-world-cup-2026-squad-named-by-thomas-tuchel-20262205,2026-05-30
+England,8,Dan Burn,DF,34,Newcastle United,Premier League,,6,0,unknown,rotation,association_final,https://www.englandfootball.com/articles/2026/May/22/england-mens-world-cup-2026-squad-named-by-thomas-tuchel-20262205,2026-05-30
+England,9,Tino Livramento,DF,23,Newcastle United,Premier League,,5,0,unknown,rotation,association_final,https://www.englandfootball.com/articles/2026/May/22/england-mens-world-cup-2026-squad-named-by-thomas-tuchel-20262205,2026-05-30
+England,10,Djed Spence,DF,25,Tottenham Hotspur,Premier League,,4,0,unknown,rotation,association_final,https://www.englandfootball.com/articles/2026/May/22/england-mens-world-cup-2026-squad-named-by-thomas-tuchel-20262205,2026-05-30
+England,11,Nico O'Reilly,DF,21,Manchester City,Premier League,,3,0,unknown,rotation,association_final,https://www.englandfootball.com/articles/2026/May/22/england-mens-world-cup-2026-squad-named-by-thomas-tuchel-20262205,2026-05-30
+England,12,Jarell Quansah,DF,23,Bayer Leverkusen,Bundesliga,,1,0,unknown,squad,association_final,https://www.englandfootball.com/articles/2026/May/22/england-mens-world-cup-2026-squad-named-by-thomas-tuchel-20262205,2026-05-30
+England,13,Jordan Henderson,MF,35,Brentford,Premier League,,89,3,unknown,starter,association_final,https://www.englandfootball.com/articles/2026/May/22/england-mens-world-cup-2026-squad-named-by-thomas-tuchel-20262205,2026-05-30
+England,14,Declan Rice,MF,27,Arsenal,Premier League,,72,6,unknown,starter,association_final,https://www.englandfootball.com/articles/2026/May/22/england-mens-world-cup-2026-squad-named-by-thomas-tuchel-20262205,2026-05-30
+England,15,Jude Bellingham,MF,22,Real Madrid,La Liga,,46,6,unknown,starter,association_final,https://www.englandfootball.com/articles/2026/May/22/england-mens-world-cup-2026-squad-named-by-thomas-tuchel-20262205,2026-05-30
+England,16,Morgan Rogers,MF,23,Aston Villa,Premier League,,13,1,unknown,starter,association_final,https://www.englandfootball.com/articles/2026/May/22/england-mens-world-cup-2026-squad-named-by-thomas-tuchel-20262205,2026-05-30
+England,17,Kobbie Mainoo,MF,21,Manchester United,Premier League,,12,0,unknown,rotation,association_final,https://www.englandfootball.com/articles/2026/May/22/england-mens-world-cup-2026-squad-named-by-thomas-tuchel-20262205,2026-05-30
+England,18,Elliot Anderson,MF,23,Nottingham Forest,Premier League,,7,0,unknown,rotation,association_final,https://www.englandfootball.com/articles/2026/May/22/england-mens-world-cup-2026-squad-named-by-thomas-tuchel-20262205,2026-05-30
+England,19,Harry Kane,FW,32,Bayern Munich,Bundesliga,,112,78,unknown,starter,association_final,https://www.englandfootball.com/articles/2026/May/22/england-mens-world-cup-2026-squad-named-by-thomas-tuchel-20262205,2026-05-30
+England,20,Marcus Rashford,FW,28,Barcelona,La Liga,,70,18,unknown,starter,association_final,https://www.englandfootball.com/articles/2026/May/22/england-mens-world-cup-2026-squad-named-by-thomas-tuchel-20262205,2026-05-30
+England,21,Bukayo Saka,FW,24,Arsenal,Premier League,,48,14,unknown,starter,association_final,https://www.englandfootball.com/articles/2026/May/22/england-mens-world-cup-2026-squad-named-by-thomas-tuchel-20262205,2026-05-30
+England,22,Ollie Watkins,FW,30,Aston Villa,Premier League,,20,6,unknown,starter,association_final,https://www.englandfootball.com/articles/2026/May/22/england-mens-world-cup-2026-squad-named-by-thomas-tuchel-20262205,2026-05-30
+England,23,Anthony Gordon,FW,25,Newcastle United,Premier League,,17,2,unknown,rotation,association_final,https://www.englandfootball.com/articles/2026/May/22/england-mens-world-cup-2026-squad-named-by-thomas-tuchel-20262205,2026-05-30
+England,24,Eberechi Eze,FW,27,Arsenal,Premier League,,16,3,unknown,rotation,association_final,https://www.englandfootball.com/articles/2026/May/22/england-mens-world-cup-2026-squad-named-by-thomas-tuchel-20262205,2026-05-30
+England,25,Noni Madueke,FW,24,Arsenal,Premier League,,10,1,unknown,rotation,association_final,https://www.englandfootball.com/articles/2026/May/22/england-mens-world-cup-2026-squad-named-by-thomas-tuchel-20262205,2026-05-30
+England,26,Ivan Toney,FW,30,Al-Ahli,Saudi Pro League,,7,1,unknown,rotation,association_final,https://www.englandfootball.com/articles/2026/May/22/england-mens-world-cup-2026-squad-named-by-thomas-tuchel-20262205,2026-05-30
+Panama,1,Luis Mejía,GK,35,Nacional,URU,,56,0,unknown,starter,association_final,https://www.fourfourtwo.com/team/panama-world-cup-2026-squad,2026-05-30
+Panama,2,Orlando Mosquera,GK,31,Al-Fayha,Saudi Pro League,,46,0,unknown,reserve,association_final,https://www.fourfourtwo.com/team/panama-world-cup-2026-squad,2026-05-30
+Panama,3,César Samudio,GK,32,Marathón,HON,,4,0,unknown,reserve,association_final,https://www.fourfourtwo.com/team/panama-world-cup-2026-squad,2026-05-30
+Panama,4,Eric Davis,DF,35,Plaza Amador,PAN,,104,9,unknown,starter,association_final,https://www.fourfourtwo.com/team/panama-world-cup-2026-squad,2026-05-30
+Panama,5,Fidel Escobar,DF,31,Saprissa,CRC,,96,4,unknown,starter,association_final,https://www.fourfourtwo.com/team/panama-world-cup-2026-squad,2026-05-30
+Panama,6,Michael Amir Murillo,DF,30,Beşiktaş,TUR,,91,9,unknown,starter,association_final,https://www.fourfourtwo.com/team/panama-world-cup-2026-squad,2026-05-30
+Panama,7,Roderick Miller,DF,34,Turan Tovuz,AZE,,48,2,unknown,starter,association_final,https://www.fourfourtwo.com/team/panama-world-cup-2026-squad,2026-05-30
+Panama,8,Andrés Andrade,DF,27,LASK,AUT,,47,1,unknown,rotation,association_final,https://www.fourfourtwo.com/team/panama-world-cup-2026-squad,2026-05-30
+Panama,9,César Blackman,DF,28,Slovan Bratislava,SVK,,37,3,unknown,rotation,association_final,https://www.fourfourtwo.com/team/panama-world-cup-2026-squad,2026-05-30
+Panama,10,José Córdoba,DF,25,Norwich City,Premier League,,30,1,unknown,rotation,association_final,https://www.fourfourtwo.com/team/panama-world-cup-2026-squad,2026-05-30
+Panama,11,Jiovany Ramos,DF,29,Puerto Cabello,VEN,,20,1,unknown,rotation,association_final,https://www.fourfourtwo.com/team/panama-world-cup-2026-squad,2026-05-30
+Panama,12,Jorge Gutiérrez,DF,27,Deportivo La Guaira,VEN,,17,0,unknown,squad,association_final,https://www.fourfourtwo.com/team/panama-world-cup-2026-squad,2026-05-30
+Panama,13,Edgardo Fariña,DF,24,Pari Nizhny Novgorod,RUS,,15,0,unknown,squad,association_final,https://www.fourfourtwo.com/team/panama-world-cup-2026-squad,2026-05-30
+Panama,14,Aníbal Godoy,MF,36,San Diego FC,MLS,,159,4,unknown,starter,association_final,https://www.fourfourtwo.com/team/panama-world-cup-2026-squad,2026-05-30
+Panama,15,Alberto Quintero,MF,38,Plaza Amador,PAN,,140,7,unknown,starter,association_final,https://www.fourfourtwo.com/team/panama-world-cup-2026-squad,2026-05-30
+Panama,16,Yoel Bárcenas,MF,32,Mazatlán,Liga MX,,101,10,unknown,starter,association_final,https://www.fourfourtwo.com/team/panama-world-cup-2026-squad,2026-05-30
+Panama,17,Adalberto Carrasquilla,MF,27,UNAM,Liga MX,,73,3,unknown,starter,association_final,https://www.fourfourtwo.com/team/panama-world-cup-2026-squad,2026-05-30
+Panama,18,José Luis Rodríguez,MF,27,Juárez,Liga MX,,67,8,unknown,rotation,association_final,https://www.fourfourtwo.com/team/panama-world-cup-2026-squad,2026-05-30
+Panama,19,Cristian Martínez,MF,29,Ironi Kiryat Shmona,ISR,,63,2,unknown,rotation,association_final,https://www.fourfourtwo.com/team/panama-world-cup-2026-squad,2026-05-30
+Panama,20,César Yanis,MF,30,Cobresal,CHI,,55,5,unknown,rotation,association_final,https://www.fourfourtwo.com/team/panama-world-cup-2026-squad,2026-05-30
+Panama,21,Carlos Harvey,MF,26,Minnesota United FC,MLS,,25,2,unknown,rotation,association_final,https://www.fourfourtwo.com/team/panama-world-cup-2026-squad,2026-05-30
+Panama,22,Azarias Londoño,MF,24,Universidad Católica,ECU,,10,0,unknown,squad,association_final,https://www.fourfourtwo.com/team/panama-world-cup-2026-squad,2026-05-30
+Panama,23,José Fajardo,FW,32,Universidad Católica,ECU,,65,17,unknown,starter,association_final,https://www.fourfourtwo.com/team/panama-world-cup-2026-squad,2026-05-30
+Panama,24,Ismael Díaz,FW,29,León,Liga MX,,54,17,unknown,starter,association_final,https://www.fourfourtwo.com/team/panama-world-cup-2026-squad,2026-05-30
+Panama,25,Cecilio Waterman,FW,35,Universidad de Concepción,CHI,,52,14,unknown,starter,association_final,https://www.fourfourtwo.com/team/panama-world-cup-2026-squad,2026-05-30
+Panama,26,Tomás Rodríguez,FW,27,Saprissa,CRC,,11,3,unknown,starter,association_final,https://www.fourfourtwo.com/team/panama-world-cup-2026-squad,2026-05-30

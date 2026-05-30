@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-30T06:52:03.644Z",
+  "generatedAt": "2026-05-30T07:01:17.308Z",
   "note": "Exported from app.js. Proxy fields should be replaced by source-specific datasets over time.",
   "teams": [
     {
@@ -32,7 +32,7 @@
         "entryTimezoneShift": 0,
         "squadAnnouncementStatus": "暂定/初选名单",
         "squadAnnouncementDate": "2026-05-23",
-        "squadStatus": "暂定名单代理"
+        "squadStatus": "暂定/初选名单"
       }
     },
     {
@@ -50,9 +50,9 @@
         "wcPath": 27,
         "odds": 79161,
         "squadValue": 43,
-        "avgAge": 28,
+        "avgAge": 26.4,
         "injuryRisk": 22,
-        "clubScore": 42,
+        "clubScore": 55,
         "atmosphere": 55,
         "travelKm": 3943,
         "restDays": 6.5,
@@ -82,9 +82,9 @@
         "wcPath": 60,
         "odds": 34964,
         "squadValue": 205,
-        "avgAge": 27.9,
-        "injuryRisk": 20,
-        "clubScore": 60,
+        "avgAge": 27.7,
+        "injuryRisk": 22,
+        "clubScore": 64,
         "atmosphere": 57,
         "travelKm": 645,
         "restDays": 6.5,
@@ -128,7 +128,7 @@
         "entryTimezoneShift": 8,
         "squadAnnouncementStatus": "暂定/初选名单",
         "squadAnnouncementDate": "2026-05-21",
-        "squadStatus": "暂定名单代理"
+        "squadStatus": "暂定/初选名单"
       }
     },
     {
@@ -147,10 +147,10 @@
         "wcPath": 27,
         "odds": 21416,
         "squadValue": 230,
-        "avgAge": 27,
-        "injuryRisk": 23,
-        "clubScore": 59,
-        "atmosphere": 56,
+        "avgAge": 26.4,
+        "injuryRisk": 22,
+        "clubScore": 71,
+        "atmosphere": 59,
         "travelKm": 3357,
         "restDays": 6,
         "timezoneShift": 3,
@@ -179,10 +179,10 @@
         "wcPath": 27,
         "odds": 23508,
         "squadValue": 95,
-        "avgAge": 28.5,
-        "injuryRisk": 25,
-        "clubScore": 52,
-        "atmosphere": 53,
+        "avgAge": 26.4,
+        "injuryRisk": 22,
+        "clubScore": 70,
+        "atmosphere": 56,
         "travelKm": 5058,
         "restDays": 6,
         "timezoneShift": 3,
@@ -225,7 +225,7 @@
         "entryTimezoneShift": 10,
         "squadAnnouncementStatus": "暂定/初选名单",
         "squadAnnouncementDate": "2026-05-25",
-        "squadStatus": "暂定名单代理"
+        "squadStatus": "暂定/初选名单"
       }
     },
     {
@@ -243,10 +243,10 @@
         "wcPath": 59,
         "odds": 6134,
         "squadValue": 305,
-        "avgAge": 27.6,
-        "injuryRisk": 18,
-        "clubScore": 70,
-        "atmosphere": 59,
+        "avgAge": 27.8,
+        "injuryRisk": 22,
+        "clubScore": 87,
+        "atmosphere": 61,
         "travelKm": 2253,
         "restDays": 5.5,
         "timezoneShift": 0,
@@ -275,10 +275,10 @@
         "wcPath": 98,
         "odds": 823,
         "squadValue": 1120,
-        "avgAge": 26.6,
-        "injuryRisk": 21,
-        "clubScore": 90,
-        "atmosphere": 62,
+        "avgAge": 28.7,
+        "injuryRisk": 22,
+        "clubScore": 80,
+        "atmosphere": 61,
         "travelKm": 1758,
         "restDays": 5.5,
         "timezoneShift": 0,
@@ -307,10 +307,10 @@
         "wcPath": 61,
         "odds": 4968,
         "squadValue": 370,
-        "avgAge": 27.2,
-        "injuryRisk": 17,
-        "clubScore": 73,
-        "atmosphere": 59,
+        "avgAge": 25.9,
+        "injuryRisk": 22,
+        "clubScore": 77,
+        "atmosphere": 57,
         "travelKm": 1750,
         "restDays": 5.5,
         "timezoneShift": 0,
@@ -339,10 +339,10 @@
         "wcPath": 17,
         "odds": 267183,
         "squadValue": 28,
-        "avgAge": 27.4,
-        "injuryRisk": 24,
-        "clubScore": 32,
-        "atmosphere": 51,
+        "avgAge": 27.1,
+        "injuryRisk": 22,
+        "clubScore": 65,
+        "atmosphere": 53,
         "travelKm": 1476,
         "restDays": 5.5,
         "timezoneShift": 0,
@@ -371,10 +371,10 @@
         "wcPath": 27,
         "odds": 11988,
         "squadValue": 245,
-        "avgAge": 27.3,
+        "avgAge": 29,
         "injuryRisk": 22,
-        "clubScore": 67,
-        "atmosphere": 56,
+        "clubScore": 75,
+        "atmosphere": 54,
         "travelKm": 1973,
         "restDays": 5.5,
         "timezoneShift": 0,
@@ -404,10 +404,10 @@
         "wcPath": 61,
         "odds": 5965,
         "squadValue": 330,
-        "avgAge": 25.9,
-        "injuryRisk": 23,
-        "clubScore": 71,
-        "atmosphere": 56,
+        "avgAge": 26.4,
+        "injuryRisk": 22,
+        "clubScore": 77,
+        "atmosphere": 60,
         "travelKm": 3106,
         "restDays": 6.5,
         "timezoneShift": 0,
@@ -450,7 +450,7 @@
         "entryTimezoneShift": 3,
         "squadAnnouncementStatus": "暂定/初选名单",
         "squadAnnouncementDate": "2026-05-12",
-        "squadStatus": "暂定名单代理"
+        "squadStatus": "暂定/初选名单"
       }
     },
     {
@@ -471,7 +471,7 @@
         "avgAge": 28.4,
         "injuryRisk": 18,
         "clubScore": 49,
-        "atmosphere": 57,
+        "atmosphere": 58,
         "travelKm": 1329,
         "restDays": 6,
         "timezoneShift": 0,
@@ -482,7 +482,7 @@
         "entryTimezoneShift": 17,
         "squadAnnouncementStatus": "训练营名单",
         "squadAnnouncementDate": "2026-05-04",
-        "squadStatus": "暂定名单代理"
+        "squadStatus": "训练营名单"
       }
     },
     {
@@ -514,7 +514,7 @@
         "entryTimezoneShift": 10,
         "squadAnnouncementStatus": "暂定/初选名单",
         "squadAnnouncementDate": "2026-05-18",
-        "squadStatus": "暂定名单代理"
+        "squadStatus": "暂定/初选名单"
       }
     },
     {
@@ -532,9 +532,9 @@
         "wcPath": 98,
         "odds": 1245,
         "squadValue": 865,
-        "avgAge": 27.1,
-        "injuryRisk": 19,
-        "clubScore": 88,
+        "avgAge": 27.5,
+        "injuryRisk": 22,
+        "clubScore": 89,
         "atmosphere": 64,
         "travelKm": 2640,
         "restDays": 5.5,
@@ -564,10 +564,10 @@
         "wcPath": 13,
         "odds": 222193,
         "squadValue": 36,
-        "avgAge": 29.1,
-        "injuryRisk": 23,
-        "clubScore": 34,
-        "atmosphere": 47,
+        "avgAge": 27.5,
+        "injuryRisk": 22,
+        "clubScore": 68,
+        "atmosphere": 53,
         "travelKm": 2702,
         "restDays": 5.5,
         "timezoneShift": 1,
@@ -596,10 +596,10 @@
         "wcPath": 29,
         "odds": 23988,
         "squadValue": 260,
-        "avgAge": 27,
-        "injuryRisk": 20,
-        "clubScore": 66,
-        "atmosphere": 60,
+        "avgAge": 25.4,
+        "injuryRisk": 22,
+        "clubScore": 72,
+        "atmosphere": 58,
         "travelKm": 1089,
         "restDays": 5.5,
         "timezoneShift": 0,
@@ -631,7 +631,7 @@
         "avgAge": 25.7,
         "injuryRisk": 17,
         "clubScore": 66,
-        "atmosphere": 53,
+        "atmosphere": 54,
         "travelKm": 3405,
         "restDays": 5.5,
         "timezoneShift": 1,
@@ -642,7 +642,7 @@
         "entryTimezoneShift": 1,
         "squadAnnouncementStatus": "已公布名单待核26人",
         "squadAnnouncementDate": "2026-05-19",
-        "squadStatus": "暂定名单代理"
+        "squadStatus": "已公布名单待核26人"
       }
     },
     {
@@ -660,9 +660,9 @@
         "wcPath": 86,
         "odds": 2047,
         "squadValue": 790,
-        "avgAge": 26.8,
-        "injuryRisk": 17,
-        "clubScore": 87,
+        "avgAge": 27.3,
+        "injuryRisk": 22,
+        "clubScore": 89,
         "atmosphere": 68,
         "travelKm": 1421,
         "restDays": 5.5,
@@ -692,9 +692,9 @@
         "wcPath": 48,
         "odds": 4975,
         "squadValue": 330,
-        "avgAge": 27,
-        "injuryRisk": 16,
-        "clubScore": 75,
+        "avgAge": 27.2,
+        "injuryRisk": 22,
+        "clubScore": 76,
         "atmosphere": 61,
         "travelKm": 1689,
         "restDays": 5.5,
@@ -724,10 +724,10 @@
         "wcPath": 66,
         "odds": 7953,
         "squadValue": 345,
-        "avgAge": 27.3,
-        "injuryRisk": 21,
-        "clubScore": 68,
-        "atmosphere": 56,
+        "avgAge": 26.9,
+        "injuryRisk": 22,
+        "clubScore": 81,
+        "atmosphere": 57,
         "travelKm": 1029,
         "restDays": 5.5,
         "timezoneShift": 1,
@@ -756,9 +756,9 @@
         "wcPath": 34,
         "odds": 49975,
         "squadValue": 65,
-        "avgAge": 27.8,
-        "injuryRisk": 20,
-        "clubScore": 43,
+        "avgAge": 26.2,
+        "injuryRisk": 22,
+        "clubScore": 64,
         "atmosphere": 56,
         "travelKm": 1582,
         "restDays": 5.5,
@@ -788,7 +788,7 @@
         "wcPath": 64,
         "odds": 3324,
         "squadValue": 530,
-        "avgAge": 27.8,
+        "avgAge": 27.1,
         "injuryRisk": 22,
         "clubScore": 82,
         "atmosphere": 63,
@@ -834,7 +834,7 @@
         "entryTimezoneShift": 10,
         "squadAnnouncementStatus": "暂定/初选名单",
         "squadAnnouncementDate": "2026-05-20",
-        "squadStatus": "暂定名单代理"
+        "squadStatus": "暂定/初选名单"
       }
     },
     {
@@ -866,7 +866,7 @@
         "entryTimezoneShift": 10.5,
         "squadAnnouncementStatus": "暂定/初选名单",
         "squadAnnouncementDate": "2026-05-17",
-        "squadStatus": "暂定名单代理"
+        "squadStatus": "暂定/初选名单"
       }
     },
     {
@@ -884,9 +884,9 @@
         "wcPath": 23,
         "odds": 109087,
         "squadValue": 32,
-        "avgAge": 26.9,
-        "injuryRisk": 18,
-        "clubScore": 31,
+        "avgAge": 27.6,
+        "injuryRisk": 22,
+        "clubScore": 64,
         "atmosphere": 50,
         "travelKm": 1749,
         "restDays": 5.5,
@@ -916,8 +916,8 @@
         "wcPath": 92,
         "odds": 498,
         "squadValue": 1260,
-        "avgAge": 26.1,
-        "injuryRisk": 16,
+        "avgAge": 26.2,
+        "injuryRisk": 22,
         "clubScore": 92,
         "atmosphere": 67,
         "travelKm": 2373,
@@ -948,10 +948,10 @@
         "wcPath": 13,
         "odds": 92288,
         "squadValue": 58,
-        "avgAge": 27.9,
-        "injuryRisk": 18,
-        "clubScore": 42,
-        "atmosphere": 55,
+        "avgAge": 29.2,
+        "injuryRisk": 22,
+        "clubScore": 60,
+        "atmosphere": 52,
         "travelKm": 2502,
         "restDays": 5.5,
         "timezoneShift": 1,
@@ -994,7 +994,7 @@
         "entryTimezoneShift": 7,
         "squadAnnouncementStatus": "训练营名单",
         "squadAnnouncementDate": "2026-05-23",
-        "squadStatus": "暂定名单代理"
+        "squadStatus": "训练营名单"
       }
     },
     {
@@ -1015,7 +1015,7 @@
         "avgAge": 26.4,
         "injuryRisk": 19,
         "clubScore": 78,
-        "atmosphere": 61,
+        "atmosphere": 62,
         "travelKm": 2439,
         "restDays": 5.5,
         "timezoneShift": 2,
@@ -1026,7 +1026,7 @@
         "entryTimezoneShift": 1,
         "squadAnnouncementStatus": "待公布",
         "squadAnnouncementDate": "2026-06-01",
-        "squadStatus": "暂定名单代理"
+        "squadStatus": "待公布"
       }
     },
     {
@@ -1044,9 +1044,9 @@
         "wcPath": 98,
         "odds": 452,
         "squadValue": 1370,
-        "avgAge": 26.5,
-        "injuryRisk": 18,
-        "clubScore": 94,
+        "avgAge": 26.6,
+        "injuryRisk": 22,
+        "clubScore": 85,
         "atmosphere": 67,
         "travelKm": 545,
         "restDays": 5,
@@ -1088,9 +1088,9 @@
         "climateLoad": 33,
         "entryTravelKm": 6152,
         "entryTimezoneShift": 4,
-        "squadAnnouncementStatus": "已公布26人名单",
+        "squadAnnouncementStatus": "已公布名单待核26人",
         "squadAnnouncementDate": "2026-05-21",
-        "squadStatus": "已公布26人名单"
+        "squadStatus": "已公布名单待核26人"
       }
     },
     {
@@ -1122,7 +1122,7 @@
         "entryTimezoneShift": 7,
         "squadAnnouncementStatus": "暂定/初选名单",
         "squadAnnouncementDate": "2026-05-20",
-        "squadStatus": "暂定名单代理"
+        "squadStatus": "暂定/初选名单"
       }
     },
     {
@@ -1140,10 +1140,10 @@
         "wcPath": 32,
         "odds": 2758,
         "squadValue": 610,
-        "avgAge": 26.2,
-        "injuryRisk": 20,
-        "clubScore": 78,
-        "atmosphere": 60,
+        "avgAge": 26.3,
+        "injuryRisk": 22,
+        "clubScore": 83,
+        "atmosphere": 62,
         "travelKm": 548,
         "restDays": 5,
         "timezoneShift": 0,
@@ -1172,10 +1172,10 @@
         "wcPath": 98,
         "odds": 800,
         "squadValue": 910,
-        "avgAge": 28.3,
-        "injuryRisk": 18,
-        "clubScore": 88,
-        "atmosphere": 67,
+        "avgAge": 28.6,
+        "injuryRisk": 22,
+        "clubScore": 84,
+        "atmosphere": 66,
         "travelKm": 739,
         "restDays": 5.5,
         "timezoneShift": 0,
@@ -1218,7 +1218,7 @@
         "entryTimezoneShift": 6,
         "squadAnnouncementStatus": "暂定/初选名单",
         "squadAnnouncementDate": "2026-05-11",
-        "squadStatus": "暂定名单代理"
+        "squadStatus": "暂定/初选名单"
       }
     },
     {
@@ -1236,10 +1236,10 @@
         "wcPath": 49,
         "odds": 14975,
         "squadValue": 310,
-        "avgAge": 27.2,
-        "injuryRisk": 18,
-        "clubScore": 72,
-        "atmosphere": 62,
+        "avgAge": 28.1,
+        "injuryRisk": 22,
+        "clubScore": 80,
+        "atmosphere": 63,
         "travelKm": 3054,
         "restDays": 5.5,
         "timezoneShift": 2,
@@ -1282,7 +1282,7 @@
         "entryTimezoneShift": 10,
         "squadAnnouncementStatus": "暂定/初选名单",
         "squadAnnouncementDate": "2026-05-17",
-        "squadStatus": "暂定名单代理"
+        "squadStatus": "暂定/初选名单"
       }
     },
     {
@@ -1300,9 +1300,9 @@
         "wcPath": 65,
         "odds": 1048,
         "squadValue": 1060,
-        "avgAge": 27.2,
-        "injuryRisk": 19,
-        "clubScore": 90,
+        "avgAge": 27.5,
+        "injuryRisk": 22,
+        "clubScore": 81,
         "atmosphere": 59,
         "travelKm": 1547,
         "restDays": 5,
@@ -1332,9 +1332,9 @@
         "wcPath": 17,
         "odds": 66651,
         "squadValue": 120,
-        "avgAge": 27.3,
-        "injuryRisk": 21,
-        "clubScore": 50,
+        "avgAge": 28.5,
+        "injuryRisk": 22,
+        "clubScore": 70,
         "atmosphere": 59,
         "travelKm": 3660,
         "restDays": 5,
@@ -1378,7 +1378,7 @@
         "entryTimezoneShift": 11,
         "squadAnnouncementStatus": "暂定/初选名单",
         "squadAnnouncementDate": "2026-05-24",
-        "squadStatus": "暂定名单代理"
+        "squadStatus": "暂定/初选名单"
       }
     },
     {
@@ -1396,10 +1396,10 @@
         "wcPath": 47,
         "odds": 3822,
         "squadValue": 340,
-        "avgAge": 27.1,
-        "injuryRisk": 19,
+        "avgAge": 29.6,
+        "injuryRisk": 22,
         "clubScore": 73,
-        "atmosphere": 58,
+        "atmosphere": 54,
         "travelKm": 2915,
         "restDays": 5,
         "timezoneShift": 2,
@@ -1428,9 +1428,9 @@
         "wcPath": 94,
         "odds": 629,
         "squadValue": 1640,
-        "avgAge": 26.4,
-        "injuryRisk": 20,
-        "clubScore": 94,
+        "avgAge": 26.6,
+        "injuryRisk": 22,
+        "clubScore": 93,
         "atmosphere": 66,
         "travelKm": 2768,
         "restDays": 5,
@@ -1460,10 +1460,10 @@
         "wcPath": 76,
         "odds": 7575,
         "squadValue": 320,
-        "avgAge": 28.7,
+        "avgAge": 27.9,
         "injuryRisk": 22,
-        "clubScore": 75,
-        "atmosphere": 63,
+        "clubScore": 81,
+        "atmosphere": 66,
         "travelKm": 2500,
         "restDays": 5,
         "timezoneShift": 1,
@@ -1506,7 +1506,7 @@
         "entryTimezoneShift": 4,
         "squadAnnouncementStatus": "暂定/初选名单",
         "squadAnnouncementDate": "2026-05-23",
-        "squadStatus": "暂定名单代理"
+        "squadStatus": "暂定/初选名单"
       }
     },
     {
@@ -1524,10 +1524,10 @@
         "wcPath": 23,
         "odds": 133317,
         "squadValue": 24,
-        "avgAge": 28.2,
-        "injuryRisk": 18,
-        "clubScore": 34,
-        "atmosphere": 56,
+        "avgAge": 30,
+        "injuryRisk": 22,
+        "clubScore": 53,
+        "atmosphere": 52,
         "travelKm": 540,
         "restDays": 5,
         "timezoneShift": 0,

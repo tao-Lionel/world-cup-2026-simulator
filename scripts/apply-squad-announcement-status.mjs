@@ -78,6 +78,7 @@ const nextProfiles = profileRows.map((row) => {
   if (!announcement) throw new Error(`Missing announcement status for ${row.team}`);
   const statusLabel = labelStatus(announcement);
   const announced26 = announcement.announced_26_available === "true";
+  const hasPlayerRows = row.profile_status.includes("player_level");
   return {
     ...row,
     squad_status: announced26 ? statusLabel : row.squad_status,
@@ -85,8 +86,8 @@ const nextProfiles = profileRows.map((row) => {
     announced_26_available: announcement.announced_26_available,
     announcement_status: statusLabel,
     announcement_date: announcement.announced_date,
-    profile_status: announced26 ? "announced_26_pending_player_rows" : row.profile_status,
-    source_note: announced26
+    profile_status: announced26 && !hasPlayerRows ? "announced_26_pending_player_rows" : row.profile_status,
+    source_note: announced26 && !hasPlayerRows
       ? `${announcement.source_title}; player-level rows not captured yet, aggregate values retained.`
       : row.source_note,
   };

@@ -66,8 +66,19 @@ function csvEscape(value) {
 }
 
 function numberValue(value) {
+  if (value === undefined || value === null || String(value).trim() === "") return null;
   const parsed = Number(value);
   return Number.isFinite(parsed) ? parsed : null;
+}
+
+function labelStatus(row) {
+  if (!row) return "";
+  if (row.announcement_status === "association_26_announced") return "已公布26人名单";
+  if (row.announcement_status === "squad_announced_unverified") return "已公布名单待核26人";
+  if (row.announcement_status === "preliminary") return "暂定/初选名单";
+  if (row.announcement_status === "training_camp") return "训练营名单";
+  if (row.announcement_status === "pending") return "待公布";
+  return row.announcement_status || "";
 }
 
 function rounded(value, digits = 0) {
@@ -111,6 +122,23 @@ function leagueScore(league) {
     ["j1 league", 58],
     ["k league 1", 54],
     ["a-league", 45],
+    ["eng", 82],
+    ["esp", 82],
+    ["ita", 80],
+    ["ger", 80],
+    ["fra", 76],
+    ["ned", 72],
+    ["por", 72],
+    ["bra", 70],
+    ["arg", 66],
+    ["usa", 58],
+    ["can", 58],
+    ["mex", 56],
+    ["ksa", 54],
+    ["qat", 42],
+    ["jpn", 56],
+    ["kor", 52],
+    ["aus", 45],
   ]);
   return scores.get(normalized) ?? (normalized ? 50 : 42);
 }
@@ -128,6 +156,8 @@ function weightedAverage(rows, valueGetter) {
 
 const baseTeams = vm.runInNewContext(`(${extractConst("baseTeams")})`, {});
 const teamFactors = vm.runInNewContext(`(${extractConst("teamFactors")})`, {});
+const announcementRows = parseCsv(await readFile(new URL("../data/squad_announcement_status.csv", import.meta.url), "utf8"));
+const announcementByTeam = new Map(announcementRows.map((row) => [row.team, row]));
 
 let squadRows;
 try {
@@ -142,6 +172,9 @@ const headers = [
   "snapshot_date",
   "squad_status",
   "final_26_available",
+  "announced_26_available",
+  "announcement_status",
+  "announcement_date",
   "squad_value_m",
   "avg_age",
   "injury_risk",
@@ -153,13 +186,17 @@ const headers = [
 
 const outputRows = baseTeams.map((team) => {
   const factors = teamFactors[team.en];
+  const announcement = announcementByTeam.get(team.en) || {};
   const players = squadRows.filter((row) => row.team === team.en);
   if (!players.length) {
     return {
       team: team.en,
       snapshot_date: "2026-05-30",
-      squad_status: factors.squadStatus,
-      final_26_available: "false",
+      squad_status: announcement.announced_26_available === "true" ? "已公布26人名单" : labelStatus(announcement) || factors.squadStatus,
+      final_26_available: announcement.fifa_final_26_available || "false",
+      announced_26_available: announcement.announced_26_available || "false",
+      announcement_status: labelStatus(announcement) || factors.squadAnnouncementStatus || "",
+      announcement_date: announcement.announced_date || factors.squadAnnouncementDate || "",
       squad_value_m: factors.squadValue,
       avg_age: factors.avgAge,
       injury_risk: factors.injuryRisk,
@@ -175,20 +212,25 @@ const outputRows = baseTeams.map((team) => {
   const goalkeeperCount = players.filter((row) => /^(gk|goalkeeper)$/i.test(row.position.trim())).length;
   const final26Available = players.length >= 23 && players.length <= 26 && goalkeeperCount >= 3;
   const allOfficial = players.every((row) => row.list_status.trim().toLowerCase() === "official_final");
+  const allAssociationFinal = players.every((row) => ["official_final", "association_final"].includes(row.list_status.trim().toLowerCase()));
   const anyProjected = players.some((row) => row.list_status.trim().toLowerCase() === "projected");
   const injuryRisk = rounded(16 + weightedAverage(players, (row) => injuryPenalty(row.injury_status || "")));
   const clubScore = rounded(weightedAverage(players, (row) => leagueScore(row.league || "")));
+  const statusText = allOfficial ? "官方最终名单" : allAssociationFinal ? "已公布名单" : "球员级名单";
 
   return {
     team: team.en,
     snapshot_date: players.find((row) => row.snapshot_date)?.snapshot_date || "2026-05-30",
-    squad_status: `${players.length}人${allOfficial ? "官方最终名单" : "球员级名单"}`,
+    squad_status: `${players.length}人${statusText}`,
     final_26_available: final26Available && allOfficial ? "true" : "false",
+    announced_26_available: final26Available && allAssociationFinal ? "true" : announcement.announced_26_available || "false",
+    announcement_status: final26Available && allAssociationFinal ? "已公布26人名单" : factors.squadAnnouncementStatus || "",
+    announcement_date: announcement.announced_date || factors.squadAnnouncementDate || "",
     squad_value_m: values.length ? rounded(values.reduce((sum, value) => sum + value, 0)) : factors.squadValue,
     avg_age: ages.length ? rounded(ages.reduce((sum, value) => sum + value, 0) / ages.length, 1) : factors.avgAge,
     injury_risk: Math.max(15, Math.min(50, injuryRisk)),
     club_score: Math.max(30, Math.min(95, clubScore)),
-    profile_status: allOfficial ? "official_final_player_level" : anyProjected ? "projected_player_level" : "provisional_player_level",
+    profile_status: allOfficial ? "official_final_player_level" : allAssociationFinal ? "association_final_player_level" : anyProjected ? "projected_player_level" : "provisional_player_level",
     source_note: `${players.length} player rows aggregated; ${goalkeeperCount} goalkeepers; source URLs ${players.filter((row) => row.source_url).length}/${players.length}.`,
     replacement_key: "squads_2026.csv -> aggregate by team",
   };
