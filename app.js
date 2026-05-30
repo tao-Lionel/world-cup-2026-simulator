@@ -375,6 +375,20 @@ function percent(value, total) {
   return `${((value / total) * 100).toFixed(2)}%`;
 }
 
+function probabilityInterval(value, total) {
+  if (!total) return { rate: 0, lower: 0, upper: 0, label: "0.00%-0.00%" };
+  const rate = value / total;
+  const margin = 1.96 * Math.sqrt((rate * (1 - rate)) / total);
+  const lower = clamp(rate - margin, 0, 1);
+  const upper = clamp(rate + margin, 0, 1);
+  return {
+    rate,
+    lower,
+    upper,
+    label: `${(lower * 100).toFixed(2)}%-${(upper * 100).toFixed(2)}%`,
+  };
+}
+
 function csvCell(value) {
   if (value === undefined || value === null) return "";
   const text = String(value);
@@ -825,23 +839,26 @@ function renderGroups() {
 function renderRanking(counters, count) {
   const rows = Array.isArray(counters) ? counters : [...counters.values()].sort((a, b) => b.champion - a.champion || getTeamRating(b.team) - getTeamRating(a.team));
   const maxChampion = Math.max(...rows.map((row) => row.champion), 1);
-  $("#rankingBody").innerHTML = rows.map((row, index) => `
-    <tr>
-      <td>${index + 1}</td>
-      <td><span class="team-cell">${row.team.flag} ${row.team.name}</span></td>
-      <td>${getTeamRating(row.team)}</td>
-      <td>
-        <span class="prob-cell">
-          ${percent(row.champion, count)}
-          <span class="spark"><span style="width:${(row.champion / maxChampion) * 100}%"></span></span>
-        </span>
-      </td>
-      <td>${percent(row.final, count)}</td>
-      <td>${percent(row.sf, count)}</td>
-      <td>${percent(row.qf, count)}</td>
-      <td>${percent(row.r32, count)}</td>
-    </tr>
-  `).join("");
+  $("#rankingBody").innerHTML = rows.map((row, index) => {
+    const championInterval = probabilityInterval(row.champion, count);
+    return `
+      <tr>
+        <td>${index + 1}</td>
+        <td><span class="team-cell">${row.team.flag} ${row.team.name}</span></td>
+        <td>${getTeamRating(row.team)}</td>
+        <td>
+          <span class="prob-cell">
+            <span>${percent(row.champion, count)}<small>95% ${championInterval.label}</small></span>
+            <span class="spark"><span style="width:${(row.champion / maxChampion) * 100}%"></span></span>
+          </span>
+        </td>
+        <td>${percent(row.final, count)}</td>
+        <td>${percent(row.sf, count)}</td>
+        <td>${percent(row.qf, count)}</td>
+        <td>${percent(row.r32, count)}</td>
+      </tr>
+    `;
+  }).join("");
 }
 
 function renderStageBars(counter) {
@@ -874,13 +891,16 @@ function renderStageBars(counter) {
 
   if (selected) $("#focusTitle").textContent = `${selected.team.flag} ${selected.team.name} 阶段概率`;
   if (selected) renderTeamProfile(selected.team);
-  $("#stageBars").innerHTML = stages.map(([label, value]) => `
-    <div class="stage-row">
-      <span>${label}</span>
-      <span class="bar"><span style="width:${(value / total) * 100}%"></span></span>
-      <strong>${percent(value, total)}</strong>
-    </div>
-  `).join("");
+  $("#stageBars").innerHTML = stages.map(([label, value]) => {
+    const interval = probabilityInterval(value, total);
+    return `
+      <div class="stage-row">
+        <span>${label}</span>
+        <span class="bar"><span style="width:${(value / total) * 100}%"></span></span>
+        <strong>${percent(value, total)}<small>95% ${interval.label}</small></strong>
+      </div>
+    `;
+  }).join("");
 }
 
 function renderTeamProfile(team) {
@@ -984,9 +1004,54 @@ function resetSettings() {
 
 function exportCsv() {
   if (!latestResults) return;
-  const lines = ["rank,team,group,simulation_seed,simulation_count,model_rating,data_quality,source_backed_fields,proxy_fields,fifa_rank,fifa_points,elo,form,wc_path,odds,squad_status,squad_value_m,avg_age,injury_risk,club_score,atmosphere,travel_km,rest_days,champion,final,semi,quarter,qualified"];
+  const stages = [
+    ["champion", "champion"],
+    ["final", "final"],
+    ["semi", "sf"],
+    ["quarter", "qf"],
+    ["qualified", "r32"],
+  ];
+  const probabilityHeaders = stages.flatMap(([label]) => [
+    label,
+    `${label}_ci95_low`,
+    `${label}_ci95_high`,
+  ]);
+  const lines = [[
+    "rank",
+    "team",
+    "group",
+    "simulation_seed",
+    "simulation_count",
+    "model_rating",
+    "data_quality",
+    "source_backed_fields",
+    "proxy_fields",
+    "fifa_rank",
+    "fifa_points",
+    "elo",
+    "form",
+    "wc_path",
+    "odds",
+    "squad_status",
+    "squad_value_m",
+    "avg_age",
+    "injury_risk",
+    "club_score",
+    "atmosphere",
+    "travel_km",
+    "rest_days",
+    ...probabilityHeaders,
+  ].join(",")];
   latestResults.counters.forEach((row, index) => {
     const total = latestResults.settings.count;
+    const stageValues = stages.flatMap(([, key]) => {
+      const interval = probabilityInterval(row[key], total);
+      return [
+        interval.rate.toFixed(5),
+        interval.lower.toFixed(5),
+        interval.upper.toFixed(5),
+      ];
+    });
     lines.push([
       index + 1,
       row.team.en,
@@ -1011,11 +1076,7 @@ function exportCsv() {
       row.team.factors.atmosphere,
       row.team.factors.travelKm,
       row.team.factors.restDays,
-      (row.champion / total).toFixed(5),
-      (row.final / total).toFixed(5),
-      (row.sf / total).toFixed(5),
-      (row.qf / total).toFixed(5),
-      (row.r32 / total).toFixed(5),
+      ...stageValues,
     ].map(csvCell).join(","));
   });
   const blob = new Blob([lines.join("\n")], { type: "text/csv;charset=utf-8" });
