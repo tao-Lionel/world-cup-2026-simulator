@@ -1,0 +1,73 @@
+date,group,team_a,team_b,venue,source
+2026-06-11,A,Mexico,South Africa,Mexico City Stadium,FIFA match schedule page
+2026-06-11,A,Korea Republic,Czechia,Estadio Guadalajara,FIFA match schedule page
+2026-06-12,B,Canada,Bosnia and Herzegovina,Toronto Stadium,FIFA match schedule page
+2026-06-12,D,USA,Paraguay,Los Angeles Stadium,FIFA match schedule page
+2026-06-13,C,Haiti,Scotland,Boston Stadium,FIFA match schedule page
+2026-06-13,D,Australia,Türkiye,BC Place Vancouver,FIFA match schedule page
+2026-06-13,C,Brazil,Morocco,New York New Jersey Stadium,FIFA match schedule page
+2026-06-13,B,Qatar,Switzerland,San Francisco Bay Area Stadium,FIFA match schedule page
+2026-06-14,E,Cote d'Ivoire,Ecuador,Philadelphia Stadium,FIFA match schedule page
+2026-06-14,E,Germany,Curacao,Houston Stadium,FIFA match schedule page
+2026-06-14,F,Netherlands,Japan,Dallas Stadium,FIFA match schedule page
+2026-06-14,F,Sweden,Tunisia,Estadio Monterrey,FIFA match schedule page
+2026-06-15,H,Saudi Arabia,Uruguay,Miami Stadium,FIFA match schedule page
+2026-06-15,H,Spain,Cabo Verde,Atlanta Stadium,FIFA match schedule page
+2026-06-15,G,IR Iran,New Zealand,Los Angeles Stadium,FIFA match schedule page
+2026-06-15,G,Belgium,Egypt,Seattle Stadium,FIFA match schedule page
+2026-06-16,I,France,Senegal,New York New Jersey Stadium,FIFA match schedule page
+2026-06-16,I,Iraq,Norway,Boston Stadium,FIFA match schedule page
+2026-06-16,J,Argentina,Algeria,Kansas City Stadium,FIFA match schedule page
+2026-06-16,J,Austria,Jordan,San Francisco Bay Area Stadium,FIFA match schedule page
+2026-06-17,L,Ghana,Panama,Toronto Stadium,FIFA match schedule page
+2026-06-17,L,England,Croatia,Dallas Stadium,FIFA match schedule page
+2026-06-17,K,Portugal,Congo DR,Houston Stadium,FIFA match schedule page
+2026-06-17,K,Uzbekistan,Colombia,Mexico City Stadium,FIFA match schedule page
+2026-06-18,A,Czechia,South Africa,Atlanta Stadium,FIFA match schedule page
+2026-06-18,B,Switzerland,Bosnia and Herzegovina,Los Angeles Stadium,FIFA match schedule page
+2026-06-18,B,Canada,Qatar,BC Place Vancouver,FIFA match schedule page
+2026-06-18,A,Mexico,Korea Republic,Estadio Guadalajara,FIFA match schedule page
+2026-06-19,C,Brazil,Haiti,Philadelphia Stadium,FIFA match schedule page
+2026-06-19,C,Scotland,Morocco,Boston Stadium,FIFA match schedule page
+2026-06-19,D,Türkiye,Paraguay,San Francisco Bay Area Stadium,FIFA match schedule page
+2026-06-19,D,USA,Australia,Seattle Stadium,FIFA match schedule page
+2026-06-20,E,Germany,Cote d'Ivoire,Toronto Stadium,FIFA match schedule page
+2026-06-20,E,Ecuador,Curacao,Kansas City Stadium,FIFA match schedule page
+2026-06-20,F,Netherlands,Sweden,Houston Stadium,FIFA match schedule page
+2026-06-20,F,Tunisia,Japan,Estadio Monterrey,FIFA match schedule page
+2026-06-21,H,Uruguay,Cabo Verde,Miami Stadium,FIFA match schedule page
+2026-06-21,H,Spain,Saudi Arabia,Atlanta Stadium,FIFA match schedule page
+2026-06-21,G,Belgium,IR Iran,Los Angeles Stadium,FIFA match schedule page
+2026-06-21,G,New Zealand,Egypt,BC Place Vancouver,FIFA match schedule page
+2026-06-22,I,Norway,Senegal,New York New Jersey Stadium,FIFA match schedule page
+2026-06-22,I,France,Iraq,Philadelphia Stadium,FIFA match schedule page
+2026-06-22,J,Argentina,Austria,Dallas Stadium,FIFA match schedule page
+2026-06-22,J,Jordan,Algeria,San Francisco Bay Area Stadium,FIFA match schedule page
+2026-06-23,L,England,Ghana,Boston Stadium,FIFA match schedule page
+2026-06-23,L,Panama,Croatia,Toronto Stadium,FIFA match schedule page
+2026-06-23,K,Portugal,Uzbekistan,Houston Stadium,FIFA match schedule page
+2026-06-23,K,Colombia,Congo DR,Estadio Guadalajara,FIFA match schedule page
+2026-06-24,C,Scotland,Brazil,Miami Stadium,FIFA match schedule page
+2026-06-24,C,Morocco,Haiti,Atlanta Stadium,FIFA match schedule page
+2026-06-24,B,Switzerland,Canada,BC Place Vancouver,FIFA match schedule page
+2026-06-24,B,Bosnia and Herzegovina,Qatar,Seattle Stadium,FIFA match schedule page
+2026-06-24,A,Czechia,Mexico,Mexico City Stadium,FIFA match schedule page
+2026-06-24,A,South Africa,Korea Republic,Estadio Monterrey,FIFA match schedule page
+2026-06-25,E,Curacao,Cote d'Ivoire,Philadelphia Stadium,FIFA match schedule page
+2026-06-25,E,Ecuador,Germany,New York New Jersey Stadium,FIFA match schedule page
+2026-06-25,F,Japan,Sweden,Dallas Stadium,FIFA match schedule page
+2026-06-25,F,Tunisia,Netherlands,Kansas City Stadium,FIFA match schedule page
+2026-06-25,D,Türkiye,USA,Los Angeles Stadium,FIFA match schedule page
+2026-06-25,D,Paraguay,Australia,San Francisco Bay Area Stadium,FIFA match schedule page
+2026-06-26,I,Norway,France,Boston Stadium,FIFA match schedule page
+2026-06-26,I,Senegal,Iraq,Toronto Stadium,FIFA match schedule page
+2026-06-26,G,Egypt,IR Iran,Seattle Stadium,FIFA match schedule page
+2026-06-26,G,New Zealand,Belgium,BC Place Vancouver,FIFA match schedule page
+2026-06-26,H,Cabo Verde,Saudi Arabia,Houston Stadium,FIFA match schedule page
+2026-06-26,H,Uruguay,Spain,Estadio Guadalajara,FIFA match schedule page
+2026-06-27,L,Panama,England,New York New Jersey Stadium,FIFA match schedule page
+2026-06-27,L,Croatia,Ghana,Philadelphia Stadium,FIFA match schedule page
+2026-06-27,J,Algeria,Austria,Kansas City Stadium,FIFA match schedule page
+2026-06-27,J,Jordan,Argentina,Dallas Stadium,FIFA match schedule page
+2026-06-27,K,Colombia,Portugal,Miami Stadium,FIFA match schedule page
+2026-06-27,K,Congo DR,Uzbekistan,Atlanta Stadium,FIFA match schedule page

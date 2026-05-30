@@ -1,0 +1,5 @@
+team,slot,player,position,age,club,league,market_value_m,caps,goals,injury_status,expected_role,list_status,source_url,snapshot_date
+Spain,1,Sample Goalkeeper,GK,28,Athletic Club,La Liga,25,20,0,available,starter,provisional,https://www.fifa.com/en/articles/spain-squad-announcement-luis-de-la-fuente,2026-05-30
+Spain,2,Sample Defender,DF,25,Real Madrid,La Liga,70,30,2,available,starter,provisional,https://www.fifa.com/en/articles/spain-squad-announcement-luis-de-la-fuente,2026-05-30
+Spain,3,Sample Midfielder,MF,23,Barcelona,La Liga,90,25,5,minor,rotation,provisional,https://www.fifa.com/en/articles/spain-squad-announcement-luis-de-la-fuente,2026-05-30
+Spain,4,Sample Forward,FW,26,Real Sociedad,La Liga,55,18,8,doubtful,squad,provisional,https://www.fifa.com/en/articles/spain-squad-announcement-luis-de-la-fuente,2026-05-30

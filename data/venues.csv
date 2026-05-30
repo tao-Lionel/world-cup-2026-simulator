@@ -1,0 +1,17 @@
+venue,city,country,lat,lon,utc_offset_june,altitude_m,environment_load,environment_note
+Mexico City Stadium,Mexico City,Mexico,19.3029,-99.1505,-6,2240,78,high altitude
+Estadio Guadalajara,Guadalajara,Mexico,20.6819,-103.4622,-6,1566,58,moderate altitude
+Estadio Monterrey,Monterrey,Mexico,25.6683,-100.2447,-6,540,66,hot northern Mexico
+Toronto Stadium,Toronto,Canada,43.6332,-79.4186,-4,76,28,temperate eastern Canada
+BC Place Vancouver,Vancouver,Canada,49.2768,-123.1119,-7,13,24,covered Pacific venue
+Los Angeles Stadium,Los Angeles,USA,33.9535,-118.3392,-7,38,34,mild west coast
+San Francisco Bay Area Stadium,Santa Clara,USA,37.4030,-121.9700,-7,12,28,mild bay area
+Seattle Stadium,Seattle,USA,47.5952,-122.3316,-7,8,22,mild Pacific northwest
+New York New Jersey Stadium,East Rutherford,USA,40.8135,-74.0745,-4,3,36,eastern summer outdoor
+Boston Stadium,Foxborough,USA,42.0909,-71.2643,-4,88,32,northeast summer outdoor
+Philadelphia Stadium,Philadelphia,USA,39.9008,-75.1675,-4,12,38,eastern summer outdoor
+Atlanta Stadium,Atlanta,USA,33.7554,-84.4008,-4,320,44,indoor southeast summer
+Miami Stadium,Miami Gardens,USA,25.9580,-80.2389,-4,2,72,hot humid south Florida
+Kansas City Stadium,Kansas City,USA,39.0489,-94.4839,-5,264,48,central summer outdoor
+Houston Stadium,Houston,USA,29.6847,-95.4107,-5,13,58,hot humid indoor venue
+Dallas Stadium,Arlington,USA,32.7473,-97.0945,-5,184,54,hot indoor Texas venue

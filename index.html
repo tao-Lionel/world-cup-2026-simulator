@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2026 世界杯夺冠概率模拟器</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230c6b3c'/%3E%3Ccircle cx='32' cy='32' r='18' fill='white'/%3E%3Cpath d='M32 15l8 10-3 12H27l-3-12z' fill='%23111815'/%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <h1>2026 世界杯夺冠概率模拟器</h1>
+        <p>48 队、12 组、Monte Carlo 概率分布，不做单一断言。</p>
+      </div>
+      <div class="top-actions">
+        <button id="saveBtn" class="ghost-btn" type="button">保存方案</button>
+        <button id="loadBtn" class="ghost-btn" type="button">加载方案</button>
+        <button id="resetBtn" class="ghost-btn" type="button">重置</button>
+        <button id="runBtn" class="primary-btn" type="button">运行模拟</button>
+      </div>
+    </header>
+
+    <main class="app-shell">
+      <aside class="panel settings-panel">
+        <div class="panel-title">
+          <span>模拟设置</span>
+          <span id="statusLabel" class="status-label">待运行</span>
+        </div>
+
+        <label class="field">
+          <span>模拟次数</span>
+          <input id="simCount" type="number" min="1000" max="1000000" step="1000" value="100000" />
+        </label>
+        <div class="preset-row">
+          <button type="button" data-count="10000">10K</button>
+          <button type="button" data-count="50000">50K</button>
+          <button type="button" data-count="100000">100K</button>
+          <button type="button" data-count="500000">500K</button>
+        </div>
+
+        <label class="field">
+          <span>随机性强度 <b id="randomnessValue">1.00</b></span>
+          <input id="randomness" type="range" min="0.5" max="1.8" step="0.05" value="1" />
+        </label>
+
+        <label class="field">
+          <span>主办国优势 <b id="hostValue">80</b></span>
+          <input id="hostBoost" type="range" min="0" max="180" step="5" value="80" />
+        </label>
+
+        <label class="field">
+          <span>点球实力权重 <b id="penaltyValue">0.65</b></span>
+          <input id="penaltyWeight" type="range" min="0.2" max="1.2" step="0.05" value="0.65" />
+        </label>
+
+        <label class="field">
+          <span>关注球队</span>
+          <select id="focusTeam"></select>
+        </label>
+
+        <section class="assumption-box">
+          <h2>模型边界</h2>
+          <p>强度由 FIFA、Elo、赔率、近况、阵容、健康、氛围与赛程代理因子合成。界面会区分字段覆盖和数据可信度；未公布 26 人名单的队伍先用暂定名单代理，32 强路径仍为重排种子近似。</p>
+        </section>
+
+        <section class="data-box">
+          <h2>数据覆盖</h2>
+          <div id="dataCoverage" class="coverage-grid"></div>
+        </section>
+
+        <details class="editor-box">
+          <summary>编辑 48 队综合分</summary>
+          <div id="ratingEditor" class="rating-editor"></div>
+        </details>
+      </aside>
+
+      <section class="panel ranking-panel">
+        <div class="panel-title">
+          <span>夺冠概率排名</span>
+          <span id="runMeta" class="muted">尚未模拟</span>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>排名</th>
+                <th>球队</th>
+                <th>综合分</th>
+                <th>冠军</th>
+                <th>决赛</th>
+                <th>四强</th>
+                <th>八强</th>
+                <th>出线</th>
+              </tr>
+            </thead>
+            <tbody id="rankingBody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="panel groups-panel">
+        <div class="panel-title">
+          <span>小组概览</span>
+          <span class="muted">小组出线概率</span>
+        </div>
+        <div id="groupsGrid" class="groups-grid"></div>
+      </section>
+
+      <section class="panel focus-panel">
+        <div class="panel-title">
+          <span id="focusTitle">阶段概率分布</span>
+          <button id="exportBtn" class="ghost-btn small" type="button">导出 CSV</button>
+        </div>
+        <div id="stageBars" class="stage-bars"></div>
+        <div id="teamProfile" class="team-profile"></div>
+        <div class="metric-row">
+          <div>
+            <span>平均总进球</span>
+            <strong id="avgGoals">-</strong>
+          </div>
+          <div>
+            <span>平均点球战</span>
+            <strong id="avgPens">-</strong>
+          </div>
+          <div>
+            <span>第三名出线占比</span>
+            <strong id="thirdRate">-</strong>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel path-panel">
+        <div class="panel-title">
+          <span>单次模拟路径</span>
+          <button id="sampleBtn" class="ghost-btn small" type="button">重新抽样</button>
+        </div>
+        <div id="samplePath" class="sample-path"></div>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
