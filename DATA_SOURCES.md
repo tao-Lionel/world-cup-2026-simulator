@@ -12,6 +12,7 @@
 | Elo/强度 | 已抓取 48 队 2026-03-31 Elo Score 快照并写入模型 | International-football.net，页面注明来源为 eloratings.net：<https://www.international-football.net/elo-ratings-table> |
 | 近两年战绩 | 已抓取每队最近 10 场国家队比赛，按胜平负、净胜球和时间衰减生成 form | International-football.net 国家队页面 last international games |
 | 历届世界杯路径难度 | 已由 48 队历史出场、总战绩、最佳成绩、2022 成绩、近期参赛和冠军/决赛经验重算 | Football365 48 队世界杯记录 + `deep-research-report.md` 冠军路径整理 |
+| 淘汰赛路径 | 已接入 73-104 号固定淘汰赛赛程树，替代原先 32 强重排种子近似 | FIFA World Cup 2026 knockout bracket：<https://www.fifa.com/en/articles/knockout-stage-match-schedule-bracket> |
 | 阵容画像 | 已拆出 48 队暂定聚合快照，并新增名单公告状态、球员级名单模板和聚合脚本 | `data/squad_profile_snapshot.csv`、`data/squad_announcement_status.csv`、`data/squads_2026_template.csv`、FIFA squad announcement hub |
 
 ## 当前来源等级
@@ -87,6 +88,7 @@
 | `data/world_cup_history_raw.csv` | 48 队世界杯历史记录，含出场次数、总战绩、最佳成绩和 2022 成绩 |
 | `data/wc_path_features.csv` | 由历史记录生成的 `wcPath` 特征分 |
 | `data/group_stage_schedule.csv` | 72 场小组赛日期、对阵、场馆，来自 FIFA 赛程页 |
+| `data/knockout_schedule.csv` | 73-104 号淘汰赛固定赛程树，含轮次、日期、场馆和晋级路径 |
 | `data/venues.csv` | 16 个赛场坐标、时区、海拔和环境负担估计 |
 | `data/team_travel_origins.csv` | 48 队代表性出发地、坐标和 6 月 UTC offset |
 | `data/schedule_travel.csv` | 由赛程、场馆和出发地数据计算出的每队入境距离、入境时区差、组赛移动距离、休息、时区、跨境、海拔和环境负担 |
@@ -98,6 +100,8 @@
 | `data/team_context_snapshot.csv` | 48 队结构化球队氛围/上下文快照 |
 
 `schedule_travel.csv` 中的 `entry_travel_km` / `entry_timezone_shift_hours` 使用代表性出发地到首场小组赛场馆估计，不等于球队最终训练基地、包机路线或抵达时间。`group_stage_travel_km` 只计算小组赛三场比赛的场馆间移动距离，不包含训练基地往返和淘汰赛路径。`avg_environment_load` 是场馆环境估计，不等于实时天气预报；真实比赛日还需要加入开球时间、温湿度、屋顶状态和球队适应期。
+
+`knockout_schedule.csv` 已把固定淘汰赛树接入模拟器，但第三名对位仍采用候选组匹配算法，不是 FIFA 对 495 种第三名晋级组合逐项列出的完整映射表；这是下一步需要继续补齐的路径精度项。
 
 `squad_profile_snapshot.csv` 是为了让阵容维度有可审计入口；`squad_announcement_status.csv` 已把各协会公布的 26 人名单先接入模型，但它不等于 FIFA 统一发布的最终名单。FIFA 名单规则页显示，2026 世界杯每队最终名单为 23-26 人，最终名单在各队提交后由 FIFA 于 2026-06-02 公布；因此 2026-05-30 前即使 `announced_26_available=true`，`fifa_final_26_available` 仍保持 false。
 

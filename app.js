@@ -57,6 +57,7 @@ const factorSources = [
   { label: "赔率", value: "2026-05-15 四机构快照" },
   { label: "阵容", value: "暂定名单代理" },
   { label: "赛程", value: "旅行/休息/时区/环境快照" },
+  { label: "淘汰赛", value: "FIFA 固定赛程树" },
   { label: "氛围", value: "结构化上下文快照" },
 ];
 
@@ -159,6 +160,40 @@ const MODEL_WEIGHTS = {
   atmosphere: 0.02,
   schedule: 0.01,
 };
+
+const KNOCKOUT_MATCHES = [
+  { match: 73, round: "32强", date: "2026-06-28", venue: "Los Angeles Stadium", slots: ["2A", "2B"] },
+  { match: 74, round: "32强", date: "2026-06-29", venue: "Boston Stadium", slots: ["1E", "3ABCDF"] },
+  { match: 75, round: "32强", date: "2026-06-29", venue: "Estadio Monterrey", slots: ["1F", "2C"] },
+  { match: 76, round: "32强", date: "2026-06-29", venue: "Houston Stadium", slots: ["1C", "2F"] },
+  { match: 77, round: "32强", date: "2026-06-30", venue: "New York New Jersey Stadium", slots: ["1I", "3CDFGH"] },
+  { match: 78, round: "32强", date: "2026-06-30", venue: "Dallas Stadium", slots: ["2E", "2I"] },
+  { match: 79, round: "32强", date: "2026-06-30", venue: "Mexico City Stadium", slots: ["1A", "3CEFHI"] },
+  { match: 80, round: "32强", date: "2026-07-01", venue: "Atlanta Stadium", slots: ["1L", "3EHIJK"] },
+  { match: 81, round: "32强", date: "2026-07-01", venue: "San Francisco Bay Area Stadium", slots: ["1D", "3BEFIJ"] },
+  { match: 82, round: "32强", date: "2026-07-01", venue: "Seattle Stadium", slots: ["1G", "3AEHIJ"] },
+  { match: 83, round: "32强", date: "2026-07-02", venue: "Toronto Stadium", slots: ["2K", "2L"] },
+  { match: 84, round: "32强", date: "2026-07-02", venue: "Los Angeles Stadium", slots: ["1H", "2J"] },
+  { match: 85, round: "32强", date: "2026-07-03", venue: "BC Place Vancouver", slots: ["1B", "3EFGIJ"] },
+  { match: 86, round: "32强", date: "2026-07-03", venue: "Miami Stadium", slots: ["1J", "2H"] },
+  { match: 87, round: "32强", date: "2026-07-03", venue: "Kansas City Stadium", slots: ["1K", "3DEIJL"] },
+  { match: 88, round: "32强", date: "2026-07-03", venue: "Dallas Stadium", slots: ["2D", "2G"] },
+  { match: 89, round: "16强", date: "2026-07-04", venue: "Philadelphia Stadium", slots: ["W74", "W77"] },
+  { match: 90, round: "16强", date: "2026-07-04", venue: "Houston Stadium", slots: ["W73", "W75"] },
+  { match: 91, round: "16强", date: "2026-07-05", venue: "New York New Jersey Stadium", slots: ["W76", "W78"] },
+  { match: 92, round: "16强", date: "2026-07-05", venue: "Mexico City Stadium", slots: ["W79", "W80"] },
+  { match: 93, round: "16强", date: "2026-07-06", venue: "Dallas Stadium", slots: ["W83", "W84"] },
+  { match: 94, round: "16强", date: "2026-07-06", venue: "Seattle Stadium", slots: ["W81", "W82"] },
+  { match: 95, round: "16强", date: "2026-07-07", venue: "Atlanta Stadium", slots: ["W86", "W88"] },
+  { match: 96, round: "16强", date: "2026-07-07", venue: "BC Place Vancouver", slots: ["W85", "W87"] },
+  { match: 97, round: "8强", date: "2026-07-09", venue: "Boston Stadium", slots: ["W89", "W90"] },
+  { match: 98, round: "8强", date: "2026-07-10", venue: "Los Angeles Stadium", slots: ["W93", "W94"] },
+  { match: 99, round: "8强", date: "2026-07-11", venue: "Miami Stadium", slots: ["W91", "W92"] },
+  { match: 100, round: "8强", date: "2026-07-11", venue: "Kansas City Stadium", slots: ["W95", "W96"] },
+  { match: 101, round: "4强", date: "2026-07-14", venue: "Dallas Stadium", slots: ["W97", "W98"] },
+  { match: 102, round: "4强", date: "2026-07-15", venue: "Atlanta Stadium", slots: ["W99", "W100"] },
+  { match: 104, round: "决赛", date: "2026-07-19", venue: "New York New Jersey Stadium", slots: ["W101", "W102"] },
+];
 
 function normalize(value, min, max) {
   return clamp((value - min) / (max - min), 0, 1);
@@ -320,6 +355,60 @@ function simulateMatch(a, b, settings, knockout = false) {
   return { a, b, aGoals, bGoals, winner, penalty };
 }
 
+function groupRankMap(rows) {
+  const map = new Map();
+  rows.forEach((row) => {
+    if (!map.has(row.team.group)) map.set(row.team.group, new Map());
+    map.get(row.team.group).set(row.position, row);
+  });
+  return map;
+}
+
+function thirdPlaceAssignments(bestThirds, settings) {
+  const thirdRows = new Map(bestThirds.map((row) => [row.team.group, row]));
+  const placeholders = KNOCKOUT_MATCHES
+    .filter((match) => match.round === "32强")
+    .flatMap((match) => match.slots)
+    .filter((slot) => slot.startsWith("3"));
+  const assignments = new Map();
+
+  function fill(index, usedGroups) {
+    if (index === placeholders.length) return true;
+    const slot = placeholders[index];
+    const candidates = slot.slice(1).split("")
+      .filter((group) => thirdRows.has(group) && !usedGroups.has(group))
+      .sort((a, b) => {
+        const rowA = thirdRows.get(a);
+        const rowB = thirdRows.get(b);
+        return (
+          rowB.pts - rowA.pts ||
+          rowB.gd - rowA.gd ||
+          rowB.gf - rowA.gf ||
+          effectiveRating(rowB.team, settings) - effectiveRating(rowA.team, settings)
+        );
+      });
+    for (const group of candidates) {
+      assignments.set(slot, thirdRows.get(group));
+      usedGroups.add(group);
+      if (fill(index + 1, usedGroups)) return true;
+      usedGroups.delete(group);
+      assignments.delete(slot);
+    }
+    return false;
+  }
+
+  fill(0, new Set());
+  return assignments;
+}
+
+function resolveBracketSlot(slot, rankMap, thirdAssignments, winners) {
+  if (slot.startsWith("W")) return winners.get(Number(slot.slice(1)));
+  if (slot.startsWith("3")) return thirdAssignments.get(slot)?.team;
+  const position = Number(slot[0]);
+  const group = slot[1];
+  return rankMap.get(group)?.get(position)?.team;
+}
+
 function groupTable(groupTeams, settings) {
   const table = groupTeams.map((team) => ({
     team,
@@ -367,11 +456,6 @@ function groupTable(groupTeams, settings) {
   return table;
 }
 
-function seedBracket(qualifiers) {
-  const order = [0, 31, 15, 16, 7, 24, 8, 23, 3, 28, 12, 19, 4, 27, 11, 20, 1, 30, 14, 17, 6, 25, 9, 22, 2, 29, 13, 18, 5, 26, 10, 21];
-  return order.map((index) => qualifiers[index]);
-}
-
 function simulateTournament(settings, capturePath = false) {
   const groups = new Map();
   teams.forEach((team) => {
@@ -403,37 +487,38 @@ function simulateTournament(settings, capturePath = false) {
   const bestThirds = thirds.slice(0, 8);
   qualified.push(...bestThirds);
 
-  qualified.sort((a, b) => (
-    a.position - b.position ||
-    b.pts - a.pts ||
-    b.gd - a.gd ||
-    b.gf - a.gf ||
-    effectiveRating(b.team, settings) - effectiveRating(a.team, settings)
-  ));
-
-  let alive = seedBracket(qualified).map((row) => row.team);
   let penalties = 0;
   const rounds = [];
   const stageWinners = { r16: [], qf: [], sf: [], final: [], champion: null };
-  const roundNames = ["32强", "16强", "8强", "4强", "决赛"];
+  const rankMap = groupRankMap(allGroupRows);
+  const thirdAssignments = thirdPlaceAssignments(bestThirds, settings);
+  const winners = new Map();
 
-  for (let round = 0; round < 5; round += 1) {
-    const next = [];
-    const matches = [];
-    for (let i = 0; i < alive.length; i += 2) {
-      const result = simulateMatch(alive[i], alive[i + 1], settings, true);
-      if (result.penalty) penalties += 1;
-      next.push(result.winner);
-      matches.push(result);
+  KNOCKOUT_MATCHES.forEach((match) => {
+    const a = resolveBracketSlot(match.slots[0], rankMap, thirdAssignments, winners);
+    const b = resolveBracketSlot(match.slots[1], rankMap, thirdAssignments, winners);
+    const result = simulateMatch(a, b, settings, true);
+    result.match = match.match;
+    result.venue = match.venue;
+    result.date = match.date;
+    result.slots = match.slots;
+    if (result.penalty) penalties += 1;
+    totalGoals += result.aGoals + result.bGoals;
+    winners.set(match.match, result.winner);
+    if (capturePath) {
+      let round = rounds.find((item) => item.name === match.round);
+      if (!round) {
+        round = { name: match.round, matches: [] };
+        rounds.push(round);
+      }
+      round.matches.push(result);
     }
-    rounds.push({ name: roundNames[round], matches });
-    if (round === 0) stageWinners.r16 = next;
-    if (round === 1) stageWinners.qf = next;
-    if (round === 2) stageWinners.sf = next;
-    if (round === 3) stageWinners.final = next;
-    if (round === 4) stageWinners.champion = next[0];
-    alive = next;
-  }
+    if (match.round === "32强") stageWinners.r16.push(result.winner);
+    if (match.round === "16强") stageWinners.qf.push(result.winner);
+    if (match.round === "8强") stageWinners.sf.push(result.winner);
+    if (match.round === "4强") stageWinners.final.push(result.winner);
+    if (match.round === "决赛") stageWinners.champion = result.winner;
+  });
 
   return {
     allGroupRows,
@@ -665,6 +750,7 @@ function renderSamplePath() {
       <h3>${round.name}</h3>
       ${round.matches.map((match) => `
         <div class="match-chip ${round.name === "决赛" ? "winner-chip" : ""}">
+          <div>M${match.match} · ${match.venue}</div>
           <div>${match.a.flag} ${match.a.name} ${match.aGoals} - ${match.bGoals} ${match.b.name} ${match.b.flag}</div>
           <strong>晋级：${match.winner.flag} ${match.winner.name}${match.penalty ? "（点球）" : ""}</strong>
         </div>

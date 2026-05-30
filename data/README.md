@@ -17,6 +17,7 @@
 - `world_cup_history_raw.csv`：48 队世界杯历史记录，包含出场次数、总战绩、最佳成绩和 2022 成绩。
 - `wc_path_features.csv`：由历史记录重算出的路径经验/历史难度特征分。
 - `group_stage_schedule.csv`：72 场 2026 小组赛日期、对阵和场馆。
+- `knockout_schedule.csv`：73-104 号淘汰赛固定赛程树，含轮次、日期、场馆和晋级路径。
 - `venues.csv`：16 个承办场馆坐标、6 月时区、海拔和场馆环境负担估计。
 - `team_travel_origins.csv`：48 队代表性出发地、坐标和 6 月 UTC offset，用于估计入境旅行距离与时区差。
 - `schedule_travel.csv`：按小组赛场馆序列计算出的每队入境距离、入境时区差、组赛移动距离、休息、时区跨度、跨境、海拔和环境负担。
@@ -33,6 +34,12 @@
 
 ```bash
 node scripts/export-data-snapshots.mjs
+```
+
+模拟器核心链路可用下面命令校验：
+
+```bash
+node scripts/validate-simulator.mjs
 ```
 
 FIFA 排名/积分快照由下面三个命令导出、回写并刷新审计快照：

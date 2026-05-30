@@ -1,0 +1,32 @@
+match,round,date,venue,slot_a,slot_b,next_match,source_note
+73,R32,2026-06-28,Los Angeles Stadium,2A,2B,90,FIFA knockout bracket
+74,R32,2026-06-29,Boston Stadium,1E,3ABCDF,89,FIFA knockout bracket
+75,R32,2026-06-29,Estadio Monterrey,1F,2C,90,FIFA knockout bracket
+76,R32,2026-06-29,Houston Stadium,1C,2F,91,FIFA knockout bracket
+77,R32,2026-06-30,New York New Jersey Stadium,1I,3CDFGH,89,FIFA knockout bracket
+78,R32,2026-06-30,Dallas Stadium,2E,2I,91,FIFA knockout bracket
+79,R32,2026-06-30,Mexico City Stadium,1A,3CEFHI,92,FIFA knockout bracket
+80,R32,2026-07-01,Atlanta Stadium,1L,3EHIJK,92,FIFA knockout bracket
+81,R32,2026-07-01,San Francisco Bay Area Stadium,1D,3BEFIJ,94,FIFA knockout bracket
+82,R32,2026-07-01,Seattle Stadium,1G,3AEHIJ,94,FIFA knockout bracket
+83,R32,2026-07-02,Toronto Stadium,2K,2L,93,FIFA knockout bracket
+84,R32,2026-07-02,Los Angeles Stadium,1H,2J,93,FIFA knockout bracket
+85,R32,2026-07-03,BC Place Vancouver,1B,3EFGIJ,96,FIFA knockout bracket
+86,R32,2026-07-03,Miami Stadium,1J,2H,95,FIFA knockout bracket
+87,R32,2026-07-03,Kansas City Stadium,1K,3DEIJL,96,FIFA knockout bracket
+88,R32,2026-07-03,Dallas Stadium,2D,2G,95,FIFA knockout bracket
+89,R16,2026-07-04,Philadelphia Stadium,W74,W77,97,FIFA knockout bracket
+90,R16,2026-07-04,Houston Stadium,W73,W75,97,FIFA knockout bracket
+91,R16,2026-07-05,New York New Jersey Stadium,W76,W78,99,FIFA knockout bracket
+92,R16,2026-07-05,Mexico City Stadium,W79,W80,99,FIFA knockout bracket
+93,R16,2026-07-06,Dallas Stadium,W83,W84,98,FIFA knockout bracket
+94,R16,2026-07-06,Seattle Stadium,W81,W82,98,FIFA knockout bracket
+95,R16,2026-07-07,Atlanta Stadium,W86,W88,100,FIFA knockout bracket
+96,R16,2026-07-07,BC Place Vancouver,W85,W87,100,FIFA knockout bracket
+97,QF,2026-07-09,Boston Stadium,W89,W90,101,FIFA knockout bracket
+98,QF,2026-07-10,Los Angeles Stadium,W93,W94,101,FIFA knockout bracket
+99,QF,2026-07-11,Miami Stadium,W91,W92,102,FIFA knockout bracket
+100,QF,2026-07-11,Kansas City Stadium,W95,W96,102,FIFA knockout bracket
+101,SF,2026-07-14,Dallas Stadium,W97,W98,104,FIFA knockout bracket
+102,SF,2026-07-15,Atlanta Stadium,W99,W100,104,FIFA knockout bracket
+104,Final,2026-07-19,New York New Jersey Stadium,W101,W102,,FIFA knockout bracket
