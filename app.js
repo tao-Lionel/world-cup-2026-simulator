@@ -366,6 +366,7 @@ function createTeams(savedTeams = []) {
 let teams = createTeams();
 let latestResults = null;
 let latestSample = null;
+let latestSampleIndex = 0;
 
 const $ = (selector) => document.querySelector(selector);
 
@@ -374,17 +375,43 @@ function percent(value, total) {
   return `${((value / total) * 100).toFixed(2)}%`;
 }
 
+function csvCell(value) {
+  if (value === undefined || value === null) return "";
+  const text = String(value);
+  return /[",\n]/.test(text) ? `"${text.replaceAll("\"", "\"\"")}"` : text;
+}
+
 function clamp(value, min, max) {
   return Math.max(min, Math.min(max, value));
 }
 
-function poisson(lambda) {
+function seedHash(text) {
+  let hash = 2166136261;
+  for (let index = 0; index < text.length; index += 1) {
+    hash ^= text.charCodeAt(index);
+    hash = Math.imul(hash, 16777619);
+  }
+  return hash >>> 0;
+}
+
+function createRng(seed) {
+  let state = seedHash(seed || "2026-world-cup") || 1;
+  return () => {
+    state = Math.imul(state + 0x6D2B79F5, 1);
+    let value = state;
+    value = Math.imul(value ^ (value >>> 15), value | 1);
+    value ^= value + Math.imul(value ^ (value >>> 7), value | 61);
+    return ((value ^ (value >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+function poisson(lambda, rng) {
   const limit = Math.exp(-lambda);
   let product = 1;
   let count = 0;
   do {
     count += 1;
-    product *= Math.random();
+    product *= rng();
   } while (product > limit);
   return count - 1;
 }
@@ -436,7 +463,7 @@ function pathLoad(team, matchContext, pathState) {
   };
 }
 
-function simulateMatch(a, b, settings, knockout = false, matchContext = null, pathState = null) {
+function simulateMatch(a, b, settings, knockout = false, matchContext = null, pathState = null, rng = Math.random) {
   const aPath = pathLoad(a, matchContext, pathState);
   const bPath = pathLoad(b, matchContext, pathState);
   const aRating = effectiveRating(a, settings) + aPath.adjustment;
@@ -444,14 +471,14 @@ function simulateMatch(a, b, settings, knockout = false, matchContext = null, pa
   const diff = (aRating - bRating) / (settings.randomness * 420);
   const aLambda = clamp(1.22 + diff, 0.25, 3.3);
   const bLambda = clamp(1.22 - diff, 0.25, 3.3);
-  let aGoals = poisson(aLambda);
-  let bGoals = poisson(bLambda);
+  let aGoals = poisson(aLambda, rng);
+  let bGoals = poisson(bLambda, rng);
   let penalty = false;
 
   if (knockout && aGoals === bGoals) {
     const extraDiff = (aRating - bRating) / (settings.randomness * 650);
-    aGoals += poisson(clamp(0.32 + extraDiff, 0.05, 0.9));
-    bGoals += poisson(clamp(0.32 - extraDiff, 0.05, 0.9));
+    aGoals += poisson(clamp(0.32 + extraDiff, 0.05, 0.9), rng);
+    bGoals += poisson(clamp(0.32 - extraDiff, 0.05, 0.9), rng);
   }
 
   let winner = null;
@@ -460,7 +487,7 @@ function simulateMatch(a, b, settings, knockout = false, matchContext = null, pa
   if (knockout && !winner) {
     penalty = true;
     const chance = 1 / (1 + Math.exp(-((aRating - bRating) / 280) * settings.penaltyWeight));
-    winner = Math.random() < chance ? a : b;
+    winner = rng() < chance ? a : b;
   }
 
   return { a, b, aGoals, bGoals, winner, penalty, pathLoads: new Map([[a.id, aPath], [b.id, bPath]]) };
@@ -532,7 +559,7 @@ function resolveBracketSlot(slot, rankMap, thirdAssignments, winners) {
   return rankMap.get(group)?.get(position)?.team;
 }
 
-function groupTable(groupTeams, settings) {
+function groupTable(groupTeams, settings, rng = Math.random) {
   const table = groupTeams.map((team) => ({
     team,
     pts: 0,
@@ -544,7 +571,7 @@ function groupTable(groupTeams, settings) {
 
   for (let i = 0; i < groupTeams.length; i += 1) {
     for (let j = i + 1; j < groupTeams.length; j += 1) {
-      const result = simulateMatch(groupTeams[i], groupTeams[j], settings);
+      const result = simulateMatch(groupTeams[i], groupTeams[j], settings, false, null, null, rng);
       const rowA = table.find((row) => row.team.id === groupTeams[i].id);
       const rowB = table.find((row) => row.team.id === groupTeams[j].id);
       rowA.gf += result.aGoals;
@@ -569,7 +596,7 @@ function groupTable(groupTeams, settings) {
     b.gd - a.gd ||
     b.gf - a.gf ||
     effectiveRating(b.team, settings) - effectiveRating(a.team, settings) ||
-    Math.random() - 0.5
+    rng() - 0.5
   ));
 
   table.forEach((row, index) => {
@@ -579,7 +606,7 @@ function groupTable(groupTeams, settings) {
   return table;
 }
 
-function simulateTournament(settings, capturePath = false) {
+function simulateTournament(settings, capturePath = false, rng = Math.random) {
   const groups = new Map();
   teams.forEach((team) => {
     if (!groups.has(team.group)) groups.set(team.group, []);
@@ -592,7 +619,7 @@ function simulateTournament(settings, capturePath = false) {
   let totalGoals = 0;
 
   groups.forEach((groupTeams) => {
-    const table = groupTable(groupTeams, settings);
+    const table = groupTable(groupTeams, settings, rng);
     allGroupRows.push(...table);
     table.forEach((row) => {
       totalGoals += row.gf;
@@ -624,7 +651,7 @@ function simulateTournament(settings, capturePath = false) {
   KNOCKOUT_MATCHES.forEach((match) => {
     const a = resolveBracketSlot(match.slots[0], rankMap, thirdAssignments, winners);
     const b = resolveBracketSlot(match.slots[1], rankMap, thirdAssignments, winners);
-    const result = simulateMatch(a, b, settings, true, match, pathState);
+    const result = simulateMatch(a, b, settings, true, match, pathState, rng);
     result.match = match.match;
     result.venue = match.venue;
     result.date = match.date;
@@ -675,6 +702,7 @@ function emptyCounters() {
 function currentSettings() {
   return {
     count: clamp(Number($("#simCount").value) || 100000, 1000, 1000000),
+    seed: ($("#seedInput").value || "2026-world-cup").trim() || "2026-world-cup",
     randomness: Number($("#randomness").value),
     hostBoost: Number($("#hostBoost").value),
     penaltyWeight: Number($("#penaltyWeight").value),
@@ -683,6 +711,7 @@ function currentSettings() {
 
 async function runSimulation() {
   const settings = currentSettings();
+  const rng = createRng(settings.seed);
   const counters = emptyCounters();
   let goals = 0;
   let pens = 0;
@@ -694,7 +723,7 @@ async function runSimulation() {
   for (let done = 0; done < settings.count; done += chunkSize) {
     const limit = Math.min(chunkSize, settings.count - done);
     for (let i = 0; i < limit; i += 1) {
-      const tournament = simulateTournament(settings);
+      const tournament = simulateTournament(settings, false, rng);
       goals += tournament.totalGoals;
       pens += tournament.penalties;
       thirds += tournament.bestThirds.length;
@@ -716,7 +745,8 @@ async function runSimulation() {
     avgPens: pens / settings.count,
     thirdRate: thirds / (settings.count * 32),
   };
-  latestSample = simulateTournament(settings, true);
+  latestSampleIndex = 0;
+  latestSample = simulateTournament(settings, true, createRng(`${settings.seed}:sample:${latestSampleIndex}`));
   $("#runBtn").disabled = false;
   $("#statusLabel").textContent = "已完成";
   renderResults();
@@ -897,7 +927,7 @@ function renderResults() {
   renderGroups();
   renderStageBars();
   renderSamplePath();
-  $("#runMeta").textContent = `模拟 ${latestResults.settings.count.toLocaleString()} 次`;
+  $("#runMeta").textContent = `模拟 ${latestResults.settings.count.toLocaleString()} 次 · seed ${latestResults.settings.seed}`;
   $("#avgGoals").textContent = latestResults.avgGoals.toFixed(2);
   $("#avgPens").textContent = latestResults.avgPens.toFixed(2);
   $("#thirdRate").textContent = `${(latestResults.thirdRate * 100).toFixed(1)}%`;
@@ -923,6 +953,7 @@ function loadSettings() {
   const parsed = JSON.parse(stored);
   teams = createTeams(parsed.teams || []);
   $("#simCount").value = parsed.settings.count;
+  $("#seedInput").value = parsed.settings.seed || "2026-world-cup";
   $("#randomness").value = parsed.settings.randomness;
   $("#hostBoost").value = parsed.settings.hostBoost;
   $("#penaltyWeight").value = parsed.settings.penaltyWeight;
@@ -935,7 +966,9 @@ function resetSettings() {
   teams = createTeams();
   latestResults = null;
   latestSample = null;
+  latestSampleIndex = 0;
   $("#simCount").value = 100000;
+  $("#seedInput").value = "2026-world-cup";
   $("#randomness").value = 1;
   $("#hostBoost").value = 80;
   $("#penaltyWeight").value = 0.65;
@@ -951,13 +984,15 @@ function resetSettings() {
 
 function exportCsv() {
   if (!latestResults) return;
-  const lines = ["rank,team,group,model_rating,data_quality,source_backed_fields,proxy_fields,fifa_rank,fifa_points,elo,form,wc_path,odds,squad_status,squad_value_m,avg_age,injury_risk,club_score,atmosphere,travel_km,rest_days,champion,final,semi,quarter,qualified"];
+  const lines = ["rank,team,group,simulation_seed,simulation_count,model_rating,data_quality,source_backed_fields,proxy_fields,fifa_rank,fifa_points,elo,form,wc_path,odds,squad_status,squad_value_m,avg_age,injury_risk,club_score,atmosphere,travel_km,rest_days,champion,final,semi,quarter,qualified"];
   latestResults.counters.forEach((row, index) => {
     const total = latestResults.settings.count;
     lines.push([
       index + 1,
       row.team.en,
       row.team.group,
+      latestResults.settings.seed,
+      total,
       getTeamRating(row.team),
       row.team.reliability.score,
       row.team.reliability.reliableCount,
@@ -981,7 +1016,7 @@ function exportCsv() {
       (row.sf / total).toFixed(5),
       (row.qf / total).toFixed(5),
       (row.r32 / total).toFixed(5),
-    ].join(","));
+    ].map(csvCell).join(","));
   });
   const blob = new Blob([lines.join("\n")], { type: "text/csv;charset=utf-8" });
   const url = URL.createObjectURL(blob);
@@ -1013,7 +1048,9 @@ $("#loadBtn").addEventListener("click", loadSettings);
 $("#resetBtn").addEventListener("click", resetSettings);
 $("#exportBtn").addEventListener("click", exportCsv);
 $("#sampleBtn").addEventListener("click", () => {
-  latestSample = simulateTournament(currentSettings(), true);
+  latestSampleIndex += 1;
+  const settings = latestResults?.settings || currentSettings();
+  latestSample = simulateTournament(settings, true, createRng(`${settings.seed}:sample:${latestSampleIndex}`));
   renderSamplePath();
 });
 $("#focusTeam").addEventListener("change", () => renderStageBars());

@@ -17,6 +17,7 @@ let missingR32 = 0;
 let invalidThirdCombos = 0;
 let missingThirdTableRows = 0;
 let invalidThirdTableRows = 0;
+let seededMismatch = 0;
 function combinations(items, size) {
   const output = [];
   function walk(start, picked) {
@@ -58,6 +59,29 @@ for (let index = 0; index < 500; index += 1) {
   if (matches.length !== 31) missingMatches += 1;
   if (tournament.stageWinners.r16.length !== 16) missingR32 += 1;
 }
+
+function pathSignature(tournament) {
+  return JSON.stringify({
+    champion: tournament.champion.id,
+    totalGoals: tournament.totalGoals,
+    penalties: tournament.penalties,
+    rounds: tournament.rounds.map((round) => round.matches.map((match) => [
+      match.match,
+      match.a.id,
+      match.b.id,
+      match.aGoals,
+      match.bGoals,
+      match.winner.id,
+      match.penalty,
+    ])),
+  });
+}
+
+const seededSettings = { ...settings, seed: "ci-reproducibility" };
+const seededA = simulateTournament(seededSettings, true, createRng(seededSettings.seed));
+const seededB = simulateTournament(seededSettings, true, createRng(seededSettings.seed));
+if (pathSignature(seededA) !== pathSignature(seededB)) seededMismatch += 1;
+
 globalThis.validation = {
   teams: teams.length,
   simulations: 500,
@@ -67,6 +91,7 @@ globalThis.validation = {
   invalidThirdCombos,
   missingThirdTableRows,
   invalidThirdTableRows,
+  seededMismatch,
 };
 `, context);
 
@@ -78,7 +103,8 @@ if (
   result.missingR32 ||
   result.invalidThirdCombos ||
   result.missingThirdTableRows ||
-  result.invalidThirdTableRows
+  result.invalidThirdTableRows ||
+  result.seededMismatch
 ) {
   throw new Error(`Simulator validation failed: ${JSON.stringify(result)}`);
 }
