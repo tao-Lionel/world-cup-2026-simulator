@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-30T07:09:14.179Z",
+  "generatedAt": "2026-05-30T13:28:00.536Z",
   "note": "Exported from app.js. Proxy fields should be replaced by source-specific datasets over time.",
   "teams": [
     {
@@ -405,7 +405,7 @@
         "odds": 5965,
         "squadValue": 330,
         "avgAge": 26.4,
-        "injuryRisk": 22,
+        "injuryRisk": 21,
         "clubScore": 79,
         "atmosphere": 60,
         "travelKm": 3106,
@@ -693,9 +693,9 @@
         "odds": 4975,
         "squadValue": 330,
         "avgAge": 27.2,
-        "injuryRisk": 22,
+        "injuryRisk": 29,
         "clubScore": 78,
-        "atmosphere": 61,
+        "atmosphere": 58,
         "travelKm": 1689,
         "restDays": 5.5,
         "timezoneShift": 1,

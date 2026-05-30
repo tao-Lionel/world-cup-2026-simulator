@@ -99,9 +99,19 @@ function injuryPenalty(status) {
   if (["available", "fit", "none"].includes(normalized)) return 0;
   if (["minor", "knock"].includes(normalized)) return 8;
   if (["doubtful", "questionable"].includes(normalized)) return 18;
-  if (["injured", "out"].includes(normalized)) return 32;
+  if (["injured", "out", "omitted_injury"].includes(normalized)) return 32;
   if (normalized === "suspended") return 28;
   return 6;
+}
+
+function externalAvailabilityPenalty(rows) {
+  return rows.reduce((sum, row) => {
+    const status = row.status.trim().toLowerCase();
+    if (!["omitted_injury", "injured", "out", "suspended"].includes(status)) return sum;
+    if (row.severity.trim().toLowerCase() === "major") return sum + 7;
+    if (row.severity.trim().toLowerCase() === "moderate") return sum + 4;
+    return sum + 2;
+  }, 0);
 }
 
 function leagueScore(league) {
@@ -158,6 +168,12 @@ const baseTeams = vm.runInNewContext(`(${extractConst("baseTeams")})`, {});
 const teamFactors = vm.runInNewContext(`(${extractConst("teamFactors")})`, {});
 const announcementRows = parseCsv(await readFile(new URL("../data/squad_announcement_status.csv", import.meta.url), "utf8"));
 const announcementByTeam = new Map(announcementRows.map((row) => [row.team, row]));
+const availabilityRows = parseCsv(await readFile(new URL("../data/player_availability_watchlist.csv", import.meta.url), "utf8"));
+const availabilityByTeam = new Map();
+for (const row of availabilityRows) {
+  if (!availabilityByTeam.has(row.team)) availabilityByTeam.set(row.team, []);
+  availabilityByTeam.get(row.team).push(row);
+}
 
 let squadRows;
 try {
@@ -188,6 +204,9 @@ const headers = [
 const outputRows = baseTeams.map((team) => {
   const factors = teamFactors[team.en];
   const announcement = announcementByTeam.get(team.en) || {};
+  const availability = availabilityByTeam.get(team.en) || [];
+  const externalPenalty = externalAvailabilityPenalty(availability);
+  const availabilityKnown = availability.length;
   const players = squadRows.filter((row) => row.team === team.en);
   if (!players.length) {
     return {
@@ -200,10 +219,12 @@ const outputRows = baseTeams.map((team) => {
       announcement_date: announcement.announced_date || factors.squadAnnouncementDate || "",
       squad_value_m: factors.squadValue,
       avg_age: factors.avgAge,
-      injury_risk: factors.injuryRisk,
+      injury_risk: Math.max(15, Math.min(50, rounded(factors.injuryRisk + externalPenalty))),
       club_score: factors.clubScore,
       profile_status: "provisional_aggregate",
-      source_note: "No player-level rows yet; retained current aggregate placeholder.",
+      source_note: availabilityKnown
+        ? `No player-level rows yet; retained current aggregate placeholder; ${availabilityKnown} availability watch rows applied at team level.`
+        : "No player-level rows yet; retained current aggregate placeholder.",
       value_source: "team_level_proxy",
       replacement_key: "squads_2026.csv -> aggregate by team",
     };
@@ -216,9 +237,10 @@ const outputRows = baseTeams.map((team) => {
   const allOfficial = players.every((row) => row.list_status.trim().toLowerCase() === "official_final");
   const allAssociationFinal = players.every((row) => ["official_final", "association_final"].includes(row.list_status.trim().toLowerCase()));
   const anyProjected = players.some((row) => row.list_status.trim().toLowerCase() === "projected");
-  const injuryRisk = rounded(16 + weightedAverage(players, (row) => injuryPenalty(row.injury_status || "")));
+  const injuryRisk = rounded(16 + weightedAverage(players, (row) => injuryPenalty(row.injury_status || "")) + externalPenalty);
   const clubScore = rounded(weightedAverage(players, (row) => leagueScore(row.league || "")));
   const statusText = allOfficial ? "官方最终名单" : allAssociationFinal ? "已公布名单" : "球员级名单";
+  const knownAvailabilityRows = players.filter((row) => (row.injury_status || "").trim().toLowerCase() !== "unknown").length;
 
   return {
     team: team.en,
@@ -233,7 +255,7 @@ const outputRows = baseTeams.map((team) => {
     injury_risk: Math.max(15, Math.min(50, injuryRisk)),
     club_score: Math.max(30, Math.min(95, clubScore)),
     profile_status: allOfficial ? "official_final_player_level" : allAssociationFinal ? "association_final_player_level" : anyProjected ? "projected_player_level" : "provisional_player_level",
-    source_note: `${players.length} player rows aggregated; ${goalkeeperCount} goalkeepers; source URLs ${players.filter((row) => row.source_url).length}/${players.length}; value rows ${values.length}/${players.length}.`,
+    source_note: `${players.length} player rows aggregated; ${goalkeeperCount} goalkeepers; source URLs ${players.filter((row) => row.source_url).length}/${players.length}; value rows ${values.length}/${players.length}; availability rows ${knownAvailabilityRows}/${players.length}.`,
     value_source: players.every((row) => row.value_source === "team_value_allocated_proxy") ? "team_value_allocated_proxy" : "mixed_or_manual",
     replacement_key: "squads_2026.csv -> aggregate by team",
   };

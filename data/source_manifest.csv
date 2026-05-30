@@ -9,7 +9,7 @@ form,近两年战绩,snapshot,可替换快照,0.62,International-football.net la
 wcPath,历史路径难度,research,研究快照,0.72,Football365 records + champion path summary
 squadValue,阵容身价,proxy,代理估计,0.36,市场身价代理
 avgAge,平均年龄,proxy,代理估计,0.36,暂定名单结构代理
-injuryRisk,伤病风险,proxy,代理估计,0.36,赛前健康代理
+injuryRisk,伤病风险,snapshot,可替换快照,0.62,球员可用性 watchlist + 赛前健康代理
 clubScore,俱乐部分布,proxy,代理估计,0.36,顶级联赛集中度代理
 atmosphere,球队氛围,manual,人工量化,0.26,team_context_snapshot.csv 2026-05-30
 travelKm,小组赛场馆移动,snapshot,可替换快照,0.62,FIFA schedule + venue coordinates

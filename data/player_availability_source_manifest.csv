@@ -1,0 +1,6 @@
+source,source_url,checked_date,use_case,trust_tier,notes
+FIFA squad rules,https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/articles/squad-lists-number-date,2026-05-30,Final squad deadline and injury replacement rule,official,Final lists are announced by FIFA on 2026-06-02; serious injury or illness replacements remain possible until 24 hours before a team's first match.
+FIFA squad announcement hub,https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/articles/all-world-cup-squad-announcements,2026-05-30,Primary squad and availability notes,official,Use as first-choice source for squad announcement notes and injury return/omission context.
+FIFA Japan squad announcement,https://www.fifa.com/en/news/articles/japan-squad-announcement?searchOverlay=1,2026-05-30,Japan injury omission,official,Used for Kaoru Mitoma omitted-injury context.
+FIFA USA squad announcement,https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/articles/usa-squad-announcement-mauricio-pochettino,2026-05-30,USA squad availability,official,Used for USA injury-return watch rows.
+FourFourTwo Netherlands squad tracker,https://www.fourfourtwo.com/team/netherlands-world-cup-2026-squad,2026-05-30,Netherlands squad injury context,media,Used only where official availability detail is not yet present in local data.

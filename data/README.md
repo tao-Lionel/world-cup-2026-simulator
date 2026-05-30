@@ -27,6 +27,9 @@
 - `squads_2026.csv`：从公开 squad tracker 导入的球员级名单行，当前覆盖 31 队、806 名球员；`market_value_m` 当前为球队总身价分配代理值。
 - `squad_value_allocation.csv`：球员级身价代理分配审计表，记录每队目标总值和分配后总值。
 - `squad_collection_status.csv`：每队球员名单解析状态，记录 wikitext 球员数、导入数和跳过原因。
+- `player_availability_watchlist.csv`：球员伤病、停赛、伤愈入选和伤病缺席 watchlist。
+- `player_availability_audit.csv`：watchlist 映射到当前球员级名单的匹配审计结果。
+- `player_availability_source_manifest.csv`：球员可用性来源入口、可信等级和用途。
 - `squads_2026_template.csv`：48 队 x 26 个球员槽位的名单录入模板。
 - `squads_2026_sample.csv`：聚合脚本的最小样例，不参与正式模型。
 - `squad_source_manifest.csv`：名单维度的优先来源入口和规则说明。
@@ -116,6 +119,7 @@ node scripts/export-data-snapshots.mjs
 ```bash
 node scripts/fetch-wikipedia-squads.mjs
 node scripts/enrich-squad-player-proxies.mjs
+node scripts/apply-player-availability.mjs
 node scripts/aggregate-squads.mjs
 node scripts/apply-squad-profiles.mjs
 node scripts/apply-squad-announcement-status.mjs
@@ -128,6 +132,16 @@ node scripts/export-data-snapshots.mjs
 
 ```bash
 node scripts/create-squad-template.mjs
+node scripts/apply-player-availability.mjs
+node scripts/aggregate-squads.mjs
+node scripts/apply-squad-profiles.mjs
+node scripts/export-data-snapshots.mjs
+```
+
+球员可用性 watchlist 可单独刷新并审计：
+
+```bash
+node scripts/apply-player-availability.mjs
 node scripts/aggregate-squads.mjs
 node scripts/apply-squad-profiles.mjs
 node scripts/export-data-snapshots.mjs
@@ -149,8 +163,8 @@ node scripts/export-data-snapshots.mjs
 
 后续要提升真实性时，建议按这个顺序补源：
 
-1. 用真实 market value 替换 `team_value_allocated_proxy`，并补伤病状态和预计角色，生成更真实的 `squadValue`、`injuryRisk`、`clubScore`。
-2. 用赛前伤病/停赛列表重算 `injuryRisk`。
+1. 用真实 market value 替换 `team_value_allocated_proxy`，生成更真实的 `squadValue` 和核心球员权重。
+2. 持续扩充 `player_availability_watchlist.csv`，用赛前伤病/停赛列表重算 `injuryRisk`。
 3. 用教练任期、队长/核心连续性、公开纪律事件和新闻/社媒情绪替换 `team_context_snapshot.csv` 的手工上下文项。
 4. 在 `travelKm`、`restDays`、`timezoneShift`、`entryTravelKm`、`entryTimezoneShift`、`borderCrossings`、`altitudeLoad`、`climateLoad` 基础上继续加入真实训练基地和淘汰赛路径模拟。
 5. 把 `champion_paths_summary.csv` 继续展开成逐场路径表，用对手强度、加时/点球、东道主和淘汰赛轮次重算更细的 `wcPath`。

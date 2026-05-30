@@ -1,0 +1,5 @@
+team,player,status,severity,matched,previous_status,applied_status,source_url,checked_date,notes
+Japan,Kaoru Mitoma,omitted_injury,major,false,,,https://www.fifa.com/en/news/articles/japan-squad-announcement?searchOverlay=1,2026-05-30,Injured headline omission from Japan squad announcement.
+USA,Sergiño Dest,available,low,true,unknown,available,https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/articles/usa-squad-announcement-mauricio-pochettino,2026-05-30,Named after injury return; keep under watch.
+USA,Tyler Adams,available,low,true,unknown,available,https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/articles/usa-squad-announcement-mauricio-pochettino,2026-05-30,Named after injury return; keep under watch.
+Netherlands,Jurriën Timber,available,low,true,unknown,available,https://www.fourfourtwo.com/team/netherlands-world-cup-2026-squad,2026-05-30,Reported as having overcome injury and named in squad.
