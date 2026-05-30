@@ -35,6 +35,16 @@ python3 -m http.server 8000
 
 然后访问 `http://localhost:8000`。
 
+## 本地校验
+
+项目不需要安装第三方依赖。修改代码或数据后，建议运行：
+
+```bash
+npm test
+```
+
+它会依次执行脚本语法检查、数据完整性检查和模拟器核心链路验证。GitHub Actions 也会在 push / pull request 时运行同一套校验。
+
 ## 注意
 
 当前版本是探索型概率工具。淘汰赛路径已接入 FIFA 固定 match-number bracket；第三名席位已展开为 495 种组合映射表。该表由 FIFA 公布的 32 强候选占位符生成，用于保证模拟器稳定可复现；若后续 FIFA 发布逐组合官方表，应以官方表替换。
