@@ -32,7 +32,7 @@
 |---|---|---|
 | 26 人名单公告 | 已接入 `squad_announcement_status.csv`；截至 2026-05-30，本地标记 31 队可导入 26 人名单，但 `fifa_final_26_available` 仍为 false | FIFA 公告页、各协会公告和 squad tracker |
 | 球员级 26 人名单 | 已生成 `squads_2026.csv`，覆盖 31 队、806 名球员；其余球队等待确认 26 人名单 | Wikipedia squad tracker wikitext + 各协会来源链接 |
-| 阵容身价 | 已进入 `squad_profile_snapshot.csv`，单位为百万欧元；球员级抓取源暂不含可靠 market value，因此仍保留球队级代理值 | Transfermarkt 或同类来源导出后替换 |
+| 阵容身价 | 已进入 `squad_profile_snapshot.csv`，单位为百万欧元；31 队已把球队总身价按角色、年龄、联赛和国家队资历分配到球员层 | Transfermarkt 或同类来源导出后替换 |
 | 平均年龄 | 已进入 `squad_profile_snapshot.csv`；31 队由球员出生日期计算，其余用预计名单结构代理 | 最终名单逐球员计算 |
 | 伤病风险 | 已进入 `squad_profile_snapshot.csv`，0-100 分，越低越好；当前球员行 injury_status 默认为 unknown | 赛前伤病列表、出场状态、新闻源 |
 | 俱乐部分布 | 已进入 `squad_profile_snapshot.csv`；31 队由球员俱乐部国家/联赛代理聚合，其余保留球队级代理值 | 球员俱乐部字段聚合 |
@@ -66,7 +66,7 @@
 
 ## 下一步数据替换顺序
 
-1. 给 `squads_2026.csv` 补球员 market value、伤病状态和预计角色，替换当前球队级代理值。
+1. 用真实球员 market value 覆盖当前 `team_value_allocated_proxy`，并补伤病状态和预计角色。
 2. 等剩余球队确认 26 人名单后重跑 `fetch-wikipedia-squads.mjs`，把覆盖率从 31 队推到 48 队。
 3. 把 `champion_paths_summary.csv` 继续展开成逐场路径表，加入对手强度、加时/点球和淘汰赛压力，进一步重算 `wcPath`。
 4. 在 `schedule_travel.csv` 基础上加入真实训练基地、抵达时间、开球时间和淘汰赛路径模拟。
@@ -98,6 +98,7 @@
 | `data/squad_profile_snapshot.csv` | 48 队暂定阵容画像，后续可由官方/暂定 26 人名单聚合替换 |
 | `data/squad_announcement_status.csv` | 48 队名单公告状态，区分已公布 26 人名单与初选/训练营/待公布状态 |
 | `data/squads_2026.csv` | 已导入的球员级名单行，当前覆盖 31 队、806 名球员 |
+| `data/squad_value_allocation.csv` | 球队总身价分配到球员层的审计表，确保球员行加总回到球队总值 |
 | `data/squad_collection_status.csv` | 每队 wikitext 解析状态、球员行数和是否导入 |
 | `data/squads_2026_template.csv` | 48 队 x 26 人的球员级名单录入模板 |
 | `data/squads_2026_sample.csv` | 聚合脚本样例数据，不参与正式模型 |
@@ -111,6 +112,8 @@
 淘汰赛动态路径疲劳当前在浏览器运行时按模拟路径逐场计算，不单独写回每支球队的静态字段。它使用 `team_path_context.csv`、`venues.csv` 和 `knockout_schedule.csv` 估算 travel/rest/timezone/climate 的单场影响；真实训练基地和开球时间尚未接入。
 
 `squad_profile_snapshot.csv` 是为了让阵容维度有可审计入口；`squads_2026.csv` 已把可确认 26 人名单的球队先接入球员级模型，但它不等于 FIFA 统一发布的最终名单。FIFA 名单规则页显示，2026 世界杯每队最终名单为 23-26 人，最终名单在各队提交后由 FIFA 于 2026-06-02 公布；因此 2026-05-30 前即使 `announced_26_available=true`，`fifa_final_26_available` 仍保持 false。
+
+`squads_2026.csv` 中的 `market_value_m` 当前若标记 `value_source=team_value_allocated_proxy`，表示它不是外部真实球员身价，而是把球队级 `squadValue` 按球员角色、年龄、联赛和国家队资历分摊到球员行。这样模型可以先用球员颗粒度运行，但仍需要后续用真实 market value 替换。
 
 `odds_snapshot.csv` 是市场预期快照，不是概率预测本身。脚本先把四家分数赔率转成隐含概率，取平均隐含概率，再换算成模型使用的美式赔率；该字段会随市场波动，需要定期刷新。
 

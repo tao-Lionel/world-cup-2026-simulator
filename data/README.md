@@ -24,7 +24,8 @@
 - `team_path_context.csv`：每队小组赛末战日期、场馆和时区，用作淘汰赛动态路径疲劳的初始状态。
 - `squad_profile_snapshot.csv`：48 队暂定阵容画像，承接身价、年龄、伤病风险、俱乐部分布和名单状态；当前仍是代理聚合值。
 - `squad_announcement_status.csv`：48 队名单公告状态，区分已公布 26 人名单、初选名单、训练营名单和待公布；FIFA 最终名单仍单独标记。
-- `squads_2026.csv`：从公开 squad tracker 导入的球员级名单行，当前覆盖 31 队、806 名球员。
+- `squads_2026.csv`：从公开 squad tracker 导入的球员级名单行，当前覆盖 31 队、806 名球员；`market_value_m` 当前为球队总身价分配代理值。
+- `squad_value_allocation.csv`：球员级身价代理分配审计表，记录每队目标总值和分配后总值。
 - `squad_collection_status.csv`：每队球员名单解析状态，记录 wikitext 球员数、导入数和跳过原因。
 - `squads_2026_template.csv`：48 队 x 26 个球员槽位的名单录入模板。
 - `squads_2026_sample.csv`：聚合脚本的最小样例，不参与正式模型。
@@ -114,6 +115,7 @@ node scripts/export-data-snapshots.mjs
 
 ```bash
 node scripts/fetch-wikipedia-squads.mjs
+node scripts/enrich-squad-player-proxies.mjs
 node scripts/aggregate-squads.mjs
 node scripts/apply-squad-profiles.mjs
 node scripts/apply-squad-announcement-status.mjs
@@ -147,7 +149,7 @@ node scripts/export-data-snapshots.mjs
 
 后续要提升真实性时，建议按这个顺序补源：
 
-1. 给 `squads_2026.csv` 补 market value、伤病状态和预计角色，生成更真实的 `squadValue`、`injuryRisk`、`clubScore`。
+1. 用真实 market value 替换 `team_value_allocated_proxy`，并补伤病状态和预计角色，生成更真实的 `squadValue`、`injuryRisk`、`clubScore`。
 2. 用赛前伤病/停赛列表重算 `injuryRisk`。
 3. 用教练任期、队长/核心连续性、公开纪律事件和新闻/社媒情绪替换 `team_context_snapshot.csv` 的手工上下文项。
 4. 在 `travelKm`、`restDays`、`timezoneShift`、`entryTravelKm`、`entryTimezoneShift`、`borderCrossings`、`altitudeLoad`、`climateLoad` 基础上继续加入真实训练基地和淘汰赛路径模拟。

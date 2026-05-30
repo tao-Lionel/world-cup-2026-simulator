@@ -70,6 +70,7 @@ const profileHeaders = [
   "club_score",
   "profile_status",
   "source_note",
+  "value_source",
   "replacement_key",
 ];
 

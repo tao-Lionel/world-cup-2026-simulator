@@ -181,6 +181,7 @@ const headers = [
   "club_score",
   "profile_status",
   "source_note",
+  "value_source",
   "replacement_key",
 ];
 
@@ -203,6 +204,7 @@ const outputRows = baseTeams.map((team) => {
       club_score: factors.clubScore,
       profile_status: "provisional_aggregate",
       source_note: "No player-level rows yet; retained current aggregate placeholder.",
+      value_source: "team_level_proxy",
       replacement_key: "squads_2026.csv -> aggregate by team",
     };
   }
@@ -231,7 +233,8 @@ const outputRows = baseTeams.map((team) => {
     injury_risk: Math.max(15, Math.min(50, injuryRisk)),
     club_score: Math.max(30, Math.min(95, clubScore)),
     profile_status: allOfficial ? "official_final_player_level" : allAssociationFinal ? "association_final_player_level" : anyProjected ? "projected_player_level" : "provisional_player_level",
-    source_note: `${players.length} player rows aggregated; ${goalkeeperCount} goalkeepers; source URLs ${players.filter((row) => row.source_url).length}/${players.length}.`,
+    source_note: `${players.length} player rows aggregated; ${goalkeeperCount} goalkeepers; source URLs ${players.filter((row) => row.source_url).length}/${players.length}; value rows ${values.length}/${players.length}.`,
+    value_source: players.every((row) => row.value_source === "team_value_allocated_proxy") ? "team_value_allocated_proxy" : "mixed_or_manual",
     replacement_key: "squads_2026.csv -> aggregate by team",
   };
 });
