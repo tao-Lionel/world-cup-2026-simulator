@@ -12,7 +12,7 @@
 | Elo/强度 | 已抓取 48 队 2026-03-31 Elo Score 快照并写入模型 | International-football.net，页面注明来源为 eloratings.net：<https://www.international-football.net/elo-ratings-table> |
 | 近两年战绩 | 已抓取每队最近 10 场国家队比赛，按胜平负、净胜球和时间衰减生成 form | International-football.net 国家队页面 last international games |
 | 历届世界杯路径难度 | 已由 48 队历史出场、总战绩、最佳成绩、2022 成绩、近期参赛和冠军/决赛经验重算 | Football365 48 队世界杯记录 + `deep-research-report.md` 冠军路径整理 |
-| 淘汰赛路径 | 已接入 73-104 号固定淘汰赛赛程树，替代原先 32 强重排种子近似 | FIFA World Cup 2026 knockout bracket：<https://www.fifa.com/en/articles/knockout-stage-match-schedule-bracket> |
+| 淘汰赛路径 | 已接入 73-104 号固定淘汰赛赛程树，并生成 495 种第三名出线组合固定映射表，替代运行时临时分配 | FIFA World Cup 2026 knockout bracket：<https://www.fifa.com/en/articles/knockout-stage-match-schedule-bracket>、`data/third_place_assignment_map.csv` |
 | 阵容画像 | 已拆出 48 队阵容画像，31 队已接入球员级名单行，其余保留代理聚合 | `data/squad_profile_snapshot.csv`、`data/squads_2026.csv`、`data/squad_announcement_status.csv`、`data/squads_2026_template.csv`、FIFA squad announcement hub、Wikipedia squad tracker |
 | 球员可用性 | 已新增可审计 watchlist，并把已核验的伤病缺席/伤愈入选状态映射到球员行和球队伤病风险 | `data/player_availability_watchlist.csv`、`data/player_availability_audit.csv`、FIFA squad announcement hub、各队公告、媒体补充 |
 
@@ -92,6 +92,8 @@
 | `data/wc_path_features.csv` | 由历史记录生成的 `wcPath` 特征分 |
 | `data/group_stage_schedule.csv` | 72 场小组赛日期、对阵、场馆，来自 FIFA 赛程页 |
 | `data/knockout_schedule.csv` | 73-104 号淘汰赛固定赛程树，含轮次、日期、场馆和晋级路径 |
+| `data/third_place_assignment_map.csv` | 495 种第三名出线组合到 8 个 32 强第三名占位符的固定映射 |
+| `data/third_place_assignment_map.js` | 浏览器运行时使用的第三名映射表 |
 | `data/venues.csv` | 16 个赛场坐标、时区、海拔和环境负担估计 |
 | `data/team_travel_origins.csv` | 48 队代表性出发地、坐标和 6 月 UTC offset |
 | `data/schedule_travel.csv` | 由赛程、场馆和出发地数据计算出的每队入境距离、入境时区差、组赛移动距离、休息、时区、跨境、海拔和环境负担 |
@@ -111,7 +113,7 @@
 
 `schedule_travel.csv` 中的 `entry_travel_km` / `entry_timezone_shift_hours` 使用代表性出发地到首场小组赛场馆估计，不等于球队最终训练基地、包机路线或抵达时间。`group_stage_travel_km` 只计算小组赛三场比赛的场馆间移动距离，不包含训练基地往返和淘汰赛路径。`avg_environment_load` 是场馆环境估计，不等于实时天气预报；真实比赛日还需要加入开球时间、温湿度、屋顶状态和球队适应期。
 
-`knockout_schedule.csv` 已把固定淘汰赛树接入模拟器，但第三名对位仍采用候选组匹配算法，不是 FIFA 对 495 种第三名晋级组合逐项列出的完整映射表；这是下一步需要继续补齐的路径精度项。
+`third_place_assignment_map.csv` 已把 495 种第三名出线组合展开成固定映射，浏览器运行时会优先查表，不再根据各第三名之间的积分/净胜球临时决定占位。当前映射由 FIFA 公布的 32 强候选占位符生成；若 FIFA 后续发布逐组合官方表，应以官方表替换这份生成表。
 
 淘汰赛动态路径疲劳当前在浏览器运行时按模拟路径逐场计算，不单独写回每支球队的静态字段。它使用 `team_path_context.csv`、`venues.csv` 和 `knockout_schedule.csv` 估算 travel/rest/timezone/climate 的单场影响；真实训练基地和开球时间尚未接入。
 

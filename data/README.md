@@ -18,6 +18,8 @@
 - `wc_path_features.csv`：由历史记录重算出的路径经验/历史难度特征分。
 - `group_stage_schedule.csv`：72 场 2026 小组赛日期、对阵和场馆。
 - `knockout_schedule.csv`：73-104 号淘汰赛固定赛程树，含轮次、日期、场馆和晋级路径。
+- `third_place_assignment_map.csv`：495 种第三名出线组合到 8 个 32 强第三名占位符的固定映射。
+- `third_place_assignment_map.js`：浏览器运行时使用的第三名映射表，由 `third_place_assignment_map.csv` 同源生成。
 - `venues.csv`：16 个承办场馆坐标、6 月时区、海拔和场馆环境负担估计。
 - `team_travel_origins.csv`：48 队代表性出发地、坐标和 6 月 UTC offset，用于估计入境旅行距离与时区差。
 - `schedule_travel.csv`：按小组赛场馆序列计算出的每队入境距离、入境时区差、组赛移动距离、休息、时区跨度、跨境、海拔和环境负担。
@@ -47,6 +49,12 @@ node scripts/export-data-snapshots.mjs
 
 ```bash
 node scripts/validate-simulator.mjs
+```
+
+第三名出线组合映射表由下面命令生成：
+
+```bash
+node scripts/build-third-place-map.mjs
 ```
 
 FIFA 排名/积分快照由下面三个命令导出、回写并刷新审计快照：

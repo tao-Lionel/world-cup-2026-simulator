@@ -482,6 +482,18 @@ function thirdPlaceAssignments(bestThirds, settings) {
     .flatMap((match) => match.slots)
     .filter((slot) => slot.startsWith("3"));
   const assignments = new Map();
+  const comboKey = [...thirdRows.keys()].sort().join("");
+  const table = typeof THIRD_PLACE_ASSIGNMENT_TABLE !== "undefined" ? THIRD_PLACE_ASSIGNMENT_TABLE : null;
+  const mapped = table?.[comboKey];
+
+  if (mapped) {
+    for (const slot of placeholders) {
+      const group = mapped[slot];
+      if (thirdRows.has(group)) assignments.set(slot, thirdRows.get(group));
+    }
+    if (assignments.size === placeholders.length) return assignments;
+    assignments.clear();
+  }
 
   function fill(index, usedGroups) {
     if (index === placeholders.length) return true;
