@@ -195,6 +195,76 @@ const KNOCKOUT_MATCHES = [
   { match: 104, round: "决赛", date: "2026-07-19", venue: "New York New Jersey Stadium", slots: ["W101", "W102"] },
 ];
 
+const VENUE_CONTEXT = {
+  "Mexico City Stadium": { lat: 19.3029, lon: -99.1505, tz: -6, climate: 78, altitude: 2240 },
+  "Estadio Guadalajara": { lat: 20.6819, lon: -103.4622, tz: -6, climate: 58, altitude: 1566 },
+  "Estadio Monterrey": { lat: 25.6683, lon: -100.2447, tz: -6, climate: 66, altitude: 540 },
+  "Toronto Stadium": { lat: 43.6332, lon: -79.4186, tz: -4, climate: 28, altitude: 76 },
+  "BC Place Vancouver": { lat: 49.2768, lon: -123.1119, tz: -7, climate: 24, altitude: 13 },
+  "Los Angeles Stadium": { lat: 33.9535, lon: -118.3392, tz: -7, climate: 34, altitude: 38 },
+  "San Francisco Bay Area Stadium": { lat: 37.403, lon: -121.97, tz: -7, climate: 28, altitude: 12 },
+  "Seattle Stadium": { lat: 47.5952, lon: -122.3316, tz: -7, climate: 22, altitude: 8 },
+  "New York New Jersey Stadium": { lat: 40.8135, lon: -74.0745, tz: -4, climate: 36, altitude: 3 },
+  "Boston Stadium": { lat: 42.0909, lon: -71.2643, tz: -4, climate: 32, altitude: 88 },
+  "Philadelphia Stadium": { lat: 39.9008, lon: -75.1675, tz: -4, climate: 38, altitude: 12 },
+  "Atlanta Stadium": { lat: 33.7554, lon: -84.4008, tz: -4, climate: 44, altitude: 320 },
+  "Miami Stadium": { lat: 25.958, lon: -80.2389, tz: -4, climate: 72, altitude: 2 },
+  "Kansas City Stadium": { lat: 39.0489, lon: -94.4839, tz: -5, climate: 48, altitude: 264 },
+  "Houston Stadium": { lat: 29.6847, lon: -95.4107, tz: -5, climate: 58, altitude: 13 },
+  "Dallas Stadium": { lat: 32.7473, lon: -97.0945, tz: -5, climate: 54, altitude: 184 },
+};
+
+const TEAM_PATH_CONTEXT = {
+  Algeria: { lastVenue: "Kansas City Stadium", lastDate: "2026-06-27", lastTimezone: -5 },
+  Argentina: { lastVenue: "Dallas Stadium", lastDate: "2026-06-27", lastTimezone: -5 },
+  Australia: { lastVenue: "San Francisco Bay Area Stadium", lastDate: "2026-06-25", lastTimezone: -7 },
+  Austria: { lastVenue: "Kansas City Stadium", lastDate: "2026-06-27", lastTimezone: -5 },
+  Belgium: { lastVenue: "BC Place Vancouver", lastDate: "2026-06-26", lastTimezone: -7 },
+  "Bosnia and Herzegovina": { lastVenue: "Seattle Stadium", lastDate: "2026-06-24", lastTimezone: -7 },
+  Brazil: { lastVenue: "Miami Stadium", lastDate: "2026-06-24", lastTimezone: -4 },
+  "Cabo Verde": { lastVenue: "Houston Stadium", lastDate: "2026-06-26", lastTimezone: -5 },
+  Canada: { lastVenue: "BC Place Vancouver", lastDate: "2026-06-24", lastTimezone: -7 },
+  Colombia: { lastVenue: "Miami Stadium", lastDate: "2026-06-27", lastTimezone: -4 },
+  "Congo DR": { lastVenue: "Atlanta Stadium", lastDate: "2026-06-27", lastTimezone: -4 },
+  "Cote d'Ivoire": { lastVenue: "Philadelphia Stadium", lastDate: "2026-06-25", lastTimezone: -4 },
+  Croatia: { lastVenue: "Philadelphia Stadium", lastDate: "2026-06-27", lastTimezone: -4 },
+  Curacao: { lastVenue: "Philadelphia Stadium", lastDate: "2026-06-25", lastTimezone: -4 },
+  Czechia: { lastVenue: "Mexico City Stadium", lastDate: "2026-06-24", lastTimezone: -6 },
+  Ecuador: { lastVenue: "New York New Jersey Stadium", lastDate: "2026-06-25", lastTimezone: -4 },
+  Egypt: { lastVenue: "Seattle Stadium", lastDate: "2026-06-26", lastTimezone: -7 },
+  England: { lastVenue: "New York New Jersey Stadium", lastDate: "2026-06-27", lastTimezone: -4 },
+  France: { lastVenue: "Boston Stadium", lastDate: "2026-06-26", lastTimezone: -4 },
+  Germany: { lastVenue: "New York New Jersey Stadium", lastDate: "2026-06-25", lastTimezone: -4 },
+  Ghana: { lastVenue: "Philadelphia Stadium", lastDate: "2026-06-27", lastTimezone: -4 },
+  Haiti: { lastVenue: "Atlanta Stadium", lastDate: "2026-06-24", lastTimezone: -4 },
+  "IR Iran": { lastVenue: "Seattle Stadium", lastDate: "2026-06-26", lastTimezone: -7 },
+  Iraq: { lastVenue: "Toronto Stadium", lastDate: "2026-06-26", lastTimezone: -4 },
+  Japan: { lastVenue: "Dallas Stadium", lastDate: "2026-06-25", lastTimezone: -5 },
+  Jordan: { lastVenue: "Dallas Stadium", lastDate: "2026-06-27", lastTimezone: -5 },
+  "Korea Republic": { lastVenue: "Estadio Monterrey", lastDate: "2026-06-24", lastTimezone: -6 },
+  Mexico: { lastVenue: "Mexico City Stadium", lastDate: "2026-06-24", lastTimezone: -6 },
+  Morocco: { lastVenue: "Atlanta Stadium", lastDate: "2026-06-24", lastTimezone: -4 },
+  Netherlands: { lastVenue: "Kansas City Stadium", lastDate: "2026-06-25", lastTimezone: -5 },
+  "New Zealand": { lastVenue: "BC Place Vancouver", lastDate: "2026-06-26", lastTimezone: -7 },
+  Norway: { lastVenue: "Boston Stadium", lastDate: "2026-06-26", lastTimezone: -4 },
+  Panama: { lastVenue: "New York New Jersey Stadium", lastDate: "2026-06-27", lastTimezone: -4 },
+  Paraguay: { lastVenue: "San Francisco Bay Area Stadium", lastDate: "2026-06-25", lastTimezone: -7 },
+  Portugal: { lastVenue: "Miami Stadium", lastDate: "2026-06-27", lastTimezone: -4 },
+  Qatar: { lastVenue: "Seattle Stadium", lastDate: "2026-06-24", lastTimezone: -7 },
+  "Saudi Arabia": { lastVenue: "Houston Stadium", lastDate: "2026-06-26", lastTimezone: -5 },
+  Scotland: { lastVenue: "Miami Stadium", lastDate: "2026-06-24", lastTimezone: -4 },
+  Senegal: { lastVenue: "Toronto Stadium", lastDate: "2026-06-26", lastTimezone: -4 },
+  "South Africa": { lastVenue: "Estadio Monterrey", lastDate: "2026-06-24", lastTimezone: -6 },
+  Spain: { lastVenue: "Estadio Guadalajara", lastDate: "2026-06-26", lastTimezone: -6 },
+  Sweden: { lastVenue: "Dallas Stadium", lastDate: "2026-06-25", lastTimezone: -5 },
+  Switzerland: { lastVenue: "BC Place Vancouver", lastDate: "2026-06-24", lastTimezone: -7 },
+  Tunisia: { lastVenue: "Kansas City Stadium", lastDate: "2026-06-25", lastTimezone: -5 },
+  "Türkiye": { lastVenue: "Los Angeles Stadium", lastDate: "2026-06-25", lastTimezone: -7 },
+  Uruguay: { lastVenue: "Estadio Guadalajara", lastDate: "2026-06-26", lastTimezone: -6 },
+  USA: { lastVenue: "Los Angeles Stadium", lastDate: "2026-06-25", lastTimezone: -7 },
+  Uzbekistan: { lastVenue: "Atlanta Stadium", lastDate: "2026-06-27", lastTimezone: -4 },
+};
+
 function normalize(value, min, max) {
   return clamp((value - min) / (max - min), 0, 1);
 }
@@ -327,9 +397,50 @@ function effectiveRating(team, settings) {
   return getTeamRating(team) + (team.host ? settings.hostBoost : 0);
 }
 
-function simulateMatch(a, b, settings, knockout = false) {
-  const aRating = effectiveRating(a, settings);
-  const bRating = effectiveRating(b, settings);
+function distanceKm(a, b) {
+  if (!a || !b) return 0;
+  const toRad = (degrees) => degrees * Math.PI / 180;
+  const earthKm = 6371;
+  const dLat = toRad(b.lat - a.lat);
+  const dLon = toRad(b.lon - a.lon);
+  const lat1 = toRad(a.lat);
+  const lat2 = toRad(b.lat);
+  const value = Math.sin(dLat / 2) ** 2 + Math.cos(lat1) * Math.cos(lat2) * Math.sin(dLon / 2) ** 2;
+  return earthKm * 2 * Math.atan2(Math.sqrt(value), Math.sqrt(1 - value));
+}
+
+function dateDiffDays(from, to) {
+  if (!from || !to) return 5;
+  return Math.round((new Date(`${to}T12:00:00Z`) - new Date(`${from}T12:00:00Z`)) / 86400000);
+}
+
+function pathLoad(team, matchContext, pathState) {
+  if (!matchContext || !pathState) return { adjustment: 0, travelKm: 0, restDays: 5, timezoneShift: 0, climateShift: 0 };
+  const previous = pathState.get(team.id) || TEAM_PATH_CONTEXT[team.en];
+  const currentVenue = VENUE_CONTEXT[matchContext.venue];
+  const previousVenue = VENUE_CONTEXT[previous?.lastVenue];
+  const travel = distanceKm(previousVenue, currentVenue);
+  const rest = dateDiffDays(previous?.lastDate, matchContext.date);
+  const timezone = Math.abs((previous?.lastTimezone ?? currentVenue?.tz ?? 0) - (currentVenue?.tz ?? 0));
+  const climate = Math.max(0, (currentVenue?.climate ?? 45) - (previousVenue?.climate ?? 45));
+  const travelPenalty = normalize(travel, 0, 4200) * 26;
+  const shortRestPenalty = Math.max(0, 4 - rest) * 16;
+  const timezonePenalty = timezone * 5;
+  const climatePenalty = normalize(climate, 0, 50) * 12;
+  return {
+    adjustment: -(travelPenalty + shortRestPenalty + timezonePenalty + climatePenalty),
+    travelKm: Math.round(travel),
+    restDays: rest,
+    timezoneShift: timezone,
+    climateShift: Math.round(climate),
+  };
+}
+
+function simulateMatch(a, b, settings, knockout = false, matchContext = null, pathState = null) {
+  const aPath = pathLoad(a, matchContext, pathState);
+  const bPath = pathLoad(b, matchContext, pathState);
+  const aRating = effectiveRating(a, settings) + aPath.adjustment;
+  const bRating = effectiveRating(b, settings) + bPath.adjustment;
   const diff = (aRating - bRating) / (settings.randomness * 420);
   const aLambda = clamp(1.22 + diff, 0.25, 3.3);
   const bLambda = clamp(1.22 - diff, 0.25, 3.3);
@@ -352,7 +463,7 @@ function simulateMatch(a, b, settings, knockout = false) {
     winner = Math.random() < chance ? a : b;
   }
 
-  return { a, b, aGoals, bGoals, winner, penalty };
+  return { a, b, aGoals, bGoals, winner, penalty, pathLoads: new Map([[a.id, aPath], [b.id, bPath]]) };
 }
 
 function groupRankMap(rows) {
@@ -493,11 +604,15 @@ function simulateTournament(settings, capturePath = false) {
   const rankMap = groupRankMap(allGroupRows);
   const thirdAssignments = thirdPlaceAssignments(bestThirds, settings);
   const winners = new Map();
+  const pathState = new Map(teams.map((team) => {
+    const state = TEAM_PATH_CONTEXT[team.en];
+    return [team.id, state ? { ...state } : null];
+  }));
 
   KNOCKOUT_MATCHES.forEach((match) => {
     const a = resolveBracketSlot(match.slots[0], rankMap, thirdAssignments, winners);
     const b = resolveBracketSlot(match.slots[1], rankMap, thirdAssignments, winners);
-    const result = simulateMatch(a, b, settings, true);
+    const result = simulateMatch(a, b, settings, true, match, pathState);
     result.match = match.match;
     result.venue = match.venue;
     result.date = match.date;
@@ -505,6 +620,11 @@ function simulateTournament(settings, capturePath = false) {
     if (result.penalty) penalties += 1;
     totalGoals += result.aGoals + result.bGoals;
     winners.set(match.match, result.winner);
+    pathState.set(result.winner.id, {
+      lastVenue: match.venue,
+      lastDate: match.date,
+      lastTimezone: VENUE_CONTEXT[match.venue]?.tz ?? 0,
+    });
     if (capturePath) {
       let round = rounds.find((item) => item.name === match.round);
       if (!round) {
@@ -752,6 +872,7 @@ function renderSamplePath() {
         <div class="match-chip ${round.name === "决赛" ? "winner-chip" : ""}">
           <div>M${match.match} · ${match.venue}</div>
           <div>${match.a.flag} ${match.a.name} ${match.aGoals} - ${match.bGoals} ${match.b.name} ${match.b.flag}</div>
+          <small>${match.a.name}: ${match.pathLoads.get(match.a.id).travelKm}km / ${match.pathLoads.get(match.a.id).restDays}天；${match.b.name}: ${match.pathLoads.get(match.b.id).travelKm}km / ${match.pathLoads.get(match.b.id).restDays}天</small>
           <strong>晋级：${match.winner.flag} ${match.winner.name}${match.penalty ? "（点球）" : ""}</strong>
         </div>
       `).join("")}

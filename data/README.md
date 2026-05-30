@@ -21,6 +21,7 @@
 - `venues.csv`：16 个承办场馆坐标、6 月时区、海拔和场馆环境负担估计。
 - `team_travel_origins.csv`：48 队代表性出发地、坐标和 6 月 UTC offset，用于估计入境旅行距离与时区差。
 - `schedule_travel.csv`：按小组赛场馆序列计算出的每队入境距离、入境时区差、组赛移动距离、休息、时区跨度、跨境、海拔和环境负担。
+- `team_path_context.csv`：每队小组赛末战日期、场馆和时区，用作淘汰赛动态路径疲劳的初始状态。
 - `squad_profile_snapshot.csv`：48 队暂定阵容画像，承接身价、年龄、伤病风险、俱乐部分布和名单状态；当前仍是代理聚合值。
 - `squad_announcement_status.csv`：48 队名单公告状态，区分已公布 26 人名单、初选名单、训练营名单和待公布；FIFA 最终名单仍单独标记。
 - `squads_2026.csv`：从公开 squad tracker 导入的球员级名单行，当前覆盖 31 队、806 名球员。

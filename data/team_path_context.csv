@@ -1,0 +1,49 @@
+team,last_group_date,last_group_venue,last_group_timezone,source_note
+Algeria,2026-06-27,Kansas City Stadium,-5,Derived from group_stage_schedule.csv and venues.csv; used as knockout path starting state.
+Argentina,2026-06-27,Dallas Stadium,-5,Derived from group_stage_schedule.csv and venues.csv; used as knockout path starting state.
+Australia,2026-06-25,San Francisco Bay Area Stadium,-7,Derived from group_stage_schedule.csv and venues.csv; used as knockout path starting state.
+Austria,2026-06-27,Kansas City Stadium,-5,Derived from group_stage_schedule.csv and venues.csv; used as knockout path starting state.
+Belgium,2026-06-26,BC Place Vancouver,-7,Derived from group_stage_schedule.csv and venues.csv; used as knockout path starting state.
+Bosnia and Herzegovina,2026-06-24,Seattle Stadium,-7,Derived from group_stage_schedule.csv and venues.csv; used as knockout path starting state.
+Brazil,2026-06-24,Miami Stadium,-4,Derived from group_stage_schedule.csv and venues.csv; used as knockout path starting state.
+Cabo Verde,2026-06-26,Houston Stadium,-5,Derived from group_stage_schedule.csv and venues.csv; used as knockout path starting state.
+Canada,2026-06-24,BC Place Vancouver,-7,Derived from group_stage_schedule.csv and venues.csv; used as knockout path starting state.
+Colombia,2026-06-27,Miami Stadium,-4,Derived from group_stage_schedule.csv and venues.csv; used as knockout path starting state.
+Congo DR,2026-06-27,Atlanta Stadium,-4,Derived from group_stage_schedule.csv and venues.csv; used as knockout path starting state.
+Cote d'Ivoire,2026-06-25,Philadelphia Stadium,-4,Derived from group_stage_schedule.csv and venues.csv; used as knockout path starting state.
+Croatia,2026-06-27,Philadelphia Stadium,-4,Derived from group_stage_schedule.csv and venues.csv; used as knockout path starting state.
+Curacao,2026-06-25,Philadelphia Stadium,-4,Derived from group_stage_schedule.csv and venues.csv; used as knockout path starting state.
+Czechia,2026-06-24,Mexico City Stadium,-6,Derived from group_stage_schedule.csv and venues.csv; used as knockout path starting state.
+Ecuador,2026-06-25,New York New Jersey Stadium,-4,Derived from group_stage_schedule.csv and venues.csv; used as knockout path starting state.
+Egypt,2026-06-26,Seattle Stadium,-7,Derived from group_stage_schedule.csv and venues.csv; used as knockout path starting state.
+England,2026-06-27,New York New Jersey Stadium,-4,Derived from group_stage_schedule.csv and venues.csv; used as knockout path starting state.
+France,2026-06-26,Boston Stadium,-4,Derived from group_stage_schedule.csv and venues.csv; used as knockout path starting state.
+Germany,2026-06-25,New York New Jersey Stadium,-4,Derived from group_stage_schedule.csv and venues.csv; used as knockout path starting state.
+Ghana,2026-06-27,Philadelphia Stadium,-4,Derived from group_stage_schedule.csv and venues.csv; used as knockout path starting state.
+Haiti,2026-06-24,Atlanta Stadium,-4,Derived from group_stage_schedule.csv and venues.csv; used as knockout path starting state.
+IR Iran,2026-06-26,Seattle Stadium,-7,Derived from group_stage_schedule.csv and venues.csv; used as knockout path starting state.
+Iraq,2026-06-26,Toronto Stadium,-4,Derived from group_stage_schedule.csv and venues.csv; used as knockout path starting state.
+Japan,2026-06-25,Dallas Stadium,-5,Derived from group_stage_schedule.csv and venues.csv; used as knockout path starting state.
+Jordan,2026-06-27,Dallas Stadium,-5,Derived from group_stage_schedule.csv and venues.csv; used as knockout path starting state.
+Korea Republic,2026-06-24,Estadio Monterrey,-6,Derived from group_stage_schedule.csv and venues.csv; used as knockout path starting state.
+Mexico,2026-06-24,Mexico City Stadium,-6,Derived from group_stage_schedule.csv and venues.csv; used as knockout path starting state.
+Morocco,2026-06-24,Atlanta Stadium,-4,Derived from group_stage_schedule.csv and venues.csv; used as knockout path starting state.
+Netherlands,2026-06-25,Kansas City Stadium,-5,Derived from group_stage_schedule.csv and venues.csv; used as knockout path starting state.
+New Zealand,2026-06-26,BC Place Vancouver,-7,Derived from group_stage_schedule.csv and venues.csv; used as knockout path starting state.
+Norway,2026-06-26,Boston Stadium,-4,Derived from group_stage_schedule.csv and venues.csv; used as knockout path starting state.
+Panama,2026-06-27,New York New Jersey Stadium,-4,Derived from group_stage_schedule.csv and venues.csv; used as knockout path starting state.
+Paraguay,2026-06-25,San Francisco Bay Area Stadium,-7,Derived from group_stage_schedule.csv and venues.csv; used as knockout path starting state.
+Portugal,2026-06-27,Miami Stadium,-4,Derived from group_stage_schedule.csv and venues.csv; used as knockout path starting state.
+Qatar,2026-06-24,Seattle Stadium,-7,Derived from group_stage_schedule.csv and venues.csv; used as knockout path starting state.
+Saudi Arabia,2026-06-26,Houston Stadium,-5,Derived from group_stage_schedule.csv and venues.csv; used as knockout path starting state.
+Scotland,2026-06-24,Miami Stadium,-4,Derived from group_stage_schedule.csv and venues.csv; used as knockout path starting state.
+Senegal,2026-06-26,Toronto Stadium,-4,Derived from group_stage_schedule.csv and venues.csv; used as knockout path starting state.
+South Africa,2026-06-24,Estadio Monterrey,-6,Derived from group_stage_schedule.csv and venues.csv; used as knockout path starting state.
+Spain,2026-06-26,Estadio Guadalajara,-6,Derived from group_stage_schedule.csv and venues.csv; used as knockout path starting state.
+Sweden,2026-06-25,Dallas Stadium,-5,Derived from group_stage_schedule.csv and venues.csv; used as knockout path starting state.
+Switzerland,2026-06-24,BC Place Vancouver,-7,Derived from group_stage_schedule.csv and venues.csv; used as knockout path starting state.
+Tunisia,2026-06-25,Kansas City Stadium,-5,Derived from group_stage_schedule.csv and venues.csv; used as knockout path starting state.
+Türkiye,2026-06-25,Los Angeles Stadium,-7,Derived from group_stage_schedule.csv and venues.csv; used as knockout path starting state.
+Uruguay,2026-06-26,Estadio Guadalajara,-6,Derived from group_stage_schedule.csv and venues.csv; used as knockout path starting state.
+USA,2026-06-25,Los Angeles Stadium,-7,Derived from group_stage_schedule.csv and venues.csv; used as knockout path starting state.
+Uzbekistan,2026-06-27,Atlanta Stadium,-4,Derived from group_stage_schedule.csv and venues.csv; used as knockout path starting state.
