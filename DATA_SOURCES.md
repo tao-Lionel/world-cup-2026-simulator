@@ -107,6 +107,7 @@
 | `data/squads_2026.csv` | 已导入的球员级名单行，当前覆盖 31 队、806 名球员 |
 | `data/squad_value_allocation.csv` | 球队总身价分配到球员层的审计表，确保球员行加总回到球队总值 |
 | `data/squad_collection_status.csv` | 每队 wikitext 解析状态、球员行数和是否导入 |
+| `data/squad_import_candidates.csv` | tracker 已解析但本地公告状态仍未确认 26 人名单的候选导入审计表 |
 | `data/player_availability_watchlist.csv` | 球员伤病、停赛、伤愈入选和伤病缺席 watchlist |
 | `data/player_availability_audit.csv` | watchlist 映射到当前球员名单的匹配审计结果 |
 | `data/player_availability_source_manifest.csv` | 球员可用性来源入口、可信等级和用途 |
@@ -122,6 +123,8 @@
 淘汰赛动态路径疲劳当前在浏览器运行时按模拟路径逐场计算，不单独写回每支球队的静态字段。它使用 `team_path_context.csv`、`venues.csv` 和 `knockout_schedule.csv` 估算 travel/rest/timezone/climate 的单场影响；真实训练基地和开球时间尚未接入。
 
 `squad_profile_snapshot.csv` 是为了让阵容维度有可审计入口；`squads_2026.csv` 已把可确认 26 人名单的球队先接入球员级模型，但它不等于 FIFA 统一发布的最终名单。FIFA 名单规则页显示，2026 世界杯每队最终名单为 23-26 人，最终名单在各队提交后由 FIFA 于 2026-06-02 公布；因此 2026-05-30 前即使 `announced_26_available=true`，`fifa_final_26_available` 仍保持 false。
+
+`squad_import_candidates.csv` 用来防止“可解析”被误读成“可导入”。例如 2026-05-30 刷新时，Egypt 在 tracker 中解析出 26 行，但 FIFA 英文公告页仍说明这是 27 人 preliminary squad，因此继续保留为候选审计，不写入 `squads_2026.csv`。
 
 `squads_2026.csv` 中的 `market_value_m` 当前若标记 `value_source=team_value_allocated_proxy`，表示它不是外部真实球员身价，而是把球队级 `squadValue` 按球员角色、年龄、联赛和国家队资历分摊到球员行。这样模型可以先用球员颗粒度运行，但仍需要后续用真实 market value 替换。
 

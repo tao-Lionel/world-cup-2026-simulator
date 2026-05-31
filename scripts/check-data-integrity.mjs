@@ -96,8 +96,10 @@ const knockoutRows = parseCsv(await readFile(new URL("../data/knockout_schedule.
 const thirdMapRows = parseCsv(await readFile(new URL("../data/third_place_assignment_map.csv", import.meta.url), "utf8"));
 const squadRows = parseCsv(await readFile(new URL("../data/squads_2026.csv", import.meta.url), "utf8"));
 const squadProfileRows = parseCsv(await readFile(new URL("../data/squad_profile_snapshot.csv", import.meta.url), "utf8"));
+const squadImportCandidateRows = parseCsv(await readFile(new URL("../data/squad_import_candidates.csv", import.meta.url), "utf8"));
 const availabilityRows = parseCsv(await readFile(new URL("../data/player_availability_watchlist.csv", import.meta.url), "utf8"));
 const availabilityAuditRows = parseCsv(await readFile(new URL("../data/player_availability_audit.csv", import.meta.url), "utf8"));
+const teamNames = new Set(baseTeams.map((team) => team.en));
 
 assertRows("baseTeams", baseTeams, 48);
 assertRows("team_factors_snapshot.csv", teamFactorRows, 48);
@@ -107,9 +109,9 @@ assertRows("knockout_schedule.csv", knockoutRows, 31);
 assertRows("third_place_assignment_map.csv", thirdMapRows, 495);
 assertRows("squads_2026.csv", squadRows, 806);
 assertRows("player_availability_audit.csv", availabilityAuditRows, availabilityRows.length);
+assert(squadImportCandidateRows.every((row) => teamNames.has(row.team)), "squad_import_candidates.csv contains unknown team.");
 assert(sourceRows.length === dataFields.length, `source_manifest.csv expected ${dataFields.length} rows, got ${sourceRows.length}`);
 
-const teamNames = new Set(baseTeams.map((team) => team.en));
 assert(baseTeams.every((team) => teamFactors[team.en]), "Every base team must have teamFactors.");
 assert(teamFactorRows.every((row) => teamNames.has(row.team)), "team_factors_snapshot.csv contains unknown team.");
 assert(squadProfileRows.every((row) => teamNames.has(row.team)), "squad_profile_snapshot.csv contains unknown team.");

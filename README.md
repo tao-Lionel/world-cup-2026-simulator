@@ -22,6 +22,7 @@
 - 已新增 `data/third_place_assignment_map.csv` 和浏览器运行用的 `data/third_place_assignment_map.js`，把 495 种第三名出线组合固定为可审计映射，不再由运行时第三名积分排序临时决定对位。
 - 名单公告状态已拆到 `data/squad_announcement_status.csv`；截至 2026-05-30，本地已标记 32 队公布 26 人名单，但 FIFA 最终确认仍待 2026-06-02。
 - 已新增 `data/squads_2026.csv`，从公开 squad tracker 导入 31 队、806 名球员的 26 人名单行；平均年龄和俱乐部分布已按球员行聚合，球员身价由球队总身价按角色/年龄/联赛/国家队资历分配。
+- 已新增 `data/squad_import_candidates.csv`，记录 tracker 已解析但仍需核验来源的候选名单，避免把初选名单误导入。
 - 已新增 `data/player_availability_watchlist.csv`，把已核验的伤病缺席、停赛、伤愈入选等可用性信息映射到球员行，并在无法匹配球员行时作为队级健康风险惩罚。
 - 阵容身价、平均年龄、伤病风险和俱乐部分布已拆到 `data/squad_profile_snapshot.csv`；有球员行的队伍使用球员级聚合，未确认 26 人名单的队伍仍使用暂定代理。
 - 已提供 `data/squads_2026_template.csv` 和聚合脚本，官方/暂定名单填入后可自动生成阵容身价、平均年龄、伤病风险和俱乐部分布。
@@ -138,6 +139,7 @@ node scripts/export-data-snapshots.mjs
 
 ```bash
 node scripts/fetch-wikipedia-squads.mjs
+node scripts/build-squad-import-candidates.mjs
 node scripts/enrich-squad-player-proxies.mjs
 node scripts/apply-player-availability.mjs
 node scripts/aggregate-squads.mjs
