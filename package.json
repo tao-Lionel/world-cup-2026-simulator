@@ -1,10 +1,11 @@
 {
   "name": "world-cup-2026-simulator",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": false,
   "type": "module",
   "description": "2026 世界杯夺冠概率 Monte Carlo 模拟器",
   "scripts": {
+    "build:squads": "node scripts/build-squad-browser-data.mjs",
     "check:syntax": "node scripts/check-syntax.mjs",
     "check:data": "node scripts/check-data-integrity.mjs",
     "validate": "node scripts/validate-simulator.mjs",

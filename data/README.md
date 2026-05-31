@@ -27,6 +27,7 @@
 - `squad_profile_snapshot.csv`：48 队暂定阵容画像，承接身价、年龄、伤病风险、俱乐部分布和名单状态；当前仍是代理聚合值。
 - `squad_announcement_status.csv`：48 队名单公告状态，区分已公布 26 人名单、初选名单、训练营名单和待公布；FIFA 最终名单仍单独标记。
 - `squads_2026.csv`：从公开 squad tracker 导入的球员级名单行，当前覆盖 31 队、806 名球员；`market_value_m` 当前为球队总身价分配代理值。
+- `squads_2026.js`：浏览器运行用的球员级名单快照，由 `squads_2026.csv` 生成。
 - `squad_value_allocation.csv`：球员级身价代理分配审计表，记录每队目标总值和分配后总值。
 - `squad_collection_status.csv`：每队球员名单解析状态，记录 wikitext 球员数、导入数和跳过原因。
 - `squad_import_candidates.csv`：tracker 已解析但仍需核验来源的候选名单，避免把初选名单误导入。
@@ -136,6 +137,7 @@ node scripts/fetch-wikipedia-squads.mjs
 node scripts/build-squad-import-candidates.mjs
 node scripts/enrich-squad-player-proxies.mjs
 node scripts/apply-player-availability.mjs
+node scripts/build-squad-browser-data.mjs
 node scripts/aggregate-squads.mjs
 node scripts/apply-squad-profiles.mjs
 node scripts/apply-squad-announcement-status.mjs
@@ -149,6 +151,7 @@ node scripts/export-data-snapshots.mjs
 ```bash
 node scripts/create-squad-template.mjs
 node scripts/apply-player-availability.mjs
+node scripts/build-squad-browser-data.mjs
 node scripts/aggregate-squads.mjs
 node scripts/apply-squad-profiles.mjs
 node scripts/export-data-snapshots.mjs
@@ -158,6 +161,7 @@ node scripts/export-data-snapshots.mjs
 
 ```bash
 node scripts/apply-player-availability.mjs
+node scripts/build-squad-browser-data.mjs
 node scripts/aggregate-squads.mjs
 node scripts/apply-squad-profiles.mjs
 node scripts/export-data-snapshots.mjs

@@ -369,6 +369,16 @@ let latestSample = null;
 let latestSampleIndex = 0;
 
 const $ = (selector) => document.querySelector(selector);
+const squadRows = Array.isArray(globalThis.SQUAD_ROWS) ? globalThis.SQUAD_ROWS : [];
+
+function escapeHtml(value) {
+  return String(value ?? "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#39;");
+}
 
 function percent(value, total) {
   if (!total) return "0.00%";
@@ -393,6 +403,36 @@ function csvCell(value) {
   if (value === undefined || value === null) return "";
   const text = String(value);
   return /[",\n]/.test(text) ? `"${text.replaceAll("\"", "\"\"")}"` : text;
+}
+
+function formatValue(value) {
+  if (!Number.isFinite(value)) return "-";
+  return value >= 100 ? `€${Math.round(value)}m` : `€${value.toFixed(1)}m`;
+}
+
+function squadForTeam(team) {
+  return squadRows
+    .filter((player) => player.team === team.en)
+    .slice()
+    .sort((a, b) => a.slot - b.slot);
+}
+
+function roleLabel(role) {
+  return {
+    starter: "主力",
+    rotation: "轮换",
+    squad: "替补",
+  }[role] || role || "-";
+}
+
+function availabilityLabel(status) {
+  return {
+    available: "可出战",
+    doubtful: "待观察",
+    out: "缺席",
+    suspended: "停赛",
+    unknown: "未确认",
+  }[status] || status || "未确认";
 }
 
 function clamp(value, min, max) {
@@ -791,7 +831,7 @@ function renderRatingEditor() {
     .sort((a, b) => getTeamRating(b) - getTeamRating(a))
     .map((team) => `
       <label class="rating-row">
-        <span>${team.flag} ${team.name} <small>${team.group}组 / 模型 ${team.modelRating}</small></span>
+        <span><button class="team-link compact" type="button" data-select-team="${team.id}">${team.flag} ${team.name}</button> <small>${team.group}组 / 模型 ${team.modelRating}</small></span>
         <input type="number" min="1300" max="2200" step="5" value="${getTeamRating(team)}" data-team-rating="${team.id}" />
       </label>
     `)
@@ -826,7 +866,7 @@ function renderGroups() {
           const chance = counter ? percent(counter.r32, latestResults.settings.count) : "-";
           return `
             <div class="group-team">
-              <span>${team.flag} ${team.name}</span>
+              <button class="team-link" type="button" data-select-team="${team.id}">${team.flag} ${team.name}</button>
               <span class="pill">${chance}</span>
             </div>
           `;
@@ -844,7 +884,7 @@ function renderRanking(counters, count) {
     return `
       <tr>
         <td>${index + 1}</td>
-        <td><span class="team-cell">${row.team.flag} ${row.team.name}</span></td>
+        <td><button class="team-cell team-link" type="button" data-select-team="${row.team.id}">${row.team.flag} ${row.team.name}</button></td>
         <td>${getTeamRating(row.team)}</td>
         <td>
           <span class="prob-cell">
@@ -906,7 +946,29 @@ function renderStageBars(counter) {
 function renderTeamProfile(team) {
   const f = team.factors;
   const quality = team.reliability;
+  const squad = squadForTeam(team);
+  const totalSquadValue = squad.reduce((sum, player) => sum + (Number(player.marketValueM) || 0), 0);
+  const positionCounts = squad.reduce((counts, player) => {
+    counts[player.position] = (counts[player.position] || 0) + 1;
+    return counts;
+  }, {});
+  const availabilityCounts = squad.reduce((counts, player) => {
+    counts[player.injuryStatus] = (counts[player.injuryStatus] || 0) + 1;
+    return counts;
+  }, {});
+  const topPlayers = squad
+    .slice()
+    .sort((a, b) => b.marketValueM - a.marketValueM || b.caps - a.caps)
+    .slice(0, 5);
+  const sourceUrl = squad[0]?.sourceUrl;
   $("#teamProfile").innerHTML = `
+    <div class="profile-heading">
+      <div>
+        <h3>${team.flag} ${team.name}</h3>
+        <p>${team.group}组 · ${team.confed} · 综合分 ${getTeamRating(team)} · ${team.host ? "主办国" : "参赛队"}</p>
+      </div>
+      <span class="pill">${f.squadStatus}</span>
+    </div>
     <div class="profile-grid">
       <div><span>FIFA</span><strong>#${f.fifaRank}</strong><small>${f.fifaPoints} 分</small></div>
       <div><span>Elo</span><strong>${f.elo}</strong><small>2026-03-31</small></div>
@@ -918,6 +980,60 @@ function renderTeamProfile(team) {
       <div><span>地理负担</span><strong>${f.timezoneShift ?? 0}h</strong><small>组赛时区 / 环境 ${f.climateLoad ?? 0}</small></div>
     </div>
     <p class="profile-note">名单状态：${f.squadStatus}；公告：${f.squadAnnouncementStatus ?? "待核"}（${f.squadAnnouncementDate ?? "未定"}）。氛围 ${f.atmosphere}/100，俱乐部分布 ${f.clubScore}/100，世界杯路径经验 ${f.wcPath}/100。数据可信度 ${quality.score}%，可核验字段 ${quality.reliableCount}/${quality.total}。</p>
+    <section class="squad-detail">
+      <div class="detail-title">
+        <span>阵容信息</span>
+        <span class="muted">${squad.length ? `${squad.length} 名球员 · ${squad[0].snapshotDate}` : "暂无球员级名单"}</span>
+      </div>
+      ${squad.length ? `
+        <div class="squad-summary">
+          <div><span>球员行</span><strong>${squad.length}</strong><small>${Object.entries(positionCounts).map(([position, count]) => `${position}${count}`).join(" / ")}</small></div>
+          <div><span>名单身价</span><strong>${formatValue(totalSquadValue)}</strong><small>${squad[0].valueSource === "team_value_allocated_proxy" ? "球队身价分配代理" : "球员身价"}</small></div>
+          <div><span>可用性</span><strong>${squad.length - (availabilityCounts.unknown || 0)}</strong><small>已核验；${availabilityCounts.unknown || 0} 未确认</small></div>
+          <div><span>核心球员</span><strong>${escapeHtml(topPlayers[0]?.player ?? "-")}</strong><small>${formatValue(topPlayers[0]?.marketValueM)}</small></div>
+        </div>
+        <div class="top-player-row">
+          ${topPlayers.map((player) => `
+            <span>${escapeHtml(player.player)} <small>${player.position} · ${formatValue(player.marketValueM)}</small></span>
+          `).join("")}
+        </div>
+        <div class="squad-table-wrap">
+          <table class="squad-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>球员</th>
+                <th>位置</th>
+                <th>年龄</th>
+                <th>俱乐部</th>
+                <th>身价</th>
+                <th>国家队</th>
+                <th>状态</th>
+                <th>角色</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${squad.map((player) => `
+                <tr>
+                  <td>${player.slot}</td>
+                  <td>${escapeHtml(player.player)}</td>
+                  <td>${escapeHtml(player.position)}</td>
+                  <td>${player.age}</td>
+                  <td>${escapeHtml(player.club)}</td>
+                  <td>${formatValue(player.marketValueM)}</td>
+                  <td>${player.caps} 场 / ${player.goals} 球</td>
+                  <td>${availabilityLabel(player.injuryStatus)}</td>
+                  <td>${roleLabel(player.expectedRole)}</td>
+                </tr>
+              `).join("")}
+            </tbody>
+          </table>
+        </div>
+        <p class="profile-note">名单来源：${sourceUrl ? `<a href="${escapeHtml(sourceUrl)}" target="_blank" rel="noreferrer">${escapeHtml(sourceUrl)}</a>` : "未记录"}。身价若标记为代理，表示由球队总身价按角色、年龄、联赛和国家队资历分配。</p>
+      ` : `
+        <p class="profile-note">这支球队暂未导入可核验的球员级 26 人名单，当前阵容价值、年龄、伤病和俱乐部分布使用球队级代理画像。等官方名单确认后，可通过 README 中的 squad refresh 流程补齐。</p>
+      `}
+    </section>
   `;
 }
 
@@ -951,6 +1067,15 @@ function renderResults() {
   $("#avgGoals").textContent = latestResults.avgGoals.toFixed(2);
   $("#avgPens").textContent = latestResults.avgPens.toFixed(2);
   $("#thirdRate").textContent = `${(latestResults.thirdRate * 100).toFixed(1)}%`;
+}
+
+function selectTeam(teamId) {
+  const team = teams.find((item) => item.id === Number(teamId));
+  if (!team) return;
+  $("#focusTeam").value = team.id;
+  const counter = latestResults?.counters.find((row) => row.team.id === team.id);
+  renderStageBars(counter);
+  document.querySelector(".focus-panel").scrollIntoView({ behavior: "smooth", block: "nearest" });
 }
 
 function syncControlLabels() {
@@ -1101,6 +1226,8 @@ document.addEventListener("input", (event) => {
 
 document.addEventListener("click", (event) => {
   if (event.target.matches("[data-count]")) $("#simCount").value = event.target.dataset.count;
+  const teamButton = event.target.closest("[data-select-team]");
+  if (teamButton) selectTeam(teamButton.dataset.selectTeam);
 });
 
 $("#runBtn").addEventListener("click", runSimulation);

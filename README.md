@@ -1,6 +1,6 @@
 # 2026 世界杯夺冠概率模拟器
 
-当前为 `v1.0.0` 最终发布版：核心模拟、数据快照、审计脚本、免责声明和 CI 校验已经收口，可作为开源项目使用。由于 2026 世界杯 FIFA 最终名单尚未统一公布，本版本的“最终版”指项目工程与当前公开数据快照的发布状态，不代表赛前最终官方数据已经齐备。发布说明见 `RELEASE.md`。
+当前为 `v1.1.0` 最终发布版：核心模拟、数据快照、球队信息模块、审计脚本、免责声明和 CI 校验已经收口，可作为开源项目使用。由于 2026 世界杯 FIFA 最终名单尚未统一公布，本版本的“最终版”指项目工程与当前公开数据快照的发布状态，不代表赛前最终官方数据已经齐备。发布说明见 `RELEASE.md`。
 
 这是一个离线单页模拟器，基于 `deep-research-report.md` 的建模建议做成：
 
@@ -12,6 +12,7 @@
 - 数据面板会同时显示字段覆盖、平均可信度、可核验字段数和代理/人工字段数，避免把代理指标误读成官方数据。
 - 支持随机种子；同一 seed、同一设置和同一数据快照可以复现模拟结果，导出的 CSV 也会带上 seed。
 - 概率结果显示 Monte Carlo 95% 置信区间，CSV 同步导出各阶段概率的上下界。
+- 支持点击排名表、小组卡片和综合分编辑列表里的球队，查看球队信息、模型因子、阵容汇总和球员明细。
 - 48 队综合分仍可手动编辑，便于替换成更准确的 Elo、赔率、阵容或自建模型分数。
 - `data/` 目录保存球队因子、来源清单、模型权重和历届冠军路径摘要，方便后续替换真实数据源。
 - FIFA 排名/积分已拆为 2026-04-01 官方快照文件，可单独回写模型。
@@ -24,6 +25,7 @@
 - 已新增 `data/third_place_assignment_map.csv` 和浏览器运行用的 `data/third_place_assignment_map.js`，把 495 种第三名出线组合固定为可审计映射，不再由运行时第三名积分排序临时决定对位。
 - 名单公告状态已拆到 `data/squad_announcement_status.csv`；截至 2026-05-30，本地已标记 32 队公布 26 人名单，但 FIFA 最终确认仍待 2026-06-02。
 - 已新增 `data/squads_2026.csv`，从公开 squad tracker 导入 31 队、806 名球员的 26 人名单行；平均年龄和俱乐部分布已按球员行聚合，球员身价由球队总身价按角色/年龄/联赛/国家队资历分配。
+- 已新增浏览器运行用的 `data/squads_2026.js`，让直接打开 `index.html` 时也能查看球员级阵容信息。
 - 已新增 `data/squad_import_candidates.csv`，记录 tracker 已解析但仍需核验来源的候选名单，避免把初选名单误导入。
 - 已新增 `data/player_availability_watchlist.csv`，把已核验的伤病缺席、停赛、伤愈入选等可用性信息映射到球员行，并在无法匹配球员行时作为队级健康风险惩罚。
 - 阵容身价、平均年龄、伤病风险和俱乐部分布已拆到 `data/squad_profile_snapshot.csv`；有球员行的队伍使用球员级聚合，未确认 26 人名单的队伍仍使用暂定代理。
@@ -144,6 +146,7 @@ node scripts/fetch-wikipedia-squads.mjs
 node scripts/build-squad-import-candidates.mjs
 node scripts/enrich-squad-player-proxies.mjs
 node scripts/apply-player-availability.mjs
+node scripts/build-squad-browser-data.mjs
 node scripts/aggregate-squads.mjs
 node scripts/apply-squad-profiles.mjs
 node scripts/apply-squad-announcement-status.mjs
@@ -157,6 +160,7 @@ node scripts/export-data-snapshots.mjs
 ```bash
 node scripts/create-squad-template.mjs
 node scripts/apply-player-availability.mjs
+node scripts/build-squad-browser-data.mjs
 node scripts/aggregate-squads.mjs
 node scripts/apply-squad-profiles.mjs
 node scripts/export-data-snapshots.mjs
@@ -166,6 +170,7 @@ node scripts/export-data-snapshots.mjs
 
 ```bash
 node scripts/apply-player-availability.mjs
+node scripts/build-squad-browser-data.mjs
 node scripts/aggregate-squads.mjs
 node scripts/apply-squad-profiles.mjs
 node scripts/export-data-snapshots.mjs

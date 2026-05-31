@@ -3,12 +3,24 @@ import vm from "node:vm";
 
 const source = await readFile(new URL("../app.js", import.meta.url), "utf8");
 const thirdPlaceMapSource = await readFile(new URL("../data/third_place_assignment_map.js", import.meta.url), "utf8");
+const squadBrowserDataSource = await readFile(new URL("../data/squads_2026.js", import.meta.url), "utf8");
 const runtimeSource = source.slice(0, source.indexOf("document.addEventListener"));
 
-const context = { console, Math };
+const context = {
+  console,
+  Math,
+  document: {
+    nodes: {},
+    querySelector(selector) {
+      if (!this.nodes[selector]) this.nodes[selector] = { innerHTML: "", textContent: "", value: "" };
+      return this.nodes[selector];
+    },
+  },
+};
 vm.createContext(context);
 
 vm.runInContext(`${thirdPlaceMapSource}
+${squadBrowserDataSource}
 ${runtimeSource}
 const settings = { count: 1000, randomness: 1, hostBoost: 80, penaltyWeight: 0.65 };
 let missingChampion = 0;
@@ -18,6 +30,7 @@ let invalidThirdCombos = 0;
 let missingThirdTableRows = 0;
 let invalidThirdTableRows = 0;
 let seededMismatch = 0;
+let missingTeamDetail = 0;
 function combinations(items, size) {
   const output = [];
   function walk(start, picked) {
@@ -82,6 +95,10 @@ const seededA = simulateTournament(seededSettings, true, createRng(seededSetting
 const seededB = simulateTournament(seededSettings, true, createRng(seededSettings.seed));
 if (pathSignature(seededA) !== pathSignature(seededB)) seededMismatch += 1;
 
+renderTeamProfile(teams.find((team) => team.en === "Spain"));
+const profileHtml = document.nodes["#teamProfile"].innerHTML;
+if (!profileHtml.includes("阵容信息") || !profileHtml.includes("squad-table") || !profileHtml.includes("<tbody>")) missingTeamDetail += 1;
+
 globalThis.validation = {
   teams: teams.length,
   simulations: 500,
@@ -92,6 +109,7 @@ globalThis.validation = {
   missingThirdTableRows,
   invalidThirdTableRows,
   seededMismatch,
+  missingTeamDetail,
 };
 `, context);
 
@@ -104,7 +122,8 @@ if (
   result.invalidThirdCombos ||
   result.missingThirdTableRows ||
   result.invalidThirdTableRows ||
-  result.seededMismatch
+  result.seededMismatch ||
+  result.missingTeamDetail
 ) {
   throw new Error(`Simulator validation failed: ${JSON.stringify(result)}`);
 }

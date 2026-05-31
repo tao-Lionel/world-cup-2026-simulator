@@ -105,6 +105,7 @@
 | `data/squad_profile_snapshot.csv` | 48 队暂定阵容画像，后续可由官方/暂定 26 人名单聚合替换 |
 | `data/squad_announcement_status.csv` | 48 队名单公告状态，区分已公布 26 人名单与初选/训练营/待公布状态 |
 | `data/squads_2026.csv` | 已导入的球员级名单行，当前覆盖 31 队、806 名球员 |
+| `data/squads_2026.js` | 浏览器运行用的球员级名单快照，由 `squads_2026.csv` 生成 |
 | `data/squad_value_allocation.csv` | 球队总身价分配到球员层的审计表，确保球员行加总回到球队总值 |
 | `data/squad_collection_status.csv` | 每队 wikitext 解析状态、球员行数和是否导入 |
 | `data/squad_import_candidates.csv` | tracker 已解析但本地公告状态仍未确认 26 人名单的候选导入审计表 |

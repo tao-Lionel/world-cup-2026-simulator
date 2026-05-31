@@ -26,5 +26,6 @@ for (const file of files) {
 
 await check("../app.js");
 await check("../data/third_place_assignment_map.js");
+await check("../data/squads_2026.js");
 
-console.log(`Checked syntax for ${files.length} scripts, app.js and third-place map.`);
+console.log(`Checked syntax for ${files.length} scripts, app.js, third-place map and squad browser data.`);
