@@ -96,7 +96,7 @@ const seededB = simulateTournament(seededSettings, true, createRng(seededSetting
 if (pathSignature(seededA) !== pathSignature(seededB)) seededMismatch += 1;
 
 renderTeamProfile(teams.find((team) => team.en === "Spain"));
-const profileHtml = document.nodes["#teamProfile"].innerHTML;
+const profileHtml = document.nodes["#teamDrawerBody"].innerHTML;
 if (!profileHtml.includes("阵容信息") || !profileHtml.includes("squad-table") || !profileHtml.includes("<tbody>")) missingTeamDetail += 1;
 
 globalThis.validation = {

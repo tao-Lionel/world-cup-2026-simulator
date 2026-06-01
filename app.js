@@ -367,6 +367,9 @@ let teams = createTeams();
 let latestResults = null;
 let latestSample = null;
 let latestSampleIndex = 0;
+let toastTimer = null;
+let resultsAreStale = false;
+let lastDrawerTrigger = null;
 
 const $ = (selector) => document.querySelector(selector);
 const squadRows = Array.isArray(globalThis.SQUAD_ROWS) ? globalThis.SQUAD_ROWS : [];
@@ -763,6 +766,85 @@ function currentSettings() {
   };
 }
 
+function setStatus(text, state = "ready") {
+  const label = $("#statusLabel");
+  label.textContent = text;
+  label.dataset.state = state;
+}
+
+function updateRunProgress(done, total) {
+  const value = Math.round((done / total) * 100);
+  $("#runProgress").style.width = `${value}%`;
+  $("#runProgressTrack").setAttribute("aria-valuenow", String(value));
+}
+
+function setRunningState(isRunning) {
+  const runBtn = $("#runBtn");
+  document.body.classList.toggle("is-running", isRunning);
+  runBtn.disabled = isRunning;
+  runBtn.setAttribute("aria-busy", String(isRunning));
+  runBtn.textContent = isRunning ? "模拟中..." : "运行模拟";
+  if (isRunning) updateRunProgress(0, 1);
+}
+
+function showToast(message) {
+  const toast = $("#toast");
+  toast.textContent = message;
+  toast.classList.add("is-visible");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => toast.classList.remove("is-visible"), 2400);
+}
+
+function updatePresetState() {
+  const count = String(currentSettings().count);
+  document.querySelectorAll("[data-count]").forEach((button) => {
+    button.classList.toggle("is-active", button.dataset.count === count);
+  });
+}
+
+function updateExportState() {
+  $("#exportBtn").disabled = !latestResults || resultsAreStale;
+}
+
+function syncSelectedTeamStyles() {
+  const selectedId = Number($("#focusTeam").value);
+  document.querySelectorAll("[data-select-team]").forEach((button) => {
+    button.classList.toggle("is-selected", Number(button.dataset.selectTeam) === selectedId);
+  });
+  document.querySelectorAll("[data-team-row]").forEach((row) => {
+    row.classList.toggle("is-selected", Number(row.dataset.teamRow) === selectedId);
+  });
+  document.querySelectorAll("[data-team-wrap]").forEach((row) => {
+    row.classList.toggle("is-selected", Number(row.dataset.teamWrap) === selectedId);
+  });
+}
+
+function setDrawerOpen(isOpen) {
+  $("#drawerOverlay").hidden = !isOpen;
+  $("#teamDrawer").hidden = !isOpen;
+  document.body.classList.toggle("drawer-open", isOpen);
+  if (!isOpen && lastDrawerTrigger) lastDrawerTrigger.focus({ preventScroll: true });
+}
+
+function openTeamDrawer(team, trigger = null) {
+  lastDrawerTrigger = trigger;
+  renderTeamProfile(team);
+  setDrawerOpen(true);
+  $("#drawerCloseBtn").focus();
+}
+
+function closeTeamDrawer() {
+  setDrawerOpen(false);
+}
+
+function markResultsStale(message = "待重新运行") {
+  if (!latestResults) return;
+  resultsAreStale = true;
+  setStatus(message, "dirty");
+  $("#runMeta").textContent = "参数已变更，结果待重新运行";
+  updateExportState();
+}
+
 async function runSimulation() {
   const settings = currentSettings();
   const rng = createRng(settings.seed);
@@ -771,39 +853,54 @@ async function runSimulation() {
   let pens = 0;
   let thirds = 0;
   const chunkSize = 1000;
-  $("#runBtn").disabled = true;
-  $("#statusLabel").textContent = "运行中";
+  setRunningState(true);
+  setStatus("运行中", "running");
+  showToast(`开始模拟 ${settings.count.toLocaleString()} 次`);
 
-  for (let done = 0; done < settings.count; done += chunkSize) {
-    const limit = Math.min(chunkSize, settings.count - done);
-    for (let i = 0; i < limit; i += 1) {
-      const tournament = simulateTournament(settings, false, rng);
-      goals += tournament.totalGoals;
-      pens += tournament.penalties;
-      thirds += tournament.bestThirds.length;
-      tournament.qualified.forEach((team) => counters.get(team.id).r32 += 1);
-      tournament.stageWinners.r16.forEach((team) => counters.get(team.id).r16 += 1);
-      tournament.stageWinners.qf.forEach((team) => counters.get(team.id).qf += 1);
-      tournament.stageWinners.sf.forEach((team) => counters.get(team.id).sf += 1);
-      tournament.stageWinners.final.forEach((team) => counters.get(team.id).final += 1);
-      counters.get(tournament.champion.id).champion += 1;
+  try {
+    for (let done = 0; done < settings.count; done += chunkSize) {
+      const limit = Math.min(chunkSize, settings.count - done);
+      for (let i = 0; i < limit; i += 1) {
+        const tournament = simulateTournament(settings, false, rng);
+        goals += tournament.totalGoals;
+        pens += tournament.penalties;
+        thirds += tournament.bestThirds.length;
+        tournament.qualified.forEach((team) => counters.get(team.id).r32 += 1);
+        tournament.stageWinners.r16.forEach((team) => counters.get(team.id).r16 += 1);
+        tournament.stageWinners.qf.forEach((team) => counters.get(team.id).qf += 1);
+        tournament.stageWinners.sf.forEach((team) => counters.get(team.id).sf += 1);
+        tournament.stageWinners.final.forEach((team) => counters.get(team.id).final += 1);
+        counters.get(tournament.champion.id).champion += 1;
+      }
+      const completed = Math.min(done + limit, settings.count);
+      setStatus(`${completed.toLocaleString()} / ${settings.count.toLocaleString()}`, "running");
+      updateRunProgress(completed, settings.count);
+      await new Promise((resolve) => setTimeout(resolve, 0));
     }
-    $("#statusLabel").textContent = `${Math.min(done + limit, settings.count).toLocaleString()} / ${settings.count.toLocaleString()}`;
-    await new Promise((resolve) => setTimeout(resolve, 0));
-  }
 
-  latestResults = {
-    settings,
-    counters: [...counters.values()].sort((a, b) => b.champion - a.champion || getTeamRating(b.team) - getTeamRating(a.team)),
-    avgGoals: goals / settings.count,
-    avgPens: pens / settings.count,
-    thirdRate: thirds / (settings.count * 32),
-  };
-  latestSampleIndex = 0;
-  latestSample = simulateTournament(settings, true, createRng(`${settings.seed}:sample:${latestSampleIndex}`));
-  $("#runBtn").disabled = false;
-  $("#statusLabel").textContent = "已完成";
-  renderResults();
+    latestResults = {
+      settings,
+      counters: [...counters.values()].sort((a, b) => b.champion - a.champion || getTeamRating(b.team) - getTeamRating(a.team)),
+      avgGoals: goals / settings.count,
+      avgPens: pens / settings.count,
+      thirdRate: thirds / (settings.count * 32),
+    };
+    resultsAreStale = false;
+    latestSampleIndex = 0;
+    latestSample = simulateTournament(settings, true, createRng(`${settings.seed}:sample:${latestSampleIndex}`));
+    setRunningState(false);
+    updateRunProgress(1, 1);
+    setStatus("已完成");
+    renderResults();
+    showToast("模拟完成，结果已刷新");
+    setTimeout(() => updateRunProgress(0, 1), 450);
+  } catch (error) {
+    setRunningState(false);
+    updateRunProgress(0, 1);
+    setStatus("运行失败", "empty");
+    showToast("模拟失败，请检查控制台");
+    throw error;
+  }
 }
 
 function renderInitial() {
@@ -812,7 +909,11 @@ function renderInitial() {
   renderDataCoverage();
   renderGroups();
   renderRanking(emptyCounters(), 1);
+  renderResultSummary();
   renderStageBars(null);
+  updatePresetState();
+  updateExportState();
+  syncSelectedTeamStyles();
 }
 
 function renderFocusOptions() {
@@ -856,6 +957,7 @@ function renderDataCoverage() {
 
 function renderGroups() {
   const groupNames = [...new Set(teams.map((team) => team.group))];
+  const selectedId = Number($("#focusTeam").value);
   $("#groupsGrid").innerHTML = groupNames.map((group) => {
     const groupTeams = teams.filter((team) => team.group === group);
     return `
@@ -865,8 +967,8 @@ function renderGroups() {
           const counter = latestResults?.counters.find((item) => item.team.id === team.id);
           const chance = counter ? percent(counter.r32, latestResults.settings.count) : "-";
           return `
-            <div class="group-team">
-              <button class="team-link" type="button" data-select-team="${team.id}">${team.flag} ${team.name}</button>
+            <div class="group-team ${team.id === selectedId ? "is-selected" : ""}" data-team-wrap="${team.id}">
+              <button class="team-link ${team.id === selectedId ? "is-selected" : ""}" type="button" data-select-team="${team.id}">${team.flag} ${team.name}</button>
               <span class="pill">${chance}</span>
             </div>
           `;
@@ -879,12 +981,13 @@ function renderGroups() {
 function renderRanking(counters, count) {
   const rows = Array.isArray(counters) ? counters : [...counters.values()].sort((a, b) => b.champion - a.champion || getTeamRating(b.team) - getTeamRating(a.team));
   const maxChampion = Math.max(...rows.map((row) => row.champion), 1);
+  const selectedId = Number($("#focusTeam").value);
   $("#rankingBody").innerHTML = rows.map((row, index) => {
     const championInterval = probabilityInterval(row.champion, count);
     return `
-      <tr>
+      <tr data-team-row="${row.team.id}" class="${row.team.id === selectedId ? "is-selected" : ""}">
         <td>${index + 1}</td>
-        <td><button class="team-cell team-link" type="button" data-select-team="${row.team.id}">${row.team.flag} ${row.team.name}</button></td>
+        <td><button class="team-cell team-link ${row.team.id === selectedId ? "is-selected" : ""}" type="button" data-select-team="${row.team.id}">${row.team.flag} ${row.team.name}</button></td>
         <td>${getTeamRating(row.team)}</td>
         <td>
           <span class="prob-cell">
@@ -897,6 +1000,27 @@ function renderRanking(counters, count) {
         <td>${percent(row.qf, count)}</td>
         <td>${percent(row.r32, count)}</td>
       </tr>
+    `;
+  }).join("");
+}
+
+function renderResultSummary() {
+  const summary = $("#resultSummary");
+  if (!latestResults) {
+    summary.className = "result-summary is-empty";
+    summary.textContent = "运行模拟后，这里会显示夺冠概率前三和核心结果概览。";
+    return;
+  }
+
+  summary.className = "result-summary";
+  summary.innerHTML = latestResults.counters.slice(0, 3).map((row, index) => {
+    const interval = probabilityInterval(row.champion, latestResults.settings.count);
+    return `
+      <div class="summary-item">
+        <span>#${index + 1} 夺冠候选</span>
+        <strong>${row.team.flag} ${row.team.name} · ${percent(row.champion, latestResults.settings.count)}</strong>
+        <small>决赛 ${percent(row.final, latestResults.settings.count)} · 95% ${interval.label}</small>
+      </div>
     `;
   }).join("");
 }
@@ -929,8 +1053,10 @@ function renderStageBars(counter) {
     ["夺得冠军", 0],
   ];
 
-  if (selected) $("#focusTitle").textContent = `${selected.team.flag} ${selected.team.name} 阶段概率`;
-  if (selected) renderTeamProfile(selected.team);
+  if (selected) {
+    $("#focusTitle").textContent = `${selected.team.flag} ${selected.team.name} 阶段概率`;
+    renderFocusCard(selected.team);
+  }
   $("#stageBars").innerHTML = stages.map(([label, value]) => {
     const interval = probabilityInterval(value, total);
     return `
@@ -941,6 +1067,26 @@ function renderStageBars(counter) {
       </div>
     `;
   }).join("");
+  syncSelectedTeamStyles();
+}
+
+function renderFocusCard(team) {
+  const f = team.factors;
+  const counter = latestResults?.counters.find((row) => row.team.id === team.id);
+  const total = latestResults?.settings.count || 1;
+  $("#teamProfile").innerHTML = `
+    <div class="focus-card">
+      <div>
+        <h3>${team.flag} ${team.name}</h3>
+        <p>${team.group}组 · ${team.confed} · 综合分 ${getTeamRating(team)} · ${f.squadStatus}</p>
+      </div>
+      <div class="focus-card-stats">
+        <span>夺冠 <strong>${counter ? percent(counter.champion, total) : "-"}</strong></span>
+        <span>出线 <strong>${counter ? percent(counter.r32, total) : "-"}</strong></span>
+      </div>
+      <button class="ghost-btn small" type="button" data-open-team-detail="${team.id}">查看详情</button>
+    </div>
+  `;
 }
 
 function renderTeamProfile(team) {
@@ -961,7 +1107,8 @@ function renderTeamProfile(team) {
     .sort((a, b) => b.marketValueM - a.marketValueM || b.caps - a.caps)
     .slice(0, 5);
   const sourceUrl = squad[0]?.sourceUrl;
-  $("#teamProfile").innerHTML = `
+  $("#teamDrawerTitle").textContent = `${team.flag} ${team.name}`;
+  $("#teamDrawerBody").innerHTML = `
     <div class="profile-heading">
       <div>
         <h3>${team.flag} ${team.name}</h3>
@@ -1060,6 +1207,7 @@ function renderSamplePath() {
 
 function renderResults() {
   renderRanking(latestResults.counters, latestResults.settings.count);
+  renderResultSummary();
   renderGroups();
   renderStageBars();
   renderSamplePath();
@@ -1067,15 +1215,17 @@ function renderResults() {
   $("#avgGoals").textContent = latestResults.avgGoals.toFixed(2);
   $("#avgPens").textContent = latestResults.avgPens.toFixed(2);
   $("#thirdRate").textContent = `${(latestResults.thirdRate * 100).toFixed(1)}%`;
+  updateExportState();
+  syncSelectedTeamStyles();
 }
 
-function selectTeam(teamId) {
+function selectTeam(teamId, options = {}) {
   const team = teams.find((item) => item.id === Number(teamId));
   if (!team) return;
   $("#focusTeam").value = team.id;
   const counter = latestResults?.counters.find((row) => row.team.id === team.id);
   renderStageBars(counter);
-  document.querySelector(".focus-panel").scrollIntoView({ behavior: "smooth", block: "nearest" });
+  if (options.openDetails) openTeamDrawer(team, options.trigger);
 }
 
 function syncControlLabels() {
@@ -1086,17 +1236,23 @@ function syncControlLabels() {
 
 function saveSettings() {
   localStorage.setItem(STORAGE_KEY, JSON.stringify({ settings: currentSettings(), teams }));
-  $("#statusLabel").textContent = "已保存";
+  setStatus("已保存");
+  showToast("当前参数已保存到本机");
 }
 
 function loadSettings() {
   const stored = localStorage.getItem(STORAGE_KEY);
   if (!stored) {
-    $("#statusLabel").textContent = "无保存";
+    setStatus("无保存", "empty");
+    showToast("没有找到已保存的方案");
     return;
   }
   const parsed = JSON.parse(stored);
   teams = createTeams(parsed.teams || []);
+  latestResults = null;
+  latestSample = null;
+  latestSampleIndex = 0;
+  resultsAreStale = false;
   $("#simCount").value = parsed.settings.count;
   $("#seedInput").value = parsed.settings.seed || "2026-world-cup";
   $("#randomness").value = parsed.settings.randomness;
@@ -1104,7 +1260,13 @@ function loadSettings() {
   $("#penaltyWeight").value = parsed.settings.penaltyWeight;
   syncControlLabels();
   renderInitial();
-  $("#statusLabel").textContent = "已加载";
+  $("#runMeta").textContent = "尚未模拟";
+  $("#avgGoals").textContent = "-";
+  $("#avgPens").textContent = "-";
+  $("#thirdRate").textContent = "-";
+  $("#samplePath").innerHTML = "<p class='muted'>运行后显示一条随机路径。</p>";
+  setStatus("已加载");
+  showToast("已加载保存方案");
 }
 
 function resetSettings() {
@@ -1112,6 +1274,7 @@ function resetSettings() {
   latestResults = null;
   latestSample = null;
   latestSampleIndex = 0;
+  resultsAreStale = false;
   $("#simCount").value = 100000;
   $("#seedInput").value = "2026-world-cup";
   $("#randomness").value = 1;
@@ -1124,11 +1287,16 @@ function resetSettings() {
   $("#avgPens").textContent = "-";
   $("#thirdRate").textContent = "-";
   $("#samplePath").innerHTML = "<p class='muted'>运行后显示一条随机路径。</p>";
-  $("#statusLabel").textContent = "已重置";
+  updateExportState();
+  setStatus("已重置");
+  showToast("已恢复默认参数");
 }
 
 function exportCsv() {
-  if (!latestResults) return;
+  if (!latestResults || resultsAreStale) {
+    showToast("请先运行模拟，再导出 CSV");
+    return;
+  }
   const stages = [
     ["champion", "champion"],
     ["final", "final"],
@@ -1211,23 +1379,47 @@ function exportCsv() {
   link.download = "world-cup-2026-simulation.csv";
   link.click();
   URL.revokeObjectURL(url);
+  showToast("CSV 已开始下载");
 }
 
 document.addEventListener("input", (event) => {
-  if (event.target.matches("#randomness, #hostBoost, #penaltyWeight")) syncControlLabels();
+  if (event.target.matches("#randomness, #hostBoost, #penaltyWeight")) {
+    syncControlLabels();
+    markResultsStale("参数已变更");
+    if (!latestResults) setStatus("参数已变更", "dirty");
+  }
+  if (event.target.matches("#simCount, #seedInput")) {
+    updatePresetState();
+    markResultsStale("参数已变更");
+    if (!latestResults) setStatus("参数已变更", "dirty");
+  }
   if (event.target.matches("[data-team-rating]")) {
     const team = teams.find((item) => item.id === Number(event.target.dataset.teamRating));
     team.manualRating = Number(event.target.value);
     latestResults = null;
     renderDataCoverage();
     renderGroups();
+    renderResultSummary();
+    updateExportState();
+    markResultsStale();
+    if (!latestResults) setStatus("待重新运行", "dirty");
   }
 });
 
 document.addEventListener("click", (event) => {
-  if (event.target.matches("[data-count]")) $("#simCount").value = event.target.dataset.count;
+  if (event.target.matches("[data-count]")) {
+    $("#simCount").value = event.target.dataset.count;
+    updatePresetState();
+    markResultsStale("参数已变更");
+    if (!latestResults) setStatus("参数已变更", "dirty");
+  }
   const teamButton = event.target.closest("[data-select-team]");
-  if (teamButton) selectTeam(teamButton.dataset.selectTeam);
+  if (teamButton) selectTeam(teamButton.dataset.selectTeam, { openDetails: true, trigger: teamButton });
+  const detailButton = event.target.closest("[data-open-team-detail]");
+  if (detailButton) {
+    const team = teams.find((item) => item.id === Number(detailButton.dataset.openTeamDetail));
+    if (team) openTeamDrawer(team, detailButton);
+  }
 });
 
 $("#runBtn").addEventListener("click", runSimulation);
@@ -1235,13 +1427,23 @@ $("#saveBtn").addEventListener("click", saveSettings);
 $("#loadBtn").addEventListener("click", loadSettings);
 $("#resetBtn").addEventListener("click", resetSettings);
 $("#exportBtn").addEventListener("click", exportCsv);
+$("#drawerCloseBtn").addEventListener("click", closeTeamDrawer);
+$("#drawerOverlay").addEventListener("click", closeTeamDrawer);
 $("#sampleBtn").addEventListener("click", () => {
   latestSampleIndex += 1;
-  const settings = latestResults?.settings || currentSettings();
+  const settings = latestResults && !resultsAreStale ? latestResults.settings : currentSettings();
   latestSample = simulateTournament(settings, true, createRng(`${settings.seed}:sample:${latestSampleIndex}`));
   renderSamplePath();
+  showToast("已重新抽样一条模拟路径");
 });
-$("#focusTeam").addEventListener("change", () => renderStageBars());
+$("#focusTeam").addEventListener("change", () => {
+  renderGroups();
+  renderRanking(latestResults?.counters || emptyCounters(), latestResults?.settings.count || 1);
+  renderStageBars();
+});
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && !$("#teamDrawer").hidden) closeTeamDrawer();
+});
 
 syncControlLabels();
 renderInitial();

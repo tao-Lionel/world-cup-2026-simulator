@@ -19,6 +19,9 @@
         <button id="resetBtn" class="ghost-btn" type="button">重置</button>
         <button id="runBtn" class="primary-btn" type="button">运行模拟</button>
       </div>
+      <div id="runProgressTrack" class="run-progress" role="progressbar" aria-label="模拟进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+        <span id="runProgress"></span>
+      </div>
     </header>
 
     <main class="app-shell">
@@ -86,6 +89,7 @@
           <span>夺冠概率排名</span>
           <span id="runMeta" class="muted">尚未模拟</span>
         </div>
+        <div id="resultSummary" class="result-summary" aria-live="polite"></div>
         <div class="table-wrap">
           <table>
             <thead>
@@ -116,7 +120,7 @@
       <section class="panel focus-panel">
         <div class="panel-title">
           <span id="focusTitle">阶段概率分布</span>
-          <button id="exportBtn" class="ghost-btn small" type="button">导出 CSV</button>
+          <button id="exportBtn" class="ghost-btn small" type="button" disabled>导出 CSV</button>
         </div>
         <div id="stageBars" class="stage-bars"></div>
         <div id="teamProfile" class="team-profile"></div>
@@ -145,8 +149,21 @@
       </section>
     </main>
 
+    <div id="drawerOverlay" class="drawer-overlay" hidden></div>
+    <aside id="teamDrawer" class="team-drawer" role="dialog" aria-modal="true" aria-labelledby="teamDrawerTitle" hidden>
+      <div class="drawer-head">
+        <div>
+          <span class="muted">球队详情</span>
+          <h2 id="teamDrawerTitle">球队详情</h2>
+        </div>
+        <button id="drawerCloseBtn" class="ghost-btn small" type="button" aria-label="关闭球队详情">关闭</button>
+      </div>
+      <div id="teamDrawerBody" class="drawer-body"></div>
+    </aside>
+
     <script src="data/third_place_assignment_map.js"></script>
     <script src="data/squads_2026.js"></script>
     <script src="app.js"></script>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
   </body>
 </html>
