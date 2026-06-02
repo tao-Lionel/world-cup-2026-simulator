@@ -13,7 +13,7 @@
 | 近两年战绩 | 已抓取每队最近 10 场国家队比赛，按胜平负、净胜球和时间衰减生成 form | International-football.net 国家队页面 last international games |
 | 历届世界杯路径难度 | 已由 48 队历史出场、总战绩、最佳成绩、2022 成绩、近期参赛和冠军/决赛经验重算 | Football365 48 队世界杯记录 + `deep-research-report.md` 冠军路径整理 |
 | 淘汰赛路径 | 已接入 73-104 号固定淘汰赛赛程树，并生成 495 种第三名出线组合固定映射表，替代运行时临时分配 | FIFA World Cup 2026 knockout bracket：<https://www.fifa.com/en/articles/knockout-stage-match-schedule-bracket>、`data/third_place_assignment_map.csv` |
-| 阵容画像 | 已拆出 48 队阵容画像，31 队已接入球员级名单行，其余保留代理聚合 | `data/squad_profile_snapshot.csv`、`data/squads_2026.csv`、`data/squad_announcement_status.csv`、`data/squads_2026_template.csv`、FIFA squad announcement hub、Wikipedia squad tracker |
+| 阵容画像 | 已拆出 48 队阵容画像，48 队均已接入球员级最终名单行 | `data/squad_profile_snapshot.csv`、`data/squads_2026.csv`、`data/squad_announcement_status.csv`、FIFA squad announcement hub、Wikipedia squad tracker |
 | 球员可用性 | 已新增可审计 watchlist，并把已核验的伤病缺席/伤愈入选状态映射到球员行和球队伤病风险 | `data/player_availability_watchlist.csv`、`data/player_availability_audit.csv`、FIFA squad announcement hub、各队公告、媒体补充 |
 
 ## 当前来源等级
@@ -23,20 +23,20 @@
 | 权威快照 | 1.00 | 2026 分组、主办国身份、FIFA 排名、FIFA 积分 | 已有明确官方入口，可直接核验 |
 | 市场快照 | 0.82 | 夺冠赔率 | 可从多个赔率站交叉核验，但会高频波动 |
 | 研究快照 | 0.72 | 历史世界杯路径难度 | 已拆成 48 队历史记录与路径特征表，后续可继续细化逐场路径 |
-| 可替换快照 | 0.62 | Elo 强度、近两年战绩、赛程旅行与休息、名单公告状态 | 已替换为固定日期/固定赛程快照，可继续刷新 |
-| 代理估计 | 0.36 | 阵容身价、平均年龄、伤病、俱乐部分布、名单状态 | 已进入模型，但不是最终实时数据 |
+| 可替换快照 | 0.62 | Elo 强度、近两年战绩、赛程旅行与休息、名单公告状态、名单状态 | 已替换为固定日期/固定赛程快照，可继续刷新 |
+| 代理估计 | 0.36 | 阵容身价、平均年龄、俱乐部分布 | 已进入模型，但仍有球员身价代理成分 |
 | 人工量化 | 0.26 | 球队氛围 | 已拆成结构化上下文快照，但仍保持低权重 |
 
-## 暂定代理指标
+## 阵容相关指标
 
 | 因子 | 当前处理 | 后续替换方式 |
 |---|---|---|
-| 26 人名单公告 | 已接入 `squad_announcement_status.csv`；截至 2026-05-30，本地标记 31 队可导入 26 人名单，但 `fifa_final_26_available` 仍为 false | FIFA 公告页、各协会公告和 squad tracker |
-| 球员级 26 人名单 | 已生成 `squads_2026.csv`，覆盖 31 队、806 名球员；其余球队等待确认 26 人名单 | Wikipedia squad tracker wikitext + 各协会来源链接 |
-| 阵容身价 | 已进入 `squad_profile_snapshot.csv`，单位为百万欧元；31 队已把球队总身价按角色、年龄、联赛和国家队资历分配到球员层 | Transfermarkt 或同类来源导出后替换 |
-| 平均年龄 | 已进入 `squad_profile_snapshot.csv`；31 队由球员出生日期计算，其余用预计名单结构代理 | 最终名单逐球员计算 |
+| 最终名单公告 | 已接入 `squad_announcement_status.csv`；截至 2026-06-02，本地 48 队均标记为 FIFA 最终名单确认 | FIFA 公告页、Wikipedia squad tracker |
+| 球员级最终名单 | 已生成 `squads_2026.csv`，覆盖 48 队、1246 名球员；Canada 和 Austria 当前各 25 人，其余 46 队为 26 人 | Wikipedia squad tracker wikitext + FIFA 最终名单规则 |
+| 阵容身价 | 已进入 `squad_profile_snapshot.csv`，单位为百万欧元；48 队已把球队总身价按角色、年龄、联赛和国家队资历分配到球员层 | Transfermarkt 或同类来源导出后替换 |
+| 平均年龄 | 已进入 `squad_profile_snapshot.csv`；48 队均由球员出生日期计算 | 最终名单逐球员计算 |
 | 伤病风险 | 已进入 `squad_profile_snapshot.csv`，0-100 分，越低越好；球员行默认 unknown，但 watchlist 中已核验的可用性会覆盖球员状态或作为队级缺席惩罚 | 赛前伤病列表、出场状态、新闻源 |
-| 俱乐部分布 | 已进入 `squad_profile_snapshot.csv`；31 队由球员俱乐部国家/联赛代理聚合，其余保留球队级代理值 | 球员俱乐部字段聚合 |
+| 俱乐部分布 | 已进入 `squad_profile_snapshot.csv`；48 队均由球员俱乐部国家/联赛代理聚合 | 球员俱乐部字段聚合 |
 | 球队氛围 | 已拆成领导连续性、教练稳定、近期势头和压力风险四项合成 | 后续用教练任期、队长/核心连续性、公开纪律事件和新闻/社媒情绪替换 |
 | 入境旅行距离 | 已用代表性出发地到首场小组赛场馆距离估计 | 后续可替换为真实训练基地、包机路线和抵达时间 |
 | 入境时区差 | 已用代表性出发地与首场小组赛场馆 6 月 UTC offset 估计 | 后续可加入赛前抵达天数和生物钟适应期 |
@@ -72,7 +72,7 @@
 ## 下一步数据替换顺序
 
 1. 用真实球员 market value 覆盖当前 `team_value_allocated_proxy`，并补伤病状态和预计角色。
-2. 等剩余球队确认 26 人名单后重跑 `fetch-wikipedia-squads.mjs`，把覆盖率从 31 队推到 48 队。
+2. 持续重跑 `fetch-wikipedia-squads.mjs` 和可用性脚本，捕捉赛前伤病替换和名单变更。
 3. 把 `champion_paths_summary.csv` 继续展开成逐场路径表，加入对手强度、加时/点球和淘汰赛压力，进一步重算 `wcPath`。
 4. 在 `schedule_travel.csv` 基础上加入真实训练基地、抵达时间、开球时间和淘汰赛路径模拟。
 5. 定期重跑 `fetch-elo-snapshot.mjs` 和 `fetch-recent-form.mjs` 更新 Elo/近况。
@@ -102,9 +102,9 @@
 | `data/team_travel_origins.csv` | 48 队代表性出发地、坐标和 6 月 UTC offset |
 | `data/schedule_travel.csv` | 由赛程、场馆和出发地数据计算出的每队入境距离、入境时区差、组赛移动距离、休息、时区、跨境、海拔和环境负担 |
 | `data/team_path_context.csv` | 每队小组赛末战日期、场馆和时区，用作淘汰赛动态路径疲劳的初始状态 |
-| `data/squad_profile_snapshot.csv` | 48 队暂定阵容画像，后续可由官方/暂定 26 人名单聚合替换 |
-| `data/squad_announcement_status.csv` | 48 队名单公告状态，区分已公布 26 人名单与初选/训练营/待公布状态 |
-| `data/squads_2026.csv` | 已导入的球员级名单行，当前覆盖 31 队、806 名球员 |
+| `data/squad_profile_snapshot.csv` | 48 队最终名单阵容画像，由球员级名单聚合生成 |
+| `data/squad_announcement_status.csv` | 48 队名单公告状态，当前均标记为 2026-06-02 FIFA 最终名单确认 |
+| `data/squads_2026.csv` | 已导入的球员级最终名单行，当前覆盖 48 队、1246 名球员 |
 | `data/squads_2026.js` | 浏览器运行用的球员级名单快照，由 `squads_2026.csv` 生成 |
 | `data/squad_value_allocation.csv` | 球队总身价分配到球员层的审计表，确保球员行加总回到球队总值 |
 | `data/squad_collection_status.csv` | 每队 wikitext 解析状态、球员行数和是否导入 |
@@ -123,9 +123,9 @@
 
 淘汰赛动态路径疲劳当前在浏览器运行时按模拟路径逐场计算，不单独写回每支球队的静态字段。它使用 `team_path_context.csv`、`venues.csv` 和 `knockout_schedule.csv` 估算 travel/rest/timezone/climate 的单场影响；真实训练基地和开球时间尚未接入。
 
-`squad_profile_snapshot.csv` 是为了让阵容维度有可审计入口；`squads_2026.csv` 已把可确认 26 人名单的球队先接入球员级模型，但它不等于 FIFA 统一发布的最终名单。FIFA 名单规则页显示，2026 世界杯每队最终名单为 23-26 人，最终名单在各队提交后由 FIFA 于 2026-06-02 公布；因此 2026-05-30 前即使 `announced_26_available=true`，`fifa_final_26_available` 仍保持 false。
+`squad_profile_snapshot.csv` 是为了让阵容维度有可审计入口；`squads_2026.csv` 已按 2026-06-02 最终名单状态接入 48 队球员级模型。FIFA 名单规则页显示，2026 世界杯每队最终名单为 23-26 人；当前 Wikipedia tracker 中 Canada 和 Austria 为 25 人，其余 46 队为 26 人。
 
-`squad_import_candidates.csv` 用来防止“可解析”被误读成“可导入”。例如 2026-05-30 刷新时，Egypt 在 tracker 中解析出 26 行，但 FIFA 英文公告页仍说明这是 27 人 preliminary squad，因此继续保留为候选审计，不写入 `squads_2026.csv`。
+`squad_import_candidates.csv` 用来防止“可解析”被误读成“可导入”。2026-06-02 刷新后候选审计为 0 行；后续若 tracker 出现新的未确认名单变更，仍通过该文件单独审计。
 
 `squads_2026.csv` 中的 `market_value_m` 当前若标记 `value_source=team_value_allocated_proxy`，表示它不是外部真实球员身价，而是把球队级 `squadValue` 按球员角色、年龄、联赛和国家队资历分摊到球员行。这样模型可以先用球员颗粒度运行，但仍需要后续用真实 market value 替换。
 

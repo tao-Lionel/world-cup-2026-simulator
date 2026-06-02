@@ -11,7 +11,7 @@ squadValue,阵容身价,proxy,代理估计,0.36,市场身价代理
 avgAge,平均年龄,proxy,代理估计,0.36,暂定名单结构代理
 injuryRisk,伤病风险,snapshot,可替换快照,0.62,球员可用性 watchlist + 赛前健康代理
 clubScore,俱乐部分布,proxy,代理估计,0.36,顶级联赛集中度代理
-atmosphere,球队氛围,manual,人工量化,0.26,team_context_snapshot.csv 2026-05-30
+atmosphere,球队氛围,manual,人工量化,0.26,team_context_snapshot.csv 2026-06-02
 travelKm,小组赛场馆移动,snapshot,可替换快照,0.62,FIFA schedule + venue coordinates
 restDays,小组赛休息天数,snapshot,可替换快照,0.62,FIFA schedule dates
 timezoneShift,组赛时区跨度,snapshot,可替换快照,0.62,venue UTC offsets
@@ -22,4 +22,4 @@ altitudeLoad,最高场馆海拔,snapshot,可替换快照,0.62,venue altitude sna
 climateLoad,场馆环境负担,snapshot,可替换快照,0.62,venue heat/humidity/altitude estimate
 squadAnnouncementStatus,名单公告状态,snapshot,可替换快照,0.62,federation/FIFA squad announcement tracker
 squadAnnouncementDate,名单公告日期,snapshot,可替换快照,0.62,federation/FIFA squad announcement tracker
-squadStatus,名单状态,proxy,代理估计,0.36,26 人名单待官方公布
+squadStatus,名单状态,snapshot,可替换快照,0.62,FIFA final squad lists + Wikipedia squad tracker 2026-06-02

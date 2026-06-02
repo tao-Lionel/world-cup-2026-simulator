@@ -73,6 +73,7 @@ function numberValue(value) {
 
 function labelStatus(row) {
   if (!row) return "";
+  if (row.announcement_status === "fifa_final_confirmed") return "FIFA最终名单";
   if (row.announcement_status === "association_26_announced") return "已公布26人名单";
   if (row.announcement_status === "squad_announced_unverified") return "已公布名单待核26人";
   if (row.announcement_status === "preliminary") return "暂定/初选名单";
@@ -211,8 +212,8 @@ const outputRows = baseTeams.map((team) => {
   if (!players.length) {
     return {
       team: team.en,
-      snapshot_date: "2026-05-30",
-      squad_status: announcement.announced_26_available === "true" ? "已公布26人名单" : labelStatus(announcement) || factors.squadStatus,
+      snapshot_date: "2026-06-02",
+      squad_status: announcement.announced_26_available === "true" ? labelStatus(announcement) || "已公布26人名单" : labelStatus(announcement) || factors.squadStatus,
       final_26_available: announcement.fifa_final_26_available || "false",
       announced_26_available: announcement.announced_26_available || "false",
       announcement_status: labelStatus(announcement) || factors.squadAnnouncementStatus || "",
@@ -244,11 +245,11 @@ const outputRows = baseTeams.map((team) => {
 
   return {
     team: team.en,
-    snapshot_date: players.find((row) => row.snapshot_date)?.snapshot_date || "2026-05-30",
+    snapshot_date: players.find((row) => row.snapshot_date)?.snapshot_date || "2026-06-02",
     squad_status: `${players.length}人${statusText}`,
     final_26_available: final26Available && allOfficial ? "true" : "false",
     announced_26_available: final26Available && allAssociationFinal ? "true" : announcement.announced_26_available || "false",
-    announcement_status: final26Available && allAssociationFinal ? "已公布26人名单" : factors.squadAnnouncementStatus || "",
+    announcement_status: final26Available && allOfficial ? "FIFA最终名单" : final26Available && allAssociationFinal ? "已公布26人名单" : factors.squadAnnouncementStatus || "",
     announcement_date: announcement.announced_date || factors.squadAnnouncementDate || "",
     squad_value_m: values.length ? rounded(values.reduce((sum, value) => sum + value, 0)) : factors.squadValue,
     avg_age: ages.length ? rounded(ages.reduce((sum, value) => sum + value, 0) / ages.length, 1) : factors.avgAge,

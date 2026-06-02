@@ -24,9 +24,9 @@
 - `team_travel_origins.csv`：48 队代表性出发地、坐标和 6 月 UTC offset，用于估计入境旅行距离与时区差。
 - `schedule_travel.csv`：按小组赛场馆序列计算出的每队入境距离、入境时区差、组赛移动距离、休息、时区跨度、跨境、海拔和环境负担。
 - `team_path_context.csv`：每队小组赛末战日期、场馆和时区，用作淘汰赛动态路径疲劳的初始状态。
-- `squad_profile_snapshot.csv`：48 队暂定阵容画像，承接身价、年龄、伤病风险、俱乐部分布和名单状态；当前仍是代理聚合值。
-- `squad_announcement_status.csv`：48 队名单公告状态，区分已公布 26 人名单、初选名单、训练营名单和待公布；FIFA 最终名单仍单独标记。
-- `squads_2026.csv`：从公开 squad tracker 导入的球员级名单行，当前覆盖 31 队、806 名球员；`market_value_m` 当前为球队总身价分配代理值。
+- `squad_profile_snapshot.csv`：48 队最终名单阵容画像，承接身价、年龄、伤病风险、俱乐部分布和名单状态；球员身价当前仍是代理分配值。
+- `squad_announcement_status.csv`：48 队名单公告状态，当前均标记为 2026-06-02 FIFA 最终名单确认。
+- `squads_2026.csv`：从公开 squad tracker 导入的球员级最终名单行，当前覆盖 48 队、1246 名球员；`market_value_m` 当前为球队总身价分配代理值。
 - `squads_2026.js`：浏览器运行用的球员级名单快照，由 `squads_2026.csv` 生成。
 - `squad_value_allocation.csv`：球员级身价代理分配审计表，记录每队目标总值和分配后总值。
 - `squad_collection_status.csv`：每队球员名单解析状态，记录 wikitext 球员数、导入数和跳过原因。
@@ -121,7 +121,7 @@ node scripts/apply-squad-profiles.mjs
 node scripts/export-data-snapshots.mjs
 ```
 
-已公布 26 人名单的状态由下面命令回写；它只更新公告状态，不伪造球员级身价/年龄：
+FIFA 最终名单状态由下面命令回写；它只更新公告状态，不伪造球员级身价/年龄：
 
 ```bash
 node scripts/apply-squad-announcement-status.mjs
@@ -130,7 +130,7 @@ node scripts/apply-team-context-snapshot.mjs
 node scripts/export-data-snapshots.mjs
 ```
 
-球员级名单可从公开 squad tracker 生成；该命令只导入确认 23-26 人且已标记为 26 人名单的球队：
+球员级名单可从公开 squad tracker 生成；该命令只导入确认 23-26 人且已标记为最终名单的球队：
 
 ```bash
 node scripts/fetch-wikipedia-squads.mjs
@@ -138,9 +138,9 @@ node scripts/build-squad-import-candidates.mjs
 node scripts/enrich-squad-player-proxies.mjs
 node scripts/apply-player-availability.mjs
 node scripts/build-squad-browser-data.mjs
+node scripts/apply-squad-announcement-status.mjs
 node scripts/aggregate-squads.mjs
 node scripts/apply-squad-profiles.mjs
-node scripts/apply-squad-announcement-status.mjs
 node scripts/build-team-context-snapshot.mjs
 node scripts/apply-team-context-snapshot.mjs
 node scripts/export-data-snapshots.mjs

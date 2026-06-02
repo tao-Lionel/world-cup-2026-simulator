@@ -1,2 +1,1 @@
 team,wiki_section,parsed_players,announcement_status,announced_26_available,fifa_final_26_available,candidate_status,recommended_action,source_url
-Egypt,Egypt,26,preliminary,false,false,needs_source_review,"Verify source_url is a confirmed 26-player squad, then set announced_26_available=true in squad_announcement_status.csv.",https://www.fifa.com/en/articles/egypt-squad-named

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-30T13:28:00.536Z",
+  "generatedAt": "2026-06-02T14:35:54.947Z",
   "note": "Exported from app.js. Proxy fields should be replaced by source-specific datasets over time.",
   "teams": [
     {
@@ -18,10 +18,10 @@
         "wcPath": 58,
         "odds": 7213,
         "squadValue": 215,
-        "avgAge": 27.7,
-        "injuryRisk": 24,
-        "clubScore": 58,
-        "atmosphere": 56,
+        "avgAge": 27.5,
+        "injuryRisk": 22,
+        "clubScore": 60,
+        "atmosphere": 59,
         "travelKm": 952,
         "restDays": 6.5,
         "timezoneShift": 0,
@@ -30,9 +30,9 @@
         "climateLoad": 71,
         "entryTravelKm": 15,
         "entryTimezoneShift": 0,
-        "squadAnnouncementStatus": "暂定/初选名单",
-        "squadAnnouncementDate": "2026-05-23",
-        "squadStatus": "暂定/初选名单"
+        "squadAnnouncementStatus": "FIFA最终名单",
+        "squadAnnouncementDate": "2026-06-02",
+        "squadStatus": "26人官方最终名单"
       }
     },
     {
@@ -50,9 +50,9 @@
         "wcPath": 27,
         "odds": 79161,
         "squadValue": 43,
-        "avgAge": 26.4,
+        "avgAge": 26.3,
         "injuryRisk": 22,
-        "clubScore": 56,
+        "clubScore": 55,
         "atmosphere": 55,
         "travelKm": 3943,
         "restDays": 6.5,
@@ -62,9 +62,9 @@
         "climateLoad": 63,
         "entryTravelKm": 14582,
         "entryTimezoneShift": 8,
-        "squadAnnouncementStatus": "已公布26人名单",
-        "squadAnnouncementDate": "2026-05-27",
-        "squadStatus": "已公布26人名单"
+        "squadAnnouncementStatus": "FIFA最终名单",
+        "squadAnnouncementDate": "2026-06-02",
+        "squadStatus": "26人官方最终名单"
       }
     },
     {
@@ -82,9 +82,9 @@
         "wcPath": 60,
         "odds": 34964,
         "squadValue": 205,
-        "avgAge": 27.7,
+        "avgAge": 27.5,
         "injuryRisk": 22,
-        "clubScore": 66,
+        "clubScore": 64,
         "atmosphere": 57,
         "travelKm": 645,
         "restDays": 6.5,
@@ -94,9 +94,9 @@
         "climateLoad": 61,
         "entryTravelKm": 11663,
         "entryTimezoneShift": 15,
-        "squadAnnouncementStatus": "已公布26人名单",
-        "squadAnnouncementDate": "2026-05-15",
-        "squadStatus": "已公布26人名单"
+        "squadAnnouncementStatus": "FIFA最终名单",
+        "squadAnnouncementDate": "2026-06-02",
+        "squadStatus": "26人官方最终名单"
       }
     },
     {
@@ -114,10 +114,10 @@
         "wcPath": 63,
         "odds": 27253,
         "squadValue": 185,
-        "avgAge": 26.8,
-        "injuryRisk": 19,
-        "clubScore": 61,
-        "atmosphere": 57,
+        "avgAge": 27.2,
+        "injuryRisk": 22,
+        "clubScore": 63,
+        "atmosphere": 58,
         "travelKm": 4544,
         "restDays": 6.5,
         "timezoneShift": 2,
@@ -126,9 +126,9 @@
         "climateLoad": 60,
         "entryTravelKm": 10072,
         "entryTimezoneShift": 8,
-        "squadAnnouncementStatus": "暂定/初选名单",
-        "squadAnnouncementDate": "2026-05-21",
-        "squadStatus": "暂定/初选名单"
+        "squadAnnouncementStatus": "FIFA最终名单",
+        "squadAnnouncementDate": "2026-06-02",
+        "squadStatus": "26人官方最终名单"
       }
     },
     {
@@ -147,9 +147,9 @@
         "wcPath": 27,
         "odds": 21416,
         "squadValue": 230,
-        "avgAge": 26.4,
+        "avgAge": 26.6,
         "injuryRisk": 22,
-        "clubScore": 73,
+        "clubScore": 72,
         "atmosphere": 59,
         "travelKm": 3357,
         "restDays": 6,
@@ -159,9 +159,9 @@
         "climateLoad": 25,
         "entryTravelKm": 4,
         "entryTimezoneShift": 0,
-        "squadAnnouncementStatus": "已公布26人名单",
-        "squadAnnouncementDate": "2026-05-29",
-        "squadStatus": "已公布26人名单"
+        "squadAnnouncementStatus": "FIFA最终名单",
+        "squadAnnouncementDate": "2026-06-02",
+        "squadStatus": "25人官方最终名单"
       }
     },
     {
@@ -179,10 +179,10 @@
         "wcPath": 27,
         "odds": 23508,
         "squadValue": 95,
-        "avgAge": 26.4,
+        "avgAge": 25.9,
         "injuryRisk": 22,
-        "clubScore": 71,
-        "atmosphere": 56,
+        "clubScore": 69,
+        "atmosphere": 54,
         "travelKm": 5058,
         "restDays": 6,
         "timezoneShift": 3,
@@ -191,9 +191,9 @@
         "climateLoad": 28,
         "entryTravelKm": 7337,
         "entryTimezoneShift": 6,
-        "squadAnnouncementStatus": "已公布26人名单",
-        "squadAnnouncementDate": "2026-05-11",
-        "squadStatus": "已公布26人名单"
+        "squadAnnouncementStatus": "FIFA最终名单",
+        "squadAnnouncementDate": "2026-06-02",
+        "squadStatus": "26人官方最终名单"
       }
     },
     {
@@ -211,10 +211,10 @@
         "wcPath": 26,
         "odds": 146077,
         "squadValue": 21,
-        "avgAge": 28.2,
-        "injuryRisk": 19,
-        "clubScore": 30,
-        "atmosphere": 48,
+        "avgAge": 28.9,
+        "injuryRisk": 22,
+        "clubScore": 44,
+        "atmosphere": 47,
         "travelKm": 1519,
         "restDays": 5.5,
         "timezoneShift": 0,
@@ -223,9 +223,9 @@
         "climateLoad": 25,
         "entryTravelKm": 13011,
         "entryTimezoneShift": 10,
-        "squadAnnouncementStatus": "暂定/初选名单",
-        "squadAnnouncementDate": "2026-05-25",
-        "squadStatus": "暂定/初选名单"
+        "squadAnnouncementStatus": "FIFA最终名单",
+        "squadAnnouncementDate": "2026-06-02",
+        "squadStatus": "26人官方最终名单"
       }
     },
     {
@@ -245,7 +245,7 @@
         "squadValue": 305,
         "avgAge": 27.8,
         "injuryRisk": 22,
-        "clubScore": 87,
+        "clubScore": 86,
         "atmosphere": 61,
         "travelKm": 2253,
         "restDays": 5.5,
@@ -255,9 +255,9 @@
         "climateLoad": 29,
         "entryTravelKm": 9372,
         "entryTimezoneShift": 9,
-        "squadAnnouncementStatus": "已公布26人名单",
-        "squadAnnouncementDate": "2026-05-20",
-        "squadStatus": "已公布26人名单"
+        "squadAnnouncementStatus": "FIFA最终名单",
+        "squadAnnouncementDate": "2026-06-02",
+        "squadStatus": "26人官方最终名单"
       }
     },
     {
@@ -277,7 +277,7 @@
         "squadValue": 1120,
         "avgAge": 28.7,
         "injuryRisk": 22,
-        "clubScore": 81,
+        "clubScore": 80,
         "atmosphere": 61,
         "travelKm": 1758,
         "restDays": 5.5,
@@ -287,9 +287,9 @@
         "climateLoad": 49,
         "entryTravelKm": 7772,
         "entryTimezoneShift": 1,
-        "squadAnnouncementStatus": "已公布26人名单",
-        "squadAnnouncementDate": "2026-05-18",
-        "squadStatus": "已公布26人名单"
+        "squadAnnouncementStatus": "FIFA最终名单",
+        "squadAnnouncementDate": "2026-06-02",
+        "squadStatus": "26人官方最终名单"
       }
     },
     {
@@ -309,7 +309,7 @@
         "squadValue": 370,
         "avgAge": 25.9,
         "injuryRisk": 22,
-        "clubScore": 78,
+        "clubScore": 77,
         "atmosphere": 57,
         "travelKm": 1750,
         "restDays": 5.5,
@@ -319,9 +319,9 @@
         "climateLoad": 37,
         "entryTravelKm": 5840,
         "entryTimezoneShift": 5,
-        "squadAnnouncementStatus": "已公布26人名单",
-        "squadAnnouncementDate": "2026-05-26",
-        "squadStatus": "已公布26人名单"
+        "squadAnnouncementStatus": "FIFA最终名单",
+        "squadAnnouncementDate": "2026-06-02",
+        "squadStatus": "26人官方最终名单"
       }
     },
     {
@@ -341,7 +341,7 @@
         "squadValue": 28,
         "avgAge": 27.1,
         "injuryRisk": 22,
-        "clubScore": 67,
+        "clubScore": 65,
         "atmosphere": 53,
         "travelKm": 1476,
         "restDays": 5.5,
@@ -351,9 +351,9 @@
         "climateLoad": 38,
         "entryTravelKm": 2615,
         "entryTimezoneShift": 0,
-        "squadAnnouncementStatus": "已公布26人名单",
-        "squadAnnouncementDate": "2026-05-15",
-        "squadStatus": "已公布26人名单"
+        "squadAnnouncementStatus": "FIFA最终名单",
+        "squadAnnouncementDate": "2026-06-02",
+        "squadStatus": "26人官方最终名单"
       }
     },
     {
@@ -371,7 +371,7 @@
         "wcPath": 27,
         "odds": 11988,
         "squadValue": 245,
-        "avgAge": 29,
+        "avgAge": 28.7,
         "injuryRisk": 22,
         "clubScore": 78,
         "atmosphere": 54,
@@ -383,9 +383,9 @@
         "climateLoad": 45,
         "entryTravelKm": 4910,
         "entryTimezoneShift": 5,
-        "squadAnnouncementStatus": "已公布26人名单",
-        "squadAnnouncementDate": "2026-05-19",
-        "squadStatus": "已公布26人名单"
+        "squadAnnouncementStatus": "FIFA最终名单",
+        "squadAnnouncementDate": "2026-06-02",
+        "squadStatus": "26人官方最终名单"
       }
     },
     {
@@ -405,8 +405,8 @@
         "odds": 5965,
         "squadValue": 330,
         "avgAge": 26.4,
-        "injuryRisk": 22,
-        "clubScore": 79,
+        "injuryRisk": 21,
+        "clubScore": 77,
         "atmosphere": 60,
         "travelKm": 3106,
         "restDays": 6.5,
@@ -416,9 +416,9 @@
         "climateLoad": 30,
         "entryTravelKm": 3948,
         "entryTimezoneShift": 3,
-        "squadAnnouncementStatus": "已公布26人名单",
-        "squadAnnouncementDate": "2026-05-26",
-        "squadStatus": "已公布26人名单"
+        "squadAnnouncementStatus": "FIFA最终名单",
+        "squadAnnouncementDate": "2026-06-02",
+        "squadStatus": "26人官方最终名单"
       }
     },
     {
@@ -436,10 +436,10 @@
         "wcPath": 45,
         "odds": 14975,
         "squadValue": 160,
-        "avgAge": 27.7,
-        "injuryRisk": 20,
-        "clubScore": 57,
-        "atmosphere": 54,
+        "avgAge": 28.5,
+        "injuryRisk": 22,
+        "clubScore": 69,
+        "atmosphere": 55,
         "travelKm": 505,
         "restDays": 6.5,
         "timezoneShift": 0,
@@ -448,9 +448,9 @@
         "climateLoad": 30,
         "entryTravelKm": 9190,
         "entryTimezoneShift": 3,
-        "squadAnnouncementStatus": "暂定/初选名单",
-        "squadAnnouncementDate": "2026-05-12",
-        "squadStatus": "暂定/初选名单"
+        "squadAnnouncementStatus": "FIFA最终名单",
+        "squadAnnouncementDate": "2026-06-02",
+        "squadStatus": "26人官方最终名单"
       }
     },
     {
@@ -468,9 +468,9 @@
         "wcPath": 46,
         "odds": 42845,
         "squadValue": 55,
-        "avgAge": 28.4,
-        "injuryRisk": 18,
-        "clubScore": 49,
+        "avgAge": 26.9,
+        "injuryRisk": 22,
+        "clubScore": 69,
         "atmosphere": 58,
         "travelKm": 1329,
         "restDays": 6,
@@ -480,9 +480,9 @@
         "climateLoad": 25,
         "entryTravelKm": 12502,
         "entryTimezoneShift": 17,
-        "squadAnnouncementStatus": "训练营名单",
-        "squadAnnouncementDate": "2026-05-04",
-        "squadStatus": "训练营名单"
+        "squadAnnouncementStatus": "FIFA最终名单",
+        "squadAnnouncementDate": "2026-06-02",
+        "squadStatus": "26人官方最终名单"
       }
     },
     {
@@ -500,10 +500,10 @@
         "wcPath": 48,
         "odds": 7953,
         "squadValue": 470,
-        "avgAge": 26.3,
-        "injuryRisk": 24,
-        "clubScore": 73,
-        "atmosphere": 55,
+        "avgAge": 27.2,
+        "injuryRisk": 22,
+        "clubScore": 65,
+        "atmosphere": 59,
         "travelKm": 1828,
         "restDays": 6,
         "timezoneShift": 0,
@@ -512,9 +512,9 @@
         "climateLoad": 29,
         "entryTravelKm": 9611,
         "entryTimezoneShift": 10,
-        "squadAnnouncementStatus": "暂定/初选名单",
-        "squadAnnouncementDate": "2026-05-18",
-        "squadStatus": "暂定/初选名单"
+        "squadAnnouncementStatus": "FIFA最终名单",
+        "squadAnnouncementDate": "2026-06-02",
+        "squadStatus": "26人官方最终名单"
       }
     },
     {
@@ -534,7 +534,7 @@
         "squadValue": 865,
         "avgAge": 27.5,
         "injuryRisk": 22,
-        "clubScore": 89,
+        "clubScore": 88,
         "atmosphere": 64,
         "travelKm": 2640,
         "restDays": 5.5,
@@ -544,9 +544,9 @@
         "climateLoad": 41,
         "entryTravelKm": 8435,
         "entryTimezoneShift": 7,
-        "squadAnnouncementStatus": "已公布26人名单",
-        "squadAnnouncementDate": "2026-05-21",
-        "squadStatus": "已公布26人名单"
+        "squadAnnouncementStatus": "FIFA最终名单",
+        "squadAnnouncementDate": "2026-06-02",
+        "squadStatus": "26人官方最终名单"
       }
     },
     {
@@ -566,7 +566,7 @@
         "squadValue": 36,
         "avgAge": 27.5,
         "injuryRisk": 22,
-        "clubScore": 70,
+        "clubScore": 68,
         "atmosphere": 53,
         "travelKm": 2702,
         "restDays": 5.5,
@@ -576,9 +576,9 @@
         "climateLoad": 48,
         "entryTravelKm": 3362,
         "entryTimezoneShift": 1,
-        "squadAnnouncementStatus": "已公布26人名单",
-        "squadAnnouncementDate": "2026-05-18",
-        "squadStatus": "已公布26人名单"
+        "squadAnnouncementStatus": "FIFA最终名单",
+        "squadAnnouncementDate": "2026-06-02",
+        "squadStatus": "26人官方最终名单"
       }
     },
     {
@@ -596,9 +596,9 @@
         "wcPath": 29,
         "odds": 23988,
         "squadValue": 260,
-        "avgAge": 25.4,
+        "avgAge": 25.3,
         "injuryRisk": 22,
-        "clubScore": 74,
+        "clubScore": 72,
         "atmosphere": 58,
         "travelKm": 1089,
         "restDays": 5.5,
@@ -608,9 +608,9 @@
         "climateLoad": 35,
         "entryTravelKm": 8022,
         "entryTimezoneShift": 4,
-        "squadAnnouncementStatus": "已公布26人名单",
-        "squadAnnouncementDate": "2026-05-15",
-        "squadStatus": "已公布26人名单"
+        "squadAnnouncementStatus": "FIFA最终名单",
+        "squadAnnouncementDate": "2026-06-02",
+        "squadStatus": "26人官方最终名单"
       }
     },
     {
@@ -628,9 +628,9 @@
         "wcPath": 43,
         "odds": 7575,
         "squadValue": 285,
-        "avgAge": 25.7,
-        "injuryRisk": 17,
-        "clubScore": 66,
+        "avgAge": 25.6,
+        "injuryRisk": 22,
+        "clubScore": 68,
         "atmosphere": 54,
         "travelKm": 3405,
         "restDays": 5.5,
@@ -640,9 +640,9 @@
         "climateLoad": 41,
         "entryTravelKm": 4469,
         "entryTimezoneShift": 1,
-        "squadAnnouncementStatus": "已公布名单待核26人",
-        "squadAnnouncementDate": "2026-05-19",
-        "squadStatus": "已公布名单待核26人"
+        "squadAnnouncementStatus": "FIFA最终名单",
+        "squadAnnouncementDate": "2026-06-02",
+        "squadStatus": "26人官方最终名单"
       }
     },
     {
@@ -672,9 +672,9 @@
         "climateLoad": 53,
         "entryTravelKm": 7921,
         "entryTimezoneShift": 7,
-        "squadAnnouncementStatus": "已公布26人名单",
-        "squadAnnouncementDate": "2026-05-27",
-        "squadStatus": "已公布26人名单"
+        "squadAnnouncementStatus": "FIFA最终名单",
+        "squadAnnouncementDate": "2026-06-02",
+        "squadStatus": "26人官方最终名单"
       }
     },
     {
@@ -694,7 +694,7 @@
         "squadValue": 330,
         "avgAge": 27.2,
         "injuryRisk": 29,
-        "clubScore": 78,
+        "clubScore": 76,
         "atmosphere": 58,
         "travelKm": 1689,
         "restDays": 5.5,
@@ -704,9 +704,9 @@
         "climateLoad": 58,
         "entryTravelKm": 10385,
         "entryTimezoneShift": 14,
-        "squadAnnouncementStatus": "已公布26人名单",
-        "squadAnnouncementDate": "2026-05-15",
-        "squadStatus": "已公布26人名单"
+        "squadAnnouncementStatus": "FIFA最终名单",
+        "squadAnnouncementDate": "2026-06-02",
+        "squadStatus": "26人官方最终名单"
       }
     },
     {
@@ -726,7 +726,7 @@
         "squadValue": 345,
         "avgAge": 27,
         "injuryRisk": 22,
-        "clubScore": 82,
+        "clubScore": 80,
         "atmosphere": 57,
         "travelKm": 1029,
         "restDays": 5.5,
@@ -736,9 +736,9 @@
         "climateLoad": 59,
         "entryTravelKm": 9019,
         "entryTimezoneShift": 8,
-        "squadAnnouncementStatus": "已公布26人名单",
-        "squadAnnouncementDate": "2026-05-12",
-        "squadStatus": "已公布26人名单"
+        "squadAnnouncementStatus": "FIFA最终名单",
+        "squadAnnouncementDate": "2026-06-02",
+        "squadStatus": "26人官方最终名单"
       }
     },
     {
@@ -758,7 +758,7 @@
         "squadValue": 65,
         "avgAge": 26.2,
         "injuryRisk": 22,
-        "clubScore": 66,
+        "clubScore": 65,
         "atmosphere": 56,
         "travelKm": 1582,
         "restDays": 5.5,
@@ -768,9 +768,9 @@
         "climateLoad": 60,
         "entryTravelKm": 9959,
         "entryTimezoneShift": 7,
-        "squadAnnouncementStatus": "已公布26人名单",
-        "squadAnnouncementDate": "2026-05-15",
-        "squadStatus": "已公布26人名单"
+        "squadAnnouncementStatus": "FIFA最终名单",
+        "squadAnnouncementDate": "2026-06-02",
+        "squadStatus": "26人官方最终名单"
       }
     },
     {
@@ -790,7 +790,7 @@
         "squadValue": 530,
         "avgAge": 27.1,
         "injuryRisk": 22,
-        "clubScore": 84,
+        "clubScore": 82,
         "atmosphere": 63,
         "travelKm": 3302,
         "restDays": 5.5,
@@ -800,9 +800,9 @@
         "climateLoad": 27,
         "entryTravelKm": 7944,
         "entryTimezoneShift": 9,
-        "squadAnnouncementStatus": "已公布26人名单",
-        "squadAnnouncementDate": "2026-05-15",
-        "squadStatus": "已公布26人名单"
+        "squadAnnouncementStatus": "FIFA最终名单",
+        "squadAnnouncementDate": "2026-06-02",
+        "squadStatus": "26人官方最终名单"
       }
     },
     {
@@ -820,10 +820,10 @@
         "wcPath": 33,
         "odds": 33721,
         "squadValue": 150,
-        "avgAge": 28.4,
-        "injuryRisk": 24,
-        "clubScore": 60,
-        "atmosphere": 54,
+        "avgAge": 28.7,
+        "injuryRisk": 22,
+        "clubScore": 58,
+        "atmosphere": 56,
         "travelKm": 391,
         "restDays": 5.5,
         "timezoneShift": 0,
@@ -832,9 +832,9 @@
         "climateLoad": 23,
         "entryTravelKm": 10986,
         "entryTimezoneShift": 10,
-        "squadAnnouncementStatus": "暂定/初选名单",
-        "squadAnnouncementDate": "2026-05-20",
-        "squadStatus": "暂定/初选名单"
+        "squadAnnouncementStatus": "FIFA最终名单",
+        "squadAnnouncementDate": "2026-06-02",
+        "squadStatus": "26人官方最终名单"
       }
     },
     {
@@ -852,10 +852,10 @@
         "wcPath": 33,
         "odds": 42845,
         "squadValue": 60,
-        "avgAge": 29.2,
-        "injuryRisk": 20,
-        "clubScore": 44,
-        "atmosphere": 52,
+        "avgAge": 29.8,
+        "injuryRisk": 22,
+        "clubScore": 50,
+        "atmosphere": 53,
         "travelKm": 1553,
         "restDays": 5.5,
         "timezoneShift": 0,
@@ -864,9 +864,9 @@
         "climateLoad": 30,
         "entryTravelKm": 12198,
         "entryTimezoneShift": 10.5,
-        "squadAnnouncementStatus": "暂定/初选名单",
-        "squadAnnouncementDate": "2026-05-17",
-        "squadStatus": "暂定/初选名单"
+        "squadAnnouncementStatus": "FIFA最终名单",
+        "squadAnnouncementDate": "2026-06-02",
+        "squadStatus": "26人官方最终名单"
       }
     },
     {
@@ -886,7 +886,7 @@
         "squadValue": 32,
         "avgAge": 27.6,
         "injuryRisk": 22,
-        "clubScore": 65,
+        "clubScore": 64,
         "atmosphere": 50,
         "travelKm": 1749,
         "restDays": 5.5,
@@ -896,9 +896,9 @@
         "climateLoad": 27,
         "entryTravelKm": 10483,
         "entryTimezoneShift": 19,
-        "squadAnnouncementStatus": "已公布26人名单",
-        "squadAnnouncementDate": "2026-05-14",
-        "squadStatus": "已公布26人名单"
+        "squadAnnouncementStatus": "FIFA最终名单",
+        "squadAnnouncementDate": "2026-06-02",
+        "squadStatus": "26人官方最终名单"
       }
     },
     {
@@ -928,9 +928,9 @@
         "climateLoad": 49,
         "entryTravelKm": 6944,
         "entryTimezoneShift": 6,
-        "squadAnnouncementStatus": "已公布26人名单",
-        "squadAnnouncementDate": "2026-05-25",
-        "squadStatus": "已公布26人名单"
+        "squadAnnouncementStatus": "FIFA最终名单",
+        "squadAnnouncementDate": "2026-06-02",
+        "squadStatus": "26人官方最终名单"
       }
     },
     {
@@ -950,7 +950,7 @@
         "squadValue": 58,
         "avgAge": 29.2,
         "injuryRisk": 22,
-        "clubScore": 62,
+        "clubScore": 61,
         "atmosphere": 52,
         "travelKm": 2502,
         "restDays": 5.5,
@@ -960,9 +960,9 @@
         "climateLoad": 58,
         "entryTravelKm": 6418,
         "entryTimezoneShift": 3,
-        "squadAnnouncementStatus": "已公布26人名单",
-        "squadAnnouncementDate": "2026-05-18",
-        "squadStatus": "已公布26人名单"
+        "squadAnnouncementStatus": "FIFA最终名单",
+        "squadAnnouncementDate": "2026-06-02",
+        "squadStatus": "26人官方最终名单"
       }
     },
     {
@@ -980,9 +980,9 @@
         "wcPath": 42,
         "odds": 133317,
         "squadValue": 36,
-        "avgAge": 28.4,
-        "injuryRisk": 20,
-        "clubScore": 36,
+        "avgAge": 28,
+        "injuryRisk": 22,
+        "clubScore": 57,
         "atmosphere": 52,
         "travelKm": 2090,
         "restDays": 5.5,
@@ -992,9 +992,9 @@
         "climateLoad": 58,
         "entryTravelKm": 11999,
         "entryTimezoneShift": 7,
-        "squadAnnouncementStatus": "训练营名单",
-        "squadAnnouncementDate": "2026-05-23",
-        "squadStatus": "训练营名单"
+        "squadAnnouncementStatus": "FIFA最终名单",
+        "squadAnnouncementDate": "2026-06-02",
+        "squadStatus": "26人官方最终名单"
       }
     },
     {
@@ -1012,9 +1012,9 @@
         "wcPath": 98,
         "odds": 6175,
         "squadValue": 505,
-        "avgAge": 26.4,
-        "injuryRisk": 19,
-        "clubScore": 78,
+        "avgAge": 28.2,
+        "injuryRisk": 22,
+        "clubScore": 73,
         "atmosphere": 62,
         "travelKm": 2439,
         "restDays": 5.5,
@@ -1024,9 +1024,9 @@
         "climateLoad": 67,
         "entryTravelKm": 7226,
         "entryTimezoneShift": 1,
-        "squadAnnouncementStatus": "待公布",
-        "squadAnnouncementDate": "2026-06-01",
-        "squadStatus": "待公布"
+        "squadAnnouncementStatus": "FIFA最终名单",
+        "squadAnnouncementDate": "2026-06-02",
+        "squadStatus": "26人官方最终名单"
       }
     },
     {
@@ -1046,7 +1046,7 @@
         "squadValue": 1370,
         "avgAge": 26.6,
         "injuryRisk": 22,
-        "clubScore": 86,
+        "clubScore": 85,
         "atmosphere": 67,
         "travelKm": 545,
         "restDays": 5,
@@ -1056,9 +1056,9 @@
         "climateLoad": 35,
         "entryTravelKm": 5835,
         "entryTimezoneShift": 6,
-        "squadAnnouncementStatus": "已公布26人名单",
-        "squadAnnouncementDate": "2026-05-14",
-        "squadStatus": "已公布26人名单"
+        "squadAnnouncementStatus": "FIFA最终名单",
+        "squadAnnouncementDate": "2026-06-02",
+        "squadStatus": "26人官方最终名单"
       }
     },
     {
@@ -1076,10 +1076,10 @@
         "wcPath": 53,
         "odds": 9787,
         "squadValue": 255,
-        "avgAge": 27.5,
-        "injuryRisk": 18,
-        "clubScore": 64,
-        "atmosphere": 63,
+        "avgAge": 26.6,
+        "injuryRisk": 22,
+        "clubScore": 80,
+        "atmosphere": 64,
         "travelKm": 540,
         "restDays": 5,
         "timezoneShift": 0,
@@ -1088,9 +1088,9 @@
         "climateLoad": 33,
         "entryTravelKm": 6152,
         "entryTimezoneShift": 4,
-        "squadAnnouncementStatus": "已公布名单待核26人",
-        "squadAnnouncementDate": "2026-05-21",
-        "squadStatus": "已公布名单待核26人"
+        "squadAnnouncementStatus": "FIFA最终名单",
+        "squadAnnouncementDate": "2026-06-02",
+        "squadStatus": "26人官方最终名单"
       }
     },
     {
@@ -1108,10 +1108,10 @@
         "wcPath": 18,
         "odds": 119988,
         "squadValue": 24,
-        "avgAge": 27.4,
-        "injuryRisk": 19,
-        "clubScore": 34,
-        "atmosphere": 55,
+        "avgAge": 26.7,
+        "injuryRisk": 22,
+        "clubScore": 55,
+        "atmosphere": 56,
         "travelKm": 953,
         "restDays": 5,
         "timezoneShift": 0,
@@ -1120,9 +1120,9 @@
         "climateLoad": 33,
         "entryTravelKm": 9370,
         "entryTimezoneShift": 7,
-        "squadAnnouncementStatus": "暂定/初选名单",
-        "squadAnnouncementDate": "2026-05-20",
-        "squadStatus": "暂定/初选名单"
+        "squadAnnouncementStatus": "FIFA最终名单",
+        "squadAnnouncementDate": "2026-06-02",
+        "squadStatus": "26人官方最终名单"
       }
     },
     {
@@ -1142,7 +1142,7 @@
         "squadValue": 610,
         "avgAge": 26.3,
         "injuryRisk": 22,
-        "clubScore": 85,
+        "clubScore": 83,
         "atmosphere": 62,
         "travelKm": 548,
         "restDays": 5,
@@ -1152,9 +1152,9 @@
         "climateLoad": 33,
         "entryTravelKm": 5652,
         "entryTimezoneShift": 6,
-        "squadAnnouncementStatus": "已公布26人名单",
-        "squadAnnouncementDate": "2026-05-21",
-        "squadStatus": "已公布26人名单"
+        "squadAnnouncementStatus": "FIFA最终名单",
+        "squadAnnouncementDate": "2026-06-02",
+        "squadStatus": "26人官方最终名单"
       }
     },
     {
@@ -1184,9 +1184,9 @@
         "climateLoad": 52,
         "entryTravelKm": 8992,
         "entryTimezoneShift": 2,
-        "squadAnnouncementStatus": "已公布26人名单",
-        "squadAnnouncementDate": "2026-05-28",
-        "squadStatus": "已公布26人名单"
+        "squadAnnouncementStatus": "FIFA最终名单",
+        "squadAnnouncementDate": "2026-06-02",
+        "squadStatus": "26人官方最终名单"
       }
     },
     {
@@ -1204,9 +1204,9 @@
         "wcPath": 36,
         "odds": 32420,
         "squadValue": 170,
-        "avgAge": 27.6,
+        "avgAge": 26.5,
         "injuryRisk": 22,
-        "clubScore": 58,
+        "clubScore": 69,
         "atmosphere": 60,
         "travelKm": 4798,
         "restDays": 5.5,
@@ -1216,9 +1216,9 @@
         "climateLoad": 41,
         "entryTravelKm": 8098,
         "entryTimezoneShift": 6,
-        "squadAnnouncementStatus": "暂定/初选名单",
-        "squadAnnouncementDate": "2026-05-11",
-        "squadStatus": "暂定/初选名单"
+        "squadAnnouncementStatus": "FIFA最终名单",
+        "squadAnnouncementDate": "2026-06-02",
+        "squadStatus": "26人官方最终名单"
       }
     },
     {
@@ -1236,9 +1236,9 @@
         "wcPath": 49,
         "odds": 14975,
         "squadValue": 310,
-        "avgAge": 28.1,
+        "avgAge": 28.2,
         "injuryRisk": 22,
-        "clubScore": 81,
+        "clubScore": 80,
         "atmosphere": 63,
         "travelKm": 3054,
         "restDays": 5.5,
@@ -1248,9 +1248,9 @@
         "climateLoad": 43,
         "entryTravelKm": 9642,
         "entryTimezoneShift": 9,
-        "squadAnnouncementStatus": "已公布26人名单",
-        "squadAnnouncementDate": "2026-05-18",
-        "squadStatus": "已公布26人名单"
+        "squadAnnouncementStatus": "FIFA最终名单",
+        "squadAnnouncementDate": "2026-06-02",
+        "squadStatus": "25人官方最终名单"
       }
     },
     {
@@ -1268,10 +1268,10 @@
         "wcPath": 13,
         "odds": 159294,
         "squadValue": 18,
-        "avgAge": 28,
-        "injuryRisk": 18,
-        "clubScore": 30,
-        "atmosphere": 54,
+        "avgAge": 28.1,
+        "injuryRisk": 22,
+        "clubScore": 51,
+        "atmosphere": 55,
         "travelKm": 2315,
         "restDays": 5.5,
         "timezoneShift": 2,
@@ -1280,9 +1280,9 @@
         "climateLoad": 37,
         "entryTravelKm": 11968,
         "entryTimezoneShift": 10,
-        "squadAnnouncementStatus": "暂定/初选名单",
-        "squadAnnouncementDate": "2026-05-17",
-        "squadStatus": "暂定/初选名单"
+        "squadAnnouncementStatus": "FIFA最终名单",
+        "squadAnnouncementDate": "2026-06-02",
+        "squadStatus": "26人官方最终名单"
       }
     },
     {
@@ -1302,7 +1302,7 @@
         "squadValue": 1060,
         "avgAge": 27.5,
         "injuryRisk": 22,
-        "clubScore": 83,
+        "clubScore": 81,
         "atmosphere": 59,
         "travelKm": 1547,
         "restDays": 5,
@@ -1312,9 +1312,9 @@
         "climateLoad": 63,
         "entryTravelKm": 7703,
         "entryTimezoneShift": 6,
-        "squadAnnouncementStatus": "已公布26人名单",
-        "squadAnnouncementDate": "2026-05-19",
-        "squadStatus": "已公布26人名单"
+        "squadAnnouncementStatus": "FIFA最终名单",
+        "squadAnnouncementDate": "2026-06-02",
+        "squadStatus": "26人官方最终名单"
       }
     },
     {
@@ -1334,7 +1334,7 @@
         "squadValue": 120,
         "avgAge": 28.5,
         "injuryRisk": 22,
-        "clubScore": 72,
+        "clubScore": 70,
         "atmosphere": 59,
         "travelKm": 3660,
         "restDays": 5,
@@ -1344,9 +1344,9 @@
         "climateLoad": 53,
         "entryTravelKm": 12246,
         "entryTimezoneShift": 6,
-        "squadAnnouncementStatus": "已公布26人名单",
-        "squadAnnouncementDate": "2026-05-18",
-        "squadStatus": "已公布26人名单"
+        "squadAnnouncementStatus": "FIFA最终名单",
+        "squadAnnouncementDate": "2026-06-02",
+        "squadStatus": "26人官方最终名单"
       }
     },
     {
@@ -1364,10 +1364,10 @@
         "wcPath": 13,
         "odds": 79996,
         "squadValue": 48,
-        "avgAge": 27.1,
-        "injuryRisk": 17,
-        "clubScore": 39,
-        "atmosphere": 56,
+        "avgAge": 28,
+        "injuryRisk": 22,
+        "clubScore": 52,
+        "atmosphere": 57,
         "travelKm": 2349,
         "restDays": 5,
         "timezoneShift": 2,
@@ -1376,9 +1376,9 @@
         "climateLoad": 60,
         "entryTravelKm": 13171,
         "entryTimezoneShift": 11,
-        "squadAnnouncementStatus": "暂定/初选名单",
-        "squadAnnouncementDate": "2026-05-24",
-        "squadStatus": "暂定/初选名单"
+        "squadAnnouncementStatus": "FIFA最终名单",
+        "squadAnnouncementDate": "2026-06-02",
+        "squadStatus": "26人官方最终名单"
       }
     },
     {
@@ -1398,7 +1398,7 @@
         "squadValue": 340,
         "avgAge": 29.6,
         "injuryRisk": 22,
-        "clubScore": 75,
+        "clubScore": 74,
         "atmosphere": 54,
         "travelKm": 2915,
         "restDays": 5,
@@ -1408,9 +1408,9 @@
         "climateLoad": 69,
         "entryTravelKm": 3166,
         "entryTimezoneShift": 1,
-        "squadAnnouncementStatus": "已公布26人名单",
-        "squadAnnouncementDate": "2026-05-25",
-        "squadStatus": "已公布26人名单"
+        "squadAnnouncementStatus": "FIFA最终名单",
+        "squadAnnouncementDate": "2026-06-02",
+        "squadStatus": "26人官方最终名单"
       }
     },
     {
@@ -1440,9 +1440,9 @@
         "climateLoad": 41,
         "entryTravelKm": 7662,
         "entryTimezoneShift": 6,
-        "squadAnnouncementStatus": "已公布26人名单",
-        "squadAnnouncementDate": "2026-05-22",
-        "squadStatus": "已公布26人名单"
+        "squadAnnouncementStatus": "FIFA最终名单",
+        "squadAnnouncementDate": "2026-06-02",
+        "squadStatus": "26人官方最终名单"
       }
     },
     {
@@ -1462,7 +1462,7 @@
         "squadValue": 320,
         "avgAge": 27.9,
         "injuryRisk": 22,
-        "clubScore": 82,
+        "clubScore": 81,
         "atmosphere": 66,
         "travelKm": 2500,
         "restDays": 5,
@@ -1472,9 +1472,9 @@
         "climateLoad": 40,
         "entryTravelKm": 8996,
         "entryTimezoneShift": 7,
-        "squadAnnouncementStatus": "已公布26人名单",
-        "squadAnnouncementDate": "2026-05-18",
-        "squadStatus": "已公布26人名单"
+        "squadAnnouncementStatus": "FIFA最终名单",
+        "squadAnnouncementDate": "2026-06-02",
+        "squadStatus": "26人官方最终名单"
       }
     },
     {
@@ -1492,10 +1492,10 @@
         "wcPath": 48,
         "odds": 25517,
         "squadValue": 180,
-        "avgAge": 26.5,
-        "injuryRisk": 23,
-        "clubScore": 60,
-        "atmosphere": 51,
+        "avgAge": 26.4,
+        "injuryRisk": 22,
+        "clubScore": 76,
+        "atmosphere": 55,
         "travelKm": 1094,
         "restDays": 5,
         "timezoneShift": 0,
@@ -1504,9 +1504,9 @@
         "climateLoad": 33,
         "entryTravelKm": 8712,
         "entryTimezoneShift": 4,
-        "squadAnnouncementStatus": "暂定/初选名单",
-        "squadAnnouncementDate": "2026-05-23",
-        "squadStatus": "暂定/初选名单"
+        "squadAnnouncementStatus": "FIFA最终名单",
+        "squadAnnouncementDate": "2026-06-02",
+        "squadStatus": "26人官方最终名单"
       }
     },
     {
@@ -1536,9 +1536,9 @@
         "climateLoad": 31,
         "entryTravelKm": 3853,
         "entryTimezoneShift": 1,
-        "squadAnnouncementStatus": "已公布26人名单",
-        "squadAnnouncementDate": "2026-05-27",
-        "squadStatus": "已公布26人名单"
+        "squadAnnouncementStatus": "FIFA最终名单",
+        "squadAnnouncementDate": "2026-06-02",
+        "squadStatus": "26人官方最终名单"
       }
     }
   ]

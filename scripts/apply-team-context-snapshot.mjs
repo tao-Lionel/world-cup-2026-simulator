@@ -42,7 +42,11 @@ app = app.replace(
 );
 app = app.replace(
   "{ key: \"atmosphere\", label: \"球队氛围\", tier: \"manual\", source: \"人工量化\" }",
+  "{ key: \"atmosphere\", label: \"球队氛围\", tier: \"manual\", source: \"structured context snapshot 2026-06-02\" }",
+);
+app = app.replace(
   "{ key: \"atmosphere\", label: \"球队氛围\", tier: \"manual\", source: \"structured context snapshot 2026-05-30\" }",
+  "{ key: \"atmosphere\", label: \"球队氛围\", tier: \"manual\", source: \"structured context snapshot 2026-06-02\" }",
 );
 
 await writeFile(new URL("../app.js", import.meta.url), app);

@@ -74,7 +74,7 @@ for (const team of baseTeams) {
       expected_role: "squad",
       list_status: "provisional",
       source_url: "",
-      snapshot_date: "2026-05-30",
+      snapshot_date: "2026-06-02",
     });
   }
 }

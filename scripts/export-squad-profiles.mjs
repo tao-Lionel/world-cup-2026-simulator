@@ -59,7 +59,7 @@ const rows = baseTeams.map((team) => {
   if (!factors) throw new Error(`Missing factors for ${team.en}`);
   return {
     team: team.en,
-    snapshot_date: "2026-05-30",
+    snapshot_date: "2026-06-02",
     squad_status: factors.squadStatus,
     final_26_available: "false",
     squad_value_m: factors.squadValue,

@@ -1,6 +1,6 @@
 # 2026 世界杯夺冠概率模拟器
 
-当前为 `v1.1.0` 最终发布版：核心模拟、数据快照、球队信息模块、审计脚本、免责声明和 CI 校验已经收口，可作为开源项目使用。由于 2026 世界杯 FIFA 最终名单尚未统一公布，本版本的“最终版”指项目工程与当前公开数据快照的发布状态，不代表赛前最终官方数据已经齐备。发布说明见 `RELEASE.md`。
+当前为 `v1.1.0` 最终发布版：核心模拟、数据快照、球队信息模块、审计脚本、免责声明和 CI 校验已经收口，可作为开源项目使用。当前数据已刷新到 2026-06-02 FIFA 最终名单快照；发布说明见 `RELEASE.md`。
 
 这是一个离线单页模拟器，基于 `deep-research-report.md` 的建模建议做成：
 
@@ -23,12 +23,12 @@
 - 入境旅行距离、入境时区差、小组赛旅行距离、休息天数、时区跨度、跨境次数、海拔和场馆环境负担已由 FIFA 小组赛赛程、场馆坐标、代表性出发地和场馆地理快照计算，不再使用纯手工代理值。
 - 淘汰赛会动态计算路径疲劳：每场按上一场/小组末战所在地、比赛日期、旅行距离、休息天数、时区变化和场馆环境变化做小幅强度调整。
 - 已新增 `data/third_place_assignment_map.csv` 和浏览器运行用的 `data/third_place_assignment_map.js`，把 495 种第三名出线组合固定为可审计映射，不再由运行时第三名积分排序临时决定对位。
-- 名单公告状态已拆到 `data/squad_announcement_status.csv`；截至 2026-05-30，本地已标记 32 队公布 26 人名单，但 FIFA 最终确认仍待 2026-06-02。
-- 已新增 `data/squads_2026.csv`，从公开 squad tracker 导入 31 队、806 名球员的 26 人名单行；平均年龄和俱乐部分布已按球员行聚合，球员身价由球队总身价按角色/年龄/联赛/国家队资历分配。
+- 名单公告状态已拆到 `data/squad_announcement_status.csv`；截至 2026-06-02，本地已标记 48 队 FIFA 最终名单。
+- 已新增 `data/squads_2026.csv`，从公开 squad tracker 导入 48 队、1246 名球员的最终名单行；平均年龄和俱乐部分布已按球员行聚合，球员身价由球队总身价按角色/年龄/联赛/国家队资历分配。
 - 已新增浏览器运行用的 `data/squads_2026.js`，让直接打开 `index.html` 时也能查看球员级阵容信息。
 - 已新增 `data/squad_import_candidates.csv`，记录 tracker 已解析但仍需核验来源的候选名单，避免把初选名单误导入。
 - 已新增 `data/player_availability_watchlist.csv`，把已核验的伤病缺席、停赛、伤愈入选等可用性信息映射到球员行，并在无法匹配球员行时作为队级健康风险惩罚。
-- 阵容身价、平均年龄、伤病风险和俱乐部分布已拆到 `data/squad_profile_snapshot.csv`；有球员行的队伍使用球员级聚合，未确认 26 人名单的队伍仍使用暂定代理。
+- 阵容身价、平均年龄、伤病风险和俱乐部分布已拆到 `data/squad_profile_snapshot.csv`；48 队均使用球员级最终名单聚合，球员身价仍是球队总身价分配代理。
 - 已提供 `data/squads_2026_template.csv` 和聚合脚本，官方/暂定名单填入后可自动生成阵容身价、平均年龄、伤病风险和俱乐部分布。
 - 球队氛围已拆成 `data/team_context_snapshot.csv`，由领导连续性、教练稳定、近期势头和压力风险合成，仍保持低权重。
 
@@ -56,7 +56,7 @@ npm test
 
 当前版本是探索型概率工具。淘汰赛路径已接入 FIFA 固定 match-number bracket；第三名席位已展开为 495 种组合映射表。该表由 FIFA 公布的 32 强候选占位符生成，用于保证模拟器稳定可复现；若后续 FIFA 发布逐组合官方表，应以官方表替换。
 
-数据层已经扩展为多来源球队画像，但并非所有字段都是官方最终数据：26 人名单、伤病、氛围、赛程疲劳等在赛前会持续变化，目前用可替换的暂定/代理指标承接。CSV 导出会包含 `data_quality`、`source_backed_fields` 和 `proxy_fields`，字段来源和可信边界见 `DATA_SOURCES.md`。
+数据层已经扩展为多来源球队画像，但并非所有字段都是官方最终数据：FIFA 最终名单已接入，伤病、氛围、赛程疲劳和球员身价仍会在赛前持续变化，目前用可替换的快照/代理指标承接。CSV 导出会包含 `data_quality`、`source_backed_fields` 和 `proxy_fields`，字段来源和可信边界见 `DATA_SOURCES.md`。
 
 本项目不是 FIFA 官方产品，也不构成博彩建议。完整免责声明见 `DISCLAIMER.md`。
 
@@ -122,7 +122,7 @@ node scripts/apply-wc-path-snapshot.mjs
 node scripts/export-data-snapshots.mjs
 ```
 
-导出并回写暂定阵容画像：
+导出并回写阵容画像：
 
 ```bash
 node scripts/export-squad-profiles.mjs
@@ -130,7 +130,7 @@ node scripts/apply-squad-profiles.mjs
 node scripts/export-data-snapshots.mjs
 ```
 
-回写已公布 26 人名单的公告状态：
+回写 FIFA 最终名单公告状态：
 
 ```bash
 node scripts/apply-squad-announcement-status.mjs
@@ -139,7 +139,7 @@ node scripts/apply-team-context-snapshot.mjs
 node scripts/export-data-snapshots.mjs
 ```
 
-从 Wikipedia squad tracker 抓取已确认 26 人名单并生成球员级 CSV：
+从 Wikipedia squad tracker 抓取已确认 23-26 人最终名单并生成球员级 CSV：
 
 ```bash
 node scripts/fetch-wikipedia-squads.mjs
@@ -147,9 +147,9 @@ node scripts/build-squad-import-candidates.mjs
 node scripts/enrich-squad-player-proxies.mjs
 node scripts/apply-player-availability.mjs
 node scripts/build-squad-browser-data.mjs
+node scripts/apply-squad-announcement-status.mjs
 node scripts/aggregate-squads.mjs
 node scripts/apply-squad-profiles.mjs
-node scripts/apply-squad-announcement-status.mjs
 node scripts/build-team-context-snapshot.mjs
 node scripts/apply-team-context-snapshot.mjs
 node scripts/export-data-snapshots.mjs

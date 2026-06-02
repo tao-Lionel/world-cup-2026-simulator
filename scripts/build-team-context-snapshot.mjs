@@ -104,7 +104,7 @@ const rows = baseTeams.map((team) => {
   if (!factors) throw new Error(`Missing factors for ${team.en}`);
   return {
     team: team.en,
-    snapshot_date: "2026-05-30",
+    snapshot_date: "2026-06-02",
     atmosphere_score: cohesionScore(team, factors),
     leadership_continuity: leadershipContinuity(team, factors),
     staff_stability: staffStability(team, factors),

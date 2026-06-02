@@ -112,7 +112,6 @@ assertRows("squad_profile_snapshot.csv", squadProfileRows, 48);
 assertRows("group_stage_schedule.csv", groupRows, 72);
 assertRows("knockout_schedule.csv", knockoutRows, 31);
 assertRows("third_place_assignment_map.csv", thirdMapRows, 495);
-assertRows("squads_2026.csv", squadRows, 806);
 assertRows("squads_2026.js", squadBrowserRows, squadRows.length);
 assertRows("player_availability_audit.csv", availabilityAuditRows, availabilityRows.length);
 assert(squadImportCandidateRows.every((row) => teamNames.has(row.team)), "squad_import_candidates.csv contains unknown team.");
@@ -124,6 +123,19 @@ assert(squadProfileRows.every((row) => teamNames.has(row.team)), "squad_profile_
 assert(squadRows.every((row) => teamNames.has(row.team)), "squads_2026.csv contains unknown team.");
 assert(squadBrowserRows.every((row) => teamNames.has(row.team)), "squads_2026.js contains unknown team.");
 assert(squadRows.every((row, index) => row.team === squadBrowserRows[index].team && row.player === squadBrowserRows[index].player), "squads_2026.csv/js row order mismatch.");
+
+const squadsByTeam = new Map();
+for (const row of squadRows) {
+  if (!squadsByTeam.has(row.team)) squadsByTeam.set(row.team, []);
+  squadsByTeam.get(row.team).push(row);
+}
+assert(squadsByTeam.size === 48, `squads_2026.csv expected 48 teams, got ${squadsByTeam.size}`);
+for (const team of baseTeams) {
+  const players = squadsByTeam.get(team.en) || [];
+  assert(players.length >= 23 && players.length <= 26, `${team.en} expected 23-26 squad rows, got ${players.length}`);
+  const goalkeepers = players.filter((row) => /^(gk|goalkeeper)$/i.test(row.position.trim())).length;
+  assert(goalkeepers >= 3, `${team.en} expected at least 3 goalkeepers, got ${goalkeepers}`);
+}
 
 const thirdSlotNames = ["3ABCDF", "3CDFGH", "3CEFHI", "3EHIJK", "3BEFIJ", "3AEHIJ", "3EFGIJ", "3DEIJL"];
 const table = thirdPlaceContext.table;

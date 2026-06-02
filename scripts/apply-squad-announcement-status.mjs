@@ -33,6 +33,7 @@ function csvEscape(value) {
 }
 
 function labelStatus(row) {
+  if (row.announcement_status === "fifa_final_confirmed") return "FIFA最终名单";
   if (row.announcement_status === "association_26_announced") return "已公布26人名单";
   if (row.announcement_status === "squad_announced_unverified") return "已公布名单待核26人";
   if (row.announcement_status === "preliminary") return "暂定/初选名单";

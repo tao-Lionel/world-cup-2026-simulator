@@ -3,7 +3,7 @@ import vm from "node:vm";
 
 const API_URL = "https://en.wikipedia.org/w/api.php";
 const PAGE = "2026 FIFA World Cup squads";
-const SNAPSHOT_DATE = "2026-05-30";
+const SNAPSHOT_DATE = "2026-06-02";
 
 const wikiTeamNames = new Map([
   ["South Korea", "Korea Republic"],
@@ -198,6 +198,7 @@ const appSource = await readFile(new URL("../app.js", import.meta.url), "utf8");
 const baseTeams = vm.runInNewContext(`(${extractConst(appSource, "baseTeams")})`, {});
 const announcementRows = parseCsv(await readFile(new URL("../data/squad_announcement_status.csv", import.meta.url), "utf8"));
 const announced26 = new Set(announcementRows.filter((row) => row.announced_26_available === "true").map((row) => row.team));
+const officialFinal = new Set(announcementRows.filter((row) => row.fifa_final_26_available === "true").map((row) => row.team));
 const sourceByTeam = new Map(announcementRows.map((row) => [row.team, row.source_url]));
 const validTeams = new Set(baseTeams.map((team) => team.en));
 const wikitext = await fetchWikitext();
@@ -241,7 +242,7 @@ for (const section of sections) {
       goals: stripWiki(fields.goals || ""),
       injury_status: "unknown",
       expected_role: expectedRole(positionCounts.get(position), position),
-      list_status: "association_final",
+      list_status: officialFinal.has(team) ? "official_final" : "association_final",
       source_url: sourceUrl,
       snapshot_date: SNAPSHOT_DATE,
     });
