@@ -27,6 +27,7 @@ function parseCsv(text) {
 }
 
 const rows = parseCsv(await readFile(new URL("../data/form_snapshot.csv", import.meta.url), "utf8"));
+const snapshotDate = rows[0]?.snapshot_date;
 let app = await readFile(new URL("../app.js", import.meta.url), "utf8");
 
 for (const row of rows) {
@@ -37,8 +38,8 @@ for (const row of rows) {
 }
 
 app = app.replace(
-  "{ key: \"form\", label: \"近两年战绩\", tier: \"proxy\", source: \"近期战绩代理分\" }",
-  "{ key: \"form\", label: \"近两年战绩\", tier: \"snapshot\", source: \"International-football.net last games 2024-2026\" }",
+  /\{ key: "form", label: "近两年战绩", tier: "(?:proxy|snapshot)", source: "[^"]+" \}/,
+  `{ key: "form", label: "近两年战绩", tier: "snapshot", source: "International-football.net last games through ${snapshotDate}" }`,
 );
 
 await writeFile(new URL("../app.js", import.meta.url), app);

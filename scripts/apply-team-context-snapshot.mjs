@@ -27,6 +27,7 @@ function parseCsv(text) {
 }
 
 const rows = parseCsv(await readFile(new URL("../data/team_context_snapshot.csv", import.meta.url), "utf8"));
+const snapshotDate = rows[0]?.snapshot_date;
 let app = await readFile(new URL("../app.js", import.meta.url), "utf8");
 
 for (const row of rows) {
@@ -41,12 +42,8 @@ app = app.replace(
   "{ label: \"氛围\", value: \"结构化上下文快照\" }",
 );
 app = app.replace(
-  "{ key: \"atmosphere\", label: \"球队氛围\", tier: \"manual\", source: \"人工量化\" }",
-  "{ key: \"atmosphere\", label: \"球队氛围\", tier: \"manual\", source: \"structured context snapshot 2026-06-02\" }",
-);
-app = app.replace(
-  "{ key: \"atmosphere\", label: \"球队氛围\", tier: \"manual\", source: \"structured context snapshot 2026-05-30\" }",
-  "{ key: \"atmosphere\", label: \"球队氛围\", tier: \"manual\", source: \"structured context snapshot 2026-06-02\" }",
+  /\{ key: "atmosphere", label: "球队氛围", tier: "manual", source: "[^"]+" \}/,
+  `{ key: "atmosphere", label: "球队氛围", tier: "manual", source: "structured context snapshot ${snapshotDate}" }`,
 );
 
 await writeFile(new URL("../app.js", import.meta.url), app);

@@ -2,6 +2,7 @@ import { readFile, writeFile } from "node:fs/promises";
 import vm from "node:vm";
 
 const source = await readFile(new URL("../app.js", import.meta.url), "utf8");
+const SNAPSHOT_DATE = new Date().toISOString().slice(0, 10);
 
 function extractConst(name) {
   const start = source.indexOf(`const ${name} = `);
@@ -104,7 +105,7 @@ const rows = baseTeams.map((team) => {
   if (!factors) throw new Error(`Missing factors for ${team.en}`);
   return {
     team: team.en,
-    snapshot_date: "2026-06-02",
+    snapshot_date: SNAPSHOT_DATE,
     atmosphere_score: cohesionScore(team, factors),
     leadership_continuity: leadershipContinuity(team, factors),
     staff_stability: staffStability(team, factors),

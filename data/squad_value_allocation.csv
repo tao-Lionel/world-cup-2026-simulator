@@ -1,49 +1,49 @@
-team,players,team_value_m,allocated_value_m,value_source
-Czechia,26,185,185,team_value_allocated_proxy
-Mexico,26,215,215,team_value_allocated_proxy
-South Africa,26,43,43,team_value_allocated_proxy
-Korea Republic,26,205,205,team_value_allocated_proxy
-Bosnia and Herzegovina,26,95,95,team_value_allocated_proxy
-Canada,25,230,230,team_value_allocated_proxy
-Qatar,26,21,21,team_value_allocated_proxy
-Switzerland,26,305,305,team_value_allocated_proxy
-Brazil,26,1120,1120,team_value_allocated_proxy
-Haiti,26,28,28,team_value_allocated_proxy
-Morocco,26,370,370,team_value_allocated_proxy
-Scotland,26,245,245,team_value_allocated_proxy
-Australia,26,55,55,team_value_allocated_proxy
-Paraguay,26,160,160,team_value_allocated_proxy
-Türkiye,26,470,470,team_value_allocated_proxy
-USA,26,330,330,team_value_allocated_proxy
-Curacao,26,36,36,team_value_allocated_proxy
-Ecuador,26,285,285,team_value_allocated_proxy
-Germany,26,865,865,team_value_allocated_proxy
-Cote d'Ivoire,26,260,260,team_value_allocated_proxy
-Japan,26,330,330,team_value_allocated_proxy
-Netherlands,26,790,790,team_value_allocated_proxy
-Sweden,26,345,345,team_value_allocated_proxy
-Tunisia,26,65,65,team_value_allocated_proxy
-Belgium,26,530,530,team_value_allocated_proxy
-Egypt,26,150,150,team_value_allocated_proxy
-IR Iran,26,60,60,team_value_allocated_proxy
-New Zealand,26,32,32,team_value_allocated_proxy
-Cabo Verde,26,58,58,team_value_allocated_proxy
-Saudi Arabia,26,36,36,team_value_allocated_proxy
-Spain,26,1260,1260,team_value_allocated_proxy
-Uruguay,26,505,505,team_value_allocated_proxy
-France,26,1370,1370,team_value_allocated_proxy
-Iraq,26,24,24,team_value_allocated_proxy
-Norway,26,610,610,team_value_allocated_proxy
-Senegal,26,255,255,team_value_allocated_proxy
-Algeria,26,170,170,team_value_allocated_proxy
-Argentina,26,910,910,team_value_allocated_proxy
-Austria,25,310,310,team_value_allocated_proxy
-Jordan,26,18,18,team_value_allocated_proxy
-Colombia,26,340,340,team_value_allocated_proxy
-Congo DR,26,120,120,team_value_allocated_proxy
-Portugal,26,1060,1060,team_value_allocated_proxy
-Uzbekistan,26,48,48,team_value_allocated_proxy
-Croatia,26,320,320,team_value_allocated_proxy
-England,26,1640,1640,team_value_allocated_proxy
-Ghana,26,180,180,team_value_allocated_proxy
-Panama,26,24,24,team_value_allocated_proxy
+team,players,team_value_m,player_market_value_m,allocated_proxy_value_m,matched_player_values,proxy_player_values,value_source
+Czechia,26,188.18,163.48,24.7,24,2,transfermarkt_mixed_player_and_team_proxy
+Mexico,26,191.85,176.85,15,25,1,transfermarkt_mixed_player_and_team_proxy
+South Africa,26,49.25,47.85,1.4,24,2,transfermarkt_mixed_player_and_team_proxy
+Korea Republic,26,139.05,124.05,15,25,1,transfermarkt_mixed_player_and_team_proxy
+Bosnia and Herzegovina,26,151.6,145.1,6.51,23,3,transfermarkt_mixed_player_and_team_proxy
+Canada,26,198.65,151.15,47.5,24,2,transfermarkt_mixed_player_and_team_proxy
+Qatar,26,19.93,17.54,2.38,19,7,transfermarkt_mixed_player_and_team_proxy
+Switzerland,26,332.5,324.5,8,25,1,transfermarkt_mixed_player_and_team_proxy
+Brazil,26,928.2,716.2,212,18,8,transfermarkt_mixed_player_and_team_proxy
+Haiti,26,55.9,55.76,0.14,25,1,transfermarkt_mixed_player_and_team_proxy
+Morocco,26,498.3,337.7,160.62,20,6,transfermarkt_mixed_player_and_team_proxy
+Scotland,26,170.25,163.25,7,25,1,transfermarkt_mixed_player_and_team_proxy
+Australia,26,77.45,75.65,1.8,25,1,transfermarkt_mixed_player_and_team_proxy
+Paraguay,26,153.65,143.15,10.52,22,4,transfermarkt_mixed_player_and_team_proxy
+Türkiye,26,473.7,382.7,91,24,2,transfermarkt_mixed_player_and_team_proxy
+USA,26,385.65,375.5,10.14,24,2,transfermarkt_mixed_player_and_team_proxy
+Curacao,26,25.78,25.54,0.24,25,1,transfermarkt_mixed_player_and_team_proxy
+Ecuador,26,368.7,367.7,1,25,1,transfermarkt_mixed_player_and_team_proxy
+Germany,26,947,912,35,25,1,transfermarkt_mixed_player_and_team_proxy
+Cote d'Ivoire,26,522.1,475.1,47,24,2,transfermarkt_mixed_player_and_team_proxy
+Japan,26,270.85,242.85,28,24,2,transfermarkt_mixed_player_and_team_proxy
+Netherlands,26,754.2,699.2,55,24,2,transfermarkt_mixed_player_and_team_proxy
+Sweden,26,406.08,401.08,5,25,1,transfermarkt_mixed_player_and_team_proxy
+Tunisia,26,69.95,47.15,22.8,22,4,transfermarkt_mixed_player_and_team_proxy
+Belgium,26,547.5,489.5,58,24,2,transfermarkt_mixed_player_and_team_proxy
+Egypt,26,116.48,88.13,28.35,21,5,transfermarkt_mixed_player_and_team_proxy
+IR Iran,26,32.05,23.05,9,17,9,transfermarkt_mixed_player_and_team_proxy
+New Zealand,26,34.35,29.35,5,25,1,transfermarkt_mixed_player_and_team_proxy
+Cabo Verde,26,54.5,47.2,7.32,22,4,transfermarkt_mixed_player_and_team_proxy
+Saudi Arabia,26,40.68,36.74,3.92,22,4,transfermarkt_mixed_player_and_team_proxy
+Spain,26,1220,1152.8,67.2,24,2,transfermarkt_mixed_player_and_team_proxy
+Uruguay,26,359.3,301.3,57.99,23,3,transfermarkt_mixed_player_and_team_proxy
+France,26,1520,1343,177,25,1,transfermarkt_mixed_player_and_team_proxy
+Iraq,26,21.2,19.48,1.72,22,4,transfermarkt_mixed_player_and_team_proxy
+Norway,26,589.9,517.9,72,23,3,transfermarkt_mixed_player_and_team_proxy
+Senegal,26,478.1,473.6,4.5,25,1,transfermarkt_mixed_player_and_team_proxy
+Algeria,26,256.9,248.05,8.85,23,3,transfermarkt_mixed_player_and_team_proxy
+Argentina,25,782.5,745.5,37,23,2,transfermarkt_mixed_player_and_team_proxy
+Austria,26,245.2,239.2,6,24,2,transfermarkt_mixed_player_and_team_proxy
+Jordan,26,20.3,6.61,13.64,15,11,transfermarkt_mixed_player_and_team_proxy
+Colombia,26,302.35,300.85,1.5,25,1,transfermarkt_mixed_player_and_team_proxy
+Congo DR,26,143.9,140,3.9,23,3,transfermarkt_mixed_player_and_team_proxy
+Portugal,26,1010,995.5,14.5,25,1,transfermarkt_mixed_player_and_team_proxy
+Uzbekistan,26,85.33,72.03,13.32,20,6,transfermarkt_mixed_player_and_team_proxy
+Croatia,26,387.3,383.8,3.5,25,1,transfermarkt_mixed_player_and_team_proxy
+England,26,1360,1303.2,56.8,25,1,transfermarkt_mixed_player_and_team_proxy
+Ghana,26,234.6,230.35,4.26,24,2,transfermarkt_mixed_player_and_team_proxy
+Panama,26,34.55,23.31,11.24,22,4,transfermarkt_mixed_player_and_team_proxy

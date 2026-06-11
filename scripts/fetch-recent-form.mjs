@@ -2,6 +2,7 @@ import { readFile, writeFile } from "node:fs/promises";
 import vm from "node:vm";
 
 const source = await readFile(new URL("../app.js", import.meta.url), "utf8");
+const SNAPSHOT_DATE = new Date().toISOString().slice(0, 10);
 
 function extractConst(name) {
   const start = source.indexOf(`const ${name} = `);
@@ -109,7 +110,7 @@ function parseMatches(team, html) {
     if (!result || !dateText || !score || uniqueTeams.length < 2) continue;
 
     const date = parseDate(stripTags(dateText));
-    if (!date || date < "2024-01-01" || date > "2026-03-31") continue;
+    if (!date || date < "2024-01-01" || date > SNAPSHOT_DATE) continue;
     const teamIndex = uniqueTeams.indexOf(team.en);
     if (teamIndex === -1) continue;
     const opponent = uniqueTeams.find((name) => name !== team.en);
@@ -131,7 +132,7 @@ function parseMatches(team, html) {
 
 function computeForm(team, matches) {
   if (!matches.length) return { form: teamFactors[team.en].form, pointsPerGame: 0, avgGoalDiff: 0, matches: 0 };
-  const latest = new Date("2026-03-31");
+  const latest = new Date(`${SNAPSHOT_DATE}T12:00:00Z`);
   let weightedPoints = 0;
   let weightSum = 0;
   let weightedGoalDiff = 0;
@@ -167,7 +168,7 @@ for (const team of baseTeams) {
   const summary = computeForm(team, matches);
   summaries.push({
     team: team.en,
-    snapshot_date: "2026-03-31",
+    snapshot_date: SNAPSHOT_DATE,
     form: summary.form,
     previous_model_form: teamFactors[team.en].form,
     delta: summary.form - teamFactors[team.en].form,

@@ -3,7 +3,7 @@ import vm from "node:vm";
 
 const API_URL = "https://en.wikipedia.org/w/api.php";
 const PAGE = "2026 FIFA World Cup squads";
-const SNAPSHOT_DATE = "2026-06-02";
+const SNAPSHOT_DATE = new Date().toISOString().slice(0, 10);
 
 const wikiTeamNames = new Map([
   ["South Korea", "Korea Republic"],

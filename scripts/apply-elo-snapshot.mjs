@@ -27,6 +27,7 @@ function parseCsv(text) {
 }
 
 const rows = parseCsv(await readFile(new URL("../data/elo_snapshot.csv", import.meta.url), "utf8"));
+const snapshotDate = rows[0]?.snapshot_date;
 let app = await readFile(new URL("../app.js", import.meta.url), "utf8");
 
 for (const row of rows) {
@@ -37,14 +38,17 @@ for (const row of rows) {
 }
 
 app = app.replace(
-  "{ label: \"Elo\", value: \"Elo/强度代理\" }",
-  "{ label: \"Elo\", value: \"2026-03-31 快照\" }",
+  /\{ label: "Elo", value: "[^"]+" \}/,
+  `{ label: "Elo", value: "${snapshotDate} 快照" }`,
 );
 app = app.replace(
-  "{ key: \"elo\", label: \"Elo 强度\", tier: \"snapshot\", source: \"World Football Elo 待替换快照\" }",
-  "{ key: \"elo\", label: \"Elo 强度\", tier: \"snapshot\", source: \"International-football.net / eloratings.net 2026-03-31\" }",
+  /\{ key: "elo", label: "Elo 强度", tier: "snapshot", source: "[^"]+" \}/,
+  `{ key: "elo", label: "Elo 强度", tier: "snapshot", source: "International-football.net / eloratings.net ${snapshotDate}" }`,
 );
-app = app.replace("<div><span>Elo</span><strong>${f.elo}</strong><small>强度代理</small></div>", "<div><span>Elo</span><strong>${f.elo}</strong><small>2026-03-31</small></div>");
+app = app.replace(
+  /<div><span>Elo<\/span><strong>\$\{f\.elo\}<\/strong><small>[^<]+<\/small><\/div>/,
+  `<div><span>Elo</span><strong>\${f.elo}</strong><small>${snapshotDate}</small></div>`,
+);
 
 await writeFile(new URL("../app.js", import.meta.url), app);
 console.log(`Applied Elo snapshot for ${rows.length} teams.`);

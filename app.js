@@ -1,5 +1,12 @@
 const STORAGE_KEY = "world-cup-2026-sim-settings";
 
+const SHOOTING_SCENES = [
+  { id: "ranking", label: "夺冠概率榜" },
+  { id: "group", label: "死亡小组" },
+  { id: "team", label: "球队体检" },
+  { id: "data", label: "数据可信度" },
+];
+
 const baseTeams = [
   { group: "A", name: "墨西哥", en: "Mexico", flag: "🇲🇽", confed: "CONCACAF", rating: 1825, host: true },
   { group: "A", name: "南非", en: "South Africa", flag: "🇿🇦", confed: "CAF", rating: 1695 },
@@ -53,10 +60,10 @@ const baseTeams = [
 
 const factorSources = [
   { label: "FIFA 排名", value: "2026-04-01 官方快照" },
-  { label: "Elo", value: "2026-03-31 快照" },
-  { label: "赔率", value: "2026-05-15 四机构快照" },
-  { label: "阵容", value: "暂定名单代理" },
-  { label: "赛程", value: "旅行/休息/时区/环境快照" },
+  { label: "Elo", value: "2026-06-11 快照" },
+  { label: "赔率", value: "2026-06-01 市场快照" },
+  { label: "阵容", value: "FIFA 最终名单 2026-06-11" },
+  { label: "赛程", value: "旅行/休息/时区/天气 2026-06-11" },
   { label: "淘汰赛", value: "FIFA 固定赛程树" },
   { label: "氛围", value: "结构化上下文快照" },
 ];
@@ -75,15 +82,15 @@ const DATA_FIELDS = [
   { key: "host", label: "主办国身份", tier: "verified", source: "FIFA hosts" },
   { key: "fifaRank", label: "FIFA 排名", tier: "verified", source: "FIFA/Coca-Cola ranking 2026-04-01" },
   { key: "fifaPoints", label: "FIFA 积分", tier: "verified", source: "FIFA/Coca-Cola ranking 2026-04-01" },
-  { key: "odds", label: "夺冠赔率", tier: "market", source: "TheGameDay four-book consensus 2026-05-15" },
-  { key: "elo", label: "Elo 强度", tier: "snapshot", source: "International-football.net / eloratings.net 2026-03-31" },
-  { key: "form", label: "近两年战绩", tier: "snapshot", source: "International-football.net last games 2024-2026" },
+  { key: "odds", label: "夺冠赔率", tier: "market", source: "Yahoo Sports / BetMGM outright odds 2026-06-01" },
+  { key: "elo", label: "Elo 强度", tier: "snapshot", source: "International-football.net / eloratings.net 2026-06-11" },
+  { key: "form", label: "近两年战绩", tier: "snapshot", source: "International-football.net last games through 2026-06-11" },
   { key: "wcPath", label: "历史路径难度", tier: "research", source: "Football365 records + champion path summary" },
-  { key: "squadValue", label: "阵容身价", tier: "proxy", source: "市场身价代理" },
-  { key: "avgAge", label: "平均年龄", tier: "proxy", source: "暂定名单结构代理" },
-  { key: "injuryRisk", label: "伤病风险", tier: "snapshot", source: "球员可用性 watchlist + 赛前健康代理" },
+  { key: "squadValue", label: "阵容身价", tier: "snapshot", source: "Transfermarkt team/player market values 2026-06-11" },
+  { key: "avgAge", label: "平均年龄", tier: "snapshot", source: "FIFA final squad player ages 2026-06-11" },
+  { key: "injuryRisk", label: "伤病风险", tier: "snapshot", source: "player availability watchlist 2026-06-11 + health proxy" },
   { key: "clubScore", label: "俱乐部分布", tier: "proxy", source: "顶级联赛集中度代理" },
-  { key: "atmosphere", label: "球队氛围", tier: "manual", source: "team_context_snapshot.csv 2026-06-02" },
+  { key: "atmosphere", label: "球队氛围", tier: "manual", source: "structured context snapshot 2026-06-11" },
   { key: "travelKm", label: "小组赛场馆移动", tier: "snapshot", source: "FIFA schedule + venue coordinates" },
   { key: "restDays", label: "小组赛休息天数", tier: "snapshot", source: "FIFA schedule dates" },
   { key: "timezoneShift", label: "组赛时区跨度", tier: "snapshot", source: "venue UTC offsets" },
@@ -91,61 +98,61 @@ const DATA_FIELDS = [
   { key: "entryTimezoneShift", label: "入境时区差", tier: "snapshot", source: "origin UTC offset + first venue UTC offset" },
   { key: "borderCrossings", label: "组赛跨境次数", tier: "snapshot", source: "venue country sequence" },
   { key: "altitudeLoad", label: "最高场馆海拔", tier: "snapshot", source: "venue altitude snapshot" },
-  { key: "climateLoad", label: "场馆环境负担", tier: "snapshot", source: "venue heat/humidity/altitude estimate" },
+  { key: "climateLoad", label: "比赛日天气/场馆环境负担", tier: "snapshot", source: "Open-Meteo forecast + venue baseline 2026-06-11" },
   { key: "squadAnnouncementStatus", label: "名单公告状态", tier: "snapshot", source: "federation/FIFA squad announcement tracker" },
   { key: "squadAnnouncementDate", label: "名单公告日期", tier: "snapshot", source: "federation/FIFA squad announcement tracker" },
-  { key: "squadStatus", label: "名单状态", tier: "snapshot", source: "FIFA final squad lists + Wikipedia squad tracker 2026-06-02" },
+  { key: "squadStatus", label: "名单状态", tier: "snapshot", source: "FIFA final squad lists + Wikipedia squad tracker 2026-06-11" },
 ];
 
 const teamFactors = {
-  Mexico: { fifaRank: 15, fifaPoints: 1681, elo: 1858, form: 60, wcPath: 58, odds: 7213, squadValue: 215, avgAge: 27.5, injuryRisk: 22, clubScore: 60, atmosphere: 59, travelKm: 952, restDays: 6.5, timezoneShift: 0, borderCrossings: 0, altitudeLoad: 2240, climateLoad: 71, entryTravelKm: 15, entryTimezoneShift: 0, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
-  "South Africa": { fifaRank: 54, fifaPoints: 1453, elo: 1524, form: 61, wcPath: 27, odds: 79161, squadValue: 43, avgAge: 26.3, injuryRisk: 22, clubScore: 55, atmosphere: 55, travelKm: 3943, restDays: 6.5, timezoneShift: 2, borderCrossings: 2, altitudeLoad: 2240, climateLoad: 63, entryTravelKm: 14582, entryTimezoneShift: 8, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
-  "Korea Republic": { fifaRank: 23, fifaPoints: 1585, elo: 1752, form: 61, wcPath: 60, odds: 34964, squadValue: 205, avgAge: 27.5, injuryRisk: 22, clubScore: 64, atmosphere: 57, travelKm: 645, restDays: 6.5, timezoneShift: 0, borderCrossings: 0, altitudeLoad: 1566, climateLoad: 61, entryTravelKm: 11663, entryTimezoneShift: 15, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
-  Czechia: { fifaRank: 39, fifaPoints: 1490, elo: 1726, form: 63, wcPath: 63, odds: 27253, squadValue: 185, avgAge: 27.2, injuryRisk: 22, clubScore: 63, atmosphere: 58, travelKm: 4544, restDays: 6.5, timezoneShift: 2, borderCrossings: 2, altitudeLoad: 2240, climateLoad: 60, entryTravelKm: 10072, entryTimezoneShift: 8, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
-  Canada: { fifaRank: 26, fifaPoints: 1554, elo: 1784, form: 64, wcPath: 27, odds: 21416, squadValue: 230, avgAge: 26.6, injuryRisk: 22, clubScore: 72, atmosphere: 59, travelKm: 3357, restDays: 6, timezoneShift: 3, borderCrossings: 0, altitudeLoad: 76, climateLoad: 25, entryTravelKm: 4, entryTimezoneShift: 0, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "25人官方最终名单" },
-  "Bosnia and Herzegovina": { fifaRank: 77, fifaPoints: 1320, elo: 1594, form: 64, wcPath: 27, odds: 23508, squadValue: 95, avgAge: 25.9, injuryRisk: 22, clubScore: 69, atmosphere: 54, travelKm: 5058, restDays: 6, timezoneShift: 3, borderCrossings: 1, altitudeLoad: 76, climateLoad: 28, entryTravelKm: 7337, entryTimezoneShift: 6, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
-  Qatar: { fifaRank: 53, fifaPoints: 1454, elo: 1427, form: 47, wcPath: 26, odds: 146077, squadValue: 21, avgAge: 28.9, injuryRisk: 22, clubScore: 44, atmosphere: 47, travelKm: 1519, restDays: 5.5, timezoneShift: 0, borderCrossings: 2, altitudeLoad: 13, climateLoad: 25, entryTravelKm: 13011, entryTimezoneShift: 10, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
-  Switzerland: { fifaRank: 18, fifaPoints: 1636, elo: 1889, form: 71, wcPath: 59, odds: 6134, squadValue: 305, avgAge: 27.8, injuryRisk: 22, clubScore: 86, atmosphere: 61, travelKm: 2253, restDays: 5.5, timezoneShift: 0, borderCrossings: 1, altitudeLoad: 38, climateLoad: 29, entryTravelKm: 9372, entryTimezoneShift: 9, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
-  Brazil: { fifaRank: 6, fifaPoints: 1761, elo: 1984, form: 65, wcPath: 98, odds: 823, squadValue: 1120, avgAge: 28.7, injuryRisk: 22, clubScore: 80, atmosphere: 61, travelKm: 1758, restDays: 5.5, timezoneShift: 0, borderCrossings: 0, altitudeLoad: 12, climateLoad: 49, entryTravelKm: 7772, entryTimezoneShift: 1, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
-  Morocco: { fifaRank: 11, fifaPoints: 1706, elo: 1821, form: 70, wcPath: 61, odds: 4968, squadValue: 370, avgAge: 25.9, injuryRisk: 22, clubScore: 77, atmosphere: 57, travelKm: 1750, restDays: 5.5, timezoneShift: 0, borderCrossings: 0, altitudeLoad: 320, climateLoad: 37, entryTravelKm: 5840, entryTimezoneShift: 5, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
-  Haiti: { fifaRank: 86, fifaPoints: 1281, elo: 1532, form: 59, wcPath: 17, odds: 267183, squadValue: 28, avgAge: 27.1, injuryRisk: 22, clubScore: 65, atmosphere: 53, travelKm: 1476, restDays: 5.5, timezoneShift: 0, borderCrossings: 0, altitudeLoad: 320, climateLoad: 38, entryTravelKm: 2615, entryTimezoneShift: 0, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
-  Scotland: { fifaRank: 48, fifaPoints: 1474, elo: 1767, form: 63, wcPath: 27, odds: 11988, squadValue: 245, avgAge: 28.7, injuryRisk: 22, clubScore: 78, atmosphere: 54, travelKm: 1973, restDays: 5.5, timezoneShift: 0, borderCrossings: 0, altitudeLoad: 88, climateLoad: 45, entryTravelKm: 4910, entryTimezoneShift: 5, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
-  USA: { fifaRank: 14, fifaPoints: 1682, elo: 1721, form: 61, wcPath: 61, odds: 5965, squadValue: 330, avgAge: 26.4, injuryRisk: 21, clubScore: 77, atmosphere: 60, travelKm: 3106, restDays: 6.5, timezoneShift: 0, borderCrossings: 0, altitudeLoad: 38, climateLoad: 30, entryTravelKm: 3948, entryTimezoneShift: 3, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
-  Paraguay: { fifaRank: 37, fifaPoints: 1501, elo: 1833, form: 59, wcPath: 45, odds: 14975, squadValue: 160, avgAge: 28.5, injuryRisk: 22, clubScore: 69, atmosphere: 55, travelKm: 505, restDays: 6.5, timezoneShift: 0, borderCrossings: 0, altitudeLoad: 38, climateLoad: 30, entryTravelKm: 9190, entryTimezoneShift: 3, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
-  Australia: { fifaRank: 25, fifaPoints: 1558, elo: 1783, form: 69, wcPath: 46, odds: 42845, squadValue: 55, avgAge: 26.9, injuryRisk: 22, clubScore: 69, atmosphere: 58, travelKm: 1329, restDays: 6, timezoneShift: 0, borderCrossings: 1, altitudeLoad: 13, climateLoad: 25, entryTravelKm: 12502, entryTimezoneShift: 17, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
-  "Türkiye": { fifaRank: 28, fifaPoints: 1537, elo: 1902, form: 71, wcPath: 48, odds: 7953, squadValue: 470, avgAge: 27.2, injuryRisk: 22, clubScore: 65, atmosphere: 59, travelKm: 1828, restDays: 6, timezoneShift: 0, borderCrossings: 1, altitudeLoad: 38, climateLoad: 29, entryTravelKm: 9611, entryTimezoneShift: 10, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
-  Germany: { fifaRank: 9, fifaPoints: 1716, elo: 1923, form: 70, wcPath: 98, odds: 1245, squadValue: 865, avgAge: 27.5, injuryRisk: 22, clubScore: 88, atmosphere: 64, travelKm: 2640, restDays: 5.5, timezoneShift: 1, borderCrossings: 2, altitudeLoad: 76, climateLoad: 41, entryTravelKm: 8435, entryTimezoneShift: 7, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
-  Curacao: { fifaRank: 82, fifaPoints: 1294, elo: 1436, form: 58, wcPath: 13, odds: 222193, squadValue: 36, avgAge: 27.5, injuryRisk: 22, clubScore: 68, atmosphere: 53, travelKm: 2702, restDays: 5.5, timezoneShift: 1, borderCrossings: 0, altitudeLoad: 264, climateLoad: 48, entryTravelKm: 3362, entryTimezoneShift: 1, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
-  "Cote d'Ivoire": { fifaRank: 42, fifaPoints: 1486, elo: 1676, form: 72, wcPath: 29, odds: 23988, squadValue: 260, avgAge: 25.3, injuryRisk: 22, clubScore: 72, atmosphere: 58, travelKm: 1089, restDays: 5.5, timezoneShift: 0, borderCrossings: 2, altitudeLoad: 76, climateLoad: 35, entryTravelKm: 8022, entryTimezoneShift: 4, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
-  Ecuador: { fifaRank: 24, fifaPoints: 1577, elo: 1933, form: 60, wcPath: 43, odds: 7575, squadValue: 285, avgAge: 25.6, injuryRisk: 22, clubScore: 68, atmosphere: 54, travelKm: 3405, restDays: 5.5, timezoneShift: 1, borderCrossings: 0, altitudeLoad: 264, climateLoad: 41, entryTravelKm: 4469, entryTimezoneShift: 1, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
-  Netherlands: { fifaRank: 7, fifaPoints: 1759, elo: 1961, form: 75, wcPath: 86, odds: 2047, squadValue: 790, avgAge: 27.3, injuryRisk: 22, clubScore: 89, atmosphere: 68, travelKm: 1421, restDays: 5.5, timezoneShift: 0, borderCrossings: 0, altitudeLoad: 264, climateLoad: 53, entryTravelKm: 7921, entryTimezoneShift: 7, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
-  Japan: { fifaRank: 19, fifaPoints: 1633, elo: 1904, form: 72, wcPath: 48, odds: 4975, squadValue: 330, avgAge: 27.2, injuryRisk: 29, clubScore: 76, atmosphere: 58, travelKm: 1689, restDays: 5.5, timezoneShift: 1, borderCrossings: 2, altitudeLoad: 540, climateLoad: 58, entryTravelKm: 10385, entryTimezoneShift: 14, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
-  Sweden: { fifaRank: 40, fifaPoints: 1490, elo: 1719, form: 59, wcPath: 66, odds: 7953, squadValue: 345, avgAge: 27, injuryRisk: 22, clubScore: 80, atmosphere: 57, travelKm: 1029, restDays: 5.5, timezoneShift: 1, borderCrossings: 1, altitudeLoad: 540, climateLoad: 59, entryTravelKm: 9019, entryTimezoneShift: 8, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
-  Tunisia: { fifaRank: 41, fifaPoints: 1488, elo: 1636, form: 63, wcPath: 34, odds: 49975, squadValue: 65, avgAge: 26.2, injuryRisk: 22, clubScore: 65, atmosphere: 56, travelKm: 1582, restDays: 5.5, timezoneShift: 1, borderCrossings: 1, altitudeLoad: 540, climateLoad: 60, entryTravelKm: 9959, entryTimezoneShift: 7, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
-  Belgium: { fifaRank: 8, fifaPoints: 1736, elo: 1866, form: 73, wcPath: 64, odds: 3324, squadValue: 530, avgAge: 27.1, injuryRisk: 22, clubScore: 82, atmosphere: 63, travelKm: 3302, restDays: 5.5, timezoneShift: 0, borderCrossings: 1, altitudeLoad: 38, climateLoad: 27, entryTravelKm: 7944, entryTimezoneShift: 9, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
-  Egypt: { fifaRank: 32, fifaPoints: 1519, elo: 1689, form: 69, wcPath: 33, odds: 33721, squadValue: 150, avgAge: 28.7, injuryRisk: 22, clubScore: 58, atmosphere: 56, travelKm: 391, restDays: 5.5, timezoneShift: 0, borderCrossings: 2, altitudeLoad: 13, climateLoad: 23, entryTravelKm: 10986, entryTimezoneShift: 10, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
-  "IR Iran": { fifaRank: 20, fifaPoints: 1620, elo: 1760, form: 63, wcPath: 33, odds: 42845, squadValue: 60, avgAge: 29.8, injuryRisk: 22, clubScore: 50, atmosphere: 53, travelKm: 1553, restDays: 5.5, timezoneShift: 0, borderCrossings: 0, altitudeLoad: 38, climateLoad: 30, entryTravelKm: 12198, entryTimezoneShift: 10.5, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
-  "New Zealand": { fifaRank: 83, fifaPoints: 1290, elo: 1585, form: 50, wcPath: 23, odds: 109087, squadValue: 32, avgAge: 27.6, injuryRisk: 22, clubScore: 64, atmosphere: 50, travelKm: 1749, restDays: 5.5, timezoneShift: 0, borderCrossings: 1, altitudeLoad: 38, climateLoad: 27, entryTravelKm: 10483, entryTimezoneShift: 19, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
-  Spain: { fifaRank: 2, fifaPoints: 1876, elo: 2165, form: 76, wcPath: 92, odds: 498, squadValue: 1260, avgAge: 26.2, injuryRisk: 22, clubScore: 92, atmosphere: 67, travelKm: 2373, restDays: 5.5, timezoneShift: 2, borderCrossings: 1, altitudeLoad: 1566, climateLoad: 49, entryTravelKm: 6944, entryTimezoneShift: 6, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
-  "Cabo Verde": { fifaRank: 67, fifaPoints: 1360, elo: 1549, form: 64, wcPath: 13, odds: 92288, squadValue: 58, avgAge: 29.2, injuryRisk: 22, clubScore: 61, atmosphere: 52, travelKm: 2502, restDays: 5.5, timezoneShift: 1, borderCrossings: 0, altitudeLoad: 320, climateLoad: 58, entryTravelKm: 6418, entryTimezoneShift: 3, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
-  "Saudi Arabia": { fifaRank: 60, fifaPoints: 1390, elo: 1568, form: 57, wcPath: 42, odds: 133317, squadValue: 36, avgAge: 28, injuryRisk: 22, clubScore: 57, atmosphere: 52, travelKm: 2090, restDays: 5.5, timezoneShift: 1, borderCrossings: 0, altitudeLoad: 320, climateLoad: 58, entryTravelKm: 11999, entryTimezoneShift: 7, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
-  Uruguay: { fifaRank: 17, fifaPoints: 1640, elo: 1892, form: 62, wcPath: 98, odds: 6175, squadValue: 505, avgAge: 28.2, injuryRisk: 22, clubScore: 73, atmosphere: 62, travelKm: 2439, restDays: 5.5, timezoneShift: 2, borderCrossings: 1, altitudeLoad: 1566, climateLoad: 67, entryTravelKm: 7226, entryTimezoneShift: 1, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
-  France: { fifaRank: 1, fifaPoints: 1877, elo: 2082, form: 76, wcPath: 98, odds: 452, squadValue: 1370, avgAge: 26.6, injuryRisk: 22, clubScore: 85, atmosphere: 67, travelKm: 545, restDays: 5, timezoneShift: 0, borderCrossings: 0, altitudeLoad: 88, climateLoad: 35, entryTravelKm: 5835, entryTimezoneShift: 6, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
-  Senegal: { fifaRank: 22, fifaPoints: 1591, elo: 1879, form: 80, wcPath: 53, odds: 9787, squadValue: 255, avgAge: 26.6, injuryRisk: 22, clubScore: 80, atmosphere: 64, travelKm: 540, restDays: 5, timezoneShift: 0, borderCrossings: 1, altitudeLoad: 76, climateLoad: 33, entryTravelKm: 6152, entryTimezoneShift: 4, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
-  Iraq: { fifaRank: 58, fifaPoints: 1421, elo: 1607, form: 67, wcPath: 18, odds: 119988, squadValue: 24, avgAge: 26.7, injuryRisk: 22, clubScore: 55, atmosphere: 56, travelKm: 953, restDays: 5, timezoneShift: 0, borderCrossings: 1, altitudeLoad: 88, climateLoad: 33, entryTravelKm: 9370, entryTimezoneShift: 7, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
-  Norway: { fifaRank: 29, fifaPoints: 1534, elo: 1912, form: 73, wcPath: 32, odds: 2758, squadValue: 610, avgAge: 26.3, injuryRisk: 22, clubScore: 83, atmosphere: 62, travelKm: 548, restDays: 5, timezoneShift: 0, borderCrossings: 0, altitudeLoad: 88, climateLoad: 33, entryTravelKm: 5652, entryTimezoneShift: 6, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
-  Argentina: { fifaRank: 3, fifaPoints: 1875, elo: 2113, form: 77, wcPath: 98, odds: 800, squadValue: 910, avgAge: 28.6, injuryRisk: 22, clubScore: 84, atmosphere: 66, travelKm: 739, restDays: 5.5, timezoneShift: 0, borderCrossings: 0, altitudeLoad: 264, climateLoad: 52, entryTravelKm: 8992, entryTimezoneShift: 2, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
-  Algeria: { fifaRank: 38, fifaPoints: 1490, elo: 1743, form: 73, wcPath: 36, odds: 32420, squadValue: 170, avgAge: 26.5, injuryRisk: 22, clubScore: 69, atmosphere: 60, travelKm: 4798, restDays: 5.5, timezoneShift: 2, borderCrossings: 0, altitudeLoad: 264, climateLoad: 41, entryTravelKm: 8098, entryTimezoneShift: 6, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
-  Austria: { fifaRank: 27, fifaPoints: 1548, elo: 1827, form: 76, wcPath: 49, odds: 14975, squadValue: 310, avgAge: 28.2, injuryRisk: 22, clubScore: 80, atmosphere: 63, travelKm: 3054, restDays: 5.5, timezoneShift: 2, borderCrossings: 0, altitudeLoad: 264, climateLoad: 43, entryTravelKm: 9642, entryTimezoneShift: 9, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "25人官方最终名单" },
-  Jordan: { fifaRank: 64, fifaPoints: 1373, elo: 1690, form: 65, wcPath: 13, odds: 159294, squadValue: 18, avgAge: 28.1, injuryRisk: 22, clubScore: 51, atmosphere: 55, travelKm: 2315, restDays: 5.5, timezoneShift: 2, borderCrossings: 0, altitudeLoad: 184, climateLoad: 37, entryTravelKm: 11968, entryTimezoneShift: 10, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
-  Portugal: { fifaRank: 5, fifaPoints: 1764, elo: 1984, form: 70, wcPath: 65, odds: 1048, squadValue: 1060, avgAge: 27.5, injuryRisk: 22, clubScore: 81, atmosphere: 59, travelKm: 1547, restDays: 5, timezoneShift: 1, borderCrossings: 0, altitudeLoad: 13, climateLoad: 63, entryTravelKm: 7703, entryTimezoneShift: 6, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
-  "Congo DR": { fifaRank: 56, fifaPoints: 1429, elo: 1655, form: 72, wcPath: 17, odds: 66651, squadValue: 120, avgAge: 28.5, injuryRisk: 22, clubScore: 70, atmosphere: 59, travelKm: 3660, restDays: 5, timezoneShift: 2, borderCrossings: 2, altitudeLoad: 1566, climateLoad: 53, entryTravelKm: 12246, entryTimezoneShift: 6, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
-  Uzbekistan: { fifaRank: 50, fifaPoints: 1460, elo: 1727, form: 70, wcPath: 13, odds: 79996, squadValue: 48, avgAge: 28, injuryRisk: 22, clubScore: 52, atmosphere: 57, travelKm: 2349, restDays: 5, timezoneShift: 2, borderCrossings: 1, altitudeLoad: 2240, climateLoad: 60, entryTravelKm: 13171, entryTimezoneShift: 11, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
-  Colombia: { fifaRank: 13, fifaPoints: 1692, elo: 1975, form: 66, wcPath: 47, odds: 3822, squadValue: 340, avgAge: 29.6, injuryRisk: 22, clubScore: 74, atmosphere: 54, travelKm: 2915, restDays: 5, timezoneShift: 2, borderCrossings: 1, altitudeLoad: 2240, climateLoad: 69, entryTravelKm: 3166, entryTimezoneShift: 1, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
-  England: { fifaRank: 4, fifaPoints: 1835, elo: 2020, form: 72, wcPath: 94, odds: 629, squadValue: 1640, avgAge: 26.6, injuryRisk: 22, clubScore: 93, atmosphere: 66, travelKm: 2768, restDays: 5, timezoneShift: 1, borderCrossings: 0, altitudeLoad: 184, climateLoad: 41, entryTravelKm: 7662, entryTimezoneShift: 6, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
-  Croatia: { fifaRank: 10, fifaPoints: 1714, elo: 1930, form: 75, wcPath: 76, odds: 7575, squadValue: 320, avgAge: 27.9, injuryRisk: 22, clubScore: 81, atmosphere: 66, travelKm: 2500, restDays: 5, timezoneShift: 1, borderCrossings: 2, altitudeLoad: 184, climateLoad: 40, entryTravelKm: 8996, entryTimezoneShift: 7, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
-  Ghana: { fifaRank: 72, fifaPoints: 1335, elo: 1505, form: 58, wcPath: 48, odds: 25517, squadValue: 180, avgAge: 26.4, injuryRisk: 22, clubScore: 76, atmosphere: 55, travelKm: 1094, restDays: 5, timezoneShift: 0, borderCrossings: 1, altitudeLoad: 88, climateLoad: 33, entryTravelKm: 8712, entryTimezoneShift: 4, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
-  Panama: { fifaRank: 31, fifaPoints: 1521, elo: 1737, form: 64, wcPath: 23, odds: 133317, squadValue: 24, avgAge: 30, injuryRisk: 22, clubScore: 53, atmosphere: 52, travelKm: 540, restDays: 5, timezoneShift: 0, borderCrossings: 1, altitudeLoad: 76, climateLoad: 31, entryTravelKm: 3853, entryTimezoneShift: 1, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  Mexico: { fifaRank: 15, fifaPoints: 1681, elo: 1875, form: 71, wcPath: 58, odds: 6600, squadValue: 192, avgAge: 27.5, injuryRisk: 22, clubScore: 60, atmosphere: 62, travelKm: 952, restDays: 6.5, timezoneShift: 0, borderCrossings: 0, altitudeLoad: 2240, climateLoad: 51, entryTravelKm: 15, entryTimezoneShift: 0, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  "South Africa": { fifaRank: 54, fifaPoints: 1453, elo: 1528, form: 64, wcPath: 27, odds: 100000, squadValue: 49, avgAge: 26.3, injuryRisk: 22, clubScore: 55, atmosphere: 56, travelKm: 3943, restDays: 6.5, timezoneShift: 2, borderCrossings: 2, altitudeLoad: 2240, climateLoad: 49, entryTravelKm: 14582, entryTimezoneShift: 8, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  "Korea Republic": { fifaRank: 23, fifaPoints: 1585, elo: 1758, form: 66, wcPath: 60, odds: 25000, squadValue: 139, avgAge: 27.5, injuryRisk: 22, clubScore: 64, atmosphere: 58, travelKm: 645, restDays: 6.5, timezoneShift: 0, borderCrossings: 0, altitudeLoad: 1566, climateLoad: 43, entryTravelKm: 11663, entryTimezoneShift: 15, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  Czechia: { fifaRank: 39, fifaPoints: 1490, elo: 1740, form: 68, wcPath: 63, odds: 20000, squadValue: 188, avgAge: 27.2, injuryRisk: 22, clubScore: 63, atmosphere: 59, travelKm: 4544, restDays: 6.5, timezoneShift: 2, borderCrossings: 2, altitudeLoad: 2240, climateLoad: 46, entryTravelKm: 10072, entryTimezoneShift: 8, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  Canada: { fifaRank: 26, fifaPoints: 1554, elo: 1788, form: 64, wcPath: 27, odds: 15000, squadValue: 199, avgAge: 26.5, injuryRisk: 22, clubScore: 72, atmosphere: 59, travelKm: 3357, restDays: 6, timezoneShift: 3, borderCrossings: 0, altitudeLoad: 76, climateLoad: 14, entryTravelKm: 4, entryTimezoneShift: 0, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  "Bosnia and Herzegovina": { fifaRank: 77, fifaPoints: 1320, elo: 1595, form: 62, wcPath: 27, odds: 25000, squadValue: 152, avgAge: 25.9, injuryRisk: 22, clubScore: 69, atmosphere: 54, travelKm: 5058, restDays: 6, timezoneShift: 3, borderCrossings: 1, altitudeLoad: 76, climateLoad: 16, entryTravelKm: 7337, entryTimezoneShift: 6, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  Qatar: { fifaRank: 53, fifaPoints: 1454, elo: 1421, form: 49, wcPath: 26, odds: 100000, squadValue: 20, avgAge: 28.9, injuryRisk: 22, clubScore: 44, atmosphere: 48, travelKm: 1519, restDays: 5.5, timezoneShift: 0, borderCrossings: 2, altitudeLoad: 13, climateLoad: 20, entryTravelKm: 13011, entryTimezoneShift: 10, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  Switzerland: { fifaRank: 18, fifaPoints: 1636, elo: 1891, form: 68, wcPath: 59, odds: 6600, squadValue: 333, avgAge: 27.8, injuryRisk: 22, clubScore: 86, atmosphere: 60, travelKm: 2253, restDays: 5.5, timezoneShift: 0, borderCrossings: 1, altitudeLoad: 38, climateLoad: 22, entryTravelKm: 9372, entryTimezoneShift: 9, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  Brazil: { fifaRank: 6, fifaPoints: 1761, elo: 1991, form: 69, wcPath: 98, odds: 800, squadValue: 928, avgAge: 28.8, injuryRisk: 22, clubScore: 80, atmosphere: 62, travelKm: 1758, restDays: 5.5, timezoneShift: 0, borderCrossings: 0, altitudeLoad: 12, climateLoad: 38, entryTravelKm: 7772, entryTimezoneShift: 1, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  Morocco: { fifaRank: 11, fifaPoints: 1706, elo: 1824, form: 71, wcPath: 61, odds: 4000, squadValue: 498, avgAge: 25.9, injuryRisk: 22, clubScore: 77, atmosphere: 58, travelKm: 1750, restDays: 5.5, timezoneShift: 0, borderCrossings: 0, altitudeLoad: 320, climateLoad: 35, entryTravelKm: 5840, entryTimezoneShift: 5, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  Haiti: { fifaRank: 86, fifaPoints: 1281, elo: 1548, form: 62, wcPath: 17, odds: 250000, squadValue: 56, avgAge: 27.1, injuryRisk: 22, clubScore: 65, atmosphere: 55, travelKm: 1476, restDays: 5.5, timezoneShift: 0, borderCrossings: 0, altitudeLoad: 320, climateLoad: 35, entryTravelKm: 2615, entryTimezoneShift: 0, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  Scotland: { fifaRank: 48, fifaPoints: 1474, elo: 1782, form: 68, wcPath: 27, odds: 25000, squadValue: 170, avgAge: 28.7, injuryRisk: 22, clubScore: 78, atmosphere: 55, travelKm: 1973, restDays: 5.5, timezoneShift: 0, borderCrossings: 0, altitudeLoad: 88, climateLoad: 38, entryTravelKm: 4910, entryTimezoneShift: 5, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  USA: { fifaRank: 14, fifaPoints: 1682, elo: 1726, form: 61, wcPath: 61, odds: 4000, squadValue: 386, avgAge: 26.4, injuryRisk: 21, clubScore: 77, atmosphere: 60, travelKm: 3106, restDays: 6.5, timezoneShift: 0, borderCrossings: 0, altitudeLoad: 38, climateLoad: 19, entryTravelKm: 3948, entryTimezoneShift: 3, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  Paraguay: { fifaRank: 37, fifaPoints: 1501, elo: 1833, form: 60, wcPath: 45, odds: 15000, squadValue: 154, avgAge: 28.5, injuryRisk: 22, clubScore: 69, atmosphere: 56, travelKm: 505, restDays: 6.5, timezoneShift: 0, borderCrossings: 0, altitudeLoad: 38, climateLoad: 21, entryTravelKm: 9190, entryTimezoneShift: 3, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  Australia: { fifaRank: 25, fifaPoints: 1558, elo: 1777, form: 62, wcPath: 46, odds: 50000, squadValue: 77, avgAge: 26.9, injuryRisk: 22, clubScore: 69, atmosphere: 57, travelKm: 1329, restDays: 6, timezoneShift: 0, borderCrossings: 1, altitudeLoad: 13, climateLoad: 19, entryTravelKm: 12502, entryTimezoneShift: 17, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  "Türkiye": { fifaRank: 28, fifaPoints: 1537, elo: 1911, form: 76, wcPath: 48, odds: 6600, squadValue: 474, avgAge: 27.2, injuryRisk: 22, clubScore: 65, atmosphere: 62, travelKm: 1828, restDays: 6, timezoneShift: 0, borderCrossings: 1, altitudeLoad: 38, climateLoad: 17, entryTravelKm: 9611, entryTimezoneShift: 10, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  Germany: { fifaRank: 9, fifaPoints: 1716, elo: 1932, form: 79, wcPath: 98, odds: 1400, squadValue: 947, avgAge: 27.6, injuryRisk: 29, clubScore: 88, atmosphere: 65, travelKm: 2640, restDays: 5.5, timezoneShift: 1, borderCrossings: 2, altitudeLoad: 76, climateLoad: 36, entryTravelKm: 8435, entryTimezoneShift: 7, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  Curacao: { fifaRank: 82, fifaPoints: 1294, elo: 1434, form: 60, wcPath: 13, odds: 250000, squadValue: 26, avgAge: 27.5, injuryRisk: 22, clubScore: 68, atmosphere: 54, travelKm: 2702, restDays: 5.5, timezoneShift: 1, borderCrossings: 0, altitudeLoad: 264, climateLoad: 40, entryTravelKm: 3362, entryTimezoneShift: 1, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  "Cote d'Ivoire": { fifaRank: 42, fifaPoints: 1486, elo: 1695, form: 72, wcPath: 29, odds: 20000, squadValue: 522, avgAge: 25.3, injuryRisk: 22, clubScore: 72, atmosphere: 58, travelKm: 1089, restDays: 5.5, timezoneShift: 0, borderCrossings: 2, altitudeLoad: 76, climateLoad: 32, entryTravelKm: 8022, entryTimezoneShift: 4, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  Ecuador: { fifaRank: 24, fifaPoints: 1577, elo: 1935, form: 63, wcPath: 43, odds: 6600, squadValue: 369, avgAge: 25.6, injuryRisk: 22, clubScore: 68, atmosphere: 55, travelKm: 3405, restDays: 5.5, timezoneShift: 1, borderCrossings: 0, altitudeLoad: 264, climateLoad: 36, entryTravelKm: 4469, entryTimezoneShift: 1, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  Netherlands: { fifaRank: 7, fifaPoints: 1759, elo: 1944, form: 70, wcPath: 86, odds: 2000, squadValue: 754, avgAge: 27.3, injuryRisk: 22, clubScore: 89, atmosphere: 65, travelKm: 1421, restDays: 5.5, timezoneShift: 0, borderCrossings: 0, altitudeLoad: 264, climateLoad: 46, entryTravelKm: 7921, entryTimezoneShift: 7, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  Japan: { fifaRank: 19, fifaPoints: 1633, elo: 1906, form: 72, wcPath: 48, odds: 5000, squadValue: 271, avgAge: 27.2, injuryRisk: 29, clubScore: 76, atmosphere: 58, travelKm: 1689, restDays: 5.5, timezoneShift: 1, borderCrossings: 2, altitudeLoad: 540, climateLoad: 57, entryTravelKm: 10385, entryTimezoneShift: 14, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  Sweden: { fifaRank: 40, fifaPoints: 1490, elo: 1712, form: 52, wcPath: 66, odds: 6600, squadValue: 406, avgAge: 27, injuryRisk: 22, clubScore: 80, atmosphere: 54, travelKm: 1029, restDays: 5.5, timezoneShift: 1, borderCrossings: 1, altitudeLoad: 540, climateLoad: 56, entryTravelKm: 9019, entryTimezoneShift: 8, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  Tunisia: { fifaRank: 41, fifaPoints: 1488, elo: 1628, form: 61, wcPath: 34, odds: 50000, squadValue: 70, avgAge: 26.2, injuryRisk: 22, clubScore: 65, atmosphere: 56, travelKm: 1582, restDays: 5.5, timezoneShift: 1, borderCrossings: 1, altitudeLoad: 540, climateLoad: 49, entryTravelKm: 9959, entryTimezoneShift: 7, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  Belgium: { fifaRank: 8, fifaPoints: 1736, elo: 1893, form: 76, wcPath: 64, odds: 3300, squadValue: 548, avgAge: 27.1, injuryRisk: 22, clubScore: 82, atmosphere: 64, travelKm: 3302, restDays: 5.5, timezoneShift: 0, borderCrossings: 1, altitudeLoad: 38, climateLoad: 21, entryTravelKm: 7944, entryTimezoneShift: 9, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  Egypt: { fifaRank: 32, fifaPoints: 1519, elo: 1696, form: 66, wcPath: 33, odds: 25000, squadValue: 116, avgAge: 28.7, injuryRisk: 22, clubScore: 58, atmosphere: 55, travelKm: 391, restDays: 5.5, timezoneShift: 0, borderCrossings: 2, altitudeLoad: 13, climateLoad: 19, entryTravelKm: 10986, entryTimezoneShift: 10, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  "IR Iran": { fifaRank: 20, fifaPoints: 1620, elo: 1772, form: 63, wcPath: 33, odds: 50000, squadValue: 32, avgAge: 29.8, injuryRisk: 22, clubScore: 50, atmosphere: 53, travelKm: 1553, restDays: 5.5, timezoneShift: 0, borderCrossings: 0, altitudeLoad: 38, climateLoad: 20, entryTravelKm: 12198, entryTimezoneShift: 10.5, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  "New Zealand": { fifaRank: 83, fifaPoints: 1290, elo: 1562, form: 46, wcPath: 23, odds: 100000, squadValue: 34, avgAge: 27.6, injuryRisk: 22, clubScore: 64, atmosphere: 49, travelKm: 1749, restDays: 5.5, timezoneShift: 0, borderCrossings: 1, altitudeLoad: 38, climateLoad: 19, entryTravelKm: 10483, entryTimezoneShift: 19, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  Spain: { fifaRank: 2, fifaPoints: 1876, elo: 2155, form: 73, wcPath: 92, odds: 450, squadValue: 1220, avgAge: 26.2, injuryRisk: 22, clubScore: 92, atmosphere: 66, travelKm: 2373, restDays: 5.5, timezoneShift: 2, borderCrossings: 1, altitudeLoad: 1566, climateLoad: 41, entryTravelKm: 6944, entryTimezoneShift: 6, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  "Cabo Verde": { fifaRank: 67, fifaPoints: 1360, elo: 1578, form: 68, wcPath: 13, odds: 100000, squadValue: 55, avgAge: 29.2, injuryRisk: 22, clubScore: 61, atmosphere: 53, travelKm: 2502, restDays: 5.5, timezoneShift: 1, borderCrossings: 0, altitudeLoad: 320, climateLoad: 53, entryTravelKm: 6418, entryTimezoneShift: 3, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  "Saudi Arabia": { fifaRank: 60, fifaPoints: 1390, elo: 1569, form: 58, wcPath: 42, odds: 100000, squadValue: 41, avgAge: 28, injuryRisk: 22, clubScore: 57, atmosphere: 54, travelKm: 2090, restDays: 5.5, timezoneShift: 1, borderCrossings: 0, altitudeLoad: 320, climateLoad: 47, entryTravelKm: 11999, entryTimezoneShift: 7, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  Uruguay: { fifaRank: 17, fifaPoints: 1640, elo: 1892, form: 62, wcPath: 98, odds: 5000, squadValue: 359, avgAge: 28.2, injuryRisk: 22, clubScore: 73, atmosphere: 62, travelKm: 2439, restDays: 5.5, timezoneShift: 2, borderCrossings: 1, altitudeLoad: 1566, climateLoad: 59, entryTravelKm: 7226, entryTimezoneShift: 1, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  France: { fifaRank: 1, fifaPoints: 1877, elo: 2062, form: 75, wcPath: 98, odds: 450, squadValue: 1520, avgAge: 26.6, injuryRisk: 22, clubScore: 85, atmosphere: 67, travelKm: 545, restDays: 5, timezoneShift: 0, borderCrossings: 0, altitudeLoad: 88, climateLoad: 29, entryTravelKm: 5835, entryTimezoneShift: 6, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  Senegal: { fifaRank: 22, fifaPoints: 1591, elo: 1867, form: 75, wcPath: 53, odds: 6600, squadValue: 478, avgAge: 26.6, injuryRisk: 22, clubScore: 80, atmosphere: 63, travelKm: 540, restDays: 5, timezoneShift: 0, borderCrossings: 1, altitudeLoad: 76, climateLoad: 28, entryTravelKm: 6152, entryTimezoneShift: 4, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  Iraq: { fifaRank: 58, fifaPoints: 1421, elo: 1618, form: 65, wcPath: 18, odds: 100000, squadValue: 21, avgAge: 26.4, injuryRisk: 22, clubScore: 55, atmosphere: 56, travelKm: 953, restDays: 5, timezoneShift: 0, borderCrossings: 1, altitudeLoad: 88, climateLoad: 25, entryTravelKm: 9370, entryTimezoneShift: 7, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  Norway: { fifaRank: 29, fifaPoints: 1534, elo: 1917, form: 73, wcPath: 32, odds: 2500, squadValue: 590, avgAge: 26.3, injuryRisk: 22, clubScore: 83, atmosphere: 62, travelKm: 548, restDays: 5, timezoneShift: 0, borderCrossings: 0, altitudeLoad: 88, climateLoad: 27, entryTravelKm: 5652, entryTimezoneShift: 6, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  Argentina: { fifaRank: 3, fifaPoints: 1875, elo: 2114, form: 77, wcPath: 98, odds: 800, squadValue: 783, avgAge: 28.7, injuryRisk: 29, clubScore: 84, atmosphere: 63, travelKm: 739, restDays: 5.5, timezoneShift: 0, borderCrossings: 0, altitudeLoad: 264, climateLoad: 45, entryTravelKm: 8992, entryTimezoneShift: 2, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "25人官方最终名单" },
+  Algeria: { fifaRank: 38, fifaPoints: 1490, elo: 1760, form: 73, wcPath: 36, odds: 25000, squadValue: 257, avgAge: 26.5, injuryRisk: 22, clubScore: 69, atmosphere: 60, travelKm: 4798, restDays: 5.5, timezoneShift: 2, borderCrossings: 0, altitudeLoad: 264, climateLoad: 31, entryTravelKm: 8098, entryTimezoneShift: 6, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  Austria: { fifaRank: 27, fifaPoints: 1548, elo: 1830, form: 76, wcPath: 49, odds: 10000, squadValue: 245, avgAge: 28.1, injuryRisk: 22, clubScore: 80, atmosphere: 63, travelKm: 3054, restDays: 5.5, timezoneShift: 2, borderCrossings: 0, altitudeLoad: 264, climateLoad: 42, entryTravelKm: 9642, entryTimezoneShift: 9, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  Jordan: { fifaRank: 64, fifaPoints: 1373, elo: 1685, form: 64, wcPath: 13, odds: 100000, squadValue: 20, avgAge: 28.1, injuryRisk: 22, clubScore: 51, atmosphere: 55, travelKm: 2315, restDays: 5.5, timezoneShift: 2, borderCrossings: 0, altitudeLoad: 184, climateLoad: 31, entryTravelKm: 11968, entryTimezoneShift: 10, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  Portugal: { fifaRank: 5, fifaPoints: 1764, elo: 1986, form: 70, wcPath: 65, odds: 900, squadValue: 1010, avgAge: 27.5, injuryRisk: 22, clubScore: 81, atmosphere: 59, travelKm: 1547, restDays: 5, timezoneShift: 1, borderCrossings: 0, altitudeLoad: 13, climateLoad: 63, entryTravelKm: 7703, entryTimezoneShift: 6, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  "Congo DR": { fifaRank: 56, fifaPoints: 1429, elo: 1661, form: 70, wcPath: 17, odds: 75000, squadValue: 144, avgAge: 28.5, injuryRisk: 22, clubScore: 70, atmosphere: 57, travelKm: 3660, restDays: 5, timezoneShift: 2, borderCrossings: 2, altitudeLoad: 1566, climateLoad: 51, entryTravelKm: 12246, entryTimezoneShift: 6, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  Uzbekistan: { fifaRank: 50, fifaPoints: 1460, elo: 1718, form: 65, wcPath: 13, odds: 100000, squadValue: 85, avgAge: 28, injuryRisk: 22, clubScore: 52, atmosphere: 55, travelKm: 2349, restDays: 5, timezoneShift: 2, borderCrossings: 1, altitudeLoad: 2240, climateLoad: 49, entryTravelKm: 13171, entryTimezoneShift: 11, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  Colombia: { fifaRank: 13, fifaPoints: 1692, elo: 1977, form: 69, wcPath: 47, odds: 3500, squadValue: 302, avgAge: 29.6, injuryRisk: 22, clubScore: 74, atmosphere: 55, travelKm: 2915, restDays: 5, timezoneShift: 2, borderCrossings: 1, altitudeLoad: 2240, climateLoad: 55, entryTravelKm: 3166, entryTimezoneShift: 1, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  England: { fifaRank: 4, fifaPoints: 1835, elo: 2021, form: 72, wcPath: 94, odds: 650, squadValue: 1360, avgAge: 26.6, injuryRisk: 22, clubScore: 93, atmosphere: 66, travelKm: 2768, restDays: 5, timezoneShift: 1, borderCrossings: 0, altitudeLoad: 184, climateLoad: 33, entryTravelKm: 7662, entryTimezoneShift: 6, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  Croatia: { fifaRank: 10, fifaPoints: 1714, elo: 1908, form: 70, wcPath: 76, odds: 6600, squadValue: 387, avgAge: 27.9, injuryRisk: 22, clubScore: 81, atmosphere: 63, travelKm: 2500, restDays: 5, timezoneShift: 1, borderCrossings: 2, altitudeLoad: 184, climateLoad: 33, entryTravelKm: 8996, entryTimezoneShift: 7, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  Ghana: { fifaRank: 72, fifaPoints: 1335, elo: 1510, form: 54, wcPath: 48, odds: 25000, squadValue: 235, avgAge: 26.4, injuryRisk: 22, clubScore: 76, atmosphere: 52, travelKm: 1094, restDays: 5, timezoneShift: 0, borderCrossings: 1, altitudeLoad: 88, climateLoad: 24, entryTravelKm: 8712, entryTimezoneShift: 4, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  Panama: { fifaRank: 31, fifaPoints: 1521, elo: 1730, form: 62, wcPath: 23, odds: 100000, squadValue: 35, avgAge: 30, injuryRisk: 22, clubScore: 53, atmosphere: 52, travelKm: 540, restDays: 5, timezoneShift: 0, borderCrossings: 1, altitudeLoad: 76, climateLoad: 23, entryTravelKm: 3853, entryTimezoneShift: 1, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
 };
 
 const MODEL_WEIGHTS = {
@@ -194,6 +201,89 @@ const KNOCKOUT_MATCHES = [
   { match: 102, round: "4强", date: "2026-07-15", venue: "Atlanta Stadium", slots: ["W99", "W100"] },
   { match: 104, round: "决赛", date: "2026-07-19", venue: "New York New Jersey Stadium", slots: ["W101", "W102"] },
 ];
+
+const GROUP_SCHEDULE = [
+  { date: "2026-06-11", group: "A", a: "Mexico", b: "South Africa", venue: "Mexico City Stadium" },
+  { date: "2026-06-11", group: "A", a: "Korea Republic", b: "Czechia", venue: "Estadio Guadalajara" },
+  { date: "2026-06-12", group: "B", a: "Canada", b: "Bosnia and Herzegovina", venue: "Toronto Stadium" },
+  { date: "2026-06-12", group: "D", a: "USA", b: "Paraguay", venue: "Los Angeles Stadium" },
+  { date: "2026-06-13", group: "C", a: "Haiti", b: "Scotland", venue: "Boston Stadium" },
+  { date: "2026-06-13", group: "D", a: "Australia", b: "Türkiye", venue: "BC Place Vancouver" },
+  { date: "2026-06-13", group: "C", a: "Brazil", b: "Morocco", venue: "New York New Jersey Stadium" },
+  { date: "2026-06-13", group: "B", a: "Qatar", b: "Switzerland", venue: "San Francisco Bay Area Stadium" },
+  { date: "2026-06-14", group: "E", a: "Cote d'Ivoire", b: "Ecuador", venue: "Philadelphia Stadium" },
+  { date: "2026-06-14", group: "E", a: "Germany", b: "Curacao", venue: "Houston Stadium" },
+  { date: "2026-06-14", group: "F", a: "Netherlands", b: "Japan", venue: "Dallas Stadium" },
+  { date: "2026-06-14", group: "F", a: "Sweden", b: "Tunisia", venue: "Estadio Monterrey" },
+  { date: "2026-06-15", group: "H", a: "Saudi Arabia", b: "Uruguay", venue: "Miami Stadium" },
+  { date: "2026-06-15", group: "H", a: "Spain", b: "Cabo Verde", venue: "Atlanta Stadium" },
+  { date: "2026-06-15", group: "G", a: "IR Iran", b: "New Zealand", venue: "Los Angeles Stadium" },
+  { date: "2026-06-15", group: "G", a: "Belgium", b: "Egypt", venue: "Seattle Stadium" },
+  { date: "2026-06-16", group: "I", a: "France", b: "Senegal", venue: "New York New Jersey Stadium" },
+  { date: "2026-06-16", group: "I", a: "Iraq", b: "Norway", venue: "Boston Stadium" },
+  { date: "2026-06-16", group: "J", a: "Argentina", b: "Algeria", venue: "Kansas City Stadium" },
+  { date: "2026-06-16", group: "J", a: "Austria", b: "Jordan", venue: "San Francisco Bay Area Stadium" },
+  { date: "2026-06-17", group: "L", a: "Ghana", b: "Panama", venue: "Toronto Stadium" },
+  { date: "2026-06-17", group: "L", a: "England", b: "Croatia", venue: "Dallas Stadium" },
+  { date: "2026-06-17", group: "K", a: "Portugal", b: "Congo DR", venue: "Houston Stadium" },
+  { date: "2026-06-17", group: "K", a: "Uzbekistan", b: "Colombia", venue: "Mexico City Stadium" },
+  { date: "2026-06-18", group: "A", a: "Czechia", b: "South Africa", venue: "Atlanta Stadium" },
+  { date: "2026-06-18", group: "B", a: "Switzerland", b: "Bosnia and Herzegovina", venue: "Los Angeles Stadium" },
+  { date: "2026-06-18", group: "B", a: "Canada", b: "Qatar", venue: "BC Place Vancouver" },
+  { date: "2026-06-18", group: "A", a: "Mexico", b: "Korea Republic", venue: "Estadio Guadalajara" },
+  { date: "2026-06-19", group: "C", a: "Brazil", b: "Haiti", venue: "Philadelphia Stadium" },
+  { date: "2026-06-19", group: "C", a: "Scotland", b: "Morocco", venue: "Boston Stadium" },
+  { date: "2026-06-19", group: "D", a: "Türkiye", b: "Paraguay", venue: "San Francisco Bay Area Stadium" },
+  { date: "2026-06-19", group: "D", a: "USA", b: "Australia", venue: "Seattle Stadium" },
+  { date: "2026-06-20", group: "E", a: "Germany", b: "Cote d'Ivoire", venue: "Toronto Stadium" },
+  { date: "2026-06-20", group: "E", a: "Ecuador", b: "Curacao", venue: "Kansas City Stadium" },
+  { date: "2026-06-20", group: "F", a: "Netherlands", b: "Sweden", venue: "Houston Stadium" },
+  { date: "2026-06-20", group: "F", a: "Tunisia", b: "Japan", venue: "Estadio Monterrey" },
+  { date: "2026-06-21", group: "H", a: "Uruguay", b: "Cabo Verde", venue: "Miami Stadium" },
+  { date: "2026-06-21", group: "H", a: "Spain", b: "Saudi Arabia", venue: "Atlanta Stadium" },
+  { date: "2026-06-21", group: "G", a: "Belgium", b: "IR Iran", venue: "Los Angeles Stadium" },
+  { date: "2026-06-21", group: "G", a: "New Zealand", b: "Egypt", venue: "BC Place Vancouver" },
+  { date: "2026-06-22", group: "I", a: "Norway", b: "Senegal", venue: "New York New Jersey Stadium" },
+  { date: "2026-06-22", group: "I", a: "France", b: "Iraq", venue: "Philadelphia Stadium" },
+  { date: "2026-06-22", group: "J", a: "Argentina", b: "Austria", venue: "Dallas Stadium" },
+  { date: "2026-06-22", group: "J", a: "Jordan", b: "Algeria", venue: "San Francisco Bay Area Stadium" },
+  { date: "2026-06-23", group: "L", a: "England", b: "Ghana", venue: "Boston Stadium" },
+  { date: "2026-06-23", group: "L", a: "Panama", b: "Croatia", venue: "Toronto Stadium" },
+  { date: "2026-06-23", group: "K", a: "Portugal", b: "Uzbekistan", venue: "Houston Stadium" },
+  { date: "2026-06-23", group: "K", a: "Colombia", b: "Congo DR", venue: "Estadio Guadalajara" },
+  { date: "2026-06-24", group: "C", a: "Scotland", b: "Brazil", venue: "Miami Stadium" },
+  { date: "2026-06-24", group: "C", a: "Morocco", b: "Haiti", venue: "Atlanta Stadium" },
+  { date: "2026-06-24", group: "B", a: "Switzerland", b: "Canada", venue: "BC Place Vancouver" },
+  { date: "2026-06-24", group: "B", a: "Bosnia and Herzegovina", b: "Qatar", venue: "Seattle Stadium" },
+  { date: "2026-06-24", group: "A", a: "Czechia", b: "Mexico", venue: "Mexico City Stadium" },
+  { date: "2026-06-24", group: "A", a: "South Africa", b: "Korea Republic", venue: "Estadio Monterrey" },
+  { date: "2026-06-25", group: "E", a: "Curacao", b: "Cote d'Ivoire", venue: "Philadelphia Stadium" },
+  { date: "2026-06-25", group: "E", a: "Ecuador", b: "Germany", venue: "New York New Jersey Stadium" },
+  { date: "2026-06-25", group: "F", a: "Japan", b: "Sweden", venue: "Dallas Stadium" },
+  { date: "2026-06-25", group: "F", a: "Tunisia", b: "Netherlands", venue: "Kansas City Stadium" },
+  { date: "2026-06-25", group: "D", a: "Türkiye", b: "USA", venue: "Los Angeles Stadium" },
+  { date: "2026-06-25", group: "D", a: "Paraguay", b: "Australia", venue: "San Francisco Bay Area Stadium" },
+  { date: "2026-06-26", group: "I", a: "Norway", b: "France", venue: "Boston Stadium" },
+  { date: "2026-06-26", group: "I", a: "Senegal", b: "Iraq", venue: "Toronto Stadium" },
+  { date: "2026-06-26", group: "G", a: "Egypt", b: "IR Iran", venue: "Seattle Stadium" },
+  { date: "2026-06-26", group: "G", a: "New Zealand", b: "Belgium", venue: "BC Place Vancouver" },
+  { date: "2026-06-26", group: "H", a: "Cabo Verde", b: "Saudi Arabia", venue: "Houston Stadium" },
+  { date: "2026-06-26", group: "H", a: "Uruguay", b: "Spain", venue: "Estadio Guadalajara" },
+  { date: "2026-06-27", group: "L", a: "Panama", b: "England", venue: "New York New Jersey Stadium" },
+  { date: "2026-06-27", group: "L", a: "Croatia", b: "Ghana", venue: "Philadelphia Stadium" },
+  { date: "2026-06-27", group: "J", a: "Algeria", b: "Austria", venue: "Kansas City Stadium" },
+  { date: "2026-06-27", group: "J", a: "Jordan", b: "Argentina", venue: "Dallas Stadium" },
+  { date: "2026-06-27", group: "K", a: "Colombia", b: "Portugal", venue: "Miami Stadium" },
+  { date: "2026-06-27", group: "K", a: "Congo DR", b: "Uzbekistan", venue: "Atlanta Stadium" },
+];
+
+function teamGroupSchedule(team) {
+  return GROUP_SCHEDULE.filter((m) => m.a === team.en || m.b === team.en).map((m) => {
+    const isHome = m.a === team.en;
+    const opponent = teams.find((t) => t.en === (isHome ? m.b : m.a));
+    return { date: m.date, venue: m.venue, opponent, isHome };
+  });
+}
 
 const VENUE_CONTEXT = {
   "Mexico City Stadium": { lat: 19.3029, lon: -99.1505, tz: -6, climate: 78, altitude: 2240 },
@@ -370,9 +460,15 @@ let latestSampleIndex = 0;
 let toastTimer = null;
 let resultsAreStale = false;
 let lastDrawerTrigger = null;
+let shootingMode = false;
+let shootingVariantIndex = 0;
+let latestMatchPrediction = null;
+let latestSportterySlipText = "";
+let sportterySlipOnlyBettable = true;
 
 const $ = (selector) => document.querySelector(selector);
 const squadRows = Array.isArray(globalThis.SQUAD_ROWS) ? globalThis.SQUAD_ROWS : [];
+const sportteryOddsSnapshot = globalThis.SPORTTERY_FOOTBALL_ODDS_SNAPSHOT || { matches: [] };
 
 function escapeHtml(value) {
   return String(value ?? "")
@@ -478,7 +574,8 @@ function getTeamRating(team) {
 }
 
 function effectiveRating(team, settings) {
-  return getTeamRating(team) + (team.host ? settings.hostBoost : 0);
+  const favoriteBoost = settings.favoriteBoosts?.get?.(team.id) || 0;
+  return getTeamRating(team) + (team.host ? settings.hostBoost : 0) + favoriteBoost;
 }
 
 function distanceKm(a, b) {
@@ -548,6 +645,277 @@ function simulateMatch(a, b, settings, knockout = false, matchContext = null, pa
   }
 
   return { a, b, aGoals, bGoals, winner, penalty, pathLoads: new Map([[a.id, aPath], [b.id, bPath]]) };
+}
+
+function simulateMatchPrediction(a, b, settings, rng = Math.random) {
+  const count = settings.count;
+  const scoreCounts = new Map();
+  let aWins = 0;
+  let draws = 0;
+  let bWins = 0;
+  let aGoals = 0;
+  let bGoals = 0;
+
+  for (let index = 0; index < count; index += 1) {
+    const result = simulateMatch(a, b, settings, false, null, null, rng);
+    if (result.aGoals > result.bGoals) aWins += 1;
+    else if (result.bGoals > result.aGoals) bWins += 1;
+    else draws += 1;
+    aGoals += result.aGoals;
+    bGoals += result.bGoals;
+    const score = `${result.aGoals}-${result.bGoals}`;
+    scoreCounts.set(score, (scoreCounts.get(score) || 0) + 1);
+  }
+
+  return {
+    a,
+    b,
+    settings,
+    count,
+    aWins,
+    draws,
+    bWins,
+    avgAGoals: aGoals / count,
+    avgBGoals: bGoals / count,
+    scores: [...scoreCounts.entries()]
+      .map(([score, occurrences]) => ({ score, occurrences }))
+      .sort((left, right) => right.occurrences - left.occurrences || left.score.localeCompare(right.score)),
+  };
+}
+
+function calculateBettingAdvice(prediction, odds) {
+  const markets = [
+    { key: "home", label: `${prediction.a.name}胜`, count: prediction.aWins, odds: Number(odds.home) },
+    { key: "draw", label: "平局", count: prediction.draws, odds: Number(odds.draw) },
+    { key: "away", label: `${prediction.b.name}胜`, count: prediction.bWins, odds: Number(odds.away) },
+  ];
+  if (markets.some((market) => !Number.isFinite(market.odds) || market.odds <= 1)) {
+    return { complete: false, returnRate: 0, overround: 0, markets: [] };
+  }
+
+  const impliedTotal = markets.reduce((sum, market) => sum + (1 / market.odds), 0);
+  const rows = markets.map((market) => {
+    const modelProbability = market.count / prediction.count;
+    const fairProbability = (1 / market.odds) / impliedTotal;
+    const expectedReturn = modelProbability * market.odds - 1;
+    let tone = "negative";
+    let verdict = "规避";
+    if (expectedReturn >= 0.06) {
+      tone = "positive";
+      verdict = "可关注";
+    } else if (expectedReturn >= 0.015) {
+      tone = "watch";
+      verdict = "小优势";
+    } else if (expectedReturn > -0.02) {
+      tone = "neutral";
+      verdict = "观望";
+    }
+    return {
+      ...market,
+      modelProbability,
+      fairProbability,
+      edge: modelProbability - fairProbability,
+      expectedReturn,
+      tone,
+      verdict,
+    };
+  });
+
+  return {
+    complete: true,
+    returnRate: 1 / impliedTotal,
+    overround: impliedTotal - 1,
+    markets: rows.sort((a, b) => b.expectedReturn - a.expectedReturn),
+  };
+}
+
+const SPORTTERY_RECOMMENDABLE_POOLS = new Set(["HAD", "HHAD", "TTG"]);
+const SPORTTERY_TEAM_ALIASES = new Map([
+  ["沙特阿拉伯", "沙特"],
+  ["刚果民主共和国", "刚果（金）"],
+  ["民主刚果", "刚果（金）"],
+  ["刚果(金)", "刚果（金）"],
+  ["韩国队", "韩国"],
+  ["伊朗队", "伊朗"],
+  ["美国队", "美国"],
+]);
+
+function normalizeSportteryName(value) {
+  return String(value || "")
+    .replaceAll(" ", "")
+    .replaceAll("　", "")
+    .replace(/[（）()]/g, "");
+}
+
+function sportteryTeamKey(value) {
+  const normalized = normalizeSportteryName(value);
+  return SPORTTERY_TEAM_ALIASES.get(normalized) || normalized;
+}
+
+function findSportteryTeam(name) {
+  const key = sportteryTeamKey(name);
+  return teams.find((team) => sportteryTeamKey(team.name) === key);
+}
+
+function parseScoreValue(score) {
+  const match = String(score || "").match(/^(\d+)-(\d+)$/);
+  if (!match) return null;
+  return { home: Number(match[1]), away: Number(match[2]) };
+}
+
+function parseGoalLine(value) {
+  const match = String(value || "").match(/[+-]?\d+(?:\.\d+)?/);
+  if (!match) return null;
+  const line = Number(match[0]);
+  return Number.isFinite(line) ? line : null;
+}
+
+function sportteryOptionProbability(pool, option, scoreRows, count) {
+  if (!count) return null;
+  const optionKey = String(option.key || "").toLowerCase();
+  let occurrences = 0;
+
+  for (const row of scoreRows) {
+    const score = parseScoreValue(row.score);
+    if (!score) continue;
+    const totalGoals = score.home + score.away;
+    let wins = false;
+
+    if (pool.code === "HAD") {
+      wins = (
+        (optionKey === "h" && score.home > score.away) ||
+        (optionKey === "d" && score.home === score.away) ||
+        (optionKey === "a" && score.home < score.away)
+      );
+    } else if (pool.code === "HHAD") {
+      const line = parseGoalLine(pool.goalLine);
+      if (line === null) return null;
+      const adjustedHome = score.home + line;
+      wins = (
+        (optionKey === "h" && adjustedHome > score.away) ||
+        (optionKey === "d" && adjustedHome === score.away) ||
+        (optionKey === "a" && adjustedHome < score.away)
+      );
+    } else if (pool.code === "TTG") {
+      const totalKey = optionKey.match(/^s(\d)$/);
+      if (!totalKey) return null;
+      const target = Number(totalKey[1]);
+      wins = target === 7 ? totalGoals >= 7 : totalGoals === target;
+    }
+
+    if (wins) occurrences += row.occurrences;
+  }
+
+  return occurrences / count;
+}
+
+function sportteryVerdict(option) {
+  if (option.single === "需过关") {
+    if (option.expectedReturn >= -0.02 && option.modelProbability >= 0.42) return "需过关观察";
+    return "建议跳过";
+  }
+  if (option.expectedReturn >= 0.03 && option.modelProbability >= 0.5) return "优先小注";
+  if (option.expectedReturn >= -0.02 && option.modelProbability >= 0.5) return "保守可选";
+  if (option.expectedReturn >= 0.02) return "高波动";
+  return "建议跳过";
+}
+
+function sportteryTone(option) {
+  if (option.verdict === "优先小注" || option.verdict === "保守可选") return "positive";
+  if (option.verdict === "高波动" || option.verdict === "需过关观察") return "watch";
+  return "negative";
+}
+
+function sportteryShouldBet(option) {
+  return option?.verdict === "优先小注" || option?.verdict === "保守可选";
+}
+
+function sportteryStakeUnit(option) {
+  if (!sportteryShouldBet(option)) return "0";
+  if (option.verdict === "优先小注" && option.edge >= 0.03) return "1u";
+  return "0.5u";
+}
+
+function sportteryOptionRank(option) {
+  if (sportteryShouldBet(option)) return 2;
+  if (option.verdict === "高波动" || option.verdict === "需过关观察") return 1;
+  return 0;
+}
+
+function sportteryVisibleSlipRows(rows, onlyBettable = false) {
+  return onlyBettable ? rows.filter(({ advice }) => sportteryShouldBet(advice.recommended)) : rows;
+}
+
+function rankSportteryOptions(match, scoreRows, count) {
+  const ratedOptions = [];
+  for (const pool of match.pools || []) {
+    if (!SPORTTERY_RECOMMENDABLE_POOLS.has(pool.code)) continue;
+    for (const option of pool.options || []) {
+      const odds = Number(option.odds);
+      const modelProbability = sportteryOptionProbability(pool, option, scoreRows, count);
+      if (!Number.isFinite(odds) || odds <= 1 || modelProbability === null) continue;
+      const breakEvenProbability = 1 / odds;
+      const expectedReturn = modelProbability * odds - 1;
+      const edge = modelProbability - breakEvenProbability;
+      const clippedReturn = clamp(expectedReturn, -0.2, 0.25);
+      const clippedEdge = clamp(edge, -0.12, 0.12);
+      const riskAdjustedScore = modelProbability * 0.72 + clippedReturn * 0.2 + clippedEdge * 0.08;
+      const row = {
+        poolCode: pool.code,
+        poolLabel: pool.label,
+        single: pool.single || "未知",
+        optionKey: option.key,
+        optionLabel: option.label,
+        odds,
+        modelProbability,
+        breakEvenProbability,
+        edge,
+        expectedReturn,
+        lossProbability: 1 - modelProbability,
+        riskAdjustedScore,
+      };
+      row.verdict = sportteryVerdict(row);
+      row.tone = sportteryTone(row);
+      ratedOptions.push(row);
+    }
+  }
+
+  ratedOptions.sort((a, b) => (
+    sportteryOptionRank(b) - sportteryOptionRank(a) ||
+    b.riskAdjustedScore - a.riskAdjustedScore ||
+    b.modelProbability - a.modelProbability ||
+    b.expectedReturn - a.expectedReturn
+  ));
+
+  return {
+    complete: ratedOptions.length > 0,
+    ratedOptions,
+    recommended: ratedOptions[0] || null,
+  };
+}
+
+function createSportteryRecommendation(match, settings) {
+  const homeTeam = findSportteryTeam(match.homeTeam);
+  const awayTeam = findSportteryTeam(match.awayTeam);
+  if (!homeTeam || !awayTeam) {
+    return {
+      complete: false,
+      reason: "未匹配到模型球队",
+      ratedOptions: [],
+      recommended: null,
+    };
+  }
+
+  const count = clamp(Math.round(Number(settings.count) || 10000), 3000, 20000);
+  const recommendationSettings = { ...settings, count };
+  const rng = createRng(`${settings.seed}:sporttery:${match.matchId}:${homeTeam.en}:${awayTeam.en}`);
+  const prediction = simulateMatchPrediction(homeTeam, awayTeam, recommendationSettings, rng);
+  return {
+    ...rankSportteryOptions(match, prediction.scores, prediction.count),
+    count: prediction.count,
+    homeTeam,
+    awayTeam,
+  };
 }
 
 function groupRankMap(rows) {
@@ -625,12 +993,13 @@ function groupTable(groupTeams, settings, rng = Math.random) {
     gd: 0,
     position: 0,
   }));
+  const rowByTeamId = new Map(table.map((row) => [row.team.id, row]));
 
   for (let i = 0; i < groupTeams.length; i += 1) {
     for (let j = i + 1; j < groupTeams.length; j += 1) {
       const result = simulateMatch(groupTeams[i], groupTeams[j], settings, false, null, null, rng);
-      const rowA = table.find((row) => row.team.id === groupTeams[i].id);
-      const rowB = table.find((row) => row.team.id === groupTeams[j].id);
+      const rowA = rowByTeamId.get(groupTeams[i].id);
+      const rowB = rowByTeamId.get(groupTeams[j].id);
       rowA.gf += result.aGoals;
       rowA.ga += result.bGoals;
       rowB.gf += result.bGoals;
@@ -795,6 +1164,73 @@ function showToast(message) {
   toastTimer = setTimeout(() => toast.classList.remove("is-visible"), 2400);
 }
 
+async function withButtonBusy(button, busyText, action) {
+  const previousText = button.textContent;
+  button.disabled = true;
+  button.setAttribute("aria-busy", "true");
+  button.textContent = busyText;
+  await new Promise((resolve) => requestAnimationFrame(resolve));
+  try {
+    await action();
+  } finally {
+    button.disabled = false;
+    button.removeAttribute("aria-busy");
+    button.textContent = previousText;
+  }
+}
+
+function setRefreshButtonState(running, text = "刷新数据") {
+  const button = $("#refreshDataBtn");
+  button.disabled = running;
+  button.setAttribute("aria-busy", String(running));
+  button.textContent = text;
+}
+
+async function getRefreshState() {
+  const response = await fetch("/api/data-refresh/status", { cache: "no-store" });
+  if (!response.ok) throw new Error("refresh service unavailable");
+  return response.json();
+}
+
+async function waitForDataRefresh() {
+  while (true) {
+    const state = await getRefreshState();
+    if (!state.running) return state;
+    setRefreshButtonState(true, state.currentStep || "刷新中...");
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+  }
+}
+
+async function refreshData() {
+  setRefreshButtonState(true, "准备刷新...");
+  try {
+    const response = await fetch("/api/data-refresh", { method: "POST" });
+    if (!response.ok && response.status !== 409) throw new Error("refresh service unavailable");
+    const state = await waitForDataRefresh();
+    if (!state.ok) {
+      console.error(state.output?.join("\n") || "Data refresh failed");
+      setRefreshButtonState(false);
+      showToast("刷新失败，数据已回滚");
+      return;
+    }
+    setRefreshButtonState(true, "刷新完成");
+    showToast("数据已更新，正在重新载入");
+    setTimeout(() => window.location.reload(), 700);
+  } catch (error) {
+    console.error(error);
+    setRefreshButtonState(false);
+    showToast("请用 npm run dev 启动后再刷新");
+  }
+}
+
+function revealPanel(selector) {
+  $(selector)?.scrollIntoView({ behavior: "smooth", block: "nearest" });
+}
+
+function markMatchPredictionStale() {
+  if (latestMatchPrediction) $("#matchPrediction").classList.add("is-stale");
+}
+
 function updatePresetState() {
   const count = String(currentSettings().count);
   document.querySelectorAll("[data-count]").forEach((button) => {
@@ -830,7 +1266,7 @@ function openTeamDrawer(team, trigger = null) {
   lastDrawerTrigger = trigger;
   renderTeamProfile(team);
   setDrawerOpen(true);
-  $("#drawerCloseBtn").focus();
+  requestAnimationFrame(() => $("#drawerCloseBtn").focus());
 }
 
 function closeTeamDrawer() {
@@ -843,6 +1279,7 @@ function markResultsStale(message = "待重新运行") {
   setStatus(message, "dirty");
   $("#runMeta").textContent = "参数已变更，结果待重新运行";
   updateExportState();
+  renderShootingMode();
 }
 
 async function runSimulation() {
@@ -853,6 +1290,7 @@ async function runSimulation() {
   let pens = 0;
   let thirds = 0;
   const chunkSize = 1000;
+  const startTime = performance.now();
   setRunningState(true);
   setStatus("运行中", "running");
   showToast(`开始模拟 ${settings.count.toLocaleString()} 次`);
@@ -873,7 +1311,9 @@ async function runSimulation() {
         counters.get(tournament.champion.id).champion += 1;
       }
       const completed = Math.min(done + limit, settings.count);
-      setStatus(`${completed.toLocaleString()} / ${settings.count.toLocaleString()}`, "running");
+      const elapsed = (performance.now() - startTime) / 1000;
+      const speed = elapsed > 0.1 ? Math.round(completed / elapsed) : 0;
+      setStatus(`${completed.toLocaleString()} / ${settings.count.toLocaleString()} · ${speed.toLocaleString()} 次/秒`, "running");
       updateRunProgress(completed, settings.count);
       await new Promise((resolve) => setTimeout(resolve, 0));
     }
@@ -890,8 +1330,13 @@ async function runSimulation() {
     latestSample = simulateTournament(settings, true, createRng(`${settings.seed}:sample:${latestSampleIndex}`));
     setRunningState(false);
     updateRunProgress(1, 1);
-    setStatus("已完成");
+    const totalTime = ((performance.now() - startTime) / 1000).toFixed(1);
+    setStatus(`已完成 · ${totalTime}s`);
     renderResults();
+    renderSportteryOdds();
+    if (latestMatchPrediction) {
+      $("#matchPrediction").classList.remove("is-stale");
+    }
     showToast("模拟完成，结果已刷新");
     setTimeout(() => updateRunProgress(0, 1), 450);
   } catch (error) {
@@ -905,15 +1350,346 @@ async function runSimulation() {
 
 function renderInitial() {
   renderFocusOptions();
+  renderShootingOptions();
+  renderMatchPredictionOptions();
+  renderMatchPredictionPlaceholder();
   renderRatingEditor();
   renderDataCoverage();
   renderGroups();
   renderRanking(emptyCounters(), 1);
   renderResultSummary();
+  renderSportteryOdds();
   renderStageBars(null);
   updatePresetState();
   updateExportState();
   syncSelectedTeamStyles();
+  renderShootingMode();
+}
+
+function renderMatchPredictionOptions() {
+  const teamASelect = $("#matchTeamA");
+  const teamBSelect = $("#matchTeamB");
+  const previousA = teamASelect.value;
+  const previousB = teamBSelect.value;
+  const options = teams
+    .slice()
+    .sort((a, b) => getTeamRating(b) - getTeamRating(a))
+    .map((team) => `<option value="${team.id}">${team.flag} ${team.name}</option>`)
+    .join("");
+  teamASelect.innerHTML = options;
+  teamBSelect.innerHTML = options;
+  const argentina = teams.find((team) => team.name === "阿根廷");
+  const france = teams.find((team) => team.name === "法国");
+  teamASelect.value = teams.some((team) => String(team.id) === previousA) ? previousA : String(argentina.id);
+  teamBSelect.value = teams.some((team) => String(team.id) === previousB) ? previousB : String(france.id);
+  updateMatchTeamInfo();
+}
+
+function updateMatchTeamInfo() {
+  const teamA = teams.find((team) => team.id === Number($("#matchTeamA").value));
+  const teamB = teams.find((team) => team.id === Number($("#matchTeamB").value));
+  const render = (team) => team ? [
+    `${team.group}组`,
+    `FIFA #${team.factors.fifaRank}`,
+    `Elo ${team.factors.elo}`,
+    `近况 ${team.factors.form}`,
+    `综合分 ${getTeamRating(team)}`,
+  ].map((text) => `<span>${text}</span>`).join("") : "";
+  const infoA = $("#matchTeamAInfo");
+  const infoB = $("#matchTeamBInfo");
+  if (infoA) infoA.innerHTML = render(teamA);
+  if (infoB) infoB.innerHTML = render(teamB);
+}
+
+function renderMatchPredictionPlaceholder() {
+  latestMatchPrediction = null;
+  $("#matchPrediction").classList.remove("is-stale");
+  $("#matchPrediction").innerHTML = `
+    <div class="empty-state">
+      <strong>选择两支球队</strong>
+      <small>点击“预测比分”后显示胜平负概率和最可能比分，不以单次随机赛果代替预测。</small>
+    </div>
+  `;
+}
+
+function readBettingOddsInput() {
+  return {
+    home: Number($("#lotteryHomeOdds").value),
+    draw: Number($("#lotteryDrawOdds").value),
+    away: Number($("#lotteryAwayOdds").value),
+  };
+}
+
+function formatSignedPercent(value) {
+  const sign = value > 0 ? "+" : "";
+  return `${sign}${(value * 100).toFixed(2)}%`;
+}
+
+function renderBettingAdvice(prediction) {
+  const advice = calculateBettingAdvice(prediction, readBettingOddsInput());
+  if (!advice.complete) {
+    return `
+      <div class="betting-advice is-empty">
+        <h3>体彩赔率对照</h3>
+        <p>填入胜 / 平 / 负十进制赔率后，按模型概率计算返还率、价值边际和期望收益。</p>
+      </div>
+    `;
+  }
+  return `
+    <div class="betting-advice">
+      <div class="betting-advice-head">
+        <h3>体彩赔率对照</h3>
+        <span>返还率 ${(advice.returnRate * 100).toFixed(1)}% · 庄家边际 ${(advice.overround * 100).toFixed(1)}%</span>
+      </div>
+      <div class="betting-market-list">
+        ${advice.markets.map((market) => `
+          <div class="betting-market is-${market.tone}">
+            <strong>${market.label}</strong>
+            <span>赔率 ${market.odds.toFixed(2)}</span>
+            <span>模型 ${(market.modelProbability * 100).toFixed(2)}%</span>
+            <span>市场 ${(market.fairProbability * 100).toFixed(2)}%</span>
+            <b>${formatSignedPercent(market.expectedReturn)} EV</b>
+            <em>${market.verdict}</em>
+          </div>
+        `).join("")}
+      </div>
+      <p>只比较概率和赔率是否匹配，不代表确定收益；临场伤停、轮换和官方赔率变化要重新核对。</p>
+    </div>
+  `;
+}
+
+function renderSportteryOdds() {
+  const matches = Array.isArray(sportteryOddsSnapshot.matches) ? sportteryOddsSnapshot.matches : [];
+  const meta = $("#sportteryMeta");
+  const body = $("#sportteryOdds");
+  const windowText = sportteryOddsSnapshot.window
+    ? `${sportteryOddsSnapshot.window.startDate} 至 ${sportteryOddsSnapshot.window.endDate}`
+    : "暂无日期";
+  meta.textContent = matches.length ? `${matches.length} 场 · ${windowText}` : "暂无世界杯赔率";
+  if (!matches.length) {
+    body.innerHTML = `
+      <div class="empty-state">
+        <strong>暂无中国竞彩网世界杯赔率</strong>
+        <small>刷新数据后会重新拉取官方固定奖金快照，只保留世界杯赛事。</small>
+      </div>
+    `;
+    return;
+  }
+  const settings = currentSettings();
+  const rows = matches.map((match) => ({ match, advice: createSportteryRecommendation(match, settings) }));
+  body.innerHTML = `
+    ${renderSportteryBettingSlip(rows)}
+    ${rows.map(({ match, advice }) => `
+      <article class="sporttery-match">
+        <div class="sporttery-match-head">
+          <div>
+            <strong>${escapeHtml(match.matchNum)} · ${escapeHtml(match.league)}</strong>
+            <span>${escapeHtml(match.matchDate)}${match.status ? ` · ${escapeHtml(match.status)}` : ""} · ${escapeHtml(match.homeTeam)} vs ${escapeHtml(match.awayTeam)}</span>
+          </div>
+          <a href="${escapeHtml(match.sourceUrl)}" target="_blank" rel="noreferrer">官网</a>
+        </div>
+        ${renderSportteryRecommendation(advice)}
+        <div class="sporttery-pools">
+          ${match.pools.map((pool) => renderSportteryPool(pool)).join("")}
+        </div>
+      </article>
+    `).join("")}
+  `;
+}
+
+function renderSportteryBettingSlip(rows) {
+  const visibleRows = sportteryVisibleSlipRows(rows, sportterySlipOnlyBettable);
+  latestSportterySlipText = buildSportterySlipText(rows, sportterySlipOnlyBettable);
+  const lineRows = visibleRows.map(({ match, advice }) => {
+    const item = advice.recommended;
+    const shouldBet = sportteryShouldBet(item);
+    const pick = item
+      ? shouldBet ? `${item.poolLabel} · ${item.optionLabel}` : "跳过"
+      : "跳过";
+    const tone = item?.tone || "negative";
+    return `
+      <div class="sporttery-slip-row is-${tone}">
+        <span>${escapeHtml(match.matchNum || "-")}</span>
+        <strong>${escapeHtml(match.homeTeam)} vs ${escapeHtml(match.awayTeam)}</strong>
+        <b>${escapeHtml(pick)}</b>
+        <span>${item ? escapeHtml(item.single) : "-"}</span>
+        <span>${item ? `${(item.modelProbability * 100).toFixed(1)}%` : "-"}</span>
+        <span>${item ? `${(item.lossProbability * 100).toFixed(1)}%` : "-"}</span>
+        <span>${item ? item.odds.toFixed(2) : "-"}</span>
+        <span>${item ? formatSignedPercent(item.expectedReturn) : "-"}</span>
+        <span>${item ? formatSignedPercent(item.edge) : "-"}</span>
+        <span>${item ? sportteryStakeUnit(item) : "0"}</span>
+        <em>${escapeHtml(item?.verdict || advice.reason || "暂不下注")}</em>
+      </div>
+    `;
+  }).join("") || `
+    <div class="sporttery-slip-empty">当前没有可下注项</div>
+  `;
+
+  return `
+    <section class="sporttery-slip">
+      <div class="sporttery-slip-head">
+        <div>
+          <strong>投注清单</strong>
+          <span>去体彩店前按官方赔率再核对一次</span>
+        </div>
+        <div class="sporttery-slip-actions">
+          <label class="sporttery-slip-toggle">
+            <input type="checkbox" data-sporttery-slip-only-bettable ${sportterySlipOnlyBettable ? "checked" : ""}>
+            只看可下注
+          </label>
+          <button type="button" data-copy-sporttery-slip>复制清单</button>
+          <button type="button" data-download-sporttery-slip>下载清单</button>
+        </div>
+      </div>
+      <div class="sporttery-slip-grid">
+        <div class="sporttery-slip-row is-head">
+          <span>场次</span>
+          <span>对阵</span>
+          <span>推荐</span>
+          <span>关</span>
+          <span>模型</span>
+          <span>亏损</span>
+          <span>赔率</span>
+          <span>EV</span>
+          <span>安全垫</span>
+          <span>单位</span>
+          <span>结论</span>
+        </div>
+        ${lineRows}
+      </div>
+    </section>
+  `;
+}
+
+function buildSportterySlipText(rows, onlyBettable = false) {
+  const visibleRows = sportteryVisibleSlipRows(rows, onlyBettable);
+  const lines = ["场次\t对阵\t推荐\t关\t模型\t亏损\t赔率\tEV\t安全垫\t单位\t结论"];
+  if (!visibleRows.length) lines.push("无可下注场次");
+  for (const { match, advice } of visibleRows) {
+    const item = advice.recommended;
+    const shouldBet = sportteryShouldBet(item);
+    lines.push([
+      match.matchNum || "-",
+      `${match.homeTeam} vs ${match.awayTeam}`,
+      item && shouldBet ? `${item.poolLabel} · ${item.optionLabel}` : "跳过",
+      item ? item.single : "-",
+      item ? `${(item.modelProbability * 100).toFixed(1)}%` : "-",
+      item ? `${(item.lossProbability * 100).toFixed(1)}%` : "-",
+      item ? item.odds.toFixed(2) : "-",
+      item ? formatSignedPercent(item.expectedReturn) : "-",
+      item ? formatSignedPercent(item.edge) : "-",
+      item ? sportteryStakeUnit(item) : "0",
+      item?.verdict || advice.reason || "暂不下注",
+    ].join("\t"));
+  }
+  return lines.join("\n");
+}
+
+function renderSportteryRecommendation(advice) {
+  if (!advice.complete) {
+    return `
+      <div class="sporttery-advice is-empty">
+        <strong>暂不生成建议</strong>
+        <span>${escapeHtml(advice.reason || "缺少可评级玩法")}</span>
+      </div>
+    `;
+  }
+  const item = advice.recommended;
+  const action = sportteryShouldBet(item)
+    ? `保守建议：${item.poolLabel} · ${item.optionLabel}`
+    : "本场建议跳过";
+  return `
+    <div class="sporttery-advice is-${item.tone}">
+      <div>
+        <strong>${escapeHtml(action)}</strong>
+        <span>${escapeHtml(item.verdict)} · 模型 ${(item.modelProbability * 100).toFixed(1)}% · 赔率 ${item.odds.toFixed(2)} · EV ${formatSignedPercent(item.expectedReturn)}</span>
+      </div>
+      <small>按 ${advice.count.toLocaleString()} 次 90 分钟模拟排序，优先高命中率且不明显负期望的低波动项。</small>
+    </div>
+  `;
+}
+
+function renderSportteryPool(pool) {
+  const title = pool.goalLine ? `${pool.label} ${pool.goalLine}` : pool.label;
+  const shownCount = pool.optionCount && pool.optionCount > pool.options.length
+    ? ` · 显示 ${pool.options.length}/${pool.optionCount} 项`
+    : "";
+  return `
+    <section class="sporttery-pool">
+      <div class="sporttery-pool-title">
+        <strong>${escapeHtml(title)}</strong>
+        <span>${escapeHtml(pool.single)}${shownCount}</span>
+      </div>
+      <div class="sporttery-option-list">
+        ${pool.options.map((option) => `
+          <div>
+            <span>${escapeHtml(option.label)}</span>
+            <b>${Number(option.odds).toFixed(2)}</b>
+          </div>
+        `).join("")}
+      </div>
+    </section>
+  `;
+}
+
+function renderMatchPrediction(prediction) {
+  const outcomes = [
+    [`${prediction.a.name}胜`, prediction.aWins],
+    ["平局", prediction.draws],
+    [`${prediction.b.name}胜`, prediction.bWins],
+  ];
+  const topScores = prediction.scores.slice(0, 5);
+  const maxScoreCount = topScores[0]?.occurrences || 1;
+  $("#matchPrediction").classList.remove("is-stale");
+  $("#matchPrediction").innerHTML = `
+    <div class="match-prediction-head">
+      <h2>${prediction.a.flag} ${prediction.a.name} vs ${prediction.b.name} ${prediction.b.flag}</h2>
+      <small>模拟 ${prediction.count.toLocaleString()} 次 · seed ${escapeHtml(prediction.settings.seed)} · 90 分钟赛果</small>
+    </div>
+    <div class="match-outcomes">
+      ${outcomes.map(([label, value]) => {
+        const interval = probabilityInterval(value, prediction.count);
+        return `
+          <div>
+            <span>${label}</span>
+            <strong>${percent(value, prediction.count)}</strong>
+            <small>95% ${interval.label}</small>
+          </div>
+        `;
+      }).join("")}
+    </div>
+    <div class="match-goals">
+      <div><span>${prediction.a.flag} ${prediction.a.name} 平均进球</span><strong>${prediction.avgAGoals.toFixed(2)}</strong></div>
+      <div><span>${prediction.b.flag} ${prediction.b.name} 平均进球</span><strong>${prediction.avgBGoals.toFixed(2)}</strong></div>
+    </div>
+    <div class="score-probability-list">
+      <h3>最可能比分 Top 5</h3>
+      ${topScores.map((row) => `
+        <div class="score-probability-row">
+          <strong>${row.score}</strong>
+          <span class="score-probability-bar"><span style="width:${(row.occurrences / maxScoreCount) * 100}%"></span></span>
+          <b>${percent(row.occurrences, prediction.count)}</b>
+        </div>
+      `).join("")}
+    </div>
+    ${renderBettingAdvice(prediction)}
+  `;
+}
+
+function runMatchPrediction() {
+  const a = teams.find((team) => team.id === Number($("#matchTeamA").value));
+  const b = teams.find((team) => team.id === Number($("#matchTeamB").value));
+  if (!a || !b || a.id === b.id) {
+    showToast("请选择两支不同的球队");
+    return;
+  }
+  const settings = currentSettings();
+  const rng = createRng(`${settings.seed}:match:${a.en}:${b.en}`);
+  latestMatchPrediction = simulateMatchPrediction(a, b, settings, rng);
+  renderMatchPrediction(latestMatchPrediction);
+  revealPanel("#matchPrediction");
+  showToast("单场比分概率已生成");
 }
 
 function renderFocusOptions() {
@@ -924,6 +1700,380 @@ function renderFocusOptions() {
     .map((team) => `<option value="${team.id}">${team.flag} ${team.name}</option>`)
     .join("");
   select.value = teams.find((team) => team.name === "阿根廷").id;
+}
+
+function renderShootingOptions() {
+  const sceneSelect = $("#shootScene");
+  const teamSelect = $("#shootTeam");
+  if (!sceneSelect || !teamSelect) return;
+  const previousScene = sceneSelect.value || "ranking";
+  const previousTeam = teamSelect.value || $("#focusTeam").value;
+  sceneSelect.innerHTML = SHOOTING_SCENES.map((scene) => `<option value="${scene.id}">${scene.label}</option>`).join("");
+  sceneSelect.value = SHOOTING_SCENES.some((scene) => scene.id === previousScene) ? previousScene : "ranking";
+  teamSelect.innerHTML = teams
+    .slice()
+    .sort((a, b) => getTeamRating(b) - getTeamRating(a))
+    .map((team) => `<option value="${team.id}">${team.flag} ${team.name}</option>`)
+    .join("");
+  teamSelect.value = teams.some((team) => String(team.id) === previousTeam) ? previousTeam : $("#focusTeam").value;
+}
+
+function hasFreshResults() {
+  return latestResults && !resultsAreStale;
+}
+
+function counterFor(team) {
+  return latestResults?.counters.find((row) => row.team.id === team.id);
+}
+
+function selectedShootingTeam() {
+  return teams.find((team) => team.id === Number($("#shootTeam").value)) || teams[0];
+}
+
+function mostLikelyStage(counter, total) {
+  if (!counter || !total || !hasFreshResults()) return "待模拟";
+  return [
+    ["小组出局", total - counter.r32],
+    ["32强", counter.r32 - counter.r16],
+    ["16强", counter.r16 - counter.qf],
+    ["8强", counter.qf - counter.sf],
+    ["4强", counter.sf - counter.final],
+    ["决赛", counter.final - counter.champion],
+    ["冠军", counter.champion],
+  ].sort((a, b) => b[1] - a[1])[0][0];
+}
+
+function shootingHeroMarkup(kicker, title, subtitle) {
+  return `
+    <div class="shoot-hero">
+      <span>${escapeHtml(kicker)}</span>
+      <h2>${escapeHtml(title)}</h2>
+      <p>${escapeHtml(subtitle)}</p>
+    </div>
+  `;
+}
+
+function renderShootingRanking() {
+  const ready = hasFreshResults();
+  const rows = ready
+    ? latestResults.counters.slice(0, 6)
+    : teams.slice().sort((a, b) => getTeamRating(b) - getTeamRating(a)).slice(0, 6).map((team) => ({ team, champion: 0, final: 0 }));
+  const count = latestResults?.settings.count || 1;
+  const leader = rows[0];
+  return `
+    ${shootingHeroMarkup(
+      ready ? `Monte Carlo ${count.toLocaleString()} 次` : "等待模拟结果",
+      ready ? `${leader.team.name}暂居冠军概率榜首` : "先跑一次模拟，再拍冠军概率榜",
+      "48队最终名单、赔率、Elo、赛程和天气快照一起进入模型。"
+    )}
+    <div class="shoot-rank-list">
+      ${rows.map((row, index) => `
+        <div class="shoot-rank-row">
+          <strong>#${index + 1}</strong>
+          <span>${row.team.flag} ${row.team.name}</span>
+          <b>${ready ? percent(row.champion, count) : "待模拟"}</b>
+        </div>
+      `).join("")}
+    </div>
+    <div class="shoot-footnote">数据快照不是赛果断言，适合做概率讨论。</div>
+  `;
+}
+
+function shootingGroupCandidates() {
+  const groupNames = [...new Set(teams.map((team) => team.group))];
+  const total = latestResults?.settings.count || 1;
+  return groupNames.map((group) => {
+    const groupTeams = teams.filter((team) => team.group === group);
+    const rows = groupTeams.map((team) => {
+      const counter = counterFor(team);
+      return {
+        team,
+        qualifyRate: hasFreshResults() && counter ? counter.r32 / total : 0,
+        championRate: hasFreshResults() && counter ? counter.champion / total : 0,
+      };
+    }).sort((a, b) => getTeamRating(b.team) - getTeamRating(a.team));
+    const avgRating = rows.reduce((sum, row) => sum + getTeamRating(row.team), 0) / rows.length;
+    const rates = rows.map((row) => row.qualifyRate).sort((a, b) => b - a);
+    const tightness = hasFreshResults() ? 1 - (rates[0] - rates[rates.length - 1]) : 0;
+    return { group, rows, score: avgRating + tightness * 260 };
+  }).sort((a, b) => b.score - a.score);
+}
+
+function renderShootingGroup() {
+  const groups = shootingGroupCandidates();
+  const picked = groups[shootingVariantIndex % groups.length];
+  return `
+    ${shootingHeroMarkup(
+      `${picked.group}组压力测试`,
+      `${picked.group}组最适合拍死亡小组`,
+      hasFreshResults() ? "出线概率越贴近，比赛越像一场大型心理战。" : "先运行模拟后，这张卡会显示真实出线概率。"
+    )}
+    <div class="shoot-rank-list">
+      ${picked.rows.map((row) => `
+        <div class="shoot-rank-row">
+          <strong>${row.team.flag}</strong>
+          <span>${row.team.name}</span>
+          <b>${hasFreshResults() ? `${(row.qualifyRate * 100).toFixed(1)}%` : getTeamRating(row.team)}</b>
+        </div>
+      `).join("")}
+    </div>
+    <div class="shoot-footnote">这一页适合配标题：这个小组出线概率太残忍了。</div>
+  `;
+}
+
+function renderShootingTeam(team) {
+  const counter = counterFor(team);
+  const total = latestResults?.settings.count || 1;
+  const insight = teamInsight(team, counter, total);
+  const headlineRisk = insight.risks.find((item) => item.label !== "数据可信度") || insight.risks[0];
+  const squad = squadForTeam(team).slice().sort((a, b) => b.marketValueM - a.marketValueM || b.caps - a.caps).slice(0, 3);
+  return `
+    ${shootingHeroMarkup(
+      `${team.flag} ${team.name} 体检报告`,
+      `${team.name}的命门在${headlineRisk?.label ?? "淘汰赛"}`,
+      insight.summary
+    )}
+    <div class="shoot-metric-grid">
+      <div><span>综合分</span><strong>${getTeamRating(team)}</strong></div>
+      <div><span>近况</span><strong>${team.factors.form}/100</strong></div>
+      <div><span>伤病风险</span><strong>${team.factors.injuryRisk}</strong></div>
+      <div><span>可信度</span><strong>${team.reliability.score}%</strong></div>
+    </div>
+    <div class="shoot-route compact">
+      ${squad.map((player) => `
+        <div>
+          <span>${escapeHtml(player.position)}</span>
+          <strong>${escapeHtml(player.player)}</strong>
+          <small>${escapeHtml(player.club)} · ${formatValue(player.marketValueM)}</small>
+        </div>
+      `).join("")}
+    </div>
+    <div class="shoot-footnote">${insight.strengths[0]?.text ?? "模型认为这支队整体均衡。"}</div>
+  `;
+}
+
+function renderShootingData() {
+  const avgCoverage = Math.round(teams.reduce((sum, team) => sum + team.coverage, 0) / teams.length);
+  const avgReliability = Math.round(teams.reduce((sum, team) => sum + team.reliability.score, 0) / teams.length);
+  return `
+    ${shootingHeroMarkup(
+      "数据底牌",
+      "这不是拍脑袋预测",
+      "模型把最终名单、赔率、Elo、近况、赛程旅行和天气负担放在同一张表里。"
+    )}
+    <div class="shoot-metric-grid">
+      <div><span>球队</span><strong>48</strong></div>
+      <div><span>球员</span><strong>${squadRows.length || "—"}</strong></div>
+      <div><span>字段覆盖</span><strong>${avgCoverage}%</strong></div>
+      <div><span>可信度</span><strong>${avgReliability}%</strong></div>
+    </div>
+    <div class="shoot-source-list">
+      ${factorSources.map((source) => `<span><b>${source.label}</b>${source.value}</span>`).join("")}
+    </div>
+    <div class="shoot-footnote">保留代理字段标签，避免把快照误读成官方结论。</div>
+  `;
+}
+
+function shootingCaption(scene, team) {
+  const count = latestResults?.settings.count?.toLocaleString() || "100,000";
+  const lines = {
+    ranking: `我用最终名单、赔率、Elo 和赛程跑了 ${count} 次世界杯模拟，先看冠军概率榜。`,
+    group: "这组的出线概率很适合单独拍一期，强弱差没有肉眼看起来那么简单。",
+    team: `${team.name}这支队不能只看球星，真正的上限和风险都藏在阵容、赛程和健康变量里。`,
+    data: "这个世界杯模拟器不是算命：最终名单、赔率、Elo、近况、赛程和天气都有单独快照。"
+  };
+  return `${lines[scene] || lines.ranking}\n\n#世界杯 #世界杯预测 #足球 #数据分析 #2026世界杯`;
+}
+
+function renderShootingMode() {
+  const canvas = $("#shootCanvas");
+  if (!canvas || !shootingMode) return;
+  const scene = $("#shootScene").value || "ranking";
+  const team = selectedShootingTeam();
+  canvas.dataset.scene = scene;
+  canvas.innerHTML = {
+    ranking: renderShootingRanking,
+    group: renderShootingGroup,
+    team: () => renderShootingTeam(team),
+    data: renderShootingData,
+  }[scene]();
+  $("#shootCaption").value = shootingCaption(scene, team);
+}
+
+function setShootingMode(isOpen) {
+  shootingMode = isOpen;
+  document.body.classList.toggle("is-shooting", isOpen);
+  $("#shootingPanel").hidden = !isOpen;
+  $("#shootingModeBtn").textContent = isOpen ? "退出拍摄" : "拍摄模式";
+  $("#shootingModeBtn").classList.toggle("is-success", isOpen);
+  if (isOpen) {
+    renderShootingOptions();
+    renderShootingMode();
+    revealPanel("#shootingPanel");
+  }
+}
+
+function advanceShootingCard() {
+  const scene = $("#shootScene").value || "ranking";
+  const team = selectedShootingTeam();
+  if (scene === "team") {
+    const sortedTeams = teams.slice().sort((a, b) => getTeamRating(b) - getTeamRating(a));
+    const next = sortedTeams[(sortedTeams.findIndex((item) => item.id === team.id) + 1) % sortedTeams.length];
+    $("#shootTeam").value = next.id;
+    selectTeam(next.id);
+  } else {
+    shootingVariantIndex += 1;
+  }
+  renderShootingMode();
+}
+
+async function copyShootingCaption() {
+  const caption = $("#shootCaption").value;
+  if (navigator.clipboard?.writeText) {
+    await navigator.clipboard.writeText(caption);
+  } else {
+    $("#shootCaption").select();
+    document.execCommand("copy");
+  }
+  showToast("小红书文案已复制");
+}
+
+async function copySportteryBettingSlip() {
+  if (!latestSportterySlipText) return;
+  if (navigator.clipboard?.writeText) {
+    await navigator.clipboard.writeText(latestSportterySlipText);
+  } else {
+    const textarea = document.createElement("textarea");
+    textarea.value = latestSportterySlipText;
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand("copy");
+    textarea.remove();
+  }
+  showToast("投注清单已复制");
+}
+
+function downloadSportteryBettingSlip() {
+  if (!latestSportterySlipText) return;
+  const blob = new Blob([latestSportterySlipText], { type: "text/plain;charset=utf-8" });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = "sporttery-world-cup-slip.txt";
+  link.click();
+  URL.revokeObjectURL(url);
+  showToast("投注清单已开始下载");
+}
+
+function inlineStylesForExport(sourceNode, cloneNode) {
+  if (sourceNode.nodeType !== Node.ELEMENT_NODE || cloneNode.nodeType !== Node.ELEMENT_NODE) return;
+  const style = getComputedStyle(sourceNode);
+  for (const property of style) {
+    cloneNode.style.setProperty(property, style.getPropertyValue(property), style.getPropertyPriority(property));
+  }
+  [...sourceNode.children].forEach((child, index) => inlineStylesForExport(child, cloneNode.children[index]));
+}
+
+async function downloadShootingImage() {
+  renderShootingMode();
+  const source = $("#shootCanvas");
+  const scene = $("#shootScene").value || "ranking";
+  const team = selectedShootingTeam();
+  const rect = source.getBoundingClientRect();
+  const clone = source.cloneNode(true);
+  inlineStylesForExport(source, clone);
+  clone.setAttribute("xmlns", "http://www.w3.org/1999/xhtml");
+
+  const width = Math.round(rect.width);
+  const height = Math.round(rect.height);
+  clone.style.width = `${width}px`;
+  clone.style.height = `${height}px`;
+  clone.style.minHeight = `${height}px`;
+
+  const markup = new XMLSerializer().serializeToString(clone);
+  const svg = `
+    <svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}">
+      <foreignObject width="100%" height="100%">${markup}</foreignObject>
+    </svg>
+  `;
+  const image = new Image();
+  const svgUrl = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
+  await new Promise((resolve, reject) => {
+    image.onload = resolve;
+    image.onerror = () => reject(new Error("图片渲染失败，浏览器可能不支持 SVG foreignObject"));
+    image.src = svgUrl;
+  });
+
+  const canvas = document.createElement("canvas");
+  canvas.width = 1080;
+  canvas.height = 1920;
+  const ctx = canvas.getContext("2d");
+  ctx.imageSmoothingQuality = "high";
+  ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+
+  const blob = await new Promise((resolve, reject) => {
+    canvas.toBlob((result) => {
+      if (result) resolve(result);
+      else reject(new Error("图片编码失败"));
+    }, "image/png");
+  });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = `xiaohongshu-world-cup-${scene}-${team.en.toLowerCase().replaceAll(" ", "-")}.png`;
+  link.click();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+  showToast("小红书图片已开始下载");
+}
+
+function teamInsight(team, counter = null, total = 1) {
+  const f = team.factors;
+  const ratingGap = getTeamRating(team) - teams.reduce((sum, item) => sum + getTeamRating(item), 0) / teams.length;
+  const strengths = [
+    { score: ratingGap, label: "硬实力", text: `综合分高出均值 ${Math.round(ratingGap)}。` },
+    { score: f.form - 58, label: "近期状态", text: `近况 ${f.form}/100，能把小优势转成连续性。` },
+    { score: f.squadValue / 12, label: "阵容厚度", text: `阵容价值 €${f.squadValue}m，替补容错更足。` },
+    { score: f.clubScore - 58, label: "俱乐部分布", text: `俱乐部分布 ${f.clubScore}/100，强强对话经验够用。` },
+    { score: f.wcPath - 55, label: "世界杯路径经验", text: `路径经验 ${f.wcPath}/100，淘汰赛不容易慌。` },
+    { score: 26 - f.injuryRisk, label: "健康面", text: `伤病风险 ${f.injuryRisk}，阵容完整性较好。` },
+  ].filter((item) => item.score > 0).sort((a, b) => b.score - a.score).slice(0, 3);
+  const risks = [
+    { score: f.injuryRisk - 18, label: "健康风险", text: `伤病风险 ${f.injuryRisk}，一处减员就可能改写上限。` },
+    { score: f.travelKm / 180, label: "组赛奔波", text: `组赛移动约 ${Math.round(f.travelKm)}km，后半程腿会变沉。` },
+    { score: (f.entryTimezoneShift ?? 0) * 5, label: "入境时差", text: `入境时差 ${f.entryTimezoneShift ?? 0}h，开局适应成本偏高。` },
+    { score: 58 - f.atmosphere, label: "氛围压力", text: `球队氛围 ${f.atmosphere}/100，逆风局更考验稳定性。` },
+    { score: Math.abs((f.avgAge ?? 27.5) - 27.5) * 8, label: "年龄结构", text: `平均年龄 ${f.avgAge} 岁，节奏和恢复都要精算。` },
+    { score: 88 - team.reliability.score, label: "数据可信度", text: `可信度 ${team.reliability.score}%，部分字段仍带代理色彩。` },
+  ].filter((item) => item.score > 0).sort((a, b) => b.score - a.score).slice(0, 3);
+  const mainStrength = strengths[0] || { label: "整体均衡", text: "没有单点爆表，但短板也不刺眼。" };
+  const mainRisk = risks[0] || { label: "容错率", text: "真正的风险是淘汰赛一场定生死。" };
+  const chance = counter ? `当前冠军率 ${percent(counter.champion, total)}。` : "";
+  return {
+    summary: `${team.name}的上限靠${mainStrength.label}撑住，命门在${mainRisk.label}。${chance}`,
+    strengths: strengths.length ? strengths : [mainStrength],
+    risks: risks.length ? risks : [mainRisk],
+  };
+}
+
+function insightMarkup(insight) {
+  return `
+    <div class="faultline-card">
+      <div>
+        <span>球队命门</span>
+        <p>${escapeHtml(insight.summary)}</p>
+      </div>
+      <div class="faultline-grid">
+        <div>
+          <strong>上限来源</strong>
+          ${insight.strengths.map((item) => `<small><b>${item.label}</b>${escapeHtml(item.text)}</small>`).join("")}
+        </div>
+        <div>
+          <strong>风险开关</strong>
+          ${insight.risks.map((item) => `<small><b>${item.label}</b>${escapeHtml(item.text)}</small>`).join("")}
+        </div>
+      </div>
+    </div>
+  `;
 }
 
 function renderRatingEditor() {
@@ -945,6 +2095,8 @@ function renderDataCoverage() {
   const reliableFields = teams[0].reliability.reliableCount;
   const proxyFields = teams[0].reliability.proxyCount;
   const avgRating = Math.round(teams.reduce((sum, team) => sum + getTeamRating(team), 0) / teams.length);
+  const dates = factorSources.map((s) => s.value.match(/\d{4}-\d{2}-\d{2}/)?.[0]).filter(Boolean);
+  const latestDate = dates.sort().pop() || "";
   $("#dataCoverage").innerHTML = `
     <div><strong>${avgCoverage}%</strong><span>字段覆盖</span></div>
     <div><strong>${avgReliability}%</strong><span>平均可信度</span></div>
@@ -952,6 +2104,7 @@ function renderDataCoverage() {
     <div><strong>${proxyFields}</strong><span>代理/人工字段</span></div>
     <div><strong>${factorSources.length}</strong><span>来源类型</span></div>
     <div><strong>${avgRating}</strong><span>平均强度</span></div>
+    ${latestDate ? `<div><strong>${latestDate}</strong><span>最新快照</span></div>` : ""}
   `;
 }
 
@@ -1074,6 +2227,7 @@ function renderFocusCard(team) {
   const f = team.factors;
   const counter = latestResults?.counters.find((row) => row.team.id === team.id);
   const total = latestResults?.settings.count || 1;
+  const insight = teamInsight(team, counter, total);
   $("#teamProfile").innerHTML = `
     <div class="focus-card">
       <div>
@@ -1086,6 +2240,7 @@ function renderFocusCard(team) {
       </div>
       <button class="ghost-btn small" type="button" data-open-team-detail="${team.id}">查看详情</button>
     </div>
+    ${insightMarkup(insight)}
   `;
 }
 
@@ -1093,6 +2248,9 @@ function renderTeamProfile(team) {
   const f = team.factors;
   const quality = team.reliability;
   const squad = squadForTeam(team);
+  const counter = latestResults?.counters.find((row) => row.team.id === team.id);
+  const total = latestResults?.settings.count || 1;
+  const insight = teamInsight(team, counter, total);
   const totalSquadValue = squad.reduce((sum, player) => sum + (Number(player.marketValueM) || 0), 0);
   const positionCounts = squad.reduce((counts, player) => {
     counts[player.position] = (counts[player.position] || 0) + 1;
@@ -1118,7 +2276,7 @@ function renderTeamProfile(team) {
     </div>
     <div class="profile-grid">
       <div><span>FIFA</span><strong>#${f.fifaRank}</strong><small>${f.fifaPoints} 分</small></div>
-      <div><span>Elo</span><strong>${f.elo}</strong><small>2026-03-31</small></div>
+      <div><span>Elo</span><strong>${f.elo}</strong><small>2026-06-11</small></div>
       <div><span>赔率</span><strong>${f.odds >= 100000 ? "长赔" : `+${f.odds}`}</strong><small>${(oddsProbability(f.odds) * 100).toFixed(1)}%</small></div>
       <div><span>阵容价值</span><strong>€${f.squadValue}m</strong><small>${f.avgAge} 岁</small></div>
       <div><span>伤病风险</span><strong>${f.injuryRisk}</strong><small>越低越好</small></div>
@@ -1126,6 +2284,7 @@ function renderTeamProfile(team) {
       <div><span>入境旅程</span><strong>${Math.round((f.entryTravelKm ?? 0) / 100) / 10}k km</strong><small>${f.entryTimezoneShift ?? 0}h 时区差</small></div>
       <div><span>地理负担</span><strong>${f.timezoneShift ?? 0}h</strong><small>组赛时区 / 环境 ${f.climateLoad ?? 0}</small></div>
     </div>
+    ${insightMarkup(insight)}
     <p class="profile-note">名单状态：${f.squadStatus}；公告：${f.squadAnnouncementStatus ?? "待核"}（${f.squadAnnouncementDate ?? "未定"}）。氛围 ${f.atmosphere}/100，俱乐部分布 ${f.clubScore}/100，世界杯路径经验 ${f.wcPath}/100。数据可信度 ${quality.score}%，可核验字段 ${quality.reliableCount}/${quality.total}。</p>
     <section class="squad-detail">
       <div class="detail-title">
@@ -1135,7 +2294,7 @@ function renderTeamProfile(team) {
       ${squad.length ? `
         <div class="squad-summary">
           <div><span>球员行</span><strong>${squad.length}</strong><small>${Object.entries(positionCounts).map(([position, count]) => `${position}${count}`).join(" / ")}</small></div>
-          <div><span>名单身价</span><strong>${formatValue(totalSquadValue)}</strong><small>${squad[0].valueSource === "team_value_allocated_proxy" ? "球队身价分配代理" : "球员身价"}</small></div>
+          <div><span>名单身价</span><strong>${formatValue(totalSquadValue)}</strong><small>${squad.some((player) => player.valueSource?.includes("proxy")) ? "混合/分配身价" : "球员身价"}</small></div>
           <div><span>可用性</span><strong>${squad.length - (availabilityCounts.unknown || 0)}</strong><small>已核验；${availabilityCounts.unknown || 0} 未确认</small></div>
           <div><span>核心球员</span><strong>${escapeHtml(topPlayers[0]?.player ?? "-")}</strong><small>${formatValue(topPlayers[0]?.marketValueM)}</small></div>
         </div>
@@ -1181,6 +2340,22 @@ function renderTeamProfile(team) {
         <p class="profile-note">这支球队暂未导入可核验的球员级 26 人名单，当前阵容价值、年龄、伤病和俱乐部分布使用球队级代理画像。等官方名单确认后，可通过 README 中的 squad refresh 流程补齐。</p>
       `}
     </section>
+    <section class="squad-detail">
+      <div class="detail-title">
+        <span>小组赛赛程</span>
+        <span class="muted">${team.group} 组 · 3 场</span>
+      </div>
+      <div class="schedule-list">
+        ${teamGroupSchedule(team).map((match) => `
+          <div class="schedule-row">
+            <span>${match.date.slice(5)}</span>
+            <strong>${match.opponent ? `${match.opponent.flag} ${match.opponent.name}` : "—"}</strong>
+            <span>${match.isHome ? "主" : "客"}</span>
+            <small>${match.venue}</small>
+          </div>
+        `).join("")}
+      </div>
+    </section>
   `;
 }
 
@@ -1217,14 +2392,17 @@ function renderResults() {
   $("#thirdRate").textContent = `${(latestResults.thirdRate * 100).toFixed(1)}%`;
   updateExportState();
   syncSelectedTeamStyles();
+  renderShootingMode();
 }
 
 function selectTeam(teamId, options = {}) {
   const team = teams.find((item) => item.id === Number(teamId));
   if (!team) return;
   $("#focusTeam").value = team.id;
+  $("#shootTeam").value = team.id;
   const counter = latestResults?.counters.find((row) => row.team.id === team.id);
   renderStageBars(counter);
+  renderShootingMode();
   if (options.openDetails) openTeamDrawer(team, options.trigger);
 }
 
@@ -1252,6 +2430,7 @@ function loadSettings() {
   latestResults = null;
   latestSample = null;
   latestSampleIndex = 0;
+  latestMatchPrediction = null;
   resultsAreStale = false;
   $("#simCount").value = parsed.settings.count;
   $("#seedInput").value = parsed.settings.seed || "2026-world-cup";
@@ -1386,11 +2565,13 @@ document.addEventListener("input", (event) => {
   if (event.target.matches("#randomness, #hostBoost, #penaltyWeight")) {
     syncControlLabels();
     markResultsStale("参数已变更");
+    markMatchPredictionStale();
     if (!latestResults) setStatus("参数已变更", "dirty");
   }
   if (event.target.matches("#simCount, #seedInput")) {
     updatePresetState();
     markResultsStale("参数已变更");
+    markMatchPredictionStale();
     if (!latestResults) setStatus("参数已变更", "dirty");
   }
   if (event.target.matches("[data-team-rating]")) {
@@ -1401,8 +2582,12 @@ document.addEventListener("input", (event) => {
     renderGroups();
     renderResultSummary();
     updateExportState();
+    markMatchPredictionStale();
     markResultsStale();
     if (!latestResults) setStatus("待重新运行", "dirty");
+  }
+  if (event.target.matches("[data-lottery-odds]") && latestMatchPrediction) {
+    renderMatchPrediction(latestMatchPrediction);
   }
 });
 
@@ -1411,6 +2596,7 @@ document.addEventListener("click", (event) => {
     $("#simCount").value = event.target.dataset.count;
     updatePresetState();
     markResultsStale("参数已变更");
+    markMatchPredictionStale();
     if (!latestResults) setStatus("参数已变更", "dirty");
   }
   const teamButton = event.target.closest("[data-select-team]");
@@ -1420,9 +2606,32 @@ document.addEventListener("click", (event) => {
     const team = teams.find((item) => item.id === Number(detailButton.dataset.openTeamDetail));
     if (team) openTeamDrawer(team, detailButton);
   }
+  if (event.target.closest("[data-copy-sporttery-slip]")) {
+    copySportteryBettingSlip().catch(() => showToast("投注清单复制失败"));
+  }
+  if (event.target.closest("[data-download-sporttery-slip]")) {
+    downloadSportteryBettingSlip();
+  }
 });
 
 $("#runBtn").addEventListener("click", runSimulation);
+$("#refreshDataBtn").addEventListener("click", refreshData);
+$("#matchPredictBtn").addEventListener("click", async () => {
+  await withButtonBusy($("#matchPredictBtn"), "预测中...", runMatchPrediction);
+});
+$("#shootingModeBtn").addEventListener("click", () => setShootingMode(!shootingMode));
+$("#shootNextBtn").addEventListener("click", advanceShootingCard);
+$("#shootCopyBtn").addEventListener("click", copyShootingCaption);
+$("#shootSaveBtn").addEventListener("click", async () => {
+  await withButtonBusy($("#shootSaveBtn"), "保存中...", async () => {
+    try {
+      await downloadShootingImage();
+    } catch (error) {
+      showToast("图片保存失败，请改用截图");
+      throw error;
+    }
+  });
+});
 $("#saveBtn").addEventListener("click", saveSettings);
 $("#loadBtn").addEventListener("click", loadSettings);
 $("#resetBtn").addEventListener("click", resetSettings);
@@ -1437,13 +2646,70 @@ $("#sampleBtn").addEventListener("click", () => {
   showToast("已重新抽样一条模拟路径");
 });
 $("#focusTeam").addEventListener("change", () => {
+  $("#shootTeam").value = $("#focusTeam").value;
   renderGroups();
   renderRanking(latestResults?.counters || emptyCounters(), latestResults?.settings.count || 1);
   renderStageBars();
+  renderShootingMode();
+});
+document.addEventListener("change", (event) => {
+  if (event.target.matches("[data-sporttery-slip-only-bettable]")) {
+    sportterySlipOnlyBettable = event.target.checked;
+    renderSportteryOdds();
+  }
+  if (event.target.matches("#matchTeamA, #matchTeamB")) {
+    markMatchPredictionStale();
+    updateMatchTeamInfo();
+  }
+  if (event.target.matches("#shootScene")) {
+    renderShootingMode();
+  }
+  if (event.target.matches("#shootTeam")) {
+    selectTeam(event.target.value);
+  }
 });
 document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape" && !$("#teamDrawer").hidden) closeTeamDrawer();
+  const drawer = $("#teamDrawer");
+  if (drawer.hidden) return;
+  if (event.key === "Escape") {
+    closeTeamDrawer();
+    return;
+  }
+  if (event.key !== "Tab") return;
+  const focusable = drawer.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+  if (!focusable.length) return;
+  const first = focusable[0];
+  const last = focusable[focusable.length - 1];
+  if (event.shiftKey) {
+    if (document.activeElement === first) { event.preventDefault(); last.focus(); }
+  } else {
+    if (document.activeElement === last) { event.preventDefault(); first.focus(); }
+  }
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.target.matches("input, textarea, select, [contenteditable]")) return;
+  if (event.ctrlKey || event.metaKey || event.altKey) return;
+  if (!$("#teamDrawer").hidden) return;
+  if (event.key === "r" || event.key === "R") {
+    event.preventDefault();
+    runSimulation();
+  }
 });
 
 syncControlLabels();
 renderInitial();
+getRefreshState()
+  .then((state) => {
+    if (state.running) {
+      setRefreshButtonState(true, state.currentStep || "刷新中...");
+      waitForDataRefresh().then((result) => {
+        if (result.ok) window.location.reload();
+        else {
+          setRefreshButtonState(false);
+          showToast("刷新失败，数据已回滚");
+        }
+      });
+    }
+  })
+  .catch(() => {});

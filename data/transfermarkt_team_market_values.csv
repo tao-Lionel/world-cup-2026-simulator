@@ -1,0 +1,49 @@
+team,transfermarkt_team,squad_size,avg_age,world_cup_participations,foreign_players_pct,market_value_m,avg_market_value_m,team_url,source_url,snapshot_date
+France,France,26,27.0,17,73.1,1520,58.58,https://www.transfermarkt.us/frankreich/startseite/verein/3377,https://www.transfermarkt.us/world-cup/teilnehmer/pokalwettbewerb/FIWC,2026-06-11
+England,England,26,27.2,17,19.2,1360,52.43,https://www.transfermarkt.us/england/startseite/verein/3299,https://www.transfermarkt.us/world-cup/teilnehmer/pokalwettbewerb/FIWC,2026-06-11
+Spain,Spain,26,26.8,18,34.6,1220,47.03,https://www.transfermarkt.us/spanien/startseite/verein/3375,https://www.transfermarkt.us/world-cup/teilnehmer/pokalwettbewerb/FIWC,2026-06-11
+Portugal,Portugal,26,28.1,10,80.8,1010,38.67,https://www.transfermarkt.us/portugal/startseite/verein/3300,https://www.transfermarkt.us/world-cup/teilnehmer/pokalwettbewerb/FIWC,2026-06-11
+Germany,Germany,26,28.1,21,26.9,947,36.42,https://www.transfermarkt.us/deutschland/startseite/verein/3262,https://www.transfermarkt.us/world-cup/teilnehmer/pokalwettbewerb/FIWC,2026-06-11
+Brazil,Brazil,26,29.4,23,73.1,928.2,35.7,https://www.transfermarkt.us/brasilien/startseite/verein/3439,https://www.transfermarkt.us/world-cup/teilnehmer/pokalwettbewerb/FIWC,2026-06-11
+Argentina,Argentina,25,29.1,20,92.0,782.5,31.3,https://www.transfermarkt.us/argentinien/startseite/verein/3437,https://www.transfermarkt.us/world-cup/teilnehmer/pokalwettbewerb/FIWC,2026-06-11
+Netherlands,Netherlands,26,27.8,12,92.3,754.2,29.01,https://www.transfermarkt.us/niederlande/startseite/verein/3379,https://www.transfermarkt.us/world-cup/teilnehmer/pokalwettbewerb/FIWC,2026-06-11
+Norway,Norway,26,26.8,4,84.6,589.9,22.69,https://www.transfermarkt.us/norwegen/startseite/verein/3440,https://www.transfermarkt.us/world-cup/teilnehmer/pokalwettbewerb/FIWC,2026-06-11
+Belgium,Belgium,26,27.6,15,88.5,547.5,21.06,https://www.transfermarkt.us/belgien/startseite/verein/3382,https://www.transfermarkt.us/world-cup/teilnehmer/pokalwettbewerb/FIWC,2026-06-11
+Cote d'Ivoire,Ivory Coast,26,25.9,4,100.0,522.1,20.08,https://www.transfermarkt.us/elfenbeinkuste/startseite/verein/3591,https://www.transfermarkt.us/world-cup/teilnehmer/pokalwettbewerb/FIWC,2026-06-11
+Morocco,Morocco,26,26.4,8,92.3,498.3,19.17,https://www.transfermarkt.us/marokko/startseite/verein/3575,https://www.transfermarkt.us/world-cup/teilnehmer/pokalwettbewerb/FIWC,2026-06-11
+Senegal,Senegal,26,27.1,4,100.0,478.1,18.39,https://www.transfermarkt.us/senegal/startseite/verein/3499,https://www.transfermarkt.us/world-cup/teilnehmer/pokalwettbewerb/FIWC,2026-06-11
+Türkiye,Turkiye,26,27.7,3,42.3,473.7,18.22,https://www.transfermarkt.us/turkei/startseite/verein/3381,https://www.transfermarkt.us/world-cup/teilnehmer/pokalwettbewerb/FIWC,2026-06-11
+Sweden,Sweden,26,27.6,13,88.5,406.08,15.62,https://www.transfermarkt.us/schweden/startseite/verein/3557,https://www.transfermarkt.us/world-cup/teilnehmer/pokalwettbewerb/FIWC,2026-06-11
+Croatia,Croatia,26,28.4,7,92.3,387.3,14.9,https://www.transfermarkt.us/kroatien/startseite/verein/3556,https://www.transfermarkt.us/world-cup/teilnehmer/pokalwettbewerb/FIWC,2026-06-11
+USA,United States,26,26.9,12,73.1,385.65,14.83,https://www.transfermarkt.us/vereinigte-staaten/startseite/verein/3505,https://www.transfermarkt.us/world-cup/teilnehmer/pokalwettbewerb/FIWC,2026-06-11
+Ecuador,Ecuador,26,26.1,5,92.3,368.7,14.18,https://www.transfermarkt.us/ecuador/startseite/verein/5750,https://www.transfermarkt.us/world-cup/teilnehmer/pokalwettbewerb/FIWC,2026-06-11
+Uruguay,Uruguay,26,28.8,16,100.0,359.3,13.82,https://www.transfermarkt.us/uruguay/startseite/verein/3449,https://www.transfermarkt.us/world-cup/teilnehmer/pokalwettbewerb/FIWC,2026-06-11
+Switzerland,Switzerland,26,28.3,13,92.3,332.5,12.79,https://www.transfermarkt.us/schweiz/startseite/verein/3384,https://www.transfermarkt.us/world-cup/teilnehmer/pokalwettbewerb/FIWC,2026-06-11
+Colombia,Colombia,26,30.1,7,96.2,302.35,11.63,https://www.transfermarkt.us/kolumbien/startseite/verein/3816,https://www.transfermarkt.us/world-cup/teilnehmer/pokalwettbewerb/FIWC,2026-06-11
+Japan,Japan,26,27.8,8,88.5,270.85,10.42,https://www.transfermarkt.us/japan/startseite/verein/3435,https://www.transfermarkt.us/world-cup/teilnehmer/pokalwettbewerb/FIWC,2026-06-11
+Algeria,Algeria,26,26.9,5,88.5,256.9,9.88,https://www.transfermarkt.us/algerien/startseite/verein/3614,https://www.transfermarkt.us/world-cup/teilnehmer/pokalwettbewerb/FIWC,2026-06-11
+Austria,Austria,26,28.6,9,88.5,245.2,9.43,https://www.transfermarkt.us/osterreich/startseite/verein/3383,https://www.transfermarkt.us/world-cup/teilnehmer/pokalwettbewerb/FIWC,2026-06-11
+Ghana,Ghana,27,26.8,5,96.3,234.6,8.69,https://www.transfermarkt.us/ghana/startseite/verein/3441,https://www.transfermarkt.us/world-cup/teilnehmer/pokalwettbewerb/FIWC,2026-06-11
+Canada,Canada,26,27.0,3,92.3,198.65,7.64,https://www.transfermarkt.us/kanada/startseite/verein/3510,https://www.transfermarkt.us/world-cup/teilnehmer/pokalwettbewerb/FIWC,2026-06-11
+Mexico,Mexico,26,27.9,18,53.8,191.85,7.38,https://www.transfermarkt.us/mexiko/startseite/verein/6303,https://www.transfermarkt.us/world-cup/teilnehmer/pokalwettbewerb/FIWC,2026-06-11
+Czechia,Czechia,26,27.6,2,34.6,188.18,7.24,https://www.transfermarkt.us/tschechien/startseite/verein/3445,https://www.transfermarkt.us/world-cup/teilnehmer/pokalwettbewerb/FIWC,2026-06-11
+Scotland,Scotland,26,29.2,9,69.2,170.25,6.55,https://www.transfermarkt.us/schottland/startseite/verein/3380,https://www.transfermarkt.us/world-cup/teilnehmer/pokalwettbewerb/FIWC,2026-06-11
+Paraguay,Paraguay,26,29.1,10,88.5,153.65,5.91,https://www.transfermarkt.us/paraguay/startseite/verein/3581,https://www.transfermarkt.us/world-cup/teilnehmer/pokalwettbewerb/FIWC,2026-06-11
+Bosnia and Herzegovina,Bosnia-Herzegovina,26,26.4,2,96.2,151.6,5.83,https://www.transfermarkt.us/bosnien-herzegowina/startseite/verein/3446,https://www.transfermarkt.us/world-cup/teilnehmer/pokalwettbewerb/FIWC,2026-06-11
+Congo DR,Democratic Republic of the Congo,26,29.1,1,100.0,143.9,5.53,https://www.transfermarkt.us/demokratische-republik-kongo/startseite/verein/3854,https://www.transfermarkt.us/world-cup/teilnehmer/pokalwettbewerb/FIWC,2026-06-11
+Korea Republic,South Korea,26,28.1,12,73.1,139.05,5.35,https://www.transfermarkt.us/sudkorea/startseite/verein/3589,https://www.transfermarkt.us/world-cup/teilnehmer/pokalwettbewerb/FIWC,2026-06-11
+Egypt,Egypt,26,29.1,4,34.6,116.48,4.48,https://www.transfermarkt.us/agypten/startseite/verein/3672,https://www.transfermarkt.us/world-cup/teilnehmer/pokalwettbewerb/FIWC,2026-06-11
+Uzbekistan,Uzbekistan,26,28.5,1,42.3,85.33,3.28,https://www.transfermarkt.us/usbekistan/startseite/verein/3563,https://www.transfermarkt.us/world-cup/teilnehmer/pokalwettbewerb/FIWC,2026-06-11
+Australia,Australia,26,27.4,7,80.8,77.45,2.98,https://www.transfermarkt.us/australien/startseite/verein/3433,https://www.transfermarkt.us/world-cup/teilnehmer/pokalwettbewerb/FIWC,2026-06-11
+Tunisia,Tunisia,26,26.7,7,76.9,69.95,2.69,https://www.transfermarkt.us/tunesien/startseite/verein/3670,https://www.transfermarkt.us/world-cup/teilnehmer/pokalwettbewerb/FIWC,2026-06-11
+Haiti,Haiti,26,27.6,2,96.2,55.9,2.15,https://www.transfermarkt.us/haiti/startseite/verein/14161,https://www.transfermarkt.us/world-cup/teilnehmer/pokalwettbewerb/FIWC,2026-06-11
+Cabo Verde,Cape Verde,26,29.7,1,100.0,54.5,2.1,https://www.transfermarkt.us/kap-verde/startseite/verein/4311,https://www.transfermarkt.us/world-cup/teilnehmer/pokalwettbewerb/FIWC,2026-06-11
+South Africa,South Africa,26,26.8,4,26.9,49.25,1.89,https://www.transfermarkt.us/sudafrika/startseite/verein/3806,https://www.transfermarkt.us/world-cup/teilnehmer/pokalwettbewerb/FIWC,2026-06-11
+Saudi Arabia,Saudi Arabia,26,28.5,7,3.8,40.68,1.56,https://www.transfermarkt.us/saudi-arabien/startseite/verein/3807,https://www.transfermarkt.us/world-cup/teilnehmer/pokalwettbewerb/FIWC,2026-06-11
+Panama,Panama,26,30.5,2,92.3,34.55,1.33,https://www.transfermarkt.us/panama/startseite/verein/3577,https://www.transfermarkt.us/world-cup/teilnehmer/pokalwettbewerb/FIWC,2026-06-11
+New Zealand,New Zealand,26,28.1,3,69.2,34.35,1.32,https://www.transfermarkt.us/neuseeland/startseite/verein/9171,https://www.transfermarkt.us/world-cup/teilnehmer/pokalwettbewerb/FIWC,2026-06-11
+IR Iran,Iran,26,30.4,7,34.6,32.05,1.23,https://www.transfermarkt.us/iran/startseite/verein/3582,https://www.transfermarkt.us/world-cup/teilnehmer/pokalwettbewerb/FIWC,2026-06-11
+Curacao,Curaçao,26,28.0,1,100.0,25.78,0.99,https://www.transfermarkt.us/curacao/startseite/verein/32364,https://www.transfermarkt.us/world-cup/teilnehmer/pokalwettbewerb/FIWC,2026-06-11
+Iraq,Iraq,26,26.9,2,61.5,21.2,0.82,https://www.transfermarkt.us/irak/startseite/verein/3560,https://www.transfermarkt.us/world-cup/teilnehmer/pokalwettbewerb/FIWC,2026-06-11
+Jordan,Jordan,26,28.5,1,53.8,20.3,0.78,https://www.transfermarkt.us/jordanien/startseite/verein/15737,https://www.transfermarkt.us/world-cup/teilnehmer/pokalwettbewerb/FIWC,2026-06-11
+Qatar,Qatar,26,29.5,2,3.8,19.93,0.77,https://www.transfermarkt.us/katar/startseite/verein/14162,https://www.transfermarkt.us/world-cup/teilnehmer/pokalwettbewerb/FIWC,2026-06-11

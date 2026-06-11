@@ -27,6 +27,7 @@ function parseCsv(text) {
 }
 
 const scheduleRows = parseCsv(await readFile(new URL("../data/schedule_travel.csv", import.meta.url), "utf8"));
+const snapshotDate = scheduleRows[0]?.weather_snapshot_date;
 let app = await readFile(new URL("../app.js", import.meta.url), "utf8");
 
 for (const row of scheduleRows) {
@@ -38,6 +39,15 @@ for (const row of scheduleRows) {
     `$1travelKm: ${row.group_stage_travel_km}, restDays: ${row.avg_rest_days}, timezoneShift: ${row.max_timezone_shift_hours}, borderCrossings: ${row.border_crossings}, altitudeLoad: ${row.max_altitude_m}, climateLoad: ${row.avg_environment_load}, entryTravelKm: ${row.entry_travel_km}, entryTimezoneShift: ${row.entry_timezone_shift_hours}`,
   );
 }
+
+app = app.replace(
+  /\{ label: "赛程", value: "[^"]+" \}/,
+  `{ label: "赛程", value: "旅行/休息/时区/天气 ${snapshotDate}" }`,
+);
+app = app.replace(
+  /\{ key: "climateLoad", label: "比赛日天气\/场馆环境负担", tier: "snapshot", source: "[^"]+" \}/,
+  `{ key: "climateLoad", label: "比赛日天气/场馆环境负担", tier: "snapshot", source: "Open-Meteo forecast + venue baseline ${snapshotDate}" }`,
+);
 
 await writeFile(new URL("../app.js", import.meta.url), app);
 console.log(`Applied schedule factors for ${scheduleRows.length} teams.`);

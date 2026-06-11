@@ -36,6 +36,7 @@ function replaceFactor(app, team, key, value) {
 }
 
 const rows = parseCsv(await readFile(new URL("../data/squad_profile_snapshot.csv", import.meta.url), "utf8"));
+const snapshotDate = rows[0]?.snapshot_date;
 let app = await readFile(new URL("../app.js", import.meta.url), "utf8");
 
 for (const row of rows) {
@@ -45,6 +46,27 @@ for (const row of rows) {
   app = replaceFactor(app, row.team, "clubScore", row.club_score);
   app = replaceFactor(app, row.team, "squadStatus", row.squad_status);
 }
+
+app = app.replace(
+  /\{ label: "阵容", value: "[^"]+" \}/,
+  `{ label: "阵容", value: "FIFA 最终名单 ${snapshotDate}" }`,
+);
+app = app.replace(
+  /\{ key: "squadValue", label: "阵容身价", tier: "snapshot", source: "[^"]+" \}/,
+  `{ key: "squadValue", label: "阵容身价", tier: "snapshot", source: "Transfermarkt team/player market values ${snapshotDate}" }`,
+);
+app = app.replace(
+  /\{ key: "avgAge", label: "平均年龄", tier: "snapshot", source: "[^"]+" \}/,
+  `{ key: "avgAge", label: "平均年龄", tier: "snapshot", source: "FIFA final squad player ages ${snapshotDate}" }`,
+);
+app = app.replace(
+  /\{ key: "injuryRisk", label: "伤病风险", tier: "snapshot", source: "[^"]+" \}/,
+  `{ key: "injuryRisk", label: "伤病风险", tier: "snapshot", source: "player availability watchlist ${snapshotDate} + health proxy" }`,
+);
+app = app.replace(
+  /\{ key: "squadStatus", label: "名单状态", tier: "snapshot", source: "[^"]+" \}/,
+  `{ key: "squadStatus", label: "名单状态", tier: "snapshot", source: "FIFA final squad lists + Wikipedia squad tracker ${snapshotDate}" }`,
+);
 
 await writeFile(new URL("../app.js", import.meta.url), app);
 console.log(`Applied squad profiles for ${rows.length} teams.`);

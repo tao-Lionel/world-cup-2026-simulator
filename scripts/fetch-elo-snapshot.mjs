@@ -2,6 +2,7 @@ import { readFile, writeFile } from "node:fs/promises";
 import vm from "node:vm";
 
 const source = await readFile(new URL("../app.js", import.meta.url), "utf8");
+const SNAPSHOT_DATE = new Date().toISOString().slice(0, 10);
 
 function extractConst(name) {
   const start = source.indexOf(`const ${name} = `);
@@ -74,7 +75,7 @@ for (const team of baseTeams) {
   rows.push({
     team: team.en,
     elo_team: eloTeam,
-    snapshot_date: "2026-03-31",
+    snapshot_date: SNAPSHOT_DATE,
     elo,
     previous_model_elo: current,
     delta: elo - current,

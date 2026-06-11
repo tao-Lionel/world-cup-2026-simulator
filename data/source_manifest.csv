@@ -3,15 +3,15 @@ group,2026 分组,verified,权威快照,1,FIFA Final Draw
 host,主办国身份,verified,权威快照,1,FIFA hosts
 fifaRank,FIFA 排名,verified,权威快照,1,FIFA/Coca-Cola ranking 2026-04-01
 fifaPoints,FIFA 积分,verified,权威快照,1,FIFA/Coca-Cola ranking 2026-04-01
-odds,夺冠赔率,market,市场快照,0.82,TheGameDay four-book consensus 2026-05-15
-elo,Elo 强度,snapshot,可替换快照,0.62,International-football.net / eloratings.net 2026-03-31
-form,近两年战绩,snapshot,可替换快照,0.62,International-football.net last games 2024-2026
+odds,夺冠赔率,market,市场快照,0.82,Yahoo Sports / BetMGM outright odds 2026-06-01
+elo,Elo 强度,snapshot,可替换快照,0.62,International-football.net / eloratings.net 2026-06-11
+form,近两年战绩,snapshot,可替换快照,0.62,International-football.net last games through 2026-06-11
 wcPath,历史路径难度,research,研究快照,0.72,Football365 records + champion path summary
-squadValue,阵容身价,proxy,代理估计,0.36,市场身价代理
-avgAge,平均年龄,proxy,代理估计,0.36,暂定名单结构代理
-injuryRisk,伤病风险,snapshot,可替换快照,0.62,球员可用性 watchlist + 赛前健康代理
+squadValue,阵容身价,snapshot,可替换快照,0.62,Transfermarkt team/player market values 2026-06-11
+avgAge,平均年龄,snapshot,可替换快照,0.62,FIFA final squad player ages 2026-06-11
+injuryRisk,伤病风险,snapshot,可替换快照,0.62,player availability watchlist 2026-06-11 + health proxy
 clubScore,俱乐部分布,proxy,代理估计,0.36,顶级联赛集中度代理
-atmosphere,球队氛围,manual,人工量化,0.26,team_context_snapshot.csv 2026-06-02
+atmosphere,球队氛围,manual,人工量化,0.26,structured context snapshot 2026-06-11
 travelKm,小组赛场馆移动,snapshot,可替换快照,0.62,FIFA schedule + venue coordinates
 restDays,小组赛休息天数,snapshot,可替换快照,0.62,FIFA schedule dates
 timezoneShift,组赛时区跨度,snapshot,可替换快照,0.62,venue UTC offsets
@@ -19,7 +19,7 @@ entryTravelKm,入境旅行距离,snapshot,可替换快照,0.62,team origins + fi
 entryTimezoneShift,入境时区差,snapshot,可替换快照,0.62,origin UTC offset + first venue UTC offset
 borderCrossings,组赛跨境次数,snapshot,可替换快照,0.62,venue country sequence
 altitudeLoad,最高场馆海拔,snapshot,可替换快照,0.62,venue altitude snapshot
-climateLoad,场馆环境负担,snapshot,可替换快照,0.62,venue heat/humidity/altitude estimate
+climateLoad,比赛日天气/场馆环境负担,snapshot,可替换快照,0.62,Open-Meteo forecast + venue baseline 2026-06-11
 squadAnnouncementStatus,名单公告状态,snapshot,可替换快照,0.62,federation/FIFA squad announcement tracker
 squadAnnouncementDate,名单公告日期,snapshot,可替换快照,0.62,federation/FIFA squad announcement tracker
-squadStatus,名单状态,snapshot,可替换快照,0.62,FIFA final squad lists + Wikipedia squad tracker 2026-06-02
+squadStatus,名单状态,snapshot,可替换快照,0.62,FIFA final squad lists + Wikipedia squad tracker 2026-06-11

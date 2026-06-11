@@ -1,49 +1,49 @@
-team,matches,first_date,last_date,origin_city,origin_country,venue_sequence,country_sequence,timezone_sequence,entry_travel_km,entry_timezone_shift_hours,group_stage_travel_km,avg_rest_days,rest_sequence_days,max_timezone_shift_hours,border_crossings,avg_altitude_m,max_altitude_m,avg_environment_load
-Algeria,3,2026-06-16,2026-06-27,Algiers,Algeria,Kansas City Stadium > San Francisco Bay Area Stadium > Kansas City Stadium,USA > USA > USA,-5|-7|-5,8098,6,4798,5.5,6|5,2,0,180,264,41
-Argentina,3,2026-06-16,2026-06-27,Buenos Aires,Argentina,Kansas City Stadium > Dallas Stadium > Dallas Stadium,USA > USA > USA,-5|-5|-5,8992,2,739,5.5,6|5,0,0,211,264,52
-Australia,3,2026-06-13,2026-06-25,Sydney,Australia,BC Place Vancouver > Seattle Stadium > San Francisco Bay Area Stadium,Canada > USA > USA,-7|-7|-7,12502,17,1329,6,6|6,0,1,11,13,25
-Austria,3,2026-06-16,2026-06-27,Vienna,Austria,San Francisco Bay Area Stadium > Dallas Stadium > Kansas City Stadium,USA > USA > USA,-7|-5|-5,9642,9,3054,5.5,6|5,2,0,153,264,43
-Belgium,3,2026-06-15,2026-06-26,Brussels,Belgium,Seattle Stadium > Los Angeles Stadium > BC Place Vancouver,USA > USA > Canada,-7|-7|-7,7944,9,3302,5.5,6|5,0,1,20,38,27
-Bosnia and Herzegovina,3,2026-06-12,2026-06-24,Sarajevo,Bosnia and Herzegovina,Toronto Stadium > Los Angeles Stadium > Seattle Stadium,Canada > USA > USA,-4|-7|-7,7337,6,5058,6,6|6,3,1,41,76,28
-Brazil,3,2026-06-13,2026-06-24,Rio de Janeiro,Brazil,New York New Jersey Stadium > Philadelphia Stadium > Miami Stadium,USA > USA > USA,-4|-4|-4,7772,1,1758,5.5,6|5,0,0,6,12,49
-Cabo Verde,3,2026-06-15,2026-06-26,Praia,Cape Verde,Atlanta Stadium > Miami Stadium > Houston Stadium,USA > USA > USA,-4|-4|-5,6418,3,2502,5.5,6|5,1,0,112,320,58
-Canada,3,2026-06-12,2026-06-24,Toronto,Canada,Toronto Stadium > BC Place Vancouver > BC Place Vancouver,Canada > Canada > Canada,-4|-7|-7,4,0,3357,6,6|6,3,0,34,76,25
-Colombia,3,2026-06-17,2026-06-27,Bogota,Colombia,Mexico City Stadium > Estadio Guadalajara > Miami Stadium,Mexico > Mexico > USA,-6|-6|-4,3166,1,2915,5,6|4,2,1,1269,2240,69
-Congo DR,3,2026-06-17,2026-06-27,Kinshasa,Democratic Republic of the Congo,Houston Stadium > Estadio Guadalajara > Atlanta Stadium,USA > Mexico > USA,-5|-6|-4,12246,6,3660,5,6|4,2,2,633,1566,53
-Cote d'Ivoire,3,2026-06-14,2026-06-25,Abidjan,Cote d'Ivoire,Philadelphia Stadium > Toronto Stadium > Philadelphia Stadium,USA > Canada > USA,-4|-4|-4,8022,4,1089,5.5,6|5,0,2,33,76,35
-Croatia,3,2026-06-17,2026-06-27,Zagreb,Croatia,Dallas Stadium > Toronto Stadium > Philadelphia Stadium,USA > Canada > USA,-5|-4|-4,8996,7,2500,5,6|4,1,2,91,184,40
-Curacao,3,2026-06-14,2026-06-25,Willemstad,Curacao,Houston Stadium > Kansas City Stadium > Philadelphia Stadium,USA > USA > USA,-5|-5|-4,3362,1,2702,5.5,6|5,1,0,96,264,48
-Czechia,3,2026-06-11,2026-06-24,Prague,Czechia,Estadio Guadalajara > Atlanta Stadium > Mexico City Stadium,Mexico > USA > Mexico,-6|-4|-6,10072,8,4544,6.5,7|6,2,2,1375,2240,60
-Ecuador,3,2026-06-14,2026-06-25,Quito,Ecuador,Philadelphia Stadium > Kansas City Stadium > New York New Jersey Stadium,USA > USA > USA,-4|-5|-4,4469,1,3405,5.5,6|5,1,0,93,264,41
-Egypt,3,2026-06-15,2026-06-26,Cairo,Egypt,Seattle Stadium > BC Place Vancouver > Seattle Stadium,USA > Canada > USA,-7|-7|-7,10986,10,391,5.5,6|5,0,2,10,13,23
-England,3,2026-06-17,2026-06-27,London,England,Dallas Stadium > Boston Stadium > New York New Jersey Stadium,USA > USA > USA,-5|-4|-4,7662,6,2768,5,6|4,1,0,92,184,41
-France,3,2026-06-16,2026-06-26,Paris,France,New York New Jersey Stadium > Philadelphia Stadium > Boston Stadium,USA > USA > USA,-4|-4|-4,5835,6,545,5,6|4,0,0,34,88,35
-Germany,3,2026-06-14,2026-06-25,Frankfurt,Germany,Houston Stadium > Toronto Stadium > New York New Jersey Stadium,USA > Canada > USA,-5|-4|-4,8435,7,2640,5.5,6|5,1,2,31,76,41
-Ghana,3,2026-06-17,2026-06-27,Accra,Ghana,Toronto Stadium > Boston Stadium > Philadelphia Stadium,Canada > USA > USA,-4|-4|-4,8712,4,1094,5,6|4,0,1,59,88,33
-Haiti,3,2026-06-13,2026-06-24,Port-au-Prince,Haiti,Boston Stadium > Philadelphia Stadium > Atlanta Stadium,USA > USA > USA,-4|-4|-4,2615,0,1476,5.5,6|5,0,0,140,320,38
-IR Iran,3,2026-06-15,2026-06-26,Tehran,Iran,Los Angeles Stadium > Los Angeles Stadium > Seattle Stadium,USA > USA > USA,-7|-7|-7,12198,10.5,1553,5.5,6|5,0,0,28,38,30
-Iraq,3,2026-06-16,2026-06-26,Baghdad,Iraq,Boston Stadium > Philadelphia Stadium > Toronto Stadium,USA > USA > Canada,-4|-4|-4,9370,7,953,5,6|4,0,1,59,88,33
-Japan,3,2026-06-14,2026-06-25,Tokyo,Japan,Dallas Stadium > Estadio Monterrey > Dallas Stadium,USA > Mexico > USA,-5|-6|-5,10385,14,1689,5.5,6|5,1,2,303,540,58
-Jordan,3,2026-06-16,2026-06-27,Amman,Jordan,San Francisco Bay Area Stadium > San Francisco Bay Area Stadium > Dallas Stadium,USA > USA > USA,-7|-7|-5,11968,10,2315,5.5,6|5,2,0,69,184,37
-Korea Republic,3,2026-06-11,2026-06-24,Seoul,South Korea,Estadio Guadalajara > Estadio Guadalajara > Estadio Monterrey,Mexico > Mexico > Mexico,-6|-6|-6,11663,15,645,6.5,7|6,0,0,1224,1566,61
-Mexico,3,2026-06-11,2026-06-24,Mexico City,Mexico,Mexico City Stadium > Estadio Guadalajara > Mexico City Stadium,Mexico > Mexico > Mexico,-6|-6|-6,15,0,952,6.5,7|6,0,0,2015,2240,71
-Morocco,3,2026-06-13,2026-06-24,Rabat,Morocco,New York New Jersey Stadium > Boston Stadium > Atlanta Stadium,USA > USA > USA,-4|-4|-4,5840,5,1750,5.5,6|5,0,0,137,320,37
-Netherlands,3,2026-06-14,2026-06-25,Amsterdam,Netherlands,Dallas Stadium > Houston Stadium > Kansas City Stadium,USA > USA > USA,-5|-5|-5,7921,7,1421,5.5,6|5,0,0,154,264,53
-New Zealand,3,2026-06-15,2026-06-26,Auckland,New Zealand,Los Angeles Stadium > BC Place Vancouver > BC Place Vancouver,USA > Canada > Canada,-7|-7|-7,10483,19,1749,5.5,6|5,0,1,21,38,27
-Norway,3,2026-06-16,2026-06-26,Oslo,Norway,Boston Stadium > New York New Jersey Stadium > Boston Stadium,USA > USA > USA,-4|-4|-4,5652,6,548,5,6|4,0,0,60,88,33
-Panama,3,2026-06-17,2026-06-27,Panama City,Panama,Toronto Stadium > Toronto Stadium > New York New Jersey Stadium,Canada > Canada > USA,-4|-4|-4,3853,1,540,5,6|4,0,1,52,76,31
-Paraguay,3,2026-06-12,2026-06-25,Asuncion,Paraguay,Los Angeles Stadium > San Francisco Bay Area Stadium > San Francisco Bay Area Stadium,USA > USA > USA,-7|-7|-7,9190,3,505,6.5,7|6,0,0,21,38,30
-Portugal,3,2026-06-17,2026-06-27,Lisbon,Portugal,Houston Stadium > Houston Stadium > Miami Stadium,USA > USA > USA,-5|-5|-4,7703,6,1547,5,6|4,1,0,9,13,63
-Qatar,3,2026-06-13,2026-06-24,Doha,Qatar,San Francisco Bay Area Stadium > BC Place Vancouver > Seattle Stadium,USA > Canada > USA,-7|-7|-7,13011,10,1519,5.5,5|6,0,2,11,13,25
-Saudi Arabia,3,2026-06-15,2026-06-26,Riyadh,Saudi Arabia,Miami Stadium > Atlanta Stadium > Houston Stadium,USA > USA > USA,-4|-4|-5,11999,7,2090,5.5,6|5,1,0,112,320,58
-Scotland,3,2026-06-13,2026-06-24,Glasgow,Scotland,Boston Stadium > Boston Stadium > Miami Stadium,USA > USA > USA,-4|-4|-4,4910,5,1973,5.5,6|5,0,0,59,88,45
-Senegal,3,2026-06-16,2026-06-26,Dakar,Senegal,New York New Jersey Stadium > New York New Jersey Stadium > Toronto Stadium,USA > USA > Canada,-4|-4|-4,6152,4,540,5,6|4,0,1,27,76,33
-South Africa,3,2026-06-11,2026-06-24,Johannesburg,South Africa,Mexico City Stadium > Atlanta Stadium > Estadio Monterrey,Mexico > USA > Mexico,-6|-4|-6,14582,8,3943,6.5,7|6,2,2,1033,2240,63
-Spain,3,2026-06-15,2026-06-26,Madrid,Spain,Atlanta Stadium > Atlanta Stadium > Estadio Guadalajara,USA > USA > Mexico,-4|-4|-6,6944,6,2373,5.5,6|5,2,1,735,1566,49
-Sweden,3,2026-06-14,2026-06-25,Stockholm,Sweden,Estadio Monterrey > Houston Stadium > Dallas Stadium,Mexico > USA > USA,-6|-5|-5,9019,8,1029,5.5,6|5,1,1,246,540,59
-Switzerland,3,2026-06-13,2026-06-24,Bern,Switzerland,San Francisco Bay Area Stadium > Los Angeles Stadium > BC Place Vancouver,USA > USA > Canada,-7|-7|-7,9372,9,2253,5.5,5|6,0,1,21,38,29
-Tunisia,3,2026-06-14,2026-06-25,Tunis,Tunisia,Estadio Monterrey > Estadio Monterrey > Kansas City Stadium,Mexico > Mexico > USA,-6|-6|-5,9959,7,1582,5.5,6|5,1,1,448,540,60
-Türkiye,3,2026-06-13,2026-06-25,Istanbul,Turkey,BC Place Vancouver > San Francisco Bay Area Stadium > Los Angeles Stadium,Canada > USA > USA,-7|-7|-7,9611,10,1828,6,6|6,0,1,21,38,29
-Uruguay,3,2026-06-15,2026-06-26,Montevideo,Uruguay,Miami Stadium > Miami Stadium > Estadio Guadalajara,USA > USA > Mexico,-4|-4|-6,7226,1,2439,5.5,6|5,2,1,523,1566,67
-USA,3,2026-06-12,2026-06-25,New York,USA,Los Angeles Stadium > Seattle Stadium > Los Angeles Stadium,USA > USA > USA,-7|-7|-7,3948,3,3106,6.5,7|6,0,0,28,38,30
-Uzbekistan,3,2026-06-17,2026-06-27,Tashkent,Uzbekistan,Mexico City Stadium > Houston Stadium > Atlanta Stadium,Mexico > USA > USA,-6|-5|-4,13171,11,2349,5,6|4,2,1,858,2240,60
+team,matches,first_date,last_date,origin_city,origin_country,venue_sequence,country_sequence,timezone_sequence,entry_travel_km,entry_timezone_shift_hours,group_stage_travel_km,avg_rest_days,rest_sequence_days,max_timezone_shift_hours,border_crossings,avg_altitude_m,max_altitude_m,avg_environment_load,weather_forecast_matches,weather_baseline_matches,weather_snapshot_date
+Algeria,3,2026-06-16,2026-06-27,Algiers,Algeria,Kansas City Stadium > San Francisco Bay Area Stadium > Kansas City Stadium,USA > USA > USA,-5|-7|-5,8098,6,4798,5.5,6|5,2,0,180,264,31,2,1,2026-06-11
+Argentina,3,2026-06-16,2026-06-27,Buenos Aires,Argentina,Kansas City Stadium > Dallas Stadium > Dallas Stadium,USA > USA > USA,-5|-5|-5,8992,2,739,5.5,6|5,0,0,211,264,45,2,1,2026-06-11
+Australia,3,2026-06-13,2026-06-25,Sydney,Australia,BC Place Vancouver > Seattle Stadium > San Francisco Bay Area Stadium,Canada > USA > USA,-7|-7|-7,12502,17,1329,6,6|6,0,1,11,13,19,3,0,2026-06-11
+Austria,3,2026-06-16,2026-06-27,Vienna,Austria,San Francisco Bay Area Stadium > Dallas Stadium > Kansas City Stadium,USA > USA > USA,-7|-5|-5,9642,9,3054,5.5,6|5,2,0,153,264,42,2,1,2026-06-11
+Belgium,3,2026-06-15,2026-06-26,Brussels,Belgium,Seattle Stadium > Los Angeles Stadium > BC Place Vancouver,USA > USA > Canada,-7|-7|-7,7944,9,3302,5.5,6|5,0,1,20,38,21,2,1,2026-06-11
+Bosnia and Herzegovina,3,2026-06-12,2026-06-24,Sarajevo,Bosnia and Herzegovina,Toronto Stadium > Los Angeles Stadium > Seattle Stadium,Canada > USA > USA,-4|-7|-7,7337,6,5058,6,6|6,3,1,41,76,16,3,0,2026-06-11
+Brazil,3,2026-06-13,2026-06-24,Rio de Janeiro,Brazil,New York New Jersey Stadium > Philadelphia Stadium > Miami Stadium,USA > USA > USA,-4|-4|-4,7772,1,1758,5.5,6|5,0,0,6,12,38,3,0,2026-06-11
+Cabo Verde,3,2026-06-15,2026-06-26,Praia,Cape Verde,Atlanta Stadium > Miami Stadium > Houston Stadium,USA > USA > USA,-4|-4|-5,6418,3,2502,5.5,6|5,1,0,112,320,53,2,1,2026-06-11
+Canada,3,2026-06-12,2026-06-24,Toronto,Canada,Toronto Stadium > BC Place Vancouver > BC Place Vancouver,Canada > Canada > Canada,-4|-7|-7,4,0,3357,6,6|6,3,0,34,76,14,3,0,2026-06-11
+Colombia,3,2026-06-17,2026-06-27,Bogota,Colombia,Mexico City Stadium > Estadio Guadalajara > Miami Stadium,Mexico > Mexico > USA,-6|-6|-4,3166,1,2915,5,6|4,2,1,1269,2240,55,2,1,2026-06-11
+Congo DR,3,2026-06-17,2026-06-27,Kinshasa,Democratic Republic of the Congo,Houston Stadium > Estadio Guadalajara > Atlanta Stadium,USA > Mexico > USA,-5|-6|-4,12246,6,3660,5,6|4,2,2,633,1566,51,2,1,2026-06-11
+Cote d'Ivoire,3,2026-06-14,2026-06-25,Abidjan,Cote d'Ivoire,Philadelphia Stadium > Toronto Stadium > Philadelphia Stadium,USA > Canada > USA,-4|-4|-4,8022,4,1089,5.5,6|5,0,2,33,76,32,3,0,2026-06-11
+Croatia,3,2026-06-17,2026-06-27,Zagreb,Croatia,Dallas Stadium > Toronto Stadium > Philadelphia Stadium,USA > Canada > USA,-5|-4|-4,8996,7,2500,5,6|4,1,2,91,184,33,2,1,2026-06-11
+Curacao,3,2026-06-14,2026-06-25,Willemstad,Curacao,Houston Stadium > Kansas City Stadium > Philadelphia Stadium,USA > USA > USA,-5|-5|-4,3362,1,2702,5.5,6|5,1,0,96,264,40,3,0,2026-06-11
+Czechia,3,2026-06-11,2026-06-24,Prague,Czechia,Estadio Guadalajara > Atlanta Stadium > Mexico City Stadium,Mexico > USA > Mexico,-6|-4|-6,10072,8,4544,6.5,7|6,2,2,1375,2240,46,3,0,2026-06-11
+Ecuador,3,2026-06-14,2026-06-25,Quito,Ecuador,Philadelphia Stadium > Kansas City Stadium > New York New Jersey Stadium,USA > USA > USA,-4|-5|-4,4469,1,3405,5.5,6|5,1,0,93,264,36,3,0,2026-06-11
+Egypt,3,2026-06-15,2026-06-26,Cairo,Egypt,Seattle Stadium > BC Place Vancouver > Seattle Stadium,USA > Canada > USA,-7|-7|-7,10986,10,391,5.5,6|5,0,2,10,13,19,2,1,2026-06-11
+England,3,2026-06-17,2026-06-27,London,England,Dallas Stadium > Boston Stadium > New York New Jersey Stadium,USA > USA > USA,-5|-4|-4,7662,6,2768,5,6|4,1,0,92,184,33,2,1,2026-06-11
+France,3,2026-06-16,2026-06-26,Paris,France,New York New Jersey Stadium > Philadelphia Stadium > Boston Stadium,USA > USA > USA,-4|-4|-4,5835,6,545,5,6|4,0,0,34,88,29,2,1,2026-06-11
+Germany,3,2026-06-14,2026-06-25,Frankfurt,Germany,Houston Stadium > Toronto Stadium > New York New Jersey Stadium,USA > Canada > USA,-5|-4|-4,8435,7,2640,5.5,6|5,1,2,31,76,36,3,0,2026-06-11
+Ghana,3,2026-06-17,2026-06-27,Accra,Ghana,Toronto Stadium > Boston Stadium > Philadelphia Stadium,Canada > USA > USA,-4|-4|-4,8712,4,1094,5,6|4,0,1,59,88,24,2,1,2026-06-11
+Haiti,3,2026-06-13,2026-06-24,Port-au-Prince,Haiti,Boston Stadium > Philadelphia Stadium > Atlanta Stadium,USA > USA > USA,-4|-4|-4,2615,0,1476,5.5,6|5,0,0,140,320,35,3,0,2026-06-11
+IR Iran,3,2026-06-15,2026-06-26,Tehran,Iran,Los Angeles Stadium > Los Angeles Stadium > Seattle Stadium,USA > USA > USA,-7|-7|-7,12198,10.5,1553,5.5,6|5,0,0,28,38,20,2,1,2026-06-11
+Iraq,3,2026-06-16,2026-06-26,Baghdad,Iraq,Boston Stadium > Philadelphia Stadium > Toronto Stadium,USA > USA > Canada,-4|-4|-4,9370,7,953,5,6|4,0,1,59,88,25,2,1,2026-06-11
+Japan,3,2026-06-14,2026-06-25,Tokyo,Japan,Dallas Stadium > Estadio Monterrey > Dallas Stadium,USA > Mexico > USA,-5|-6|-5,10385,14,1689,5.5,6|5,1,2,303,540,57,3,0,2026-06-11
+Jordan,3,2026-06-16,2026-06-27,Amman,Jordan,San Francisco Bay Area Stadium > San Francisco Bay Area Stadium > Dallas Stadium,USA > USA > USA,-7|-7|-5,11968,10,2315,5.5,6|5,2,0,69,184,31,2,1,2026-06-11
+Korea Republic,3,2026-06-11,2026-06-24,Seoul,South Korea,Estadio Guadalajara > Estadio Guadalajara > Estadio Monterrey,Mexico > Mexico > Mexico,-6|-6|-6,11663,15,645,6.5,7|6,0,0,1224,1566,43,3,0,2026-06-11
+Mexico,3,2026-06-11,2026-06-24,Mexico City,Mexico,Mexico City Stadium > Estadio Guadalajara > Mexico City Stadium,Mexico > Mexico > Mexico,-6|-6|-6,15,0,952,6.5,7|6,0,0,2015,2240,51,3,0,2026-06-11
+Morocco,3,2026-06-13,2026-06-24,Rabat,Morocco,New York New Jersey Stadium > Boston Stadium > Atlanta Stadium,USA > USA > USA,-4|-4|-4,5840,5,1750,5.5,6|5,0,0,137,320,35,3,0,2026-06-11
+Netherlands,3,2026-06-14,2026-06-25,Amsterdam,Netherlands,Dallas Stadium > Houston Stadium > Kansas City Stadium,USA > USA > USA,-5|-5|-5,7921,7,1421,5.5,6|5,0,0,154,264,46,3,0,2026-06-11
+New Zealand,3,2026-06-15,2026-06-26,Auckland,New Zealand,Los Angeles Stadium > BC Place Vancouver > BC Place Vancouver,USA > Canada > Canada,-7|-7|-7,10483,19,1749,5.5,6|5,0,1,21,38,19,2,1,2026-06-11
+Norway,3,2026-06-16,2026-06-26,Oslo,Norway,Boston Stadium > New York New Jersey Stadium > Boston Stadium,USA > USA > USA,-4|-4|-4,5652,6,548,5,6|4,0,0,60,88,27,2,1,2026-06-11
+Panama,3,2026-06-17,2026-06-27,Panama City,Panama,Toronto Stadium > Toronto Stadium > New York New Jersey Stadium,Canada > Canada > USA,-4|-4|-4,3853,1,540,5,6|4,0,1,52,76,23,2,1,2026-06-11
+Paraguay,3,2026-06-12,2026-06-25,Asuncion,Paraguay,Los Angeles Stadium > San Francisco Bay Area Stadium > San Francisco Bay Area Stadium,USA > USA > USA,-7|-7|-7,9190,3,505,6.5,7|6,0,0,21,38,21,3,0,2026-06-11
+Portugal,3,2026-06-17,2026-06-27,Lisbon,Portugal,Houston Stadium > Houston Stadium > Miami Stadium,USA > USA > USA,-5|-5|-4,7703,6,1547,5,6|4,1,0,9,13,63,2,1,2026-06-11
+Qatar,3,2026-06-13,2026-06-24,Doha,Qatar,San Francisco Bay Area Stadium > BC Place Vancouver > Seattle Stadium,USA > Canada > USA,-7|-7|-7,13011,10,1519,5.5,5|6,0,2,11,13,20,3,0,2026-06-11
+Saudi Arabia,3,2026-06-15,2026-06-26,Riyadh,Saudi Arabia,Miami Stadium > Atlanta Stadium > Houston Stadium,USA > USA > USA,-4|-4|-5,11999,7,2090,5.5,6|5,1,0,112,320,47,2,1,2026-06-11
+Scotland,3,2026-06-13,2026-06-24,Glasgow,Scotland,Boston Stadium > Boston Stadium > Miami Stadium,USA > USA > USA,-4|-4|-4,4910,5,1973,5.5,6|5,0,0,59,88,38,3,0,2026-06-11
+Senegal,3,2026-06-16,2026-06-26,Dakar,Senegal,New York New Jersey Stadium > New York New Jersey Stadium > Toronto Stadium,USA > USA > Canada,-4|-4|-4,6152,4,540,5,6|4,0,1,27,76,28,2,1,2026-06-11
+South Africa,3,2026-06-11,2026-06-24,Johannesburg,South Africa,Mexico City Stadium > Atlanta Stadium > Estadio Monterrey,Mexico > USA > Mexico,-6|-4|-6,14582,8,3943,6.5,7|6,2,2,1033,2240,49,3,0,2026-06-11
+Spain,3,2026-06-15,2026-06-26,Madrid,Spain,Atlanta Stadium > Atlanta Stadium > Estadio Guadalajara,USA > USA > Mexico,-4|-4|-6,6944,6,2373,5.5,6|5,2,1,735,1566,41,2,1,2026-06-11
+Sweden,3,2026-06-14,2026-06-25,Stockholm,Sweden,Estadio Monterrey > Houston Stadium > Dallas Stadium,Mexico > USA > USA,-6|-5|-5,9019,8,1029,5.5,6|5,1,1,246,540,56,3,0,2026-06-11
+Switzerland,3,2026-06-13,2026-06-24,Bern,Switzerland,San Francisco Bay Area Stadium > Los Angeles Stadium > BC Place Vancouver,USA > USA > Canada,-7|-7|-7,9372,9,2253,5.5,5|6,0,1,21,38,22,3,0,2026-06-11
+Tunisia,3,2026-06-14,2026-06-25,Tunis,Tunisia,Estadio Monterrey > Estadio Monterrey > Kansas City Stadium,Mexico > Mexico > USA,-6|-6|-5,9959,7,1582,5.5,6|5,1,1,448,540,49,3,0,2026-06-11
+Türkiye,3,2026-06-13,2026-06-25,Istanbul,Turkey,BC Place Vancouver > San Francisco Bay Area Stadium > Los Angeles Stadium,Canada > USA > USA,-7|-7|-7,9611,10,1828,6,6|6,0,1,21,38,17,3,0,2026-06-11
+Uruguay,3,2026-06-15,2026-06-26,Montevideo,Uruguay,Miami Stadium > Miami Stadium > Estadio Guadalajara,USA > USA > Mexico,-4|-4|-6,7226,1,2439,5.5,6|5,2,1,523,1566,59,2,1,2026-06-11
+USA,3,2026-06-12,2026-06-25,New York,USA,Los Angeles Stadium > Seattle Stadium > Los Angeles Stadium,USA > USA > USA,-7|-7|-7,3948,3,3106,6.5,7|6,0,0,28,38,19,3,0,2026-06-11
+Uzbekistan,3,2026-06-17,2026-06-27,Tashkent,Uzbekistan,Mexico City Stadium > Houston Stadium > Atlanta Stadium,Mexico > USA > USA,-6|-5|-4,13171,11,2349,5,6|4,2,1,858,2240,49,2,1,2026-06-11

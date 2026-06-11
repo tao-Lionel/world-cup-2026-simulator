@@ -5,6 +5,8 @@
   "type": "module",
   "description": "2026 世界杯夺冠概率 Monte Carlo 模拟器",
   "scripts": {
+    "dev": "node scripts/dev-server.mjs",
+    "refresh:data": "node scripts/refresh-all-data.mjs",
     "build:squads": "node scripts/build-squad-browser-data.mjs",
     "check:syntax": "node scripts/check-syntax.mjs",
     "check:data": "node scripts/check-data-integrity.mjs",

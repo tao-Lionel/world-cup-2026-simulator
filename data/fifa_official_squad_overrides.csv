@@ -1,0 +1,4 @@
+team,slot,player,position,age,club,league,market_value_m,caps,goals,injury_status,expected_role,list_status,source_url,snapshot_date,override_note
+Austria,19,Christoph Baumgartner,MF,26,RB Leipzig,Bundesliga,,,,unknown,starter,official_final,https://fdp.fifa.org/assetspublic/ce281/pdf/SquadLists-English.pdf,2026-06-06,FIFA official squad PDF contains 26 Austria players; local Wikipedia snapshot had 25.
+Canada,26,Marcelo Flores,MF,22,Tigres UANL,Liga MX,,,,unknown,rotation,official_final,https://fdp.fifa.org/assetspublic/ce281/pdf/SquadLists-English.pdf,2026-06-06,FIFA official squad PDF contains 26 Canada players; local Wikipedia snapshot had 25.
+Jordan,18,Ibrahim Sabra,FW,20,NK Lokomotiva Zagreb,CRO,,,,unknown,rotation,official_final,https://fdp.fifa.org/assetspublic/ce281/pdf/SquadLists-English.pdf,2026-06-06,FIFA official squad PDF version 1 contains 26 Jordan players; Wikipedia snapshot had 25.

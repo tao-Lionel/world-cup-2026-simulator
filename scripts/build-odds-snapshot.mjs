@@ -45,6 +45,11 @@ function decimalToAmerican(decimal) {
   return Math.round(-100 / (decimal - 1));
 }
 
+function americanToImplied(value) {
+  const odds = Number(value);
+  return odds >= 0 ? 100 / (odds + 100) : -odds / (-odds + 100);
+}
+
 const rows = parseCsv(await readFile(new URL("../data/odds_market_raw.csv", import.meta.url), "utf8"));
 const headers = [
   "team",
@@ -64,6 +69,24 @@ const headers = [
 ];
 
 const output = rows.map((row) => {
+  if (row.american_odds) {
+    return {
+      team: row.team,
+      snapshot_date: row.snapshot_date,
+      source: row.source,
+      source_url: row.source_url,
+      consensus_american_odds: Number(row.american_odds),
+      consensus_implied_pct: (americanToImplied(row.american_odds) * 100).toFixed(2),
+      book_count: 1,
+      best_fractional: "",
+      shortest_fractional: "",
+      bet365_fractional: "",
+      betway_fractional: "",
+      bwin_fractional: "",
+      betsson_fractional: "",
+      source_note: "Single-book BetMGM outright price published by Yahoo Sports.",
+    };
+  }
   const bookOdds = [
     row.bet365_fractional,
     row.betway_fractional,
@@ -78,7 +101,7 @@ const output = rows.map((row) => {
   return {
     team: row.team,
     snapshot_date: row.snapshot_date,
-    source: "TheGameDay four-book outright table",
+    source: row.source || "TheGameDay four-book outright table",
     source_url: row.source_url,
     consensus_american_odds: decimalToAmerican(consensusDecimal),
     consensus_implied_pct: (averageImplied * 100).toFixed(2),

@@ -27,5 +27,6 @@ for (const file of files) {
 await check("../app.js");
 await check("../data/third_place_assignment_map.js");
 await check("../data/squads_2026.js");
+await check("../data/sporttery_football_odds_snapshot.js");
 
-console.log(`Checked syntax for ${files.length} scripts, app.js, third-place map and squad browser data.`);
+console.log(`Checked syntax for ${files.length} scripts, app.js, third-place map, squad browser data and Sporttery World Cup odds data.`);

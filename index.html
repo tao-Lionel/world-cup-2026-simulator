@@ -14,9 +14,11 @@
         <p>48 队、12 组、Monte Carlo 概率分布，不做单一断言。</p>
       </div>
       <div class="top-actions">
+        <button id="refreshDataBtn" class="ghost-btn refresh-data-btn" type="button">刷新数据</button>
         <button id="saveBtn" class="ghost-btn" type="button">保存方案</button>
         <button id="loadBtn" class="ghost-btn" type="button">加载方案</button>
         <button id="resetBtn" class="ghost-btn" type="button">重置</button>
+        <button id="shootingModeBtn" class="ghost-btn" type="button">拍摄模式</button>
         <button id="runBtn" class="primary-btn" type="button">运行模拟</button>
       </div>
       <div id="runProgressTrack" class="run-progress" role="progressbar" aria-label="模拟进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
@@ -70,7 +72,7 @@
 
         <section class="assumption-box">
           <h2>模型边界</h2>
-          <p>强度由 FIFA、Elo、赔率、近况、阵容、健康、氛围与赛程代理因子合成。界面会区分字段覆盖和数据可信度；未公布 26 人名单的队伍先用暂定名单代理，32 强第三名对位使用固定组合映射表。</p>
+          <p>强度由 FIFA、Elo、赔率、近况、最终名单阵容、健康、氛围与赛程代理因子合成。界面会区分字段覆盖和数据可信度；48 队 FIFA 最终名单已接入，32 强第三名对位使用固定组合映射表。</p>
         </section>
 
         <section class="data-box">
@@ -83,6 +85,83 @@
           <div id="ratingEditor" class="rating-editor"></div>
         </details>
       </aside>
+
+      <section id="shootingPanel" class="panel shooting-panel" hidden>
+        <div class="panel-title">
+          <span>小红书拍摄模式</span>
+          <div class="shooting-actions">
+            <button id="shootCopyBtn" class="ghost-btn small" type="button">复制文案</button>
+            <button id="shootSaveBtn" class="ghost-btn small" type="button">保存图片</button>
+            <button id="shootNextBtn" class="primary-btn small" type="button">换一张</button>
+          </div>
+        </div>
+        <div class="shooting-workbench">
+          <div class="shooting-controls">
+            <label class="field">
+              <span>素材页</span>
+              <select id="shootScene"></select>
+            </label>
+            <label class="field">
+              <span>主角球队</span>
+              <select id="shootTeam"></select>
+            </label>
+            <textarea id="shootCaption" readonly aria-label="小红书笔记文案"></textarea>
+          </div>
+          <article id="shootCanvas" class="shoot-canvas" aria-live="polite"></article>
+        </div>
+      </section>
+
+      <section class="panel match-predictor-panel">
+        <div class="panel-title">
+          <span>单场比分预测</span>
+          <span class="muted">90 分钟概率分布</span>
+        </div>
+        <div class="match-predictor-shell">
+          <div class="match-predictor-controls">
+            <label class="field">
+              <span>球队 A</span>
+              <select id="matchTeamA"></select>
+            </label>
+            <div id="matchTeamAInfo" class="match-team-info"></div>
+            <label class="field">
+              <span>球队 B</span>
+              <select id="matchTeamB"></select>
+            </label>
+            <div id="matchTeamBInfo" class="match-team-info"></div>
+            <button id="matchPredictBtn" class="primary-btn" type="button">预测比分</button>
+            <p>使用当前综合分、随机性和主办国优势，模拟次数与左侧设置一致。</p>
+            <div class="lottery-odds-box">
+              <strong>体彩胜平负赔率</strong>
+              <div class="lottery-odds-grid">
+                <label>
+                  <span>A胜</span>
+                  <input id="lotteryHomeOdds" data-lottery-odds type="number" min="1.01" step="0.01" inputmode="decimal" placeholder="2.10" />
+                </label>
+                <label>
+                  <span>平</span>
+                  <input id="lotteryDrawOdds" data-lottery-odds type="number" min="1.01" step="0.01" inputmode="decimal" placeholder="3.20" />
+                </label>
+                <label>
+                  <span>B胜</span>
+                  <input id="lotteryAwayOdds" data-lottery-odds type="number" min="1.01" step="0.01" inputmode="decimal" placeholder="3.40" />
+                </label>
+              </div>
+            </div>
+          </div>
+          <article id="matchPrediction" class="match-prediction" aria-live="polite"></article>
+        </div>
+      </section>
+
+      <section class="panel sporttery-panel">
+        <div class="panel-title">
+          <span>中国竞彩网世界杯赔率</span>
+          <span id="sportteryMeta" class="muted">读取中</span>
+        </div>
+        <div id="sportteryOdds" class="sporttery-odds" aria-live="polite">
+          <div class="skeleton-row"><div class="skeleton-line w80"></div><div class="skeleton-line w60"></div><div class="skeleton-line w40"></div></div>
+          <div class="skeleton-row"><div class="skeleton-line w80"></div><div class="skeleton-line w60"></div><div class="skeleton-line w40"></div></div>
+        </div>
+      </section>
 
       <section class="panel ranking-panel">
         <div class="panel-title">
@@ -163,6 +242,7 @@
 
     <script src="data/third_place_assignment_map.js"></script>
     <script src="data/squads_2026.js"></script>
+    <script src="data/sporttery_football_odds_snapshot.js"></script>
     <script src="app.js"></script>
     <div id="toast" class="toast" role="status" aria-live="polite"></div>
   </body>

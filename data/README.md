@@ -8,9 +8,10 @@
 - `source_manifest.csv`：每个因子的来源等级、可信权重和来源说明。
 - `model_weights.csv`：综合强度模型的权重。
 - `fifa_ranking_snapshot.csv`：48 队 FIFA/Coca-Cola 男足世界排名官方快照，日期为 2026-04-01。
-- `odds_market_raw.csv`：TheGameDay 2026-05-15 公开表中的 bet365、Betway、Bwin、Betsson 冠军赔率原始分数赔率。
-- `odds_snapshot.csv`：由四家机构平均隐含概率生成的 consensus 美式赔率。
-- `elo_snapshot.csv`：48 队 2026-03-31 Elo Score 快照，来自 International-football.net 国家页。
+- `odds_market_raw.csv`：Yahoo Sports 发布的 BetMGM 2026-06-01 全 48 队冠军赔率原始表。
+- `odds_snapshot.csv`：BetMGM 单机构美式赔率及其隐含概率快照。
+- `sporttery_football_odds_snapshot.json` / `sporttery_football_odds_snapshot.js`：中国竞彩网世界杯足球固定奖金快照，包含胜平负、让球胜平负、总进球、比分和半全场等当前接口返回玩法。
+- `elo_snapshot.csv`：48 队 2026-06-07 Elo Score 快照，来自 International-football.net 国家页。
 - `recent_matches_2024_2026.csv`：48 队最近 10 场国家队比赛明细。
 - `form_snapshot.csv`：由近赛结果、净胜球和时间衰减计算出的 form。
 - `champion_paths_summary.csv`：从 `deep-research-report.md` 整理出的 1930-2022 历届冠军路径摘要。
@@ -23,11 +24,16 @@
 - `venues.csv`：16 个承办场馆坐标、6 月时区、海拔和场馆环境负担估计。
 - `team_travel_origins.csv`：48 队代表性出发地、坐标和 6 月 UTC offset，用于估计入境旅行距离与时区差。
 - `schedule_travel.csv`：按小组赛场馆序列计算出的每队入境距离、入境时区差、组赛移动距离、休息、时区跨度、跨境、海拔和环境负担。
+- `match_weather_snapshot.csv`：小组赛逐场天气快照；Open-Meteo 可预报日期使用真实预报，超出预报窗的比赛保留场馆环境 baseline。
+- `schedule_weather.csv`：按球队聚合的小组赛平均天气/环境负担，用于回写 `schedule_travel.csv` 的 `avg_environment_load`。
 - `team_path_context.csv`：每队小组赛末战日期、场馆和时区，用作淘汰赛动态路径疲劳的初始状态。
-- `squad_profile_snapshot.csv`：48 队最终名单阵容画像，承接身价、年龄、伤病风险、俱乐部分布和名单状态；球员身价当前仍是代理分配值。
+- `squad_profile_snapshot.csv`：48 队最终名单阵容画像，承接身价、年龄、伤病风险、俱乐部分布和名单状态。
 - `squad_announcement_status.csv`：48 队名单公告状态，当前均标记为 2026-06-02 FIFA 最终名单确认。
-- `squads_2026.csv`：从公开 squad tracker 导入的球员级最终名单行，当前覆盖 48 队、1246 名球员；`market_value_m` 当前为球队总身价分配代理值。
+- `squads_2026.csv`：从 FIFA 官方名单 PDF 和公开 squad tracker 导入的球员级名单行，当前覆盖 48 队、1247 名在册球员；Argentina 因伤退替补待公布而暂为 25 人。
 - `squads_2026.js`：浏览器运行用的球员级名单快照，由 `squads_2026.csv` 生成。
+- `fifa_official_squad_overrides.csv`：FIFA 官方 PDF 与本地 tracker 的缺口覆盖，目前用于补齐 Austria、Canada 和 Jordan 各 1 名球员。
+- `transfermarkt_team_market_values.csv`：Transfermarkt 2026 世界杯参赛队总身价、平均年龄、外援比例和球队页入口。
+- `transfermarkt_player_market_values.csv`：Transfermarkt 国家队明细页解析出的球员级身价快照。
 - `squad_value_allocation.csv`：球员级身价代理分配审计表，记录每队目标总值和分配后总值。
 - `squad_collection_status.csv`：每队球员名单解析状态，记录 wikitext 球员数、导入数和跳过原因。
 - `squad_import_candidates.csv`：tracker 已解析但仍需核验来源的候选名单，避免把初选名单误导入。
@@ -40,6 +46,18 @@
 - `team_context_snapshot.csv`：48 队结构化球队氛围/上下文快照，拆分为领导连续性、教练稳定、近期势头和压力风险。
 
 ## 更新方式
+
+启动带“一键刷新数据”按钮的本地页面：
+
+```bash
+npm run dev
+```
+
+也可以直接在命令行刷新全部高频数据；刷新失败会自动恢复旧数据：
+
+```bash
+npm run refresh:data
+```
 
 完整本地校验：
 
@@ -89,12 +107,19 @@ node scripts/apply-elo-snapshot.mjs
 node scripts/export-data-snapshots.mjs
 ```
 
-夺冠赔率由下面三个命令从原始市场表生成 consensus 快照并写回前端数据：
+夺冠赔率由下面四个命令抓取、生成快照并写回前端数据：
 
 ```bash
+node scripts/fetch-odds-snapshot.mjs
 node scripts/build-odds-snapshot.mjs
 node scripts/apply-odds-snapshot.mjs
 node scripts/export-data-snapshots.mjs
+```
+
+中国竞彩网世界杯足球固定奖金快照由下面命令刷新；默认只保留联赛名包含 `世界杯` 的场次，可用 `SPORTTERY_START_DATE` / `SPORTTERY_END_DATE` 指定日期范围：
+
+```bash
+node scripts/fetch-sporttery-football-odds.mjs
 ```
 
 近两年战绩因子由下面三个命令刷新并写回前端数据：
@@ -146,6 +171,34 @@ node scripts/apply-team-context-snapshot.mjs
 node scripts/export-data-snapshots.mjs
 ```
 
+FIFA 官方名单 PDF 缺口覆盖可单独应用：
+
+```bash
+node scripts/apply-fifa-official-squad-overrides.mjs
+node scripts/build-squad-browser-data.mjs
+node scripts/aggregate-squads.mjs
+node scripts/apply-squad-profiles.mjs
+node scripts/export-data-snapshots.mjs
+```
+
+Transfermarkt 球队/球员身价快照由下面命令刷新；球员页能匹配的行写为真实球员身价，未匹配行写为队级总值分配代理：
+
+```bash
+node scripts/fetch-transfermarkt-market-values.mjs
+node scripts/build-squad-browser-data.mjs
+node scripts/aggregate-squads.mjs
+node scripts/apply-squad-profiles.mjs
+node scripts/export-data-snapshots.mjs
+```
+
+Open-Meteo 天气快照由下面命令刷新；超出预报窗的比赛会保留场馆 baseline：
+
+```bash
+node scripts/fetch-weather-snapshot.mjs
+node scripts/apply-schedule-factors.mjs
+node scripts/export-data-snapshots.mjs
+```
+
 球员级名单数据就绪后，复制模板为 `data/squads_2026.csv`，填入球员年龄、俱乐部、联赛、身价、伤病状态和名单来源，再聚合并回写：
 
 ```bash
@@ -183,8 +236,8 @@ node scripts/export-data-snapshots.mjs
 
 后续要提升真实性时，建议按这个顺序补源：
 
-1. 用真实 market value 替换 `team_value_allocated_proxy`，生成更真实的 `squadValue` 和核心球员权重。
+1. 继续提升 Transfermarkt 球员页匹配率，减少 `transfermarkt_team_value_allocated_proxy` 行。
 2. 持续扩充 `player_availability_watchlist.csv`，用赛前伤病/停赛列表重算 `injuryRisk`。
 3. 用教练任期、队长/核心连续性、公开纪律事件和新闻/社媒情绪替换 `team_context_snapshot.csv` 的手工上下文项。
-4. 在 `travelKm`、`restDays`、`timezoneShift`、`entryTravelKm`、`entryTimezoneShift`、`borderCrossings`、`altitudeLoad`、`climateLoad` 基础上继续加入真实训练基地和淘汰赛路径模拟。
+4. 在 `travelKm`、`restDays`、`timezoneShift`、`entryTravelKm`、`entryTimezoneShift`、`borderCrossings`、`altitudeLoad`、`climateLoad` 基础上继续加入真实训练基地、开球时间和淘汰赛路径模拟。
 5. 把 `champion_paths_summary.csv` 继续展开成逐场路径表，用对手强度、加时/点球、东道主和淘汰赛轮次重算更细的 `wcPath`。

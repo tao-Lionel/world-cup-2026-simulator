@@ -27,6 +27,8 @@ function parseCsv(text) {
 }
 
 const rows = parseCsv(await readFile(new URL("../data/odds_snapshot.csv", import.meta.url), "utf8"));
+const snapshotDate = rows[0]?.snapshot_date;
+const source = rows[0]?.source || "market snapshot";
 let app = await readFile(new URL("../app.js", import.meta.url), "utf8");
 
 for (const row of rows) {
@@ -37,12 +39,12 @@ for (const row of rows) {
 }
 
 app = app.replace(
-  "{ label: \"赔率\", value: \"夺冠赔率代理\" }",
-  "{ label: \"赔率\", value: \"2026-05-15 四机构快照\" }",
+  /\{ label: "赔率", value: "[^"]+" \}/,
+  `{ label: "赔率", value: "${snapshotDate} 市场快照" }`,
 );
 app = app.replace(
-  "{ key: \"odds\", label: \"夺冠赔率\", tier: \"market\", source: \"Oddschecker/bet365/Covers\" }",
-  "{ key: \"odds\", label: \"夺冠赔率\", tier: \"market\", source: \"TheGameDay four-book consensus 2026-05-15\" }",
+  /\{ key: "odds", label: "夺冠赔率", tier: "market", source: "[^"]+" \}/,
+  `{ key: "odds", label: "夺冠赔率", tier: "market", source: "${source} ${snapshotDate}" }`,
 );
 
 await writeFile(new URL("../app.js", import.meta.url), app);

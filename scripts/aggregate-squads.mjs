@@ -2,6 +2,7 @@ import { readFile, writeFile } from "node:fs/promises";
 import vm from "node:vm";
 
 const appSource = await readFile(new URL("../app.js", import.meta.url), "utf8");
+const SNAPSHOT_DATE = new Date().toISOString().slice(0, 10);
 const inputPath = process.argv[2] || "../data/squads_2026.csv";
 const outputPath = process.argv[3] || "../data/squad_profile_snapshot.csv";
 
@@ -212,7 +213,7 @@ const outputRows = baseTeams.map((team) => {
   if (!players.length) {
     return {
       team: team.en,
-      snapshot_date: "2026-06-02",
+      snapshot_date: SNAPSHOT_DATE,
       squad_status: announcement.announced_26_available === "true" ? labelStatus(announcement) || "已公布26人名单" : labelStatus(announcement) || factors.squadStatus,
       final_26_available: announcement.fifa_final_26_available || "false",
       announced_26_available: announcement.announced_26_available || "false",
@@ -245,7 +246,7 @@ const outputRows = baseTeams.map((team) => {
 
   return {
     team: team.en,
-    snapshot_date: players.find((row) => row.snapshot_date)?.snapshot_date || "2026-06-02",
+    snapshot_date: players.find((row) => row.snapshot_date)?.snapshot_date || SNAPSHOT_DATE,
     squad_status: `${players.length}人${statusText}`,
     final_26_available: final26Available && allOfficial ? "true" : "false",
     announced_26_available: final26Available && allAssociationFinal ? "true" : announcement.announced_26_available || "false",
