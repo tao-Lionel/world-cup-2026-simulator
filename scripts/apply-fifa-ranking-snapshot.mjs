@@ -36,17 +36,21 @@ for (const row of rows) {
   app = app.replace(teamPattern, `$1fifaRank: ${row.fifa_rank}, fifaPoints: ${row.fifa_points}`);
 }
 
+const snapshotDates = [...new Set(rows.map((row) => row.snapshot_date))];
+if (snapshotDates.length !== 1) throw new Error(`Inconsistent snapshot dates: ${snapshotDates.join(", ")}`);
+const snapshotDate = snapshotDates[0];
+
 app = app.replace(
-  "{ label: \"FIFA 排名\", value: \"2026-05 快照\" }",
-  "{ label: \"FIFA 排名\", value: \"2026-04-01 官方快照\" }",
+  /\{ label: "FIFA 排名", value: "[^"]+" \}/,
+  `{ label: "FIFA 排名", value: "${snapshotDate} 官方快照" }`,
 );
 app = app.replace(
-  "{ key: \"fifaRank\", label: \"FIFA 排名\", tier: \"verified\", source: \"FIFA 2026-04-01\" }",
-  "{ key: \"fifaRank\", label: \"FIFA 排名\", tier: \"verified\", source: \"FIFA/Coca-Cola ranking 2026-04-01\" }",
+  /\{ key: "fifaRank", label: "FIFA 排名", tier: "verified", source: "[^"]+" \}/,
+  `{ key: "fifaRank", label: "FIFA 排名", tier: "verified", source: "FIFA/Coca-Cola ranking ${snapshotDate}" }`,
 );
 app = app.replace(
-  "{ key: \"fifaPoints\", label: \"FIFA 积分\", tier: \"verified\", source: \"FIFA 2026-04-01\" }",
-  "{ key: \"fifaPoints\", label: \"FIFA 积分\", tier: \"verified\", source: \"FIFA/Coca-Cola ranking 2026-04-01\" }",
+  /\{ key: "fifaPoints", label: "FIFA 积分", tier: "verified", source: "[^"]+" \}/,
+  `{ key: "fifaPoints", label: "FIFA 积分", tier: "verified", source: "FIFA/Coca-Cola ranking ${snapshotDate}" }`,
 );
 
 await writeFile(new URL("../app.js", import.meta.url), app);
