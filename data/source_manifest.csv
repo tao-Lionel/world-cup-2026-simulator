@@ -6,11 +6,13 @@ fifaPoints,FIFA 积分,verified,权威快照,1,FIFA/Coca-Cola ranking 2026-04-01
 odds,夺冠赔率,market,市场快照,0.82,Yahoo Sports / BetMGM outright odds 2026-06-01
 elo,Elo 强度,snapshot,可替换快照,0.62,International-football.net / eloratings.net 2026-06-12
 form,近两年战绩,snapshot,可替换快照,0.62,International-football.net last games through 2026-06-12
+qualifyingScore,世预赛表现,snapshot,可替换快照,0.62,martj42 international results 2023-2026 World Cup qualifiers
 wcPath,历史路径难度,research,研究快照,0.72,Football365 records + champion path summary
 squadValue,阵容身价,snapshot,可替换快照,0.62,Transfermarkt team/player market values 2026-06-12
 avgAge,平均年龄,snapshot,可替换快照,0.62,FIFA final squad player ages 2026-06-12
 injuryRisk,伤病风险,snapshot,可替换快照,0.62,player availability watchlist 2026-06-12 + health proxy
 clubScore,俱乐部分布,proxy,代理估计,0.36,顶级联赛集中度代理
+clubSeasonScore,本季俱乐部表现,snapshot,可替换快照,0.62,Transfermarkt player performance-game aggregation 2026-06-12
 atmosphere,球队氛围,manual,人工量化,0.26,structured context snapshot 2026-06-12
 travelKm,小组赛场馆移动,snapshot,可替换快照,0.62,FIFA schedule + venue coordinates
 restDays,小组赛休息天数,snapshot,可替换快照,0.62,FIFA schedule dates

@@ -29,5 +29,6 @@ await check("../data/third_place_assignment_map.js");
 await check("../data/squads_2026.js");
 await check("../data/recent_goal_profiles.js");
 await check("../data/sporttery_football_odds_snapshot.js");
+await check("../data/head_to_head_summary.js");
 
-console.log(`Checked syntax for ${files.length} scripts, app.js, third-place map, squad browser data, recent goal profiles and Sporttery World Cup odds data.`);
+console.log(`Checked syntax for ${files.length} scripts, app.js, third-place map, squad browser data, recent goal profiles, Sporttery World Cup odds data and head-to-head summary.`);

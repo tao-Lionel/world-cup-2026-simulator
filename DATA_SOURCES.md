@@ -9,9 +9,12 @@
 | FIFA 排名/积分 | 已拆出 48 队 2026-04-01 官方排名快照并可回写模型 | FIFA/Coca-Cola Men's World Ranking：<https://inside.fifa.com/fifa-world-ranking/men?dateId=id13678> |
 | 2026 分组 | 写入 12 个小组 | FIFA 2026 Final Draw：<https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/articles/final-draw-results> |
 | 夺冠赔率 | 已写回 Yahoo Sports 发布的 BetMGM 2026-06-01 全 48 队美式赔率 | Yahoo Sports：<https://sports.yahoo.com/soccer/betting/article/2026-world-cup-odds-for-all-48-teams-to-win-the-title-200221552.html> |
-| Elo/强度 | 已抓取 48 队 2026-06-07 Elo Score 快照并写入模型 | International-football.net，页面注明来源为 eloratings.net：<https://www.international-football.net/elo-ratings-table> |
+| Elo/强度 | 已抓取 48 队 2026-06-12 Elo Score 快照并写入模型 | International-football.net，页面注明来源为 eloratings.net：<https://www.international-football.net/elo-ratings-table> |
 | 近两年战绩 | 已抓取每队最近 10 场国家队比赛，按胜平负、净胜球和时间衰减生成 form | International-football.net 国家队页面 last international games |
-| Transfermarkt 身价 | 已抓取 48 队参赛队总身价，并从国家队明细页匹配 1121/1247 个当前在册球员身价；未匹配行按队级总值分配代理 | Transfermarkt 2026 World Cup participants：<https://www.transfermarkt.us/world-cup/teilnehmer/pokalwettbewerb/FIWC> |
+| 世预赛表现 | 已从 2023-09-07 至 2026-03-31 的 FIFA World Cup qualification 赛果生成 48 队资格赛表现；主办国按 host-exempt baseline 处理 | martj42 international_results：<https://github.com/martj42/international_results> |
+| 历史对阵 | 已生成 48 队 1128 个两两组合的总交锋、正式赛交锋、2010 年后交锋和最近一次交锋，用于单场预测解释 | martj42 international_results：<https://github.com/martj42/international_results> |
+| Transfermarkt 身价 | 已抓取 48 队参赛队总身价，并从国家队明细页匹配 1116/1248 个当前在册球员身价；未匹配行按队级总值分配代理 | Transfermarkt 2026 World Cup participants：<https://www.transfermarkt.us/world-cup/teilnehmer/pokalwettbewerb/FIWC> |
+| 球员本季俱乐部表现 | 已从 Transfermarkt performance-game API 生成 1199/1248 名球员的 2025/26 俱乐部逐场聚合表现，并据此重算主力角色评分；其余 49 行保留显式代理 | Transfermarkt player performance-game API：<https://tmapi.transfermarkt.technology/> |
 | 比赛日天气 | 已抓取 Open-Meteo 当前可用预报窗；超出预报窗的小组赛保留场馆 baseline 并在逐场快照标记 | Open-Meteo forecast API：<https://open-meteo.com/> |
 | 历届世界杯路径难度 | 已由 48 队历史出场、总战绩、最佳成绩、2022 成绩、近期参赛和冠军/决赛经验重算 | Football365 48 队世界杯记录 + `deep-research-report.md` 冠军路径整理 |
 | 淘汰赛路径 | 已接入 73-104 号固定淘汰赛赛程树，并生成 495 种第三名出线组合固定映射表，替代运行时临时分配 | FIFA World Cup 2026 knockout bracket：<https://www.fifa.com/en/articles/knockout-stage-match-schedule-bracket>、`data/third_place_assignment_map.csv` |
@@ -25,7 +28,7 @@
 | 权威快照 | 1.00 | 2026 分组、主办国身份、FIFA 排名、FIFA 积分 | 已有明确官方入口，可直接核验 |
 | 市场快照 | 0.82 | 夺冠赔率 | 可从多个赔率站交叉核验，但会高频波动 |
 | 研究快照 | 0.72 | 历史世界杯路径难度 | 已拆成 48 队历史记录与路径特征表，后续可继续细化逐场路径 |
-| 可替换快照 | 0.62 | Elo 强度、近两年战绩、阵容身价、赛程旅行与休息、比赛日天气/场馆环境、名单公告状态、名单状态 | 已替换为固定日期/固定赛程快照，可继续刷新 |
+| 可替换快照 | 0.62 | Elo 强度、近两年战绩、世预赛表现、历史对阵、阵容身价、球员本季俱乐部表现、赛程旅行与休息、比赛日天气/场馆环境、名单公告状态、名单状态 | 已替换为固定日期/固定赛程快照，可继续刷新 |
 | 代理估计 | 0.36 | 俱乐部分布 | 已进入模型，但仍是联赛强度代理分 |
 | 人工量化 | 0.26 | 球队氛围 | 已拆成结构化上下文快照，但仍保持低权重 |
 
@@ -34,8 +37,10 @@
 | 因子 | 当前处理 | 后续替换方式 |
 |---|---|---|
 | 最终名单公告 | 已接入 `squad_announcement_status.csv`；截至 2026-06-02，本地 48 队均标记为 FIFA 最终名单确认 | FIFA 公告页、Wikipedia squad tracker |
-| 球员级最终名单 | 已生成 `squads_2026.csv`，当前覆盖 48 队、1247 名球员；Argentina 因 Balerdi 伤退、替补待公布而暂为 25 人 | FIFA 官方 SquadLists PDF + Wikipedia squad tracker wikitext |
-| 阵容身价 | 已进入 `squad_profile_snapshot.csv`，单位为百万欧元；1121/1247 名当前在册球员匹配到球员页真实身价，未匹配行按队级总值分配 | Transfermarkt 参赛队页 + 国家队明细页 |
+| 球员级最终名单 | 已生成 `squads_2026.csv`，当前覆盖 48 队、1248 名球员；48 队均为 26 人 | FIFA 官方 SquadLists PDF + Wikipedia squad tracker wikitext |
+| 阵容身价 | 已进入 `squad_profile_snapshot.csv`，单位为百万欧元；1116/1248 名当前在册球员匹配到球员页真实身价，未匹配行按队级总值分配 | Transfermarkt 参赛队页 + 国家队明细页 |
+| 球员本季俱乐部表现 | 已进入 `player_club_season_snapshot.csv`；1199/1248 名球员有 2025/26 俱乐部出场、首发、分钟、进球和助攻逐场聚合数据 | Transfermarkt performance-game API + 搜索补齐球员页 |
+| 主力角色 | 已进入 `player_club_season_snapshot.csv`；优先由本季分钟、首发、出场、进助攻计算，未匹配球员用名单角色、身价、国家队资历和可用性代理 | Transfermarkt performance-game API + `squads_2026.csv` |
 | 平均年龄 | 已进入 `squad_profile_snapshot.csv`；48 队均由球员出生日期计算 | 最终名单逐球员计算 |
 | 伤病风险 | 已进入 `squad_profile_snapshot.csv`，0-100 分，越低越好；球员行默认 unknown，但 watchlist 中已核验的可用性会覆盖球员状态或作为队级缺席惩罚 | 赛前伤病列表、出场状态、新闻源 |
 | 俱乐部分布 | 已进入 `squad_profile_snapshot.csv`；48 队均由球员俱乐部国家/联赛代理聚合 | 球员俱乐部字段聚合 |
@@ -54,18 +59,19 @@
 
 `app.js` 中的 `modelRating` 不是单一数据源，而是以下权重的合成分：
 
-- FIFA 排名/积分：23%
+- FIFA 排名/积分：22%
 - Elo 快照：22%
-- 夺冠赔率：14%
-- 近况：11%
+- 夺冠赔率：13%
+- 近况：9%
+- 世预赛表现：5%
 - 阵容价值与年龄：11%
-- 世界杯路径经验：7%
+- 世界杯路径经验：6%
 - 健康/伤病风险：5%
 - 俱乐部分布：4%
 - 球队氛围：2%
 - 赛程旅行与休息：1%
 
-这些权重是第一版工程默认值，目的是让模拟器可以跑完整链路。要提高真实性，下一步应把暂定代理指标拆成独立数据文件，并用脚本从最新公开源刷新。
+这些权重是第一版工程默认值，目的是让模拟器可以跑完整链路。历史对阵暂时只进入单场预测解释，不直接改变综合强度或胜平负概率。要提高真实性，下一步应把暂定代理指标拆成独立数据文件，并用脚本从最新公开源刷新。
 
 ## 数据校验
 
@@ -73,7 +79,7 @@
 
 ## 下一步数据替换顺序
 
-1. 继续提升 Transfermarkt 球员页匹配率，减少 `transfermarkt_team_value_allocated_proxy` 行，并补伤病状态和预计角色。
+1. 继续补齐剩余 49 名未匹配球员的 Transfermarkt 球员页，并交叉核验本季俱乐部表现与队级 `clubSeasonScore`。
 2. 持续重跑 `fetch-wikipedia-squads.mjs`、FIFA 覆盖和可用性脚本，捕捉赛前伤病替换和名单变更。
 3. 把 `champion_paths_summary.csv` 继续展开成逐场路径表，加入对手强度、加时/点球和淘汰赛压力，进一步重算 `wcPath`。
 4. 在 `schedule_travel.csv` 基础上加入真实训练基地、抵达时间、开球时间和淘汰赛路径模拟。
@@ -92,9 +98,14 @@
 | `data/odds_snapshot.csv` | BetMGM 单机构赔率换算出的隐含概率快照 |
 | `data/transfermarkt_team_market_values.csv` | Transfermarkt 2026 世界杯参赛队总身价、平均年龄、外援比例和球队页入口 |
 | `data/transfermarkt_player_market_values.csv` | Transfermarkt 国家队明细页解析出的球员级身价快照 |
-| `data/elo_snapshot.csv` | 48 队 2026-06-07 Elo Score、原模型值和差值 |
+| `data/player_club_season_snapshot.csv` | 1248 名球员的 2025/26 俱乐部赛季表现、主力角色评分和来源标记 |
+| `data/squad_club_season_profile.csv` | 48 队球员本季俱乐部表现聚合快照，生成模型字段 `clubSeasonScore` |
+| `data/elo_snapshot.csv` | 48 队 2026-06-12 Elo Score、原模型值和差值 |
 | `data/recent_matches_2024_2026.csv` | 48 队最近 10 场国家队比赛明细，共 480 场队伍视角记录 |
 | `data/form_snapshot.csv` | 每队按近赛结果计算出的 form、原模型值和差值 |
+| `data/qualifying_performance.csv` | 48 队世预赛表现快照，含比赛数、胜平负、进失球、客场表现和 `qualifyingScore` |
+| `data/head_to_head_summary.csv` | 48 队 1128 个两两组合的历史对阵摘要 |
+| `data/head_to_head_summary.js` | 浏览器运行用的历史对阵摘要，由 `head_to_head_summary.csv` 同源生成 |
 | `data/champion_paths_summary.csv` | 1930-2022 历届冠军路径摘要，用于后续重算路径难度 |
 | `data/world_cup_history_raw.csv` | 48 队世界杯历史记录，含出场次数、总战绩、最佳成绩和 2022 成绩 |
 | `data/wc_path_features.csv` | 由历史记录生成的 `wcPath` 特征分 |
@@ -110,7 +121,7 @@
 | `data/team_path_context.csv` | 每队小组赛末战日期、场馆和时区，用作淘汰赛动态路径疲劳的初始状态 |
 | `data/squad_profile_snapshot.csv` | 48 队最终名单阵容画像，由球员级名单聚合生成 |
 | `data/squad_announcement_status.csv` | 48 队名单公告状态，当前均标记为 2026-06-02 FIFA 最终名单确认 |
-| `data/squads_2026.csv` | 已导入的球员级最终名单行，当前覆盖 48 队、1247 名球员 |
+| `data/squads_2026.csv` | 已导入的球员级最终名单行，当前覆盖 48 队、1248 名球员 |
 | `data/squads_2026.js` | 浏览器运行用的球员级名单快照，由 `squads_2026.csv` 生成 |
 | `data/fifa_official_squad_overrides.csv` | FIFA 官方 PDF 与本地 tracker 的缺口覆盖，目前用于补齐 Austria、Canada 和 Jordan 各 1 名球员 |
 | `data/squad_value_allocation.csv` | 球队总身价分配到球员层的审计表，确保球员行加总回到球队总值 |
@@ -130,11 +141,15 @@
 
 淘汰赛动态路径疲劳当前在浏览器运行时按模拟路径逐场计算，不单独写回每支球队的静态字段。它使用 `team_path_context.csv`、`venues.csv` 和 `knockout_schedule.csv` 估算 travel/rest/timezone/climate 的单场影响；真实训练基地和开球时间尚未接入。
 
-`squad_profile_snapshot.csv` 是为了让阵容维度有可审计入口。FIFA 2026-06-06 PDF 初始版本为 1,248 名球员；2026-06-07 Balerdi 伤退且 Argentina 尚未公布替补，因此当前在册快照为 1,247 人。
+`squad_profile_snapshot.csv` 是为了让阵容维度有可审计入口。FIFA 2026-06-06 PDF 初始版本为 1,248 名球员；当前本地快照为 48 队、1,248 名球员，48 队均为 26 人。
 
 `squad_import_candidates.csv` 用来防止“可解析”被误读成“可导入”。2026-06-02 刷新后候选审计为 0 行；后续若 tracker 出现新的未确认名单变更，仍通过该文件单独审计。
 
-`squads_2026.csv` 中的 `market_value_m` 若标记 `value_source=transfermarkt_player_market_value`，表示来自 Transfermarkt 国家队球员页；若标记 `value_source=transfermarkt_team_value_allocated_proxy`，表示未匹配到球员页，使用 Transfermarkt 队级总身价剩余值分配。当前匹配 1121/1247 名球员。
+`qualifying_performance.csv` 和 `head_to_head_summary.csv` 使用同一份公开国际赛果快照生成。世预赛表现进入综合强度模型；历史对阵用于单场预测解释，不作为概率硬修正，避免把年代久远或样本很小的交锋记录过度放大。
+
+`squads_2026.csv` 中的 `market_value_m` 若标记 `value_source=transfermarkt_player_market_value`，表示来自 Transfermarkt 国家队球员页；若标记 `value_source=transfermarkt_team_value_allocated_proxy`，表示未匹配到球员页，使用 Transfermarkt 队级总身价剩余值分配。当前匹配 1116/1248 名球员。
+
+`player_club_season_snapshot.csv` 是球员本季俱乐部表现和主力角色的审计入口。当前 1199/1248 名球员来自 Transfermarkt performance-game 逐场接口，字段包括本季俱乐部出场、首发、分钟、进球、助攻、表现分和主力评分。剩余 49 名未匹配球员保留 `no_transfermarkt_player_match`，主力评分只使用名单角色、身价、国家队资历和可用性代理。
 
 `player_availability_watchlist.csv` 是当前伤病/可用性数据的审计入口。若球员已存在于 `squads_2026.csv`，`apply-player-availability.mjs` 会把 `status` 写入该球员的 `injury_status`；若球员因伤落选或球队暂无球员级名单，则聚合脚本会把它作为队级健康风险惩罚写入 `squad_profile_snapshot.csv`。这避免把未核验的新闻自动扩散到全队。
 

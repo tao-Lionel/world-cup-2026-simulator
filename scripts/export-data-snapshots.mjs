@@ -110,10 +110,12 @@ function modelRating(factors) {
     modelWeights.elo * normalize(factors.elo, 1420, 2170) +
     modelWeights.odds * normalize(Math.sqrt(oddsProbability(factors.odds)), 0.03, 0.43) +
     modelWeights.form * normalize(factors.form, 45, 82) +
+    modelWeights.qualifying * normalize(factors.qualifyingScore, 35, 92) +
     modelWeights.squad * normalize(Math.log10(factors.squadValue + 30), 1.45, 3.25) +
     modelWeights.wcPath * normalize(factors.wcPath, 12, 96) +
     modelWeights.health * (1 - normalize(factors.injuryRisk, 15, 28)) +
     modelWeights.club * normalize(factors.clubScore, 30, 94) +
+    modelWeights.clubSeason * normalize(factors.clubSeasonScore, 30, 95) +
     modelWeights.atmosphere * normalize(factors.atmosphere, 48, 86) +
     modelWeights.schedule * scheduleScore(factors);
   return Math.round(1375 + (score * 760));
@@ -133,6 +135,7 @@ const factorHeaders = [
   "fifa_points",
   "elo",
   "form",
+  "qualifying_score",
   "wc_path",
   "odds",
   "squad_status",
@@ -142,6 +145,7 @@ const factorHeaders = [
   "avg_age",
   "injury_risk",
   "club_score",
+  "club_season_score",
   "atmosphere",
   "travel_km",
   "rest_days",
@@ -171,6 +175,7 @@ const teamRows = baseTeams.map((team) => {
     factors.fifaPoints,
     factors.elo,
     factors.form,
+    factors.qualifyingScore,
     factors.wcPath,
     factors.odds,
     factors.squadStatus,
@@ -180,6 +185,7 @@ const teamRows = baseTeams.map((team) => {
     factors.avgAge,
     factors.injuryRisk,
     factors.clubScore,
+    factors.clubSeasonScore,
     factors.atmosphere,
     factors.travelKm,
     factors.restDays,

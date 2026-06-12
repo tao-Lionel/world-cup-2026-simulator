@@ -8,6 +8,7 @@ const realSportteryOddsJson = await readFile(new URL("../data/sporttery_football
 const thirdPlaceMapSource = await readFile(new URL("../data/third_place_assignment_map.js", import.meta.url), "utf8");
 const squadBrowserDataSource = await readFile(new URL("../data/squads_2026.js", import.meta.url), "utf8");
 const goalProfileSource = await readFile(new URL("../data/recent_goal_profiles.js", import.meta.url), "utf8");
+const headToHeadSource = await readFile(new URL("../data/head_to_head_summary.js", import.meta.url), "utf8");
 const runtimeSource = source.slice(0, source.indexOf("document.addEventListener"));
 const featureSources = [
   ["index.html", indexSource],
@@ -44,7 +45,14 @@ const context = {
   document: {
     nodes: {},
     querySelector(selector) {
-      if (!this.nodes[selector]) this.nodes[selector] = { innerHTML: "", textContent: "", value: "" };
+      if (!this.nodes[selector]) {
+        this.nodes[selector] = {
+          innerHTML: "",
+          textContent: "",
+          value: "",
+          classList: { add() {}, remove() {} },
+        };
+      }
       return this.nodes[selector];
     },
   },
@@ -54,6 +62,7 @@ vm.createContext(context);
 vm.runInContext(`${thirdPlaceMapSource}
 ${squadBrowserDataSource}
 ${goalProfileSource}
+${headToHeadSource}
 globalThis.SPORTTERY_FOOTBALL_ODDS_SNAPSHOT = {
   window: { startDate: "2026-06-10", endDate: "2026-06-17" },
   matches: [
@@ -92,6 +101,7 @@ let seededMismatch = 0;
 let missingTeamDetail = 0;
 let invalidMatchPrediction = 0;
 let seededMatchMismatch = 0;
+let missingHeadToHeadRender = 0;
 let invalidBettingAdvice = 0;
 let invalidSportteryRecommendation = 0;
 let missingSportteryRender = 0;
@@ -183,6 +193,8 @@ if (
   matchPredictionA.scores.length < 5
 ) invalidMatchPrediction += 1;
 if (JSON.stringify(matchPredictionA.scores) !== JSON.stringify(matchPredictionB.scores)) seededMatchMismatch += 1;
+renderMatchPrediction(matchPredictionA);
+if (!document.nodes["#matchPrediction"].innerHTML.includes("历史对阵")) missingHeadToHeadRender += 1;
 
 const bettingAdvice = calculateBettingAdvice({
   a: matchA,
@@ -409,6 +421,7 @@ globalThis.validation = {
   missingTeamDetail,
   invalidMatchPrediction,
   seededMatchMismatch,
+  missingHeadToHeadRender,
   invalidBettingAdvice,
   invalidSportteryRecommendation,
   missingSportteryRender,
@@ -436,6 +449,7 @@ if (
   result.missingTeamDetail ||
   result.invalidMatchPrediction ||
   result.seededMatchMismatch ||
+  result.missingHeadToHeadRender ||
   result.invalidBettingAdvice ||
   result.invalidSportteryRecommendation ||
   result.missingSportteryRender ||

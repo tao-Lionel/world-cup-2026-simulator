@@ -62,6 +62,7 @@ const factorSources = [
   { label: "FIFA 排名", value: "2026-04-01 官方快照" },
   { label: "Elo", value: "2026-06-12 快照" },
   { label: "赔率", value: "2026-06-01 市场快照" },
+  { label: "世预赛", value: "2023-2026 国际赛果快照" },
   { label: "阵容", value: "FIFA 最终名单 2026-06-12" },
   { label: "赛程", value: "旅行/休息/时区/天气 2026-06-12" },
   { label: "淘汰赛", value: "FIFA 固定赛程树" },
@@ -85,11 +86,13 @@ const DATA_FIELDS = [
   { key: "odds", label: "夺冠赔率", tier: "market", source: "Yahoo Sports / BetMGM outright odds 2026-06-01" },
   { key: "elo", label: "Elo 强度", tier: "snapshot", source: "International-football.net / eloratings.net 2026-06-12" },
   { key: "form", label: "近两年战绩", tier: "snapshot", source: "International-football.net last games through 2026-06-12" },
+  { key: "qualifyingScore", label: "世预赛表现", tier: "snapshot", source: "martj42 international results 2023-2026 World Cup qualifiers" },
   { key: "wcPath", label: "历史路径难度", tier: "research", source: "Football365 records + champion path summary" },
   { key: "squadValue", label: "阵容身价", tier: "snapshot", source: "Transfermarkt team/player market values 2026-06-12" },
   { key: "avgAge", label: "平均年龄", tier: "snapshot", source: "FIFA final squad player ages 2026-06-12" },
   { key: "injuryRisk", label: "伤病风险", tier: "snapshot", source: "player availability watchlist 2026-06-12 + health proxy" },
   { key: "clubScore", label: "俱乐部分布", tier: "proxy", source: "顶级联赛集中度代理" },
+  { key: "clubSeasonScore", label: "本季俱乐部表现", tier: "snapshot", source: "Transfermarkt player performance-game aggregation 2026-06-12" },
   { key: "atmosphere", label: "球队氛围", tier: "manual", source: "structured context snapshot 2026-06-12" },
   { key: "travelKm", label: "小组赛场馆移动", tier: "snapshot", source: "FIFA schedule + venue coordinates" },
   { key: "restDays", label: "小组赛休息天数", tier: "snapshot", source: "FIFA schedule dates" },
@@ -105,65 +108,67 @@ const DATA_FIELDS = [
 ];
 
 const teamFactors = {
-  Mexico: { fifaRank: 15, fifaPoints: 1681, elo: 1875, form: 71, wcPath: 58, odds: 6600, squadValue: 192, avgAge: 27.5, injuryRisk: 22, clubScore: 60, atmosphere: 62, travelKm: 952, restDays: 6.5, timezoneShift: 0, borderCrossings: 0, altitudeLoad: 2240, climateLoad: 48, entryTravelKm: 15, entryTimezoneShift: 0, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
-  "South Africa": { fifaRank: 54, fifaPoints: 1453, elo: 1528, form: 64, wcPath: 27, odds: 100000, squadValue: 49, avgAge: 26.3, injuryRisk: 22, clubScore: 55, atmosphere: 56, travelKm: 3943, restDays: 6.5, timezoneShift: 2, borderCrossings: 2, altitudeLoad: 2240, climateLoad: 49, entryTravelKm: 14582, entryTimezoneShift: 8, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
-  "Korea Republic": { fifaRank: 23, fifaPoints: 1585, elo: 1758, form: 66, wcPath: 60, odds: 25000, squadValue: 139, avgAge: 27.5, injuryRisk: 22, clubScore: 64, atmosphere: 58, travelKm: 645, restDays: 6.5, timezoneShift: 0, borderCrossings: 0, altitudeLoad: 1566, climateLoad: 41, entryTravelKm: 11663, entryTimezoneShift: 15, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
-  Czechia: { fifaRank: 39, fifaPoints: 1490, elo: 1740, form: 68, wcPath: 63, odds: 20000, squadValue: 188, avgAge: 27.2, injuryRisk: 22, clubScore: 63, atmosphere: 59, travelKm: 4544, restDays: 6.5, timezoneShift: 2, borderCrossings: 2, altitudeLoad: 2240, climateLoad: 45, entryTravelKm: 10072, entryTimezoneShift: 8, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
-  Canada: { fifaRank: 26, fifaPoints: 1554, elo: 1788, form: 64, wcPath: 27, odds: 15000, squadValue: 199, avgAge: 26.5, injuryRisk: 22, clubScore: 72, atmosphere: 59, travelKm: 3357, restDays: 6, timezoneShift: 3, borderCrossings: 0, altitudeLoad: 76, climateLoad: 15, entryTravelKm: 4, entryTimezoneShift: 0, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
-  "Bosnia and Herzegovina": { fifaRank: 77, fifaPoints: 1320, elo: 1595, form: 62, wcPath: 27, odds: 25000, squadValue: 152, avgAge: 26, injuryRisk: 22, clubScore: 68, atmosphere: 55, travelKm: 5058, restDays: 6, timezoneShift: 3, borderCrossings: 1, altitudeLoad: 76, climateLoad: 17, entryTravelKm: 7337, entryTimezoneShift: 6, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
-  Qatar: { fifaRank: 53, fifaPoints: 1454, elo: 1421, form: 49, wcPath: 26, odds: 100000, squadValue: 20, avgAge: 28.9, injuryRisk: 22, clubScore: 44, atmosphere: 48, travelKm: 1519, restDays: 5.5, timezoneShift: 0, borderCrossings: 2, altitudeLoad: 13, climateLoad: 18, entryTravelKm: 13011, entryTimezoneShift: 10, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
-  Switzerland: { fifaRank: 18, fifaPoints: 1636, elo: 1891, form: 68, wcPath: 59, odds: 6600, squadValue: 333, avgAge: 27.8, injuryRisk: 22, clubScore: 86, atmosphere: 60, travelKm: 2253, restDays: 5.5, timezoneShift: 0, borderCrossings: 1, altitudeLoad: 38, climateLoad: 20, entryTravelKm: 9372, entryTimezoneShift: 9, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
-  Brazil: { fifaRank: 6, fifaPoints: 1761, elo: 1991, form: 69, wcPath: 98, odds: 800, squadValue: 928, avgAge: 28.8, injuryRisk: 22, clubScore: 80, atmosphere: 62, travelKm: 1758, restDays: 5.5, timezoneShift: 0, borderCrossings: 0, altitudeLoad: 12, climateLoad: 38, entryTravelKm: 7772, entryTimezoneShift: 1, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
-  Morocco: { fifaRank: 11, fifaPoints: 1706, elo: 1824, form: 71, wcPath: 61, odds: 4000, squadValue: 448, avgAge: 26.1, injuryRisk: 22, clubScore: 75, atmosphere: 59, travelKm: 1750, restDays: 5.5, timezoneShift: 0, borderCrossings: 0, altitudeLoad: 320, climateLoad: 34, entryTravelKm: 5840, entryTimezoneShift: 5, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
-  Haiti: { fifaRank: 86, fifaPoints: 1281, elo: 1548, form: 62, wcPath: 17, odds: 250000, squadValue: 56, avgAge: 27, injuryRisk: 22, clubScore: 64, atmosphere: 55, travelKm: 1476, restDays: 5.5, timezoneShift: 0, borderCrossings: 0, altitudeLoad: 320, climateLoad: 34, entryTravelKm: 2615, entryTimezoneShift: 0, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
-  Scotland: { fifaRank: 48, fifaPoints: 1474, elo: 1782, form: 68, wcPath: 27, odds: 25000, squadValue: 170, avgAge: 28.7, injuryRisk: 22, clubScore: 78, atmosphere: 55, travelKm: 1973, restDays: 5.5, timezoneShift: 0, borderCrossings: 0, altitudeLoad: 88, climateLoad: 35, entryTravelKm: 4910, entryTimezoneShift: 5, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
-  USA: { fifaRank: 14, fifaPoints: 1682, elo: 1726, form: 61, wcPath: 61, odds: 4000, squadValue: 386, avgAge: 26.4, injuryRisk: 21, clubScore: 77, atmosphere: 60, travelKm: 3106, restDays: 6.5, timezoneShift: 0, borderCrossings: 0, altitudeLoad: 38, climateLoad: 17, entryTravelKm: 3948, entryTimezoneShift: 3, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
-  Paraguay: { fifaRank: 37, fifaPoints: 1501, elo: 1833, form: 60, wcPath: 45, odds: 15000, squadValue: 154, avgAge: 28.5, injuryRisk: 22, clubScore: 69, atmosphere: 56, travelKm: 505, restDays: 6.5, timezoneShift: 0, borderCrossings: 0, altitudeLoad: 38, climateLoad: 21, entryTravelKm: 9190, entryTimezoneShift: 3, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
-  Australia: { fifaRank: 25, fifaPoints: 1558, elo: 1777, form: 62, wcPath: 46, odds: 50000, squadValue: 77, avgAge: 26.9, injuryRisk: 22, clubScore: 69, atmosphere: 57, travelKm: 1329, restDays: 6, timezoneShift: 0, borderCrossings: 1, altitudeLoad: 13, climateLoad: 17, entryTravelKm: 12502, entryTimezoneShift: 17, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
-  "Türkiye": { fifaRank: 28, fifaPoints: 1537, elo: 1911, form: 76, wcPath: 48, odds: 6600, squadValue: 474, avgAge: 27.2, injuryRisk: 22, clubScore: 65, atmosphere: 62, travelKm: 1828, restDays: 6, timezoneShift: 0, borderCrossings: 1, altitudeLoad: 38, climateLoad: 16, entryTravelKm: 9611, entryTimezoneShift: 10, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
-  Germany: { fifaRank: 9, fifaPoints: 1716, elo: 1932, form: 79, wcPath: 98, odds: 1400, squadValue: 947, avgAge: 27.6, injuryRisk: 29, clubScore: 88, atmosphere: 65, travelKm: 2640, restDays: 5.5, timezoneShift: 1, borderCrossings: 2, altitudeLoad: 76, climateLoad: 31, entryTravelKm: 8435, entryTimezoneShift: 7, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
-  Curacao: { fifaRank: 82, fifaPoints: 1294, elo: 1434, form: 60, wcPath: 13, odds: 250000, squadValue: 26, avgAge: 27.5, injuryRisk: 22, clubScore: 68, atmosphere: 54, travelKm: 2702, restDays: 5.5, timezoneShift: 1, borderCrossings: 0, altitudeLoad: 264, climateLoad: 48, entryTravelKm: 3362, entryTimezoneShift: 1, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
-  "Cote d'Ivoire": { fifaRank: 42, fifaPoints: 1486, elo: 1695, form: 72, wcPath: 29, odds: 20000, squadValue: 522, avgAge: 25.3, injuryRisk: 22, clubScore: 72, atmosphere: 58, travelKm: 1089, restDays: 5.5, timezoneShift: 0, borderCrossings: 2, altitudeLoad: 76, climateLoad: 31, entryTravelKm: 8022, entryTimezoneShift: 4, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
-  Ecuador: { fifaRank: 24, fifaPoints: 1577, elo: 1935, form: 63, wcPath: 43, odds: 6600, squadValue: 369, avgAge: 25.6, injuryRisk: 22, clubScore: 68, atmosphere: 55, travelKm: 3405, restDays: 5.5, timezoneShift: 1, borderCrossings: 0, altitudeLoad: 264, climateLoad: 43, entryTravelKm: 4469, entryTimezoneShift: 1, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
-  Netherlands: { fifaRank: 7, fifaPoints: 1759, elo: 1944, form: 70, wcPath: 86, odds: 2000, squadValue: 754, avgAge: 27.3, injuryRisk: 22, clubScore: 89, atmosphere: 65, travelKm: 1421, restDays: 5.5, timezoneShift: 0, borderCrossings: 0, altitudeLoad: 264, climateLoad: 59, entryTravelKm: 7921, entryTimezoneShift: 7, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
-  Japan: { fifaRank: 19, fifaPoints: 1633, elo: 1906, form: 72, wcPath: 48, odds: 5000, squadValue: 271, avgAge: 26.9, injuryRisk: 29, clubScore: 76, atmosphere: 58, travelKm: 1689, restDays: 5.5, timezoneShift: 1, borderCrossings: 2, altitudeLoad: 540, climateLoad: 61, entryTravelKm: 10385, entryTimezoneShift: 14, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
-  Sweden: { fifaRank: 40, fifaPoints: 1490, elo: 1712, form: 52, wcPath: 66, odds: 6600, squadValue: 406, avgAge: 27, injuryRisk: 22, clubScore: 80, atmosphere: 54, travelKm: 1029, restDays: 5.5, timezoneShift: 1, borderCrossings: 1, altitudeLoad: 540, climateLoad: 62, entryTravelKm: 9019, entryTimezoneShift: 8, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
-  Tunisia: { fifaRank: 41, fifaPoints: 1488, elo: 1628, form: 61, wcPath: 34, odds: 50000, squadValue: 70, avgAge: 26.2, injuryRisk: 22, clubScore: 65, atmosphere: 56, travelKm: 1582, restDays: 5.5, timezoneShift: 1, borderCrossings: 1, altitudeLoad: 540, climateLoad: 59, entryTravelKm: 9959, entryTimezoneShift: 7, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
-  Belgium: { fifaRank: 8, fifaPoints: 1736, elo: 1893, form: 76, wcPath: 64, odds: 3300, squadValue: 548, avgAge: 27.1, injuryRisk: 22, clubScore: 82, atmosphere: 64, travelKm: 3302, restDays: 5.5, timezoneShift: 0, borderCrossings: 1, altitudeLoad: 38, climateLoad: 20, entryTravelKm: 7944, entryTimezoneShift: 9, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
-  Egypt: { fifaRank: 32, fifaPoints: 1519, elo: 1696, form: 66, wcPath: 33, odds: 25000, squadValue: 116, avgAge: 28.7, injuryRisk: 22, clubScore: 58, atmosphere: 55, travelKm: 391, restDays: 5.5, timezoneShift: 0, borderCrossings: 2, altitudeLoad: 13, climateLoad: 19, entryTravelKm: 10986, entryTimezoneShift: 10, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
-  "IR Iran": { fifaRank: 20, fifaPoints: 1620, elo: 1772, form: 63, wcPath: 33, odds: 50000, squadValue: 32, avgAge: 29.8, injuryRisk: 22, clubScore: 50, atmosphere: 53, travelKm: 1553, restDays: 5.5, timezoneShift: 0, borderCrossings: 0, altitudeLoad: 38, climateLoad: 18, entryTravelKm: 12198, entryTimezoneShift: 10.5, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
-  "New Zealand": { fifaRank: 83, fifaPoints: 1290, elo: 1562, form: 46, wcPath: 23, odds: 100000, squadValue: 34, avgAge: 27.6, injuryRisk: 22, clubScore: 64, atmosphere: 49, travelKm: 1749, restDays: 5.5, timezoneShift: 0, borderCrossings: 1, altitudeLoad: 38, climateLoad: 15, entryTravelKm: 10483, entryTimezoneShift: 19, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
-  Spain: { fifaRank: 2, fifaPoints: 1876, elo: 2155, form: 73, wcPath: 92, odds: 450, squadValue: 1220, avgAge: 26.2, injuryRisk: 22, clubScore: 92, atmosphere: 66, travelKm: 2373, restDays: 5.5, timezoneShift: 2, borderCrossings: 1, altitudeLoad: 1566, climateLoad: 46, entryTravelKm: 6944, entryTimezoneShift: 6, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
-  "Cabo Verde": { fifaRank: 67, fifaPoints: 1360, elo: 1578, form: 68, wcPath: 13, odds: 100000, squadValue: 55, avgAge: 29.2, injuryRisk: 22, clubScore: 61, atmosphere: 53, travelKm: 2502, restDays: 5.5, timezoneShift: 1, borderCrossings: 0, altitudeLoad: 320, climateLoad: 54, entryTravelKm: 6418, entryTimezoneShift: 3, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
-  "Saudi Arabia": { fifaRank: 60, fifaPoints: 1390, elo: 1569, form: 58, wcPath: 42, odds: 100000, squadValue: 41, avgAge: 28, injuryRisk: 22, clubScore: 57, atmosphere: 54, travelKm: 2090, restDays: 5.5, timezoneShift: 1, borderCrossings: 0, altitudeLoad: 320, climateLoad: 60, entryTravelKm: 11999, entryTimezoneShift: 7, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
-  Uruguay: { fifaRank: 17, fifaPoints: 1640, elo: 1892, form: 62, wcPath: 98, odds: 5000, squadValue: 359, avgAge: 28.2, injuryRisk: 22, clubScore: 73, atmosphere: 62, travelKm: 2439, restDays: 5.5, timezoneShift: 2, borderCrossings: 1, altitudeLoad: 1566, climateLoad: 61, entryTravelKm: 7226, entryTimezoneShift: 1, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
-  France: { fifaRank: 1, fifaPoints: 1877, elo: 2062, form: 75, wcPath: 98, odds: 450, squadValue: 1520, avgAge: 26.6, injuryRisk: 22, clubScore: 85, atmosphere: 67, travelKm: 545, restDays: 5, timezoneShift: 0, borderCrossings: 0, altitudeLoad: 88, climateLoad: 25, entryTravelKm: 5835, entryTimezoneShift: 6, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
-  Senegal: { fifaRank: 22, fifaPoints: 1591, elo: 1867, form: 75, wcPath: 53, odds: 6600, squadValue: 478, avgAge: 26.6, injuryRisk: 22, clubScore: 80, atmosphere: 63, travelKm: 540, restDays: 5, timezoneShift: 0, borderCrossings: 1, altitudeLoad: 76, climateLoad: 28, entryTravelKm: 6152, entryTimezoneShift: 4, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
-  Iraq: { fifaRank: 58, fifaPoints: 1421, elo: 1618, form: 65, wcPath: 18, odds: 100000, squadValue: 21, avgAge: 26.4, injuryRisk: 22, clubScore: 55, atmosphere: 56, travelKm: 953, restDays: 5, timezoneShift: 0, borderCrossings: 1, altitudeLoad: 88, climateLoad: 27, entryTravelKm: 9370, entryTimezoneShift: 7, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
-  Norway: { fifaRank: 29, fifaPoints: 1534, elo: 1917, form: 73, wcPath: 32, odds: 2500, squadValue: 590, avgAge: 26.3, injuryRisk: 22, clubScore: 83, atmosphere: 62, travelKm: 548, restDays: 5, timezoneShift: 0, borderCrossings: 0, altitudeLoad: 88, climateLoad: 23, entryTravelKm: 5652, entryTimezoneShift: 6, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
-  Argentina: { fifaRank: 3, fifaPoints: 1875, elo: 2114, form: 77, wcPath: 98, odds: 800, squadValue: 808, avgAge: 28.7, injuryRisk: 29, clubScore: 84, atmosphere: 63, travelKm: 739, restDays: 5.5, timezoneShift: 0, borderCrossings: 0, altitudeLoad: 264, climateLoad: 49, entryTravelKm: 8992, entryTimezoneShift: 2, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
-  Algeria: { fifaRank: 38, fifaPoints: 1490, elo: 1760, form: 73, wcPath: 36, odds: 25000, squadValue: 257, avgAge: 26.5, injuryRisk: 22, clubScore: 69, atmosphere: 60, travelKm: 4798, restDays: 5.5, timezoneShift: 2, borderCrossings: 0, altitudeLoad: 264, climateLoad: 33, entryTravelKm: 8098, entryTimezoneShift: 6, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
-  Austria: { fifaRank: 27, fifaPoints: 1548, elo: 1830, form: 76, wcPath: 49, odds: 10000, squadValue: 245, avgAge: 28.2, injuryRisk: 22, clubScore: 80, atmosphere: 63, travelKm: 3054, restDays: 5.5, timezoneShift: 2, borderCrossings: 0, altitudeLoad: 264, climateLoad: 45, entryTravelKm: 9642, entryTimezoneShift: 9, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
-  Jordan: { fifaRank: 64, fifaPoints: 1373, elo: 1685, form: 64, wcPath: 13, odds: 100000, squadValue: 20, avgAge: 28.1, injuryRisk: 22, clubScore: 51, atmosphere: 55, travelKm: 2315, restDays: 5.5, timezoneShift: 2, borderCrossings: 0, altitudeLoad: 184, climateLoad: 34, entryTravelKm: 11968, entryTimezoneShift: 10, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
-  Portugal: { fifaRank: 5, fifaPoints: 1764, elo: 1986, form: 70, wcPath: 65, odds: 900, squadValue: 1010, avgAge: 27.5, injuryRisk: 22, clubScore: 81, atmosphere: 59, travelKm: 1547, restDays: 5, timezoneShift: 1, borderCrossings: 0, altitudeLoad: 13, climateLoad: 59, entryTravelKm: 7703, entryTimezoneShift: 6, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
-  "Congo DR": { fifaRank: 56, fifaPoints: 1429, elo: 1661, form: 70, wcPath: 17, odds: 75000, squadValue: 144, avgAge: 28.5, injuryRisk: 22, clubScore: 70, atmosphere: 57, travelKm: 3660, restDays: 5, timezoneShift: 2, borderCrossings: 2, altitudeLoad: 1566, climateLoad: 46, entryTravelKm: 12246, entryTimezoneShift: 6, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
-  Uzbekistan: { fifaRank: 50, fifaPoints: 1460, elo: 1718, form: 65, wcPath: 13, odds: 100000, squadValue: 85, avgAge: 28, injuryRisk: 22, clubScore: 52, atmosphere: 55, travelKm: 2349, restDays: 5, timezoneShift: 2, borderCrossings: 1, altitudeLoad: 2240, climateLoad: 52, entryTravelKm: 13171, entryTimezoneShift: 11, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
-  Colombia: { fifaRank: 13, fifaPoints: 1692, elo: 1977, form: 69, wcPath: 47, odds: 3500, squadValue: 302, avgAge: 29.6, injuryRisk: 22, clubScore: 74, atmosphere: 55, travelKm: 2915, restDays: 5, timezoneShift: 2, borderCrossings: 1, altitudeLoad: 2240, climateLoad: 58, entryTravelKm: 3166, entryTimezoneShift: 1, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
-  England: { fifaRank: 4, fifaPoints: 1835, elo: 2021, form: 72, wcPath: 94, odds: 650, squadValue: 1360, avgAge: 26.6, injuryRisk: 22, clubScore: 93, atmosphere: 66, travelKm: 2768, restDays: 5, timezoneShift: 1, borderCrossings: 0, altitudeLoad: 184, climateLoad: 37, entryTravelKm: 7662, entryTimezoneShift: 6, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
-  Croatia: { fifaRank: 10, fifaPoints: 1714, elo: 1908, form: 70, wcPath: 76, odds: 6600, squadValue: 387, avgAge: 27.9, injuryRisk: 22, clubScore: 81, atmosphere: 63, travelKm: 2500, restDays: 5, timezoneShift: 1, borderCrossings: 2, altitudeLoad: 184, climateLoad: 37, entryTravelKm: 8996, entryTimezoneShift: 7, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
-  Ghana: { fifaRank: 72, fifaPoints: 1335, elo: 1510, form: 54, wcPath: 48, odds: 25000, squadValue: 235, avgAge: 26.4, injuryRisk: 22, clubScore: 76, atmosphere: 52, travelKm: 1094, restDays: 5, timezoneShift: 0, borderCrossings: 1, altitudeLoad: 88, climateLoad: 26, entryTravelKm: 8712, entryTimezoneShift: 4, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
-  Panama: { fifaRank: 31, fifaPoints: 1521, elo: 1730, form: 62, wcPath: 23, odds: 100000, squadValue: 35, avgAge: 30, injuryRisk: 22, clubScore: 53, atmosphere: 52, travelKm: 540, restDays: 5, timezoneShift: 0, borderCrossings: 1, altitudeLoad: 76, climateLoad: 24, entryTravelKm: 3853, entryTimezoneShift: 1, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  Mexico: { fifaRank: 15, fifaPoints: 1681, elo: 1875, form: 71, qualifyingScore: 60, wcPath: 58, odds: 6600, squadValue: 192, avgAge: 27.5, injuryRisk: 22, clubScore: 60, clubSeasonScore: 77, atmosphere: 62, travelKm: 952, restDays: 6.5, timezoneShift: 0, borderCrossings: 0, altitudeLoad: 2240, climateLoad: 48, entryTravelKm: 15, entryTimezoneShift: 0, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  "South Africa": { fifaRank: 54, fifaPoints: 1453, elo: 1528, form: 64, qualifyingScore: 60, wcPath: 27, odds: 100000, squadValue: 49, avgAge: 26.3, injuryRisk: 22, clubScore: 55, clubSeasonScore: 74, atmosphere: 56, travelKm: 3943, restDays: 6.5, timezoneShift: 2, borderCrossings: 2, altitudeLoad: 2240, climateLoad: 49, entryTravelKm: 14582, entryTimezoneShift: 8, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  "Korea Republic": { fifaRank: 23, fifaPoints: 1585, elo: 1758, form: 66, qualifyingScore: 83, wcPath: 60, odds: 25000, squadValue: 139, avgAge: 27.5, injuryRisk: 22, clubScore: 64, clubSeasonScore: 74, atmosphere: 58, travelKm: 645, restDays: 6.5, timezoneShift: 0, borderCrossings: 0, altitudeLoad: 1566, climateLoad: 41, entryTravelKm: 11663, entryTimezoneShift: 15, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  Czechia: { fifaRank: 39, fifaPoints: 1490, elo: 1740, form: 68, qualifyingScore: 63, wcPath: 63, odds: 20000, squadValue: 188, avgAge: 27.2, injuryRisk: 22, clubScore: 63, clubSeasonScore: 80, atmosphere: 59, travelKm: 4544, restDays: 6.5, timezoneShift: 2, borderCrossings: 2, altitudeLoad: 2240, climateLoad: 45, entryTravelKm: 10072, entryTimezoneShift: 8, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  Canada: { fifaRank: 26, fifaPoints: 1554, elo: 1788, form: 64, qualifyingScore: 60, wcPath: 27, odds: 15000, squadValue: 199, avgAge: 26.5, injuryRisk: 22, clubScore: 72, clubSeasonScore: 64, atmosphere: 59, travelKm: 3357, restDays: 6, timezoneShift: 3, borderCrossings: 0, altitudeLoad: 76, climateLoad: 15, entryTravelKm: 4, entryTimezoneShift: 0, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  "Bosnia and Herzegovina": { fifaRank: 77, fifaPoints: 1320, elo: 1595, form: 62, qualifyingScore: 65, wcPath: 27, odds: 25000, squadValue: 152, avgAge: 26, injuryRisk: 22, clubScore: 68, clubSeasonScore: 76, atmosphere: 55, travelKm: 5058, restDays: 6, timezoneShift: 3, borderCrossings: 1, altitudeLoad: 76, climateLoad: 17, entryTravelKm: 7337, entryTimezoneShift: 6, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  Qatar: { fifaRank: 53, fifaPoints: 1454, elo: 1421, form: 49, qualifyingScore: 58, wcPath: 26, odds: 100000, squadValue: 20, avgAge: 28.9, injuryRisk: 22, clubScore: 44, clubSeasonScore: 58, atmosphere: 48, travelKm: 1519, restDays: 5.5, timezoneShift: 0, borderCrossings: 2, altitudeLoad: 13, climateLoad: 18, entryTravelKm: 13011, entryTimezoneShift: 10, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  Switzerland: { fifaRank: 18, fifaPoints: 1636, elo: 1891, form: 68, qualifyingScore: 80, wcPath: 59, odds: 6600, squadValue: 333, avgAge: 27.8, injuryRisk: 22, clubScore: 86, clubSeasonScore: 80, atmosphere: 60, travelKm: 2253, restDays: 5.5, timezoneShift: 0, borderCrossings: 1, altitudeLoad: 38, climateLoad: 20, entryTravelKm: 9372, entryTimezoneShift: 9, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  Brazil: { fifaRank: 6, fifaPoints: 1761, elo: 1991, form: 69, qualifyingScore: 54, wcPath: 98, odds: 800, squadValue: 928, avgAge: 28.8, injuryRisk: 22, clubScore: 80, clubSeasonScore: 79, atmosphere: 62, travelKm: 1758, restDays: 5.5, timezoneShift: 0, borderCrossings: 0, altitudeLoad: 12, climateLoad: 38, entryTravelKm: 7772, entryTimezoneShift: 1, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  Morocco: { fifaRank: 11, fifaPoints: 1706, elo: 1824, form: 71, qualifyingScore: 97, wcPath: 61, odds: 4000, squadValue: 448, avgAge: 26.1, injuryRisk: 22, clubScore: 75, clubSeasonScore: 76, atmosphere: 59, travelKm: 1750, restDays: 5.5, timezoneShift: 0, borderCrossings: 0, altitudeLoad: 320, climateLoad: 34, entryTravelKm: 5840, entryTimezoneShift: 5, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  Haiti: { fifaRank: 86, fifaPoints: 1281, elo: 1548, form: 62, qualifyingScore: 64, wcPath: 17, odds: 250000, squadValue: 56, avgAge: 27, injuryRisk: 22, clubScore: 64, clubSeasonScore: 51, atmosphere: 55, travelKm: 1476, restDays: 5.5, timezoneShift: 0, borderCrossings: 0, altitudeLoad: 320, climateLoad: 34, entryTravelKm: 2615, entryTimezoneShift: 0, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  Scotland: { fifaRank: 48, fifaPoints: 1474, elo: 1782, form: 68, qualifyingScore: 68, wcPath: 27, odds: 25000, squadValue: 170, avgAge: 28.7, injuryRisk: 22, clubScore: 78, clubSeasonScore: 75, atmosphere: 55, travelKm: 1973, restDays: 5.5, timezoneShift: 0, borderCrossings: 0, altitudeLoad: 88, climateLoad: 35, entryTravelKm: 4910, entryTimezoneShift: 5, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  USA: { fifaRank: 14, fifaPoints: 1682, elo: 1726, form: 61, qualifyingScore: 60, wcPath: 61, odds: 4000, squadValue: 386, avgAge: 26.4, injuryRisk: 21, clubScore: 77, clubSeasonScore: 79, atmosphere: 60, travelKm: 3106, restDays: 6.5, timezoneShift: 0, borderCrossings: 0, altitudeLoad: 38, climateLoad: 17, entryTravelKm: 3948, entryTimezoneShift: 3, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  Paraguay: { fifaRank: 37, fifaPoints: 1501, elo: 1833, form: 60, qualifyingScore: 53, wcPath: 45, odds: 15000, squadValue: 154, avgAge: 28.5, injuryRisk: 22, clubScore: 69, clubSeasonScore: 67, atmosphere: 56, travelKm: 505, restDays: 6.5, timezoneShift: 0, borderCrossings: 0, altitudeLoad: 38, climateLoad: 21, entryTravelKm: 9190, entryTimezoneShift: 3, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  Australia: { fifaRank: 25, fifaPoints: 1558, elo: 1777, form: 62, qualifyingScore: 80, wcPath: 46, odds: 50000, squadValue: 77, avgAge: 26.9, injuryRisk: 22, clubScore: 69, clubSeasonScore: 73, atmosphere: 57, travelKm: 1329, restDays: 6, timezoneShift: 0, borderCrossings: 1, altitudeLoad: 13, climateLoad: 17, entryTravelKm: 12502, entryTimezoneShift: 17, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  "Türkiye": { fifaRank: 28, fifaPoints: 1537, elo: 1911, form: 76, qualifyingScore: 72, wcPath: 48, odds: 6600, squadValue: 474, avgAge: 27.2, injuryRisk: 22, clubScore: 65, clubSeasonScore: 79, atmosphere: 62, travelKm: 1828, restDays: 6, timezoneShift: 0, borderCrossings: 1, altitudeLoad: 38, climateLoad: 16, entryTravelKm: 9611, entryTimezoneShift: 10, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  Germany: { fifaRank: 9, fifaPoints: 1716, elo: 1932, form: 79, qualifyingScore: 84, wcPath: 98, odds: 1400, squadValue: 947, avgAge: 27.6, injuryRisk: 29, clubScore: 88, clubSeasonScore: 84, atmosphere: 65, travelKm: 2640, restDays: 5.5, timezoneShift: 1, borderCrossings: 2, altitudeLoad: 76, climateLoad: 31, entryTravelKm: 8435, entryTimezoneShift: 7, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  Curacao: { fifaRank: 82, fifaPoints: 1294, elo: 1434, form: 60, qualifyingScore: 84, wcPath: 13, odds: 250000, squadValue: 26, avgAge: 27.5, injuryRisk: 22, clubScore: 68, clubSeasonScore: 70, atmosphere: 54, travelKm: 2702, restDays: 5.5, timezoneShift: 1, borderCrossings: 0, altitudeLoad: 264, climateLoad: 48, entryTravelKm: 3362, entryTimezoneShift: 1, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  "Cote d'Ivoire": { fifaRank: 42, fifaPoints: 1486, elo: 1695, form: 72, qualifyingScore: 90, wcPath: 29, odds: 20000, squadValue: 522, avgAge: 25.3, injuryRisk: 22, clubScore: 72, clubSeasonScore: 76, atmosphere: 58, travelKm: 1089, restDays: 5.5, timezoneShift: 0, borderCrossings: 2, altitudeLoad: 76, climateLoad: 31, entryTravelKm: 8022, entryTimezoneShift: 4, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  Ecuador: { fifaRank: 24, fifaPoints: 1577, elo: 1935, form: 63, qualifyingScore: 60, wcPath: 43, odds: 6600, squadValue: 369, avgAge: 25.6, injuryRisk: 22, clubScore: 68, clubSeasonScore: 75, atmosphere: 55, travelKm: 3405, restDays: 5.5, timezoneShift: 1, borderCrossings: 0, altitudeLoad: 264, climateLoad: 43, entryTravelKm: 4469, entryTimezoneShift: 1, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  Netherlands: { fifaRank: 7, fifaPoints: 1759, elo: 1944, form: 70, qualifyingScore: 89, wcPath: 86, odds: 2000, squadValue: 754, avgAge: 27.3, injuryRisk: 22, clubScore: 89, clubSeasonScore: 82, atmosphere: 65, travelKm: 1421, restDays: 5.5, timezoneShift: 0, borderCrossings: 0, altitudeLoad: 264, climateLoad: 59, entryTravelKm: 7921, entryTimezoneShift: 7, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  Japan: { fifaRank: 19, fifaPoints: 1633, elo: 1906, form: 72, qualifyingScore: 91, wcPath: 48, odds: 5000, squadValue: 271, avgAge: 26.9, injuryRisk: 29, clubScore: 76, clubSeasonScore: 78, atmosphere: 58, travelKm: 1689, restDays: 5.5, timezoneShift: 1, borderCrossings: 2, altitudeLoad: 540, climateLoad: 61, entryTravelKm: 10385, entryTimezoneShift: 14, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  Sweden: { fifaRank: 40, fifaPoints: 1490, elo: 1712, form: 52, qualifyingScore: 36, wcPath: 66, odds: 6600, squadValue: 406, avgAge: 27, injuryRisk: 22, clubScore: 80, clubSeasonScore: 73, atmosphere: 54, travelKm: 1029, restDays: 5.5, timezoneShift: 1, borderCrossings: 1, altitudeLoad: 540, climateLoad: 62, entryTravelKm: 9019, entryTimezoneShift: 8, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  Tunisia: { fifaRank: 41, fifaPoints: 1488, elo: 1628, form: 61, qualifyingScore: 91, wcPath: 34, odds: 50000, squadValue: 70, avgAge: 26.2, injuryRisk: 22, clubScore: 65, clubSeasonScore: 70, atmosphere: 56, travelKm: 1582, restDays: 5.5, timezoneShift: 1, borderCrossings: 1, altitudeLoad: 540, climateLoad: 59, entryTravelKm: 9959, entryTimezoneShift: 7, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  Belgium: { fifaRank: 8, fifaPoints: 1736, elo: 1893, form: 76, qualifyingScore: 83, wcPath: 64, odds: 3300, squadValue: 548, avgAge: 27.1, injuryRisk: 22, clubScore: 82, clubSeasonScore: 80, atmosphere: 64, travelKm: 3302, restDays: 5.5, timezoneShift: 0, borderCrossings: 1, altitudeLoad: 38, climateLoad: 20, entryTravelKm: 7944, entryTimezoneShift: 9, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  Egypt: { fifaRank: 32, fifaPoints: 1519, elo: 1696, form: 66, qualifyingScore: 84, wcPath: 33, odds: 25000, squadValue: 116, avgAge: 28.7, injuryRisk: 22, clubScore: 58, clubSeasonScore: 68, atmosphere: 55, travelKm: 391, restDays: 5.5, timezoneShift: 0, borderCrossings: 2, altitudeLoad: 13, climateLoad: 19, entryTravelKm: 10986, entryTimezoneShift: 10, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  "IR Iran": { fifaRank: 20, fifaPoints: 1620, elo: 1772, form: 63, qualifyingScore: 76, wcPath: 33, odds: 50000, squadValue: 32, avgAge: 29.8, injuryRisk: 22, clubScore: 50, clubSeasonScore: 64, atmosphere: 53, travelKm: 1553, restDays: 5.5, timezoneShift: 0, borderCrossings: 0, altitudeLoad: 38, climateLoad: 18, entryTravelKm: 12198, entryTimezoneShift: 10.5, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  "New Zealand": { fifaRank: 83, fifaPoints: 1290, elo: 1562, form: 46, qualifyingScore: 99, wcPath: 23, odds: 100000, squadValue: 34, avgAge: 27.6, injuryRisk: 22, clubScore: 64, clubSeasonScore: 68, atmosphere: 49, travelKm: 1749, restDays: 5.5, timezoneShift: 0, borderCrossings: 1, altitudeLoad: 38, climateLoad: 15, entryTravelKm: 10483, entryTimezoneShift: 19, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  Spain: { fifaRank: 2, fifaPoints: 1876, elo: 2155, form: 73, qualifyingScore: 93, wcPath: 92, odds: 450, squadValue: 1220, avgAge: 26.2, injuryRisk: 22, clubScore: 92, clubSeasonScore: 82, atmosphere: 66, travelKm: 2373, restDays: 5.5, timezoneShift: 2, borderCrossings: 1, altitudeLoad: 1566, climateLoad: 46, entryTravelKm: 6944, entryTimezoneShift: 6, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  "Cabo Verde": { fifaRank: 67, fifaPoints: 1360, elo: 1578, form: 68, qualifyingScore: 70, wcPath: 13, odds: 100000, squadValue: 55, avgAge: 29.2, injuryRisk: 22, clubScore: 61, clubSeasonScore: 71, atmosphere: 53, travelKm: 2502, restDays: 5.5, timezoneShift: 1, borderCrossings: 0, altitudeLoad: 320, climateLoad: 54, entryTravelKm: 6418, entryTimezoneShift: 3, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  "Saudi Arabia": { fifaRank: 60, fifaPoints: 1390, elo: 1569, form: 58, qualifyingScore: 58, wcPath: 42, odds: 100000, squadValue: 41, avgAge: 28, injuryRisk: 22, clubScore: 57, clubSeasonScore: 73, atmosphere: 54, travelKm: 2090, restDays: 5.5, timezoneShift: 1, borderCrossings: 0, altitudeLoad: 320, climateLoad: 60, entryTravelKm: 11999, entryTimezoneShift: 7, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  Uruguay: { fifaRank: 17, fifaPoints: 1640, elo: 1892, form: 62, qualifyingScore: 56, wcPath: 98, odds: 5000, squadValue: 359, avgAge: 28.2, injuryRisk: 22, clubScore: 73, clubSeasonScore: 71, atmosphere: 62, travelKm: 2439, restDays: 5.5, timezoneShift: 2, borderCrossings: 1, altitudeLoad: 1566, climateLoad: 61, entryTravelKm: 7226, entryTimezoneShift: 1, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  France: { fifaRank: 1, fifaPoints: 1877, elo: 2062, form: 75, qualifyingScore: 86, wcPath: 98, odds: 450, squadValue: 1520, avgAge: 26.6, injuryRisk: 22, clubScore: 85, clubSeasonScore: 84, atmosphere: 67, travelKm: 545, restDays: 5, timezoneShift: 0, borderCrossings: 0, altitudeLoad: 88, climateLoad: 25, entryTravelKm: 5835, entryTimezoneShift: 6, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  Senegal: { fifaRank: 22, fifaPoints: 1591, elo: 1867, form: 75, qualifyingScore: 82, wcPath: 53, odds: 6600, squadValue: 478, avgAge: 26.6, injuryRisk: 22, clubScore: 80, clubSeasonScore: 78, atmosphere: 63, travelKm: 540, restDays: 5, timezoneShift: 0, borderCrossings: 1, altitudeLoad: 76, climateLoad: 28, entryTravelKm: 6152, entryTimezoneShift: 4, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  Iraq: { fifaRank: 58, fifaPoints: 1421, elo: 1618, form: 65, qualifyingScore: 68, wcPath: 18, odds: 100000, squadValue: 21, avgAge: 26.4, injuryRisk: 22, clubScore: 55, clubSeasonScore: 62, atmosphere: 56, travelKm: 953, restDays: 5, timezoneShift: 0, borderCrossings: 1, altitudeLoad: 88, climateLoad: 27, entryTravelKm: 9370, entryTimezoneShift: 7, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  Norway: { fifaRank: 29, fifaPoints: 1534, elo: 1917, form: 73, qualifyingScore: 97, wcPath: 32, odds: 2500, squadValue: 590, avgAge: 26.3, injuryRisk: 22, clubScore: 83, clubSeasonScore: 76, atmosphere: 62, travelKm: 548, restDays: 5, timezoneShift: 0, borderCrossings: 0, altitudeLoad: 88, climateLoad: 23, entryTravelKm: 5652, entryTimezoneShift: 6, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  Argentina: { fifaRank: 3, fifaPoints: 1875, elo: 2114, form: 77, qualifyingScore: 70, wcPath: 98, odds: 800, squadValue: 808, avgAge: 28.7, injuryRisk: 29, clubScore: 84, clubSeasonScore: 82, atmosphere: 63, travelKm: 739, restDays: 5.5, timezoneShift: 0, borderCrossings: 0, altitudeLoad: 264, climateLoad: 49, entryTravelKm: 8992, entryTimezoneShift: 2, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  Algeria: { fifaRank: 38, fifaPoints: 1490, elo: 1760, form: 73, qualifyingScore: 80, wcPath: 36, odds: 25000, squadValue: 257, avgAge: 26.5, injuryRisk: 22, clubScore: 69, clubSeasonScore: 76, atmosphere: 60, travelKm: 4798, restDays: 5.5, timezoneShift: 2, borderCrossings: 0, altitudeLoad: 264, climateLoad: 33, entryTravelKm: 8098, entryTimezoneShift: 6, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  Austria: { fifaRank: 27, fifaPoints: 1548, elo: 1830, form: 76, qualifyingScore: 84, wcPath: 49, odds: 10000, squadValue: 245, avgAge: 28.2, injuryRisk: 22, clubScore: 80, clubSeasonScore: 76, atmosphere: 63, travelKm: 3054, restDays: 5.5, timezoneShift: 2, borderCrossings: 0, altitudeLoad: 264, climateLoad: 45, entryTravelKm: 9642, entryTimezoneShift: 9, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  Jordan: { fifaRank: 64, fifaPoints: 1373, elo: 1685, form: 64, qualifyingScore: 67, wcPath: 13, odds: 100000, squadValue: 20, avgAge: 28.1, injuryRisk: 22, clubScore: 51, clubSeasonScore: 63, atmosphere: 55, travelKm: 2315, restDays: 5.5, timezoneShift: 2, borderCrossings: 0, altitudeLoad: 184, climateLoad: 34, entryTravelKm: 11968, entryTimezoneShift: 10, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  Portugal: { fifaRank: 5, fifaPoints: 1764, elo: 1986, form: 70, qualifyingScore: 77, wcPath: 65, odds: 900, squadValue: 1010, avgAge: 27.5, injuryRisk: 22, clubScore: 81, clubSeasonScore: 83, atmosphere: 59, travelKm: 1547, restDays: 5, timezoneShift: 1, borderCrossings: 0, altitudeLoad: 13, climateLoad: 59, entryTravelKm: 7703, entryTimezoneShift: 6, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  "Congo DR": { fifaRank: 56, fifaPoints: 1429, elo: 1661, form: 70, qualifyingScore: 70, wcPath: 17, odds: 75000, squadValue: 144, avgAge: 28.5, injuryRisk: 22, clubScore: 70, clubSeasonScore: 68, atmosphere: 57, travelKm: 3660, restDays: 5, timezoneShift: 2, borderCrossings: 2, altitudeLoad: 1566, climateLoad: 46, entryTravelKm: 12246, entryTimezoneShift: 6, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  Uzbekistan: { fifaRank: 50, fifaPoints: 1460, elo: 1718, form: 65, qualifyingScore: 70, wcPath: 13, odds: 100000, squadValue: 85, avgAge: 28, injuryRisk: 22, clubScore: 52, clubSeasonScore: 48, atmosphere: 55, travelKm: 2349, restDays: 5, timezoneShift: 2, borderCrossings: 1, altitudeLoad: 2240, climateLoad: 52, entryTravelKm: 13171, entryTimezoneShift: 11, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  Colombia: { fifaRank: 13, fifaPoints: 1692, elo: 1977, form: 69, qualifyingScore: 55, wcPath: 47, odds: 3500, squadValue: 302, avgAge: 29.6, injuryRisk: 22, clubScore: 74, clubSeasonScore: 79, atmosphere: 55, travelKm: 2915, restDays: 5, timezoneShift: 2, borderCrossings: 1, altitudeLoad: 2240, climateLoad: 58, entryTravelKm: 3166, entryTimezoneShift: 1, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  England: { fifaRank: 4, fifaPoints: 1835, elo: 2021, form: 72, qualifyingScore: 99, wcPath: 94, odds: 650, squadValue: 1360, avgAge: 26.6, injuryRisk: 22, clubScore: 93, clubSeasonScore: 86, atmosphere: 66, travelKm: 2768, restDays: 5, timezoneShift: 1, borderCrossings: 0, altitudeLoad: 184, climateLoad: 37, entryTravelKm: 7662, entryTimezoneShift: 6, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  Croatia: { fifaRank: 10, fifaPoints: 1714, elo: 1908, form: 70, qualifyingScore: 93, wcPath: 76, odds: 6600, squadValue: 387, avgAge: 27.9, injuryRisk: 22, clubScore: 81, clubSeasonScore: 79, atmosphere: 63, travelKm: 2500, restDays: 5, timezoneShift: 1, borderCrossings: 2, altitudeLoad: 184, climateLoad: 37, entryTravelKm: 8996, entryTimezoneShift: 7, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  Ghana: { fifaRank: 72, fifaPoints: 1335, elo: 1510, form: 54, qualifyingScore: 81, wcPath: 48, odds: 25000, squadValue: 235, avgAge: 26.4, injuryRisk: 22, clubScore: 76, clubSeasonScore: 75, atmosphere: 52, travelKm: 1094, restDays: 5, timezoneShift: 0, borderCrossings: 1, altitudeLoad: 88, climateLoad: 26, entryTravelKm: 8712, entryTimezoneShift: 4, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
+  Panama: { fifaRank: 31, fifaPoints: 1521, elo: 1730, form: 62, qualifyingScore: 78, wcPath: 23, odds: 100000, squadValue: 35, avgAge: 30, injuryRisk: 22, clubScore: 53, clubSeasonScore: 74, atmosphere: 52, travelKm: 540, restDays: 5, timezoneShift: 0, borderCrossings: 1, altitudeLoad: 76, climateLoad: 24, entryTravelKm: 3853, entryTimezoneShift: 1, squadAnnouncementStatus: "FIFA最终名单", squadAnnouncementDate: "2026-06-02", squadStatus: "26人官方最终名单" },
 };
 
 const MODEL_WEIGHTS = {
-  fifa: 0.23,
+  fifa: 0.22,
   elo: 0.22,
-  odds: 0.14,
-  form: 0.11,
-  squad: 0.11,
-  wcPath: 0.07,
+  odds: 0.13,
+  form: 0.08,
+  qualifying: 0.05,
+  squad: 0.1,
+  wcPath: 0.06,
   health: 0.05,
-  club: 0.04,
+  club: 0.02,
+  clubSeason: 0.04,
   atmosphere: 0.02,
   schedule: 0.01,
 };
@@ -423,10 +428,12 @@ function computeModelRating(team) {
     MODEL_WEIGHTS.elo * normalize(factors.elo, 1420, 2170) +
     MODEL_WEIGHTS.odds * normalize(Math.sqrt(oddsProbability(factors.odds)), 0.03, 0.43) +
     MODEL_WEIGHTS.form * normalize(factors.form, 45, 82) +
+    MODEL_WEIGHTS.qualifying * normalize(factors.qualifyingScore, 35, 92) +
     MODEL_WEIGHTS.squad * normalize(Math.log10(factors.squadValue + 30), 1.45, 3.25) +
     MODEL_WEIGHTS.wcPath * normalize(factors.wcPath, 12, 96) +
     MODEL_WEIGHTS.health * (1 - normalize(factors.injuryRisk, 15, 28)) +
     MODEL_WEIGHTS.club * normalize(factors.clubScore, 30, 94) +
+    MODEL_WEIGHTS.clubSeason * normalize(factors.clubSeasonScore, 30, 95) +
     MODEL_WEIGHTS.atmosphere * normalize(factors.atmosphere, 48, 86) +
     MODEL_WEIGHTS.schedule * scheduleScore(factors);
   return Math.round(1375 + (score * 760));
@@ -469,6 +476,7 @@ let sportterySlipOnlyBettable = true;
 const $ = (selector) => document.querySelector(selector);
 const squadRows = Array.isArray(globalThis.SQUAD_ROWS) ? globalThis.SQUAD_ROWS : [];
 const sportteryOddsSnapshot = globalThis.SPORTTERY_FOOTBALL_ODDS_SNAPSHOT || { matches: [] };
+const headToHeadSummary = globalThis.HEAD_TO_HEAD_SUMMARY || { pairs: {} };
 
 function escapeHtml(value) {
   return String(value ?? "")
@@ -509,6 +517,40 @@ function formatValue(value) {
   return value >= 100 ? `€${Math.round(value)}m` : `€${value.toFixed(1)}m`;
 }
 
+function headToHeadPairKey(a, b) {
+  return [a.en, b.en].sort().join("||");
+}
+
+function invertResult(result) {
+  if (result === "W") return "L";
+  if (result === "L") return "W";
+  return result || "";
+}
+
+function headToHeadForTeams(a, b) {
+  const row = headToHeadSummary.pairs?.[headToHeadPairKey(a, b)];
+  if (!row) return null;
+  const aIsSourceA = row.team_a === a.en;
+  return {
+    matches: Number(row.matches) || 0,
+    competitiveMatches: Number(row.competitive_matches) || 0,
+    aWins: Number(aIsSourceA ? row.team_a_wins : row.team_b_wins) || 0,
+    draws: Number(row.draws) || 0,
+    bWins: Number(aIsSourceA ? row.team_b_wins : row.team_a_wins) || 0,
+    aGoals: Number(aIsSourceA ? row.team_a_goals : row.team_b_goals) || 0,
+    bGoals: Number(aIsSourceA ? row.team_b_goals : row.team_a_goals) || 0,
+    recentMatches: Number(row.recent_matches_since_2010) || 0,
+    recentAWins: Number(aIsSourceA ? row.recent_team_a_wins : row.recent_team_b_wins) || 0,
+    recentDraws: Number(row.recent_draws) || 0,
+    recentBWins: Number(aIsSourceA ? row.recent_team_b_wins : row.recent_team_a_wins) || 0,
+    lastMatchDate: row.last_match_date || "",
+    lastMatchTournament: row.last_match_tournament || "",
+    lastMatchScore: row.last_match_score || "",
+    lastMatchResultForA: aIsSourceA ? row.last_match_result_for_team_a : invertResult(row.last_match_result_for_team_a),
+    sourceUrl: row.source_url,
+  };
+}
+
 function squadForTeam(team) {
   return squadRows
     .filter((player) => player.team === team.en)
@@ -520,8 +562,14 @@ function roleLabel(role) {
   return {
     starter: "主力",
     rotation: "轮换",
+    reserve: "替补",
     squad: "替补",
   }[role] || role || "-";
+}
+
+function formatMinutes(value) {
+  const minutes = Number(value) || 0;
+  return minutes >= 1000 ? `${(minutes / 1000).toFixed(1)}k` : String(minutes);
 }
 
 function availabilityLabel(status) {
@@ -1485,6 +1533,7 @@ function updateMatchTeamInfo() {
     `FIFA #${team.factors.fifaRank}`,
     `Elo ${team.factors.elo}`,
     `近况 ${team.factors.form}`,
+    `世预赛 ${team.factors.qualifyingScore}`,
     `综合分 ${getTeamRating(team)}`,
   ].map((text) => `<span>${text}</span>`).join("") : "";
   const infoA = $("#matchTeamAInfo");
@@ -1546,6 +1595,39 @@ function renderBettingAdvice(prediction) {
         `).join("")}
       </div>
       <p>只比较概率和赔率是否匹配，不代表确定收益；临场伤停、轮换和官方赔率变化要重新核对。</p>
+    </div>
+  `;
+}
+
+function renderHeadToHead(prediction) {
+  const summary = headToHeadForTeams(prediction.a, prediction.b);
+  if (!summary) return "";
+  if (!summary.matches) {
+    return `
+      <div class="head-to-head-box is-empty">
+        <h3>历史对阵</h3>
+        <p>公开国家队赛果库中暂无两队成年队直接交锋记录；本场预测主要参考综合强度、近况、阵容和赛程。</p>
+      </div>
+    `;
+  }
+  const lastResult = {
+    W: `${prediction.a.name}不败且取胜`,
+    D: "双方战平",
+    L: `${prediction.b.name}取胜`,
+  }[summary.lastMatchResultForA] || "结果待核";
+  return `
+    <div class="head-to-head-box">
+      <div class="head-to-head-head">
+        <h3>历史对阵</h3>
+        <a href="${escapeHtml(summary.sourceUrl)}" target="_blank" rel="noreferrer">赛果源</a>
+      </div>
+      <div class="head-to-head-grid">
+        <div><span>总交锋</span><strong>${summary.matches}</strong><small>正式赛 ${summary.competitiveMatches}</small></div>
+        <div><span>${prediction.a.name}</span><strong>${summary.aWins}胜</strong><small>${summary.aGoals} 球</small></div>
+        <div><span>平局</span><strong>${summary.draws}</strong><small>全部赛果</small></div>
+        <div><span>${prediction.b.name}</span><strong>${summary.bWins}胜</strong><small>${summary.bGoals} 球</small></div>
+      </div>
+      <p>2010年以来：${summary.recentMatches} 场，${prediction.a.name} ${summary.recentAWins}胜 / 平 ${summary.recentDraws} / ${prediction.b.name} ${summary.recentBWins}胜。最近一次：${escapeHtml(summary.lastMatchDate)} · ${escapeHtml(summary.lastMatchTournament)} · ${escapeHtml(summary.lastMatchScore)}，${lastResult}。</p>
     </div>
   `;
 }
@@ -1766,6 +1848,7 @@ function renderMatchPrediction(prediction) {
         </div>
       `).join("")}
     </div>
+    ${renderHeadToHead(prediction)}
     ${renderBettingAdvice(prediction)}
   `;
 }
@@ -2126,6 +2209,7 @@ function teamInsight(team, counter = null, total = 1) {
     { score: ratingGap, label: "硬实力", text: `综合分高出均值 ${Math.round(ratingGap)}。` },
     { score: f.form - 58, label: "近期状态", text: `近况 ${f.form}/100，能把小优势转成连续性。` },
     { score: f.squadValue / 12, label: "阵容厚度", text: `阵容价值 €${f.squadValue}m，替补容错更足。` },
+    { score: f.clubSeasonScore - 62, label: "本季俱乐部表现", text: `本季俱乐部表现 ${f.clubSeasonScore}/100，核心球员比赛状态更扎实。` },
     { score: f.clubScore - 58, label: "俱乐部分布", text: `俱乐部分布 ${f.clubScore}/100，强强对话经验够用。` },
     { score: f.wcPath - 55, label: "世界杯路径经验", text: `路径经验 ${f.wcPath}/100，淘汰赛不容易慌。` },
     { score: 26 - f.injuryRisk, label: "健康面", text: `伤病风险 ${f.injuryRisk}，阵容完整性较好。` },
@@ -2355,8 +2439,9 @@ function renderTeamProfile(team) {
   }, {});
   const topPlayers = squad
     .slice()
-    .sort((a, b) => b.marketValueM - a.marketValueM || b.caps - a.caps)
+    .sort((a, b) => (b.clubSeason?.roleScore || 0) - (a.clubSeason?.roleScore || 0) || b.marketValueM - a.marketValueM || b.caps - a.caps)
     .slice(0, 5);
+  const realClubSeasonRows = squad.filter((player) => player.clubSeason?.statsSource === "transfermarkt_performance_game");
   const sourceUrl = squad[0]?.sourceUrl;
   $("#teamDrawerTitle").textContent = `${team.flag} ${team.name}`;
   $("#teamDrawerBody").innerHTML = `
@@ -2372,13 +2457,14 @@ function renderTeamProfile(team) {
       <div><span>Elo</span><strong>${f.elo}</strong><small>2026-06-12</small></div>
       <div><span>赔率</span><strong>${f.odds >= 100000 ? "长赔" : `+${f.odds}`}</strong><small>${(oddsProbability(f.odds) * 100).toFixed(1)}%</small></div>
       <div><span>阵容价值</span><strong>€${f.squadValue}m</strong><small>${f.avgAge} 岁</small></div>
+      <div><span>本季表现</span><strong>${f.clubSeasonScore}</strong><small>俱乐部实绩</small></div>
       <div><span>伤病风险</span><strong>${f.injuryRisk}</strong><small>越低越好</small></div>
       <div><span>组赛移动</span><strong>${Math.round(f.travelKm / 100) / 10}k km</strong><small>${f.restDays} 天休息</small></div>
       <div><span>入境旅程</span><strong>${Math.round((f.entryTravelKm ?? 0) / 100) / 10}k km</strong><small>${f.entryTimezoneShift ?? 0}h 时区差</small></div>
       <div><span>地理负担</span><strong>${f.timezoneShift ?? 0}h</strong><small>组赛时区 / 环境 ${f.climateLoad ?? 0}</small></div>
     </div>
     ${insightMarkup(insight)}
-    <p class="profile-note">名单状态：${f.squadStatus}；公告：${f.squadAnnouncementStatus ?? "待核"}（${f.squadAnnouncementDate ?? "未定"}）。氛围 ${f.atmosphere}/100，俱乐部分布 ${f.clubScore}/100，世界杯路径经验 ${f.wcPath}/100。数据可信度 ${quality.score}%，可核验字段 ${quality.reliableCount}/${quality.total}。</p>
+    <p class="profile-note">名单状态：${f.squadStatus}；公告：${f.squadAnnouncementStatus ?? "待核"}（${f.squadAnnouncementDate ?? "未定"}）。氛围 ${f.atmosphere}/100，俱乐部分布 ${f.clubScore}/100，本季俱乐部表现 ${f.clubSeasonScore}/100，世界杯路径经验 ${f.wcPath}/100。数据可信度 ${quality.score}%，可核验字段 ${quality.reliableCount}/${quality.total}。</p>
     <section class="squad-detail">
       <div class="detail-title">
         <span>阵容信息</span>
@@ -2389,11 +2475,12 @@ function renderTeamProfile(team) {
           <div><span>球员行</span><strong>${squad.length}</strong><small>${Object.entries(positionCounts).map(([position, count]) => `${position}${count}`).join(" / ")}</small></div>
           <div><span>名单身价</span><strong>${formatValue(totalSquadValue)}</strong><small>${squad.some((player) => player.valueSource?.includes("proxy")) ? "混合/分配身价" : "球员身价"}</small></div>
           <div><span>可用性</span><strong>${squad.length - (availabilityCounts.unknown || 0)}</strong><small>已核验；${availabilityCounts.unknown || 0} 未确认</small></div>
-          <div><span>核心球员</span><strong>${escapeHtml(topPlayers[0]?.player ?? "-")}</strong><small>${formatValue(topPlayers[0]?.marketValueM)}</small></div>
+          <div><span>本季实绩</span><strong>${realClubSeasonRows.length}</strong><small>Transfermarkt 逐场统计</small></div>
+          <div><span>核心球员</span><strong>${escapeHtml(topPlayers[0]?.player ?? "-")}</strong><small>主力 ${topPlayers[0]?.clubSeason?.roleScore ?? "-"}</small></div>
         </div>
         <div class="top-player-row">
           ${topPlayers.map((player) => `
-            <span>${escapeHtml(player.player)} <small>${player.position} · ${formatValue(player.marketValueM)}</small></span>
+            <span>${escapeHtml(player.player)} <small>${player.position} · ${formatMinutes(player.clubSeason?.minutes)} 分钟 · ${roleLabel(player.clubSeason?.projectedRole || player.expectedRole)}</small></span>
           `).join("")}
         </div>
         <div class="squad-table-wrap">
@@ -2406,9 +2493,11 @@ function renderTeamProfile(team) {
                 <th>年龄</th>
                 <th>俱乐部</th>
                 <th>身价</th>
+                <th>本季俱乐部</th>
+                <th>进助</th>
                 <th>国家队</th>
                 <th>状态</th>
-                <th>角色</th>
+                <th>主力</th>
               </tr>
             </thead>
             <tbody>
@@ -2420,15 +2509,17 @@ function renderTeamProfile(team) {
                   <td>${player.age}</td>
                   <td>${escapeHtml(player.club)}</td>
                   <td>${formatValue(player.marketValueM)}</td>
+                  <td>${player.clubSeason?.appearances ?? 0} 场 / ${player.clubSeason?.starts ?? 0} 首发 / ${formatMinutes(player.clubSeason?.minutes)} 分钟</td>
+                  <td>${player.clubSeason?.goals ?? 0} 球 / ${player.clubSeason?.assists ?? 0} 助</td>
                   <td>${player.caps} 场 / ${player.goals} 球</td>
                   <td>${availabilityLabel(player.injuryStatus)}</td>
-                  <td>${roleLabel(player.expectedRole)}</td>
+                  <td>${roleLabel(player.clubSeason?.projectedRole || player.expectedRole)} · ${player.clubSeason?.roleScore ?? "-"}</td>
                 </tr>
               `).join("")}
             </tbody>
           </table>
         </div>
-        <p class="profile-note">名单来源：${sourceUrl ? `<a href="${escapeHtml(sourceUrl)}" target="_blank" rel="noreferrer">${escapeHtml(sourceUrl)}</a>` : "未记录"}。身价若标记为代理，表示由球队总身价按角色、年龄、联赛和国家队资历分配。</p>
+        <p class="profile-note">名单来源：${sourceUrl ? `<a href="${escapeHtml(sourceUrl)}" target="_blank" rel="noreferrer">${escapeHtml(sourceUrl)}</a>` : "未记录"}。本季俱乐部表现优先使用 Transfermarkt performance-game 逐场统计；未匹配到球员页时，主力评分使用名单角色、身价、国家队资历和可用性代理。</p>
       ` : `
         <p class="profile-note">这支球队暂未导入可核验的球员级 26 人名单，当前阵容价值、年龄、伤病和俱乐部分布使用球队级代理画像。等官方名单确认后，可通过 README 中的 squad refresh 流程补齐。</p>
       `}
@@ -2602,6 +2693,7 @@ function exportCsv() {
     "avg_age",
     "injury_risk",
     "club_score",
+    "club_season_score",
     "atmosphere",
     "travel_km",
     "rest_days",
@@ -2638,6 +2730,7 @@ function exportCsv() {
       row.team.factors.avgAge,
       row.team.factors.injuryRisk,
       row.team.factors.clubScore,
+      row.team.factors.clubSeasonScore,
       row.team.factors.atmosphere,
       row.team.factors.travelKm,
       row.team.factors.restDays,

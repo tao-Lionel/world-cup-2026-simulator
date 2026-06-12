@@ -1,6 +1,6 @@
 # 2026 世界杯夺冠概率模拟器
 
-当前为 `v1.1.0` 最终发布版：核心模拟、数据快照、球队信息模块、审计脚本、免责声明和 CI 校验已经收口，可作为开源项目使用。高频数据已于 2026-06-07 刷新；发布说明见 `RELEASE.md`。
+当前为 `v1.1.0` 最终发布版：核心模拟、数据快照、球队信息模块、审计脚本、免责声明和 CI 校验已经收口，可作为开源项目使用。高频数据已于 2026-06-12 刷新；发布说明见 `RELEASE.md`。
 
 这是一个离线单页模拟器，基于 `deep-research-report.md` 的建模建议做成：
 
@@ -9,7 +9,7 @@
 - 支持选择任意两队进行单场比分预测，输出 90 分钟胜平负概率、平均进球和最可能比分 Top 5。
 - 小组赛使用进球分布模拟，前二名和 8 个最佳第三名出线。
 - 淘汰赛使用 FIFA 公布的 73-104 号固定赛程树；第三名席位按 495 种晋级组合固定映射表分配，平局后进入点球。
-- 综合强度由 FIFA 排名/积分、Elo 快照、夺冠赔率、近况、世界杯路径经验、阵容价值、年龄、伤病风险、俱乐部分布、球队氛围、入境旅行、组赛旅行和休息天数合成。
+- 综合强度由 FIFA 排名/积分、Elo 快照、夺冠赔率、近况、世预赛表现、世界杯路径经验、阵容价值、年龄、伤病风险、俱乐部分布、本季俱乐部表现、球队氛围、入境旅行、组赛旅行和休息天数合成。
 - 数据面板会同时显示字段覆盖、平均可信度、可核验字段数和代理/人工字段数，避免把代理指标误读成官方数据。
 - 支持随机种子；同一 seed、同一设置和同一数据快照可以复现模拟结果，导出的 CSV 也会带上 seed。
 - 概率结果显示 Monte Carlo 95% 置信区间，CSV 同步导出各阶段概率的上下界。
@@ -17,19 +17,23 @@
 - 48 队综合分仍可手动编辑，便于替换成更准确的 Elo、赔率、阵容或自建模型分数。
 - `data/` 目录保存球队因子、来源清单、模型权重和历届冠军路径摘要，方便后续替换真实数据源。
 - FIFA 排名/积分已拆为 2026-04-01 官方快照文件，可单独回写模型。
-- Elo 已从手工代理替换为 2026-06-07 的 International-football.net / eloratings.net 快照。
+- Elo 已从手工代理替换为 2026-06-12 的 International-football.net / eloratings.net 快照。
 - 夺冠赔率已从手工代理替换为 Yahoo Sports 发布的 2026-06-01 BetMGM 全 48 队市场快照。
 - 近况已从手工代理替换为每队最近 10 场国家队比赛的计算快照。
+- 世预赛表现已从公开国际赛果库生成 48 队资格赛表现；主办国按 host-exempt baseline 处理。
+- 历史对阵已新增 `data/head_to_head_summary.csv` 和浏览器运行用的 `data/head_to_head_summary.js`，覆盖 48 队 1128 个两两组合，用于单场预测解释。
 - 历史路径难度已从手工代理替换为 48 队世界杯历史记录特征快照。
 - 入境旅行距离、入境时区差、小组赛旅行距离、休息天数、时区跨度、跨境次数、海拔和比赛日天气/场馆环境负担已由 FIFA 小组赛赛程、场馆坐标、代表性出发地、Open-Meteo 预报和场馆地理快照计算，不再使用纯手工代理值。
 - 淘汰赛会动态计算路径疲劳：每场按上一场/小组末战所在地、比赛日期、旅行距离、休息天数、时区变化和场馆环境变化做小幅强度调整。
 - 已新增 `data/third_place_assignment_map.csv` 和浏览器运行用的 `data/third_place_assignment_map.js`，把 495 种第三名出线组合固定为可审计映射，不再由运行时第三名积分排序临时决定对位。
 - 名单公告状态已拆到 `data/squad_announcement_status.csv`；截至 2026-06-02，本地已标记 48 队 FIFA 最终名单。
-- 已新增 `data/squads_2026.csv`，从 FIFA 官方名单 PDF 和公开 squad tracker 导入 48 队、1247 名当前在册球员；Argentina 因 Leonardo Balerdi 伤退、替补尚未公布，当前为 25 人，其余球队为 26 人。
+- 已新增 `data/squads_2026.csv`，从 FIFA 官方名单 PDF 和公开 squad tracker 导入 48 队、1248 名当前在册球员；当前 48 队均为 26 人。
 - 已新增浏览器运行用的 `data/squads_2026.js`，让直接打开 `index.html` 时也能查看球员级阵容信息。
 - 已新增 `data/squad_import_candidates.csv`，记录 tracker 已解析但仍需核验来源的候选名单，避免把初选名单误导入。
 - 已新增 `data/player_availability_watchlist.csv`，把已核验的伤病缺席、停赛、伤愈入选等可用性信息映射到球员行，并在无法匹配球员行时作为队级健康风险惩罚。
-- 阵容身价、平均年龄、伤病风险和俱乐部分布已拆到 `data/squad_profile_snapshot.csv`；1121 名球员使用 Transfermarkt 球员页身价，其余 126 名使用队级总值分配代理。
+- 阵容身价、平均年龄、伤病风险和俱乐部分布已拆到 `data/squad_profile_snapshot.csv`；1116 名球员使用 Transfermarkt 球员页身价，其余 132 名使用队级总值分配代理。
+- 已新增 `data/player_club_season_snapshot.csv`，从 Transfermarkt performance-game API 生成 2025/26 俱乐部赛季表现和主力角色评分；1199 名球员有逐场表现数据，其余 49 名使用名单角色、身价、国家队资历和可用性代理。
+- 已新增 `data/squad_club_season_profile.csv`，把球员本季表现聚合成 48 队 `clubSeasonScore`，并以 4% 权重接入综合强度模型。
 - 已提供 `data/squads_2026_template.csv` 和聚合脚本，后续名单修正填入后可自动生成阵容身价、平均年龄、伤病风险和俱乐部分布。
 - 球队氛围已拆成 `data/team_context_snapshot.csv`，由领导连续性、教练稳定、近期势头和压力风险合成，仍保持低权重。
 
@@ -41,7 +45,7 @@
 npm run dev
 ```
 
-然后访问 `http://127.0.0.1:8000`，点击页面顶部的“刷新数据”。刷新会依次更新最终名单、身价、Elo、近期状态、赔率和天气，重建模型并运行完整校验；任一步失败都会恢复刷新前的数据。
+然后访问 `http://127.0.0.1:8000`，点击页面顶部的“刷新数据”。刷新会依次更新最终名单、身价、球员本季表现、Elo、近期状态、世预赛/历史对阵、赔率和天气，重建模型并运行完整校验；任一步失败都会恢复刷新前的数据。
 
 只使用模拟功能时，也可以直接在浏览器打开 `index.html`。浏览器直接打开的页面不能执行本地 Node.js 刷新脚本。
 
@@ -59,7 +63,7 @@ npm test
 
 当前版本是探索型概率工具。淘汰赛路径已接入 FIFA 固定 match-number bracket；第三名席位已展开为 495 种组合映射表。该表由 FIFA 公布的 32 强候选占位符生成，用于保证模拟器稳定可复现；若后续 FIFA 发布逐组合官方表，应以官方表替换。
 
-数据层已经扩展为多来源球队画像，但并非所有字段都是官方最终数据：FIFA 最终名单已接入，Transfermarkt 身价和 Open-Meteo 天气为 2026-06-07 快照，伤病、氛围、赛程疲劳和未匹配球员身价仍会在赛前持续变化，目前用可替换的快照/代理指标承接。CSV 导出会包含 `data_quality`、`source_backed_fields` 和 `proxy_fields`，字段来源和可信边界见 `DATA_SOURCES.md`。
+数据层已经扩展为多来源球队画像，但并非所有字段都是官方最终数据：FIFA 最终名单已接入，Transfermarkt 身价、球员本季俱乐部表现、Elo、世预赛/历史对阵和 Open-Meteo 天气为 2026-06-12 快照，伤病、氛围、赛程疲劳、未匹配球员身价和少量未匹配球员表现仍会在赛前持续变化，目前用可替换的快照/代理指标承接。CSV 导出会包含 `data_quality`、`source_backed_fields` 和 `proxy_fields`，字段来源和可信边界见 `DATA_SOURCES.md`。
 
 本项目不是 FIFA 官方产品，也不构成博彩建议。完整免责声明见 `DISCLAIMER.md`。
 
@@ -124,6 +128,14 @@ node scripts/apply-form-snapshot.mjs
 node scripts/export-data-snapshots.mjs
 ```
 
+生成并写回世预赛表现，同时重建历史对阵快照：
+
+```bash
+node scripts/build-international-context.mjs
+node scripts/apply-qualifying-performance.mjs
+node scripts/export-data-snapshots.mjs
+```
+
 生成并写回历史路径快照：
 
 ```bash
@@ -156,6 +168,9 @@ node scripts/fetch-wikipedia-squads.mjs
 node scripts/build-squad-import-candidates.mjs
 node scripts/enrich-squad-player-proxies.mjs
 node scripts/apply-player-availability.mjs
+node scripts/build-player-club-season-snapshot.mjs
+node scripts/build-squad-club-season-profile.mjs
+node scripts/apply-squad-club-season-profile.mjs
 node scripts/build-squad-browser-data.mjs
 node scripts/apply-squad-announcement-status.mjs
 node scripts/aggregate-squads.mjs
@@ -169,6 +184,7 @@ node scripts/export-data-snapshots.mjs
 
 ```bash
 node scripts/apply-fifa-official-squad-overrides.mjs
+node scripts/build-player-club-season-snapshot.mjs
 node scripts/build-squad-browser-data.mjs
 node scripts/aggregate-squads.mjs
 node scripts/apply-squad-profiles.mjs
@@ -179,6 +195,7 @@ node scripts/export-data-snapshots.mjs
 
 ```bash
 node scripts/fetch-transfermarkt-market-values.mjs
+node scripts/build-player-club-season-snapshot.mjs
 node scripts/build-squad-browser-data.mjs
 node scripts/aggregate-squads.mjs
 node scripts/apply-squad-profiles.mjs
@@ -198,6 +215,7 @@ node scripts/export-data-snapshots.mjs
 ```bash
 node scripts/create-squad-template.mjs
 node scripts/apply-player-availability.mjs
+node scripts/build-player-club-season-snapshot.mjs
 node scripts/build-squad-browser-data.mjs
 node scripts/aggregate-squads.mjs
 node scripts/apply-squad-profiles.mjs
@@ -208,6 +226,7 @@ node scripts/export-data-snapshots.mjs
 
 ```bash
 node scripts/apply-player-availability.mjs
+node scripts/build-player-club-season-snapshot.mjs
 node scripts/build-squad-browser-data.mjs
 node scripts/aggregate-squads.mjs
 node scripts/apply-squad-profiles.mjs

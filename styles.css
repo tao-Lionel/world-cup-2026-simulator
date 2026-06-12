@@ -627,6 +627,63 @@ button[aria-busy="true"]::after {
   background: linear-gradient(90deg, var(--green), var(--blue));
 }
 
+.head-to-head-box {
+  display: grid;
+  gap: 10px;
+  border-top: 1px solid var(--line);
+  padding-top: 12px;
+}
+
+.head-to-head-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.head-to-head-head h3,
+.head-to-head-box p {
+  margin: 0;
+}
+
+.head-to-head-head h3 {
+  font-size: 14px;
+}
+
+.head-to-head-head a,
+.head-to-head-box p,
+.head-to-head-grid span,
+.head-to-head-grid small {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.head-to-head-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.head-to-head-grid div {
+  min-width: 0;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 10px;
+  background: #fff;
+}
+
+.head-to-head-grid span,
+.head-to-head-grid small,
+.head-to-head-grid strong {
+  display: block;
+}
+
+.head-to-head-grid strong {
+  margin: 4px 0 2px;
+  font-size: 18px;
+}
+
 .betting-advice {
   display: grid;
   gap: 10px;
@@ -1881,6 +1938,10 @@ body.drawer-open {
   }
 
   .betting-market {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .head-to-head-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
