@@ -39,6 +39,23 @@ function csvEscape(value) {
 
 const baseTeams = vm.runInNewContext(`(${extractConst("baseTeams")})`, {});
 const teamFactors = vm.runInNewContext(`(${extractConst("teamFactors")})`, {});
+
+let snapshotDate = "2026-04-01";
+let snapshotUrl = "https://inside.fifa.com/fifa-world-ranking/men?dateId=id13678";
+try {
+  const existing = await readFile(new URL("../data/fifa_ranking_snapshot.csv", import.meta.url), "utf8");
+  const firstRow = existing.trim().split(/\r?\n/)[1];
+  const dateMatch = firstRow?.match(/\d{4}-\d{2}-\d{2}/);
+  if (dateMatch) snapshotDate = dateMatch[0];
+  const headers = existing.trim().split(/\r?\n/)[0].split(",");
+  const urlIndex = headers.indexOf("source_url");
+  if (urlIndex !== -1 && firstRow) {
+    const cells = firstRow.split(",");
+    if (cells[urlIndex]) snapshotUrl = cells[urlIndex];
+  }
+} catch {
+  // keep defaults when no snapshot exists yet
+}
 const headers = [
   "team",
   "snapshot_date",
@@ -55,13 +72,13 @@ const rows = baseTeams.map((team) => {
   if (!factors) throw new Error(`Missing factors for ${team.en}`);
   return {
     team: team.en,
-    snapshot_date: "2026-04-01",
+    snapshot_date: snapshotDate,
     source: "FIFA/Coca-Cola Men's World Ranking",
-    source_url: "https://inside.fifa.com/fifa-world-ranking/men?dateId=id13678",
+    source_url: snapshotUrl,
     fifa_rank: factors.fifaRank,
     fifa_points: factors.fifaPoints,
     points_precision: "rounded integer",
-    source_note: "Official FIFA ranking page shows last official update 2026-04-01; model stores rounded points.",
+    source_note: `Official FIFA ranking last official update ${snapshotDate}; model stores rounded points.`,
   };
 });
 
