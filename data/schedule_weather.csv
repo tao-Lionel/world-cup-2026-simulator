@@ -1,49 +1,49 @@
 team,matches,avg_weather_load,forecast_matches,baseline_matches,source,snapshot_date
-Algeria,3,31,2,1,Open-Meteo forecast API,2026-06-11
-Argentina,3,45,2,1,Open-Meteo forecast API,2026-06-11
-Australia,3,19,3,0,Open-Meteo forecast API,2026-06-11
-Austria,3,42,2,1,Open-Meteo forecast API,2026-06-11
-Belgium,3,21,2,1,Open-Meteo forecast API,2026-06-11
-Bosnia and Herzegovina,3,16,3,0,Open-Meteo forecast API,2026-06-11
-Brazil,3,38,3,0,Open-Meteo forecast API,2026-06-11
-Cabo Verde,3,53,2,1,Open-Meteo forecast API,2026-06-11
-Canada,3,14,3,0,Open-Meteo forecast API,2026-06-11
-Colombia,3,55,2,1,Open-Meteo forecast API,2026-06-11
-Congo DR,3,51,2,1,Open-Meteo forecast API,2026-06-11
-Cote d'Ivoire,3,32,3,0,Open-Meteo forecast API,2026-06-11
-Croatia,3,33,2,1,Open-Meteo forecast API,2026-06-11
-Curacao,3,40,3,0,Open-Meteo forecast API,2026-06-11
-Czechia,3,46,3,0,Open-Meteo forecast API,2026-06-11
-Ecuador,3,36,3,0,Open-Meteo forecast API,2026-06-11
-Egypt,3,19,2,1,Open-Meteo forecast API,2026-06-11
-England,3,33,2,1,Open-Meteo forecast API,2026-06-11
-France,3,29,2,1,Open-Meteo forecast API,2026-06-11
-Germany,3,36,3,0,Open-Meteo forecast API,2026-06-11
-Ghana,3,24,2,1,Open-Meteo forecast API,2026-06-11
-Haiti,3,35,3,0,Open-Meteo forecast API,2026-06-11
-IR Iran,3,20,2,1,Open-Meteo forecast API,2026-06-11
-Iraq,3,25,2,1,Open-Meteo forecast API,2026-06-11
-Japan,3,57,3,0,Open-Meteo forecast API,2026-06-11
-Jordan,3,31,2,1,Open-Meteo forecast API,2026-06-11
-Korea Republic,3,43,3,0,Open-Meteo forecast API,2026-06-11
-Mexico,3,51,3,0,Open-Meteo forecast API,2026-06-11
-Morocco,3,35,3,0,Open-Meteo forecast API,2026-06-11
-Netherlands,3,46,3,0,Open-Meteo forecast API,2026-06-11
-New Zealand,3,19,2,1,Open-Meteo forecast API,2026-06-11
-Norway,3,27,2,1,Open-Meteo forecast API,2026-06-11
-Panama,3,23,2,1,Open-Meteo forecast API,2026-06-11
-Paraguay,3,21,3,0,Open-Meteo forecast API,2026-06-11
-Portugal,3,63,2,1,Open-Meteo forecast API,2026-06-11
-Qatar,3,20,3,0,Open-Meteo forecast API,2026-06-11
-Saudi Arabia,3,47,2,1,Open-Meteo forecast API,2026-06-11
-Scotland,3,38,3,0,Open-Meteo forecast API,2026-06-11
-Senegal,3,28,2,1,Open-Meteo forecast API,2026-06-11
-South Africa,3,49,3,0,Open-Meteo forecast API,2026-06-11
-Spain,3,41,2,1,Open-Meteo forecast API,2026-06-11
-Sweden,3,56,3,0,Open-Meteo forecast API,2026-06-11
-Switzerland,3,22,3,0,Open-Meteo forecast API,2026-06-11
-Tunisia,3,49,3,0,Open-Meteo forecast API,2026-06-11
-Türkiye,3,17,3,0,Open-Meteo forecast API,2026-06-11
-Uruguay,3,59,2,1,Open-Meteo forecast API,2026-06-11
-USA,3,19,3,0,Open-Meteo forecast API,2026-06-11
-Uzbekistan,3,49,2,1,Open-Meteo forecast API,2026-06-11
+Algeria,3,33,2,1,Open-Meteo forecast API,2026-06-12
+Argentina,3,49,2,1,Open-Meteo forecast API,2026-06-12
+Australia,3,17,3,0,Open-Meteo forecast API,2026-06-12
+Austria,3,45,2,1,Open-Meteo forecast API,2026-06-12
+Belgium,3,20,3,0,Open-Meteo forecast API,2026-06-12
+Bosnia and Herzegovina,3,17,3,0,Open-Meteo forecast API,2026-06-12
+Brazil,3,38,3,0,Open-Meteo forecast API,2026-06-12
+Cabo Verde,3,54,3,0,Open-Meteo forecast API,2026-06-12
+Canada,3,15,3,0,Open-Meteo forecast API,2026-06-12
+Colombia,3,58,2,1,Open-Meteo forecast API,2026-06-12
+Congo DR,3,46,2,1,Open-Meteo forecast API,2026-06-12
+Cote d'Ivoire,3,31,3,0,Open-Meteo forecast API,2026-06-12
+Croatia,3,37,2,1,Open-Meteo forecast API,2026-06-12
+Curacao,3,48,3,0,Open-Meteo forecast API,2026-06-12
+Czechia,3,45,3,0,Open-Meteo forecast API,2026-06-12
+Ecuador,3,43,3,0,Open-Meteo forecast API,2026-06-12
+Egypt,3,19,3,0,Open-Meteo forecast API,2026-06-12
+England,3,37,2,1,Open-Meteo forecast API,2026-06-12
+France,3,25,3,0,Open-Meteo forecast API,2026-06-12
+Germany,3,31,3,0,Open-Meteo forecast API,2026-06-12
+Ghana,3,26,2,1,Open-Meteo forecast API,2026-06-12
+Haiti,3,34,3,0,Open-Meteo forecast API,2026-06-12
+IR Iran,3,18,3,0,Open-Meteo forecast API,2026-06-12
+Iraq,3,27,3,0,Open-Meteo forecast API,2026-06-12
+Japan,3,61,3,0,Open-Meteo forecast API,2026-06-12
+Jordan,3,34,2,1,Open-Meteo forecast API,2026-06-12
+Korea Republic,3,41,3,0,Open-Meteo forecast API,2026-06-12
+Mexico,3,48,3,0,Open-Meteo forecast API,2026-06-12
+Morocco,3,34,3,0,Open-Meteo forecast API,2026-06-12
+Netherlands,3,59,3,0,Open-Meteo forecast API,2026-06-12
+New Zealand,3,15,3,0,Open-Meteo forecast API,2026-06-12
+Norway,3,23,3,0,Open-Meteo forecast API,2026-06-12
+Panama,3,24,2,1,Open-Meteo forecast API,2026-06-12
+Paraguay,3,21,3,0,Open-Meteo forecast API,2026-06-12
+Portugal,3,59,2,1,Open-Meteo forecast API,2026-06-12
+Qatar,3,18,3,0,Open-Meteo forecast API,2026-06-12
+Saudi Arabia,3,60,3,0,Open-Meteo forecast API,2026-06-12
+Scotland,3,35,3,0,Open-Meteo forecast API,2026-06-12
+Senegal,3,28,3,0,Open-Meteo forecast API,2026-06-12
+South Africa,3,49,3,0,Open-Meteo forecast API,2026-06-12
+Spain,3,46,3,0,Open-Meteo forecast API,2026-06-12
+Sweden,3,62,3,0,Open-Meteo forecast API,2026-06-12
+Switzerland,3,20,3,0,Open-Meteo forecast API,2026-06-12
+Tunisia,3,59,3,0,Open-Meteo forecast API,2026-06-12
+Türkiye,3,16,3,0,Open-Meteo forecast API,2026-06-12
+Uruguay,3,61,3,0,Open-Meteo forecast API,2026-06-12
+USA,3,17,3,0,Open-Meteo forecast API,2026-06-12
+Uzbekistan,3,52,2,1,Open-Meteo forecast API,2026-06-12
