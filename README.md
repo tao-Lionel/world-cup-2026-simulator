@@ -16,9 +16,10 @@
 - 支持点击排名表、小组卡片和综合分编辑列表里的球队，查看球队信息、模型因子、阵容汇总和球员明细。
 - 48 队综合分仍可手动编辑，便于替换成更准确的 Elo、赔率、阵容或自建模型分数。
 - `data/` 目录保存球队因子、来源清单、模型权重和历届冠军路径摘要，方便后续替换真实数据源。
-- FIFA 排名/积分已拆为 2026-04-01 官方快照文件，可单独回写模型。
+- FIFA 排名/积分已接入 2026-06-11 官方快照（赛前最后一次更新），`fetch-fifa-ranking-snapshot.mjs` 经 FIFA by-country API 一键刷新回写。
 - Elo 已从手工代理替换为 2026-06-07 的 International-football.net / eloratings.net 快照。
-- 夺冠赔率已从手工代理替换为 Yahoo Sports 发布的 2026-06-01 BetMGM 全 48 队市场快照。
+- 夺冠赔率已升级为双源共识：BetMGM 赔率经 power 法去水（消除 ~30% overround），与 Polymarket 冠军市场归一概率取均值，写回公平赔率。
+- 模型权重不再是手设默认值，而是由 2022-07 以来 48 强之间 490 场真实比赛回测拟合（逐场赛前 Elo/FIFA/form 重建，5 折交叉验证），对比报告见 `data/model_weights_backtest.csv`。
 - 近况已从手工代理替换为每队最近 10 场国家队比赛的计算快照。
 - 历史路径难度已从手工代理替换为 48 队世界杯历史记录特征快照。
 - 入境旅行距离、入境时区差、小组赛旅行距离、休息天数、时区跨度、跨境次数、海拔和比赛日天气/场馆环境负担已由 FIFA 小组赛赛程、场馆坐标、代表性出发地、Open-Meteo 预报和场馆地理快照计算，不再使用纯手工代理值。
@@ -83,10 +84,10 @@ node scripts/export-data-snapshots.mjs
 node scripts/validate-simulator.mjs
 ```
 
-导出并回写 FIFA 排名快照：
+从 FIFA 官方 API 抓取并回写最新排名快照：
 
 ```bash
-node scripts/export-fifa-ranking-snapshot.mjs
+node scripts/fetch-fifa-ranking-snapshot.mjs
 node scripts/apply-fifa-ranking-snapshot.mjs
 node scripts/export-data-snapshots.mjs
 ```
@@ -107,12 +108,22 @@ node scripts/apply-elo-snapshot.mjs
 node scripts/export-data-snapshots.mjs
 ```
 
-生成并写回赔率快照：
+生成并写回双源赔率快照（BetMGM 去水 + Polymarket）：
 
 ```bash
 node scripts/fetch-odds-snapshot.mjs
+node scripts/fetch-polymarket-odds.mjs
 node scripts/build-odds-snapshot.mjs
 node scripts/apply-odds-snapshot.mjs
+node scripts/export-data-snapshots.mjs
+```
+
+回测拟合并写回模型权重：
+
+```bash
+node scripts/fetch-backtest-matches.mjs
+node scripts/backtest-model-weights.mjs
+node scripts/apply-model-weights.mjs
 node scripts/export-data-snapshots.mjs
 ```
 

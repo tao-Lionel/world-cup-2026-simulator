@@ -6,9 +6,9 @@
 
 | 因子 | 当前处理 | 主要来源 |
 |---|---|---|
-| FIFA 排名/积分 | 已拆出 48 队 2026-04-01 官方排名快照并可回写模型 | FIFA/Coca-Cola Men's World Ranking：<https://inside.fifa.com/fifa-world-ranking/men?dateId=id13678> |
+| FIFA 排名/积分 | 已拆出 48 队 2026-06-11 官方排名快照（赛前最后一次更新）并可回写模型；`fetch-fifa-ranking-snapshot.mjs` 经 FIFA by-country API 一键刷新 | FIFA/Coca-Cola Men's World Ranking：<https://inside.fifa.com/fifa-world-ranking/men> |
 | 2026 分组 | 写入 12 个小组 | FIFA 2026 Final Draw：<https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/articles/final-draw-results> |
-| 夺冠赔率 | 已写回 Yahoo Sports 发布的 BetMGM 2026-06-01 全 48 队美式赔率 | Yahoo Sports：<https://sports.yahoo.com/soccer/betting/article/2026-world-cup-odds-for-all-48-teams-to-win-the-title-200221552.html> |
+| 夺冠赔率 | 已升级为双源共识：BetMGM 美式赔率经 power 法去水（去除 ~30% overround，长尾去得更多），与 Polymarket 冠军市场（overround 仅 ~4%）归一概率取等权平均，回写为公平美式赔率 | Yahoo Sports/BetMGM：<https://sports.yahoo.com/soccer/betting/article/2026-world-cup-odds-for-all-48-teams-to-win-the-title-200221552.html>、Polymarket：<https://polymarket.com/event/world-cup-winner> |
 | Elo/强度 | 已抓取 48 队 2026-06-07 Elo Score 快照并写入模型 | International-football.net，页面注明来源为 eloratings.net：<https://www.international-football.net/elo-ratings-table> |
 | 近两年战绩 | 已抓取每队最近 10 场国家队比赛，按胜平负、净胜球和时间衰减生成 form | International-football.net 国家队页面 last international games |
 | Transfermarkt 身价 | 已抓取 48 队参赛队总身价，并从国家队明细页匹配 1121/1247 个当前在册球员身价；未匹配行按队级总值分配代理 | Transfermarkt 2026 World Cup participants：<https://www.transfermarkt.us/world-cup/teilnehmer/pokalwettbewerb/FIWC> |
@@ -54,18 +54,24 @@
 
 `app.js` 中的 `modelRating` 不是单一数据源，而是以下权重的合成分：
 
-- FIFA 排名/积分：23%
-- Elo 快照：22%
-- 夺冠赔率：14%
-- 近况：11%
-- 阵容价值与年龄：11%
-- 世界杯路径经验：7%
-- 健康/伤病风险：5%
-- 俱乐部分布：4%
-- 球队氛围：2%
-- 赛程旅行与休息：1%
+- 阵容价值与年龄：44%
+- FIFA 排名/积分：22%
+- Elo 快照：17%
+- 夺冠赔率：6%
+- 健康/伤病风险：5%（固定）
+- 球队氛围：2%（固定）
+- 近况：1%
+- 世界杯路径经验：1%
+- 俱乐部分布：1%
+- 赛程旅行与休息：1%（固定）
 
-这些权重是第一版工程默认值，目的是让模拟器可以跑完整链路。要提高真实性，下一步应把暂定代理指标拆成独立数据文件，并用脚本从最新公开源刷新。
+这些权重由 `backtest-model-weights.mjs` 在 2022-07 以来 48 强之间的 490 场真实比赛上回测拟合（Davidson 胜平负模型 + Nelder-Mead，5 折交叉验证），完整对比见 `data/model_weights_backtest.csv`：
+
+- fifa/elo/form 三个动态因子使用 `fetch-backtest-matches.mjs` 重放全部历史比赛得到的逐场赛前值（与官方快照相关性 Elo 0.984、FIFA 0.959），无未来信息泄漏。
+- odds/squad/wcPath/club 使用当前快照分：squad/wcPath/club 在一个周期内变化缓慢，近似成立；odds 存在轻度泄漏，已在拟合中自然得到低权重。
+- health/atmosphere/schedule 是世界杯特有调整项，历史比赛无法验证，按原值固定，不参与拟合。
+- 交叉验证显示拟合权重的 log-loss（1.0372）略优于旧手设权重（1.0377）和等权（1.0388）；各合理权重间差距很小，应理解为"有依据的默认值"而不是精确最优。
+- 阵容身价权重显著上升、近况权重接近归零，与公开研究结论一致（市场身价是强预测因子，近况噪音大）。
 
 ## 数据校验
 
@@ -77,7 +83,8 @@
 2. 持续重跑 `fetch-wikipedia-squads.mjs`、FIFA 覆盖和可用性脚本，捕捉赛前伤病替换和名单变更。
 3. 把 `champion_paths_summary.csv` 继续展开成逐场路径表，加入对手强度、加时/点球和淘汰赛压力，进一步重算 `wcPath`。
 4. 在 `schedule_travel.csv` 基础上加入真实训练基地、抵达时间、开球时间和淘汰赛路径模拟。
-5. 定期重跑 `fetch-elo-snapshot.mjs`、`fetch-recent-form.mjs` 和 `fetch-weather-snapshot.mjs` 更新 Elo/近况/天气。
+5. 定期重跑 `fetch-fifa-ranking-snapshot.mjs`、`fetch-elo-snapshot.mjs`、`fetch-recent-form.mjs`、`fetch-polymarket-odds.mjs` 和 `fetch-weather-snapshot.mjs` 更新 FIFA 排名/Elo/近况/赔率/天气。
+6. 淘汰赛阶段每轮结束后重跑 `fetch-backtest-matches.mjs` + `backtest-model-weights.mjs`，吸收新完赛样本复核权重。
 
 ## 当前本地数据文件
 
@@ -87,9 +94,13 @@
 | `data/team_factors_snapshot.json` | 与 CSV 相同的 JSON 版，便于程序读取 |
 | `data/source_manifest.csv` | 字段来源等级、可信权重与来源说明 |
 | `data/model_weights.csv` | 综合强度模型权重 |
-| `data/fifa_ranking_snapshot.csv` | 48 队 FIFA/Coca-Cola 2026-04-01 官方排名和模型使用的四舍五入积分 |
+| `data/fifa_ranking_snapshot.csv` | 48 队 FIFA/Coca-Cola 2026-06-11 官方排名和模型使用的四舍五入积分 |
 | `data/odds_market_raw.csv` | Yahoo Sports 发布的 BetMGM 2026-06-01 全 48 队冠军赔率原始表 |
-| `data/odds_snapshot.csv` | BetMGM 单机构赔率换算出的隐含概率快照 |
+| `data/polymarket_odds_raw.csv` | Polymarket 冠军市场 48 队中间价隐含概率原始快照 |
+| `data/odds_snapshot.csv` | BetMGM（power 法去水）+ Polymarket 双源共识概率与公平美式赔率 |
+| `data/backtest_matches.csv` | 2022-07 以来 48 强互相之间的已完赛记录，含逐场赛前 Elo/FIFA/form 重建值 |
+| `data/model_weights_backtest.csv` | 各候选权重的 5 折交叉验证 log-loss/Brier 对比报告 |
+| `data/model_weights_fitted.csv` | 回测拟合得到的当前模型权重 |
 | `data/transfermarkt_team_market_values.csv` | Transfermarkt 2026 世界杯参赛队总身价、平均年龄、外援比例和球队页入口 |
 | `data/transfermarkt_player_market_values.csv` | Transfermarkt 国家队明细页解析出的球员级身价快照 |
 | `data/elo_snapshot.csv` | 48 队 2026-06-07 Elo Score、原模型值和差值 |

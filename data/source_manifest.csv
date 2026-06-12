@@ -1,9 +1,9 @@
 field,label,tier,tier_label,tier_weight,source
 group,2026 分组,verified,权威快照,1,FIFA Final Draw
 host,主办国身份,verified,权威快照,1,FIFA hosts
-fifaRank,FIFA 排名,verified,权威快照,1,FIFA/Coca-Cola ranking 2026-04-01
-fifaPoints,FIFA 积分,verified,权威快照,1,FIFA/Coca-Cola ranking 2026-04-01
-odds,夺冠赔率,market,市场快照,0.82,Yahoo Sports / BetMGM outright odds 2026-06-01
+fifaRank,FIFA 排名,verified,权威快照,1,FIFA/Coca-Cola ranking 2026-06-11
+fifaPoints,FIFA 积分,verified,权威快照,1,FIFA/Coca-Cola ranking 2026-06-11
+odds,夺冠赔率,market,市场快照,0.82,BetMGM (power de-vig) + Polymarket consensus 2026-06-12
 elo,Elo 强度,snapshot,可替换快照,0.62,International-football.net / eloratings.net 2026-06-12
 form,近两年战绩,snapshot,可替换快照,0.62,International-football.net last games through 2026-06-12
 wcPath,历史路径难度,research,研究快照,0.72,Football365 records + champion path summary
