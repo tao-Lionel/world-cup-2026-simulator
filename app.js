@@ -730,6 +730,12 @@ function calculateBettingAdvice(prediction, odds) {
 }
 
 const SPORTTERY_RECOMMENDABLE_POOLS = new Set(["HAD", "HHAD", "TTG"]);
+const RECENT_GOAL_PROFILE_SNAPSHOT = globalThis.RECENT_GOAL_PROFILES || { teams: {} };
+const SPORTTERY_TTG_CALIBRATION = {
+  modelWeight: 0.55,
+  marketWeight: 0.3,
+  recentWeight: 0.15,
+};
 const SPORTTERY_TEAM_ALIASES = new Map([
   ["沙特阿拉伯", "沙特"],
   ["刚果民主共和国", "刚果（金）"],
@@ -809,6 +815,72 @@ function sportteryOptionProbability(pool, option, scoreRows, count) {
   return occurrences / count;
 }
 
+function sportteryMarketProbabilities(pool) {
+  const rows = (pool.options || [])
+    .map((option) => {
+      const odds = Number(option.odds);
+      return {
+        key: String(option.key || "").toLowerCase(),
+        probability: Number.isFinite(odds) && odds > 1 ? 1 / odds : null,
+      };
+    })
+    .filter((row) => row.probability !== null);
+  const total = rows.reduce((sum, row) => sum + row.probability, 0);
+  if (!total) return new Map();
+  return new Map(rows.map((row) => [row.key, row.probability / total]));
+}
+
+function recentGoalProfile(team) {
+  return RECENT_GOAL_PROFILE_SNAPSHOT.teams?.[team?.en] || null;
+}
+
+function poissonProbability(lambda, goals) {
+  let probability = Math.exp(-lambda);
+  for (let goal = 1; goal <= goals; goal += 1) probability *= lambda / goal;
+  return probability;
+}
+
+function totalGoalProbabilityFromRecentProfiles(match, option) {
+  const optionKey = String(option.key || "").toLowerCase();
+  const totalKey = optionKey.match(/^s(\d)$/);
+  if (!totalKey) return null;
+  const homeProfile = recentGoalProfile(findSportteryTeam(match.homeTeam));
+  const awayProfile = recentGoalProfile(findSportteryTeam(match.awayTeam));
+  if (!homeProfile || !awayProfile) return null;
+  const homeExpected = (homeProfile.avgFor + awayProfile.avgAgainst) / 2;
+  const awayExpected = (awayProfile.avgFor + homeProfile.avgAgainst) / 2;
+  const matchupTotal = homeExpected + awayExpected;
+  const recentTotal = (homeProfile.avgTotal + awayProfile.avgTotal) / 2;
+  const lambda = clamp(matchupTotal * 0.7 + recentTotal * 0.3, 0.7, 5.8);
+  const target = Number(totalKey[1]);
+  if (target === 7) {
+    let underSeven = 0;
+    for (let goals = 0; goals < 7; goals += 1) underSeven += poissonProbability(lambda, goals);
+    return clamp(1 - underSeven, 0, 1);
+  }
+  return poissonProbability(lambda, target);
+}
+
+function finalizeSportteryRatedOption(row) {
+  const breakEvenProbability = 1 / row.odds;
+  const expectedReturn = row.modelProbability * row.odds - 1;
+  const edge = row.modelProbability - breakEvenProbability;
+  const clippedReturn = clamp(expectedReturn, -0.2, 0.25);
+  const clippedEdge = clamp(edge, -0.12, 0.12);
+  const riskAdjustedScore = row.modelProbability * 0.72 + clippedReturn * 0.2 + clippedEdge * 0.08;
+  const output = {
+    ...row,
+    breakEvenProbability,
+    edge,
+    expectedReturn,
+    lossProbability: 1 - row.modelProbability,
+    riskAdjustedScore,
+  };
+  output.verdict = sportteryVerdict(output);
+  output.tone = sportteryTone(output);
+  return output;
+}
+
 function sportteryVerdict(option) {
   if (option.single === "需过关") {
     if (option.expectedReturn >= -0.02 && option.modelProbability >= 0.42) return "需过关观察";
@@ -850,16 +922,26 @@ function rankSportteryOptions(match, scoreRows, count) {
   const ratedOptions = [];
   for (const pool of match.pools || []) {
     if (!SPORTTERY_RECOMMENDABLE_POOLS.has(pool.code)) continue;
+    const poolRows = [];
+    const marketProbabilities = sportteryMarketProbabilities(pool);
     for (const option of pool.options || []) {
       const odds = Number(option.odds);
-      const modelProbability = sportteryOptionProbability(pool, option, scoreRows, count);
-      if (!Number.isFinite(odds) || odds <= 1 || modelProbability === null) continue;
-      const breakEvenProbability = 1 / odds;
-      const expectedReturn = modelProbability * odds - 1;
-      const edge = modelProbability - breakEvenProbability;
-      const clippedReturn = clamp(expectedReturn, -0.2, 0.25);
-      const clippedEdge = clamp(edge, -0.12, 0.12);
-      const riskAdjustedScore = modelProbability * 0.72 + clippedReturn * 0.2 + clippedEdge * 0.08;
+      const rawModelProbability = sportteryOptionProbability(pool, option, scoreRows, count);
+      if (!Number.isFinite(odds) || odds <= 1 || rawModelProbability === null) continue;
+      const optionKey = String(option.key || "").toLowerCase();
+      let modelProbability = rawModelProbability;
+      const marketProbability = marketProbabilities.get(optionKey) || null;
+      const recentGoalProbability = pool.code === "TTG"
+        ? totalGoalProbabilityFromRecentProfiles(match, option)
+        : null;
+      const isCalibrated = pool.code === "TTG" && marketProbability !== null && recentGoalProbability !== null;
+      if (isCalibrated) {
+        modelProbability = (
+          rawModelProbability * SPORTTERY_TTG_CALIBRATION.modelWeight +
+          marketProbability * SPORTTERY_TTG_CALIBRATION.marketWeight +
+          recentGoalProbability * SPORTTERY_TTG_CALIBRATION.recentWeight
+        );
+      }
       const row = {
         poolCode: pool.code,
         poolLabel: pool.label,
@@ -868,16 +950,26 @@ function rankSportteryOptions(match, scoreRows, count) {
         optionLabel: option.label,
         odds,
         modelProbability,
-        breakEvenProbability,
-        edge,
-        expectedReturn,
-        lossProbability: 1 - modelProbability,
-        riskAdjustedScore,
+        rawModelProbability,
+        marketProbability,
+        recentGoalProbability,
       };
-      row.verdict = sportteryVerdict(row);
-      row.tone = sportteryTone(row);
-      ratedOptions.push(row);
+      if (isCalibrated) {
+        row.calibrationSource = "free_recent_goals_market";
+        row.calibrationLabel = "免费总进球调校";
+      }
+      poolRows.push(row);
     }
+    if (pool.code === "TTG") {
+      const calibratedRows = poolRows.filter((row) => row.calibrationSource);
+      const calibratedTotal = calibratedRows.reduce((sum, row) => sum + row.modelProbability, 0);
+      if (calibratedRows.length && calibratedTotal > 0) {
+        calibratedRows.forEach((row) => {
+          row.modelProbability /= calibratedTotal;
+        });
+      }
+    }
+    ratedOptions.push(...poolRows.map(finalizeSportteryRatedOption));
   }
 
   ratedOptions.sort((a, b) => (
@@ -1531,7 +1623,7 @@ function renderSportteryBettingSlip(rows) {
       <div class="sporttery-slip-head">
         <div>
           <strong>投注清单</strong>
-          <span>去体彩店前按官方赔率再核对一次</span>
+          <span>去体彩店前按官方赔率再核对一次；总进球使用免费总进球调校</span>
         </div>
         <div class="sporttery-slip-actions">
           <label class="sporttery-slip-toggle">
@@ -1604,6 +1696,7 @@ function renderSportteryRecommendation(advice) {
       <div>
         <strong>${escapeHtml(action)}</strong>
         <span>${escapeHtml(item.verdict)} · 模型 ${(item.modelProbability * 100).toFixed(1)}% · 赔率 ${item.odds.toFixed(2)} · EV ${formatSignedPercent(item.expectedReturn)}</span>
+        ${item.calibrationLabel ? `<span>${escapeHtml(item.calibrationLabel)} · 原始模拟 ${(item.rawModelProbability * 100).toFixed(1)}%</span>` : ""}
       </div>
       <small>按 ${advice.count.toLocaleString()} 次 90 分钟模拟排序，优先高命中率且不明显负期望的低波动项。</small>
     </div>

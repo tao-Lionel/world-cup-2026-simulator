@@ -18,6 +18,7 @@ const steps = [
   ["刷新 Elo", "fetch-elo-snapshot.mjs"],
   ["写回 Elo", "apply-elo-snapshot.mjs"],
   ["刷新近期状态", "fetch-recent-form.mjs"],
+  ["生成总进球画像", "build-goal-profile-snapshot.mjs"],
   ["写回近期状态", "apply-form-snapshot.mjs"],
   ["刷新夺冠赔率", "fetch-odds-snapshot.mjs"],
   ["生成赔率快照", "build-odds-snapshot.mjs"],

@@ -1,0 +1,823 @@
+globalThis.RECENT_GOAL_PROFILES = {
+  "source": "data/recent_matches_2024_2026.csv",
+  "snapshotDate": "2026-06-06",
+  "teamCount": 48,
+  "teams": {
+    "Algeria": {
+      "matches": 10,
+      "weightedMatches": 7.07,
+      "avgFor": 1.889,
+      "avgAgainst": 0.386,
+      "avgTotal": 2.275,
+      "totalGoalBuckets": {
+        "s0": 0.13,
+        "s1": 0.329,
+        "s2": 0.25,
+        "s3": 0.079,
+        "s4": 0.093,
+        "s5": 0,
+        "s6": 0,
+        "s7": 0.12
+      }
+    },
+    "Argentina": {
+      "matches": 10,
+      "weightedMatches": 7.07,
+      "avgFor": 2.47,
+      "avgAgainst": 0.278,
+      "avgTotal": 2.749,
+      "totalGoalBuckets": {
+        "s0": 0,
+        "s1": 0.246,
+        "s2": 0.324,
+        "s3": 0.199,
+        "s4": 0,
+        "s5": 0.13,
+        "s6": 0.101,
+        "s7": 0
+      }
+    },
+    "Australia": {
+      "matches": 10,
+      "weightedMatches": 7.07,
+      "avgFor": 1.299,
+      "avgAgainst": 1.033,
+      "avgTotal": 2.332,
+      "totalGoalBuckets": {
+        "s0": 0,
+        "s1": 0.479,
+        "s2": 0.141,
+        "s3": 0.187,
+        "s4": 0.073,
+        "s5": 0,
+        "s6": 0.12,
+        "s7": 0
+      }
+    },
+    "Austria": {
+      "matches": 10,
+      "weightedMatches": 7.07,
+      "avgFor": 2.538,
+      "avgAgainst": 0.402,
+      "avgTotal": 2.94,
+      "totalGoalBuckets": {
+        "s0": 0,
+        "s1": 0.437,
+        "s2": 0.211,
+        "s3": 0.079,
+        "s4": 0.067,
+        "s5": 0,
+        "s6": 0.12,
+        "s7": 0.086
+      }
+    },
+    "Belgium": {
+      "matches": 10,
+      "weightedMatches": 7.07,
+      "avgFor": 3.62,
+      "avgAgainst": 0.605,
+      "avgTotal": 4.224,
+      "totalGoalBuckets": {
+        "s0": 0.079,
+        "s1": 0,
+        "s2": 0.343,
+        "s3": 0,
+        "s4": 0,
+        "s5": 0.141,
+        "s6": 0.225,
+        "s7": 0.211
+      }
+    },
+    "Bosnia and Herzegovina": {
+      "matches": 10,
+      "weightedMatches": 7.07,
+      "avgFor": 1.726,
+      "avgAgainst": 0.955,
+      "avgTotal": 2.681,
+      "totalGoalBuckets": {
+        "s0": 0.13,
+        "s1": 0,
+        "s2": 0.473,
+        "s3": 0.073,
+        "s4": 0.172,
+        "s5": 0.086,
+        "s6": 0.067,
+        "s7": 0
+      }
+    },
+    "Brazil": {
+      "matches": 10,
+      "weightedMatches": 7.07,
+      "avgFor": 2.587,
+      "avgAgainst": 1.173,
+      "avgTotal": 3.76,
+      "totalGoalBuckets": {
+        "s0": 0,
+        "s1": 0.073,
+        "s2": 0.195,
+        "s3": 0.318,
+        "s4": 0.12,
+        "s5": 0.165,
+        "s6": 0,
+        "s7": 0.13
+      }
+    },
+    "Cabo Verde": {
+      "matches": 10,
+      "weightedMatches": 7.07,
+      "avgFor": 1.956,
+      "avgAgainst": 0.898,
+      "avgTotal": 2.854,
+      "totalGoalBuckets": {
+        "s0": 0.093,
+        "s1": 0.073,
+        "s2": 0.288,
+        "s3": 0.357,
+        "s4": 0,
+        "s5": 0,
+        "s6": 0.189,
+        "s7": 0
+      }
+    },
+    "Canada": {
+      "matches": 10,
+      "weightedMatches": 7.07,
+      "avgFor": 0.977,
+      "avgAgainst": 0.434,
+      "avgTotal": 1.411,
+      "totalGoalBuckets": {
+        "s0": 0.284,
+        "s1": 0.241,
+        "s2": 0.365,
+        "s3": 0,
+        "s4": 0.11,
+        "s5": 0,
+        "s6": 0,
+        "s7": 0
+      }
+    },
+    "Colombia": {
+      "matches": 10,
+      "weightedMatches": 7.07,
+      "avgFor": 2.308,
+      "avgAgainst": 1.176,
+      "avgTotal": 3.484,
+      "totalGoalBuckets": {
+        "s0": 0.093,
+        "s1": 0,
+        "s2": 0.067,
+        "s3": 0.404,
+        "s4": 0.357,
+        "s5": 0,
+        "s6": 0,
+        "s7": 0.079
+      }
+    },
+    "Congo DR": {
+      "matches": 10,
+      "weightedMatches": 7.07,
+      "avgFor": 1.15,
+      "avgAgainst": 0.276,
+      "avgTotal": 1.426,
+      "totalGoalBuckets": {
+        "s0": 0.141,
+        "s1": 0.393,
+        "s2": 0.364,
+        "s3": 0.101,
+        "s4": 0,
+        "s5": 0,
+        "s6": 0,
+        "s7": 0
+      }
+    },
+    "Cote d'Ivoire": {
+      "matches": 10,
+      "weightedMatches": 7.07,
+      "avgFor": 2.006,
+      "avgAgainst": 0.811,
+      "avgTotal": 2.816,
+      "totalGoalBuckets": {
+        "s0": 0,
+        "s1": 0.276,
+        "s2": 0.158,
+        "s3": 0.243,
+        "s4": 0.12,
+        "s5": 0.203,
+        "s6": 0,
+        "s7": 0
+      }
+    },
+    "Croatia": {
+      "matches": 10,
+      "weightedMatches": 7.07,
+      "avgFor": 2.006,
+      "avgAgainst": 1.181,
+      "avgTotal": 3.187,
+      "totalGoalBuckets": {
+        "s0": 0.086,
+        "s1": 0.073,
+        "s2": 0.141,
+        "s3": 0.213,
+        "s4": 0.31,
+        "s5": 0.11,
+        "s6": 0.067,
+        "s7": 0
+      }
+    },
+    "Curacao": {
+      "matches": 10,
+      "weightedMatches": 7.07,
+      "avgFor": 1.929,
+      "avgAgainst": 1.57,
+      "avgTotal": 3.5,
+      "totalGoalBuckets": {
+        "s0": 0.168,
+        "s1": 0,
+        "s2": 0.275,
+        "s3": 0,
+        "s4": 0.141,
+        "s5": 0.203,
+        "s6": 0.12,
+        "s7": 0.093
+      }
+    },
+    "Czechia": {
+      "matches": 10,
+      "weightedMatches": 7.07,
+      "avgFor": 2.137,
+      "avgAgainst": 0.975,
+      "avgTotal": 3.113,
+      "totalGoalBuckets": {
+        "s0": 0.079,
+        "s1": 0.093,
+        "s2": 0.139,
+        "s3": 0.216,
+        "s4": 0.371,
+        "s5": 0,
+        "s6": 0.101,
+        "s7": 0
+      }
+    },
+    "Ecuador": {
+      "matches": 10,
+      "weightedMatches": 7.07,
+      "avgFor": 1.011,
+      "avgAgainst": 0.57,
+      "avgTotal": 1.581,
+      "totalGoalBuckets": {
+        "s0": 0.241,
+        "s1": 0.079,
+        "s2": 0.539,
+        "s3": 0.141,
+        "s4": 0,
+        "s5": 0,
+        "s6": 0,
+        "s7": 0
+      }
+    },
+    "Egypt": {
+      "matches": 10,
+      "weightedMatches": 7.07,
+      "avgFor": 1.273,
+      "avgAgainst": 0.627,
+      "avgTotal": 1.899,
+      "totalGoalBuckets": {
+        "s0": 0.294,
+        "s1": 0.29,
+        "s2": 0,
+        "s3": 0.141,
+        "s4": 0.189,
+        "s5": 0.086,
+        "s6": 0,
+        "s7": 0
+      }
+    },
+    "England": {
+      "matches": 10,
+      "weightedMatches": 7.07,
+      "avgFor": 2.014,
+      "avgAgainst": 0.45,
+      "avgTotal": 2.464,
+      "totalGoalBuckets": {
+        "s0": 0,
+        "s1": 0.272,
+        "s2": 0.404,
+        "s3": 0.086,
+        "s4": 0.067,
+        "s5": 0.172,
+        "s6": 0,
+        "s7": 0
+      }
+    },
+    "France": {
+      "matches": 10,
+      "weightedMatches": 7.07,
+      "avgFor": 2.387,
+      "avgAgainst": 0.908,
+      "avgTotal": 3.295,
+      "totalGoalBuckets": {
+        "s0": 0,
+        "s1": 0,
+        "s2": 0.139,
+        "s3": 0.426,
+        "s4": 0.435,
+        "s5": 0,
+        "s6": 0,
+        "s7": 0
+      }
+    },
+    "Germany": {
+      "matches": 10,
+      "weightedMatches": 7.07,
+      "avgFor": 2.897,
+      "avgAgainst": 0.798,
+      "avgTotal": 3.695,
+      "totalGoalBuckets": {
+        "s0": 0,
+        "s1": 0.086,
+        "s2": 0.16,
+        "s3": 0.261,
+        "s4": 0.282,
+        "s5": 0,
+        "s6": 0.101,
+        "s7": 0.11
+      }
+    },
+    "Ghana": {
+      "matches": 10,
+      "weightedMatches": 7.07,
+      "avgFor": 0.991,
+      "avgAgainst": 1.546,
+      "avgTotal": 2.537,
+      "totalGoalBuckets": {
+        "s0": 0,
+        "s1": 0.26,
+        "s2": 0.432,
+        "s3": 0.12,
+        "s4": 0,
+        "s5": 0.079,
+        "s6": 0.11,
+        "s7": 0
+      }
+    },
+    "Haiti": {
+      "matches": 10,
+      "weightedMatches": 7.07,
+      "avgFor": 1.532,
+      "avgAgainst": 0.988,
+      "avgTotal": 2.52,
+      "totalGoalBuckets": {
+        "s0": 0.067,
+        "s1": 0.203,
+        "s2": 0.221,
+        "s3": 0.306,
+        "s4": 0.13,
+        "s5": 0,
+        "s6": 0.073,
+        "s7": 0
+      }
+    },
+    "IR Iran": {
+      "matches": 10,
+      "weightedMatches": 7.07,
+      "avgFor": 1.766,
+      "avgAgainst": 0.714,
+      "avgTotal": 2.48,
+      "totalGoalBuckets": {
+        "s0": 0.195,
+        "s1": 0.073,
+        "s2": 0.227,
+        "s3": 0.189,
+        "s4": 0.197,
+        "s5": 0.12,
+        "s6": 0,
+        "s7": 0
+      }
+    },
+    "Iraq": {
+      "matches": 10,
+      "weightedMatches": 7.07,
+      "avgFor": 1.099,
+      "avgAgainst": 0.811,
+      "avgTotal": 1.911,
+      "totalGoalBuckets": {
+        "s0": 0.067,
+        "s1": 0.24,
+        "s2": 0.409,
+        "s3": 0.284,
+        "s4": 0,
+        "s5": 0,
+        "s6": 0,
+        "s7": 0
+      }
+    },
+    "Japan": {
+      "matches": 10,
+      "weightedMatches": 7.07,
+      "avgFor": 1.442,
+      "avgAgainst": 0.516,
+      "avgTotal": 1.958,
+      "totalGoalBuckets": {
+        "s0": 0.073,
+        "s1": 0.458,
+        "s2": 0.18,
+        "s3": 0.11,
+        "s4": 0.086,
+        "s5": 0.093,
+        "s6": 0,
+        "s7": 0
+      }
+    },
+    "Jordan": {
+      "matches": 10,
+      "weightedMatches": 7.07,
+      "avgFor": 1.695,
+      "avgAgainst": 1.547,
+      "avgTotal": 3.242,
+      "totalGoalBuckets": {
+        "s0": 0.067,
+        "s1": 0.195,
+        "s2": 0,
+        "s3": 0.158,
+        "s4": 0.329,
+        "s5": 0.252,
+        "s6": 0,
+        "s7": 0
+      }
+    },
+    "Korea Republic": {
+      "matches": 10,
+      "weightedMatches": 7.07,
+      "avgFor": 1.53,
+      "avgAgainst": 1.1,
+      "avgTotal": 2.63,
+      "totalGoalBuckets": {
+        "s0": 0,
+        "s1": 0.362,
+        "s2": 0.246,
+        "s3": 0,
+        "s4": 0.183,
+        "s5": 0.209,
+        "s6": 0,
+        "s7": 0
+      }
+    },
+    "Mexico": {
+      "matches": 10,
+      "weightedMatches": 7.07,
+      "avgFor": 1.797,
+      "avgAgainst": 0.397,
+      "avgTotal": 2.194,
+      "totalGoalBuckets": {
+        "s0": 0.168,
+        "s1": 0.295,
+        "s2": 0.23,
+        "s3": 0.073,
+        "s4": 0.093,
+        "s5": 0,
+        "s6": 0.141,
+        "s7": 0
+      }
+    },
+    "Morocco": {
+      "matches": 10,
+      "weightedMatches": 7.07,
+      "avgFor": 2.101,
+      "avgAgainst": 0.398,
+      "avgTotal": 2.499,
+      "totalGoalBuckets": {
+        "s0": 0.093,
+        "s1": 0.18,
+        "s2": 0.263,
+        "s3": 0.192,
+        "s4": 0.141,
+        "s5": 0.13,
+        "s6": 0,
+        "s7": 0
+      }
+    },
+    "Netherlands": {
+      "matches": 10,
+      "weightedMatches": 7.07,
+      "avgFor": 2.471,
+      "avgAgainst": 0.723,
+      "avgTotal": 3.194,
+      "totalGoalBuckets": {
+        "s0": 0,
+        "s1": 0.141,
+        "s2": 0.304,
+        "s3": 0.12,
+        "s4": 0.289,
+        "s5": 0.079,
+        "s6": 0,
+        "s7": 0.067
+      }
+    },
+    "New Zealand": {
+      "matches": 10,
+      "weightedMatches": 7.07,
+      "avgFor": 0.73,
+      "avgAgainst": 1.84,
+      "avgTotal": 2.571,
+      "totalGoalBuckets": {
+        "s0": 0,
+        "s1": 0.287,
+        "s2": 0.297,
+        "s3": 0.093,
+        "s4": 0.203,
+        "s5": 0.12,
+        "s6": 0,
+        "s7": 0
+      }
+    },
+    "Norway": {
+      "matches": 10,
+      "weightedMatches": 7.07,
+      "avgFor": 2.919,
+      "avgAgainst": 0.764,
+      "avgTotal": 3.684,
+      "totalGoalBuckets": {
+        "s0": 0.13,
+        "s1": 0.139,
+        "s2": 0.093,
+        "s3": 0.12,
+        "s4": 0.141,
+        "s5": 0.297,
+        "s6": 0,
+        "s7": 0.079
+      }
+    },
+    "Panama": {
+      "matches": 10,
+      "weightedMatches": 7.07,
+      "avgFor": 1.83,
+      "avgAgainst": 1.722,
+      "avgTotal": 3.552,
+      "totalGoalBuckets": {
+        "s0": 0,
+        "s1": 0.093,
+        "s2": 0.395,
+        "s3": 0.189,
+        "s4": 0,
+        "s5": 0.073,
+        "s6": 0.13,
+        "s7": 0.12
+      }
+    },
+    "Paraguay": {
+      "matches": 10,
+      "weightedMatches": 7.07,
+      "avgFor": 1.388,
+      "avgAgainst": 0.998,
+      "avgTotal": 2.385,
+      "totalGoalBuckets": {
+        "s0": 0.073,
+        "s1": 0.265,
+        "s2": 0.093,
+        "s3": 0.342,
+        "s4": 0.227,
+        "s5": 0,
+        "s6": 0,
+        "s7": 0
+      }
+    },
+    "Portugal": {
+      "matches": 10,
+      "weightedMatches": 7.07,
+      "avgFor": 2.54,
+      "avgAgainst": 0.932,
+      "avgTotal": 3.472,
+      "totalGoalBuckets": {
+        "s0": 0.12,
+        "s1": 0.086,
+        "s2": 0.231,
+        "s3": 0.141,
+        "s4": 0.16,
+        "s5": 0.151,
+        "s6": 0,
+        "s7": 0.11
+      }
+    },
+    "Qatar": {
+      "matches": 10,
+      "weightedMatches": 7.07,
+      "avgFor": 0.581,
+      "avgAgainst": 1.397,
+      "avgTotal": 1.978,
+      "totalGoalBuckets": {
+        "s0": 0.22,
+        "s1": 0.231,
+        "s2": 0.11,
+        "s3": 0.299,
+        "s4": 0.067,
+        "s5": 0.073,
+        "s6": 0,
+        "s7": 0
+      }
+    },
+    "Saudi Arabia": {
+      "matches": 10,
+      "weightedMatches": 7.07,
+      "avgFor": 1.197,
+      "avgAgainst": 1.337,
+      "avgTotal": 2.535,
+      "totalGoalBuckets": {
+        "s0": 0.101,
+        "s1": 0.172,
+        "s2": 0,
+        "s3": 0.544,
+        "s4": 0.183,
+        "s5": 0,
+        "s6": 0,
+        "s7": 0
+      }
+    },
+    "Scotland": {
+      "matches": 10,
+      "weightedMatches": 7.07,
+      "avgFor": 2.231,
+      "avgAgainst": 1.007,
+      "avgTotal": 3.238,
+      "totalGoalBuckets": {
+        "s0": 0.067,
+        "s1": 0.23,
+        "s2": 0.073,
+        "s3": 0.086,
+        "s4": 0.22,
+        "s5": 0.223,
+        "s6": 0.101,
+        "s7": 0
+      }
+    },
+    "Senegal": {
+      "matches": 10,
+      "weightedMatches": 7.07,
+      "avgFor": 1.984,
+      "avgAgainst": 0.713,
+      "avgTotal": 2.697,
+      "totalGoalBuckets": {
+        "s0": 0,
+        "s1": 0.305,
+        "s2": 0.192,
+        "s3": 0.146,
+        "s4": 0.216,
+        "s5": 0.141,
+        "s6": 0,
+        "s7": 0
+      }
+    },
+    "South Africa": {
+      "matches": 10,
+      "weightedMatches": 7.07,
+      "avgFor": 1.328,
+      "avgAgainst": 0.976,
+      "avgTotal": 2.304,
+      "totalGoalBuckets": {
+        "s0": 0.13,
+        "s1": 0.227,
+        "s2": 0.11,
+        "s3": 0.367,
+        "s4": 0.073,
+        "s5": 0.093,
+        "s6": 0,
+        "s7": 0
+      }
+    },
+    "Spain": {
+      "matches": 10,
+      "weightedMatches": 7.07,
+      "avgFor": 2.495,
+      "avgAgainst": 0.495,
+      "avgTotal": 2.991,
+      "totalGoalBuckets": {
+        "s0": 0.13,
+        "s1": 0,
+        "s2": 0.227,
+        "s3": 0.192,
+        "s4": 0.371,
+        "s5": 0,
+        "s6": 0.079,
+        "s7": 0
+      }
+    },
+    "Sweden": {
+      "matches": 10,
+      "weightedMatches": 7.07,
+      "avgFor": 1.431,
+      "avgAgainst": 2.019,
+      "avgTotal": 3.45,
+      "totalGoalBuckets": {
+        "s0": 0,
+        "s1": 0.086,
+        "s2": 0.253,
+        "s3": 0,
+        "s4": 0.448,
+        "s5": 0.213,
+        "s6": 0,
+        "s7": 0
+      }
+    },
+    "Switzerland": {
+      "matches": 10,
+      "weightedMatches": 7.07,
+      "avgFor": 2.109,
+      "avgAgainst": 0.907,
+      "avgTotal": 3.016,
+      "totalGoalBuckets": {
+        "s0": 0.205,
+        "s1": 0,
+        "s2": 0.322,
+        "s3": 0.073,
+        "s4": 0.067,
+        "s5": 0.223,
+        "s6": 0,
+        "s7": 0.11
+      }
+    },
+    "Tunisia": {
+      "matches": 10,
+      "weightedMatches": 7.07,
+      "avgFor": 1.058,
+      "avgAgainst": 1.441,
+      "avgTotal": 2.499,
+      "totalGoalBuckets": {
+        "s0": 0.12,
+        "s1": 0.24,
+        "s2": 0.195,
+        "s3": 0.139,
+        "s4": 0.079,
+        "s5": 0.227,
+        "s6": 0,
+        "s7": 0
+      }
+    },
+    "Türkiye": {
+      "matches": 10,
+      "weightedMatches": 7.07,
+      "avgFor": 2.439,
+      "avgAgainst": 1.078,
+      "avgTotal": 3.517,
+      "totalGoalBuckets": {
+        "s0": 0,
+        "s1": 0.23,
+        "s2": 0.093,
+        "s3": 0.141,
+        "s4": 0.231,
+        "s5": 0.153,
+        "s6": 0.073,
+        "s7": 0.079
+      }
+    },
+    "Uruguay": {
+      "matches": 10,
+      "weightedMatches": 7.07,
+      "avgFor": 0.928,
+      "avgAgainst": 0.964,
+      "avgTotal": 1.891,
+      "totalGoalBuckets": {
+        "s0": 0.337,
+        "s1": 0.093,
+        "s2": 0.269,
+        "s3": 0.18,
+        "s4": 0,
+        "s5": 0,
+        "s6": 0.12,
+        "s7": 0
+      }
+    },
+    "USA": {
+      "matches": 10,
+      "weightedMatches": 7.07,
+      "avgFor": 1.841,
+      "avgAgainst": 1.826,
+      "avgTotal": 3.667,
+      "totalGoalBuckets": {
+        "s0": 0,
+        "s1": 0,
+        "s2": 0.338,
+        "s3": 0.32,
+        "s4": 0,
+        "s5": 0.13,
+        "s6": 0.101,
+        "s7": 0.11
+      }
+    },
+    "Uzbekistan": {
+      "matches": 10,
+      "weightedMatches": 7.07,
+      "avgFor": 1.349,
+      "avgAgainst": 0.794,
+      "avgTotal": 2.144,
+      "totalGoalBuckets": {
+        "s0": 0.231,
+        "s1": 0.073,
+        "s2": 0.314,
+        "s3": 0.086,
+        "s4": 0.297,
+        "s5": 0,
+        "s6": 0,
+        "s7": 0
+      }
+    }
+  }
+};

@@ -13,6 +13,7 @@
 - `sporttery_football_odds_snapshot.json` / `sporttery_football_odds_snapshot.js`：中国竞彩网世界杯足球固定奖金快照，包含胜平负、让球胜平负、总进球、比分和半全场等当前接口返回玩法。
 - `elo_snapshot.csv`：48 队 2026-06-07 Elo Score 快照，来自 International-football.net 国家页。
 - `recent_matches_2024_2026.csv`：48 队最近 10 场国家队比赛明细。
+- `recent_goal_profiles.json` / `recent_goal_profiles.js`：由近赛进球、失球和总进球聚合的免费总进球画像，用于竞彩总进球调校。
 - `form_snapshot.csv`：由近赛结果、净胜球和时间衰减计算出的 form。
 - `champion_paths_summary.csv`：从 `deep-research-report.md` 整理出的 1930-2022 历届冠军路径摘要。
 - `world_cup_history_raw.csv`：48 队世界杯历史记录，包含出场次数、总战绩、最佳成绩和 2022 成绩。
@@ -126,6 +127,7 @@ node scripts/fetch-sporttery-football-odds.mjs
 
 ```bash
 node scripts/fetch-recent-form.mjs
+node scripts/build-goal-profile-snapshot.mjs
 node scripts/apply-form-snapshot.mjs
 node scripts/export-data-snapshots.mjs
 ```

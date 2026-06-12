@@ -84,6 +84,7 @@ const appSource = await readFile(new URL("../app.js", import.meta.url), "utf8");
 const thirdPlaceMapSource = await readFile(new URL("../data/third_place_assignment_map.js", import.meta.url), "utf8");
 const squadBrowserDataSource = await readFile(new URL("../data/squads_2026.js", import.meta.url), "utf8");
 const sportteryOddsSource = await readFile(new URL("../data/sporttery_football_odds_snapshot.js", import.meta.url), "utf8");
+const goalProfileSource = await readFile(new URL("../data/recent_goal_profiles.js", import.meta.url), "utf8");
 const baseTeams = vm.runInNewContext(`(${extractConst(appSource, "baseTeams")})`, {});
 const teamFactors = vm.runInNewContext(`(${extractConst(appSource, "teamFactors")})`, {});
 const dataFields = vm.runInNewContext(`(${extractConst(appSource, "DATA_FIELDS")})`, {});
@@ -96,6 +97,9 @@ vm.runInContext(squadBrowserDataSource, squadBrowserContext);
 const sportteryOddsContext = {};
 vm.createContext(sportteryOddsContext);
 vm.runInContext(sportteryOddsSource, sportteryOddsContext);
+const goalProfileContext = {};
+vm.createContext(goalProfileContext);
+vm.runInContext(goalProfileSource, goalProfileContext);
 
 const teamFactorRows = parseCsv(await readFile(new URL("../data/team_factors_snapshot.csv", import.meta.url), "utf8"));
 const sourceRows = parseCsv(await readFile(new URL("../data/source_manifest.csv", import.meta.url), "utf8"));
@@ -110,6 +114,7 @@ const availabilityAuditRows = parseCsv(await readFile(new URL("../data/player_av
 const teamNames = new Set(baseTeams.map((team) => team.en));
 const squadBrowserRows = squadBrowserContext.SQUAD_ROWS;
 const sportteryOdds = sportteryOddsContext.SPORTTERY_FOOTBALL_ODDS_SNAPSHOT;
+const goalProfiles = goalProfileContext.RECENT_GOAL_PROFILES;
 
 assertRows("baseTeams", baseTeams, 48);
 assertRows("team_factors_snapshot.csv", teamFactorRows, 48);
@@ -120,6 +125,7 @@ assertRows("third_place_assignment_map.csv", thirdMapRows, 495);
 assertRows("squads_2026.js", squadBrowserRows, squadRows.length);
 assertRows("player_availability_audit.csv", availabilityAuditRows, availabilityRows.length);
 assert(Array.isArray(sportteryOdds?.matches), "sporttery_football_odds_snapshot.js must expose matches.");
+assert(goalProfiles?.teamCount === 48, `recent_goal_profiles.js expected 48 teams, got ${goalProfiles?.teamCount}`);
 assert(
   sportteryOdds.matches.every((match) => Array.isArray(match.pools) && match.pools.length > 0),
   "Every sporttery match must include at least one betting pool.",
@@ -128,6 +134,7 @@ assert(squadImportCandidateRows.every((row) => teamNames.has(row.team)), "squad_
 assert(sourceRows.length === dataFields.length, `source_manifest.csv expected ${dataFields.length} rows, got ${sourceRows.length}`);
 
 assert(baseTeams.every((team) => teamFactors[team.en]), "Every base team must have teamFactors.");
+assert(baseTeams.every((team) => goalProfiles.teams?.[team.en]), "Every base team must have recent goal profile.");
 assert(teamFactorRows.every((row) => teamNames.has(row.team)), "team_factors_snapshot.csv contains unknown team.");
 assert(squadProfileRows.every((row) => teamNames.has(row.team)), "squad_profile_snapshot.csv contains unknown team.");
 assert(squadRows.every((row) => teamNames.has(row.team)), "squads_2026.csv contains unknown team.");
@@ -168,4 +175,4 @@ for (const combo of combinations("ABCDEFGHIJKL".split(""), 8)) {
 const availabilityMatched = availabilityAuditRows.filter((row) => row.matched === "true").length;
 assert(availabilityMatched >= 1, "Availability watchlist should match at least one current squad row.");
 
-console.log("Data integrity checks passed for teams, schedules, squads, availability, Sporttery World Cup odds and third-place map.");
+console.log("Data integrity checks passed for teams, schedules, squads, availability, recent goal profiles, Sporttery World Cup odds and third-place map.");

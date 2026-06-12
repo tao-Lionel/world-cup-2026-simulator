@@ -1,5 +1,5 @@
 {
-  "snapshotAt": "2026-06-12T02:00:11.847Z",
+  "snapshotAt": "2026-06-12T04:02:37.087Z",
   "source": "中国竞彩网固定奖金接口",
   "sourceUrl": "https://www.sporttery.cn/jc/zqszsc/",
   "api": "https://webapi.sporttery.cn/gateway/uniform/football",
@@ -10,7 +10,7 @@
   "leagueKeywords": [
     "世界杯"
   ],
-  "lastUpdateTime": "2026-06-12 08:25:07",
+  "lastUpdateTime": "2026-06-12 10:02:20",
   "matches": [
     {
       "matchId": "2040164",
@@ -20,7 +20,7 @@
       "homeTeam": "加拿大",
       "awayTeam": "波黑",
       "goalLine": "",
-      "status": "暂停销售",
+      "status": "已开售",
       "matchStatus": "Selling",
       "remark": "比赛将在加拿大-多伦多举行",
       "sourceUrl": "https://www.sporttery.cn/jc/zqdz/index.html?showType=3&mid=2040164",
@@ -54,22 +54,22 @@
           "label": "让球胜平负",
           "single": "需过关",
           "goalLine": "-1",
-          "updateAt": "2026-06-11 17:27:33",
+          "updateAt": "2026-06-12 10:01:59",
           "options": [
             {
               "key": "h",
               "label": "让胜",
-              "odds": 3.04
+              "odds": 3.11
             },
             {
               "key": "d",
               "label": "让平",
-              "odds": 3.3
+              "odds": 3.2
             },
             {
               "key": "a",
               "label": "让负",
-              "odds": 2.01
+              "odds": 2.02
             }
           ]
         },
@@ -127,13 +127,13 @@
           "label": "比分",
           "single": "支持单关",
           "goalLine": "",
-          "updateAt": "2026-06-12 08:33:46",
+          "updateAt": "2026-06-12 11:46:01",
           "optionCount": 31,
           "options": [
             {
               "key": "s05s00",
               "label": "5:0",
-              "odds": 85
+              "odds": 90
             },
             {
               "key": "s-1sd",
@@ -143,12 +143,12 @@
             {
               "key": "s-1sh",
               "label": "胜其他",
-              "odds": 80
+              "odds": 85
             },
             {
               "key": "s01s00",
               "label": "1:0",
-              "odds": 5.7
+              "odds": 5.4
             },
             {
               "key": "s05s02",
@@ -158,12 +158,12 @@
             {
               "key": "s05s01",
               "label": "5:1",
-              "odds": 110
+              "odds": 125
             },
             {
               "key": "s-1sa",
               "label": "负其他",
-              "odds": 300
+              "odds": 350
             },
             {
               "key": "s02s04",
@@ -177,7 +177,7 @@
           "label": "半全场",
           "single": "支持单关",
           "goalLine": "",
-          "updateAt": "2026-06-08 10:02:19",
+          "updateAt": "2026-06-12 11:14:02",
           "optionCount": 9,
           "options": [
             {
@@ -193,12 +193,12 @@
             {
               "key": "hh",
               "label": "胜/胜",
-              "odds": 2.45
+              "odds": 2.51
             },
             {
               "key": "ad",
               "label": "负/平",
-              "odds": 17
+              "odds": 16
             },
             {
               "key": "dh",
@@ -213,12 +213,12 @@
             {
               "key": "ha",
               "label": "胜/负",
-              "odds": 40
+              "odds": 36
             },
             {
               "key": "hd",
               "label": "胜/平",
-              "odds": 17
+              "odds": 16
             }
           ]
         }
@@ -232,7 +232,7 @@
       "homeTeam": "美国",
       "awayTeam": "巴拉圭",
       "goalLine": "",
-      "status": "暂停销售",
+      "status": "已开售",
       "matchStatus": "Selling",
       "remark": "比赛将在美国-加利福尼亚州英格尔伍德举行",
       "sourceUrl": "https://www.sporttery.cn/jc/zqdz/index.html?showType=3&mid=2040165",
@@ -242,22 +242,22 @@
           "label": "胜平负",
           "single": "支持单关",
           "goalLine": "",
-          "updateAt": "2026-06-12 09:53:35",
+          "updateAt": "2026-06-12 11:09:52",
           "options": [
             {
               "key": "h",
               "label": "主胜",
-              "odds": 1.7
+              "odds": 1.71
             },
             {
               "key": "d",
               "label": "平",
-              "odds": 3.25
+              "odds": 3.26
             },
             {
               "key": "a",
               "label": "客胜",
-              "odds": 4.28
+              "odds": 4.2
             }
           ]
         },
@@ -290,12 +290,12 @@
           "label": "总进球",
           "single": "支持单关",
           "goalLine": "",
-          "updateAt": "2026-06-12 09:55:26",
+          "updateAt": "2026-06-12 11:25:36",
           "options": [
             {
               "key": "s0",
               "label": "0球",
-              "odds": 8
+              "odds": 8.7
             },
             {
               "key": "s1",
@@ -310,7 +310,7 @@
             {
               "key": "s3",
               "label": "3球",
-              "odds": 3.95
+              "odds": 3.8
             },
             {
               "key": "s4",
@@ -339,7 +339,7 @@
           "label": "比分",
           "single": "支持单关",
           "goalLine": "",
-          "updateAt": "2026-06-12 09:56:16",
+          "updateAt": "2026-06-12 11:27:55",
           "optionCount": 31,
           "options": [
             {
@@ -444,7 +444,7 @@
       "homeTeam": "卡塔尔",
       "awayTeam": "瑞士",
       "goalLine": "",
-      "status": "暂停销售",
+      "status": "已开售",
       "matchStatus": "Selling",
       "remark": "比赛将在美国-加利福尼亚州圣克拉拉举行",
       "sourceUrl": "https://www.sporttery.cn/jc/zqdz/index.html?showType=3&mid=2040166",
@@ -454,22 +454,22 @@
           "label": "让球胜平负",
           "single": "需过关",
           "goalLine": "+2",
-          "updateAt": "2026-06-11 12:22:36",
+          "updateAt": "2026-06-12 11:47:14",
           "options": [
             {
               "key": "h",
               "label": "让胜",
-              "odds": 2.02
+              "odds": 2.08
             },
             {
               "key": "d",
               "label": "让平",
-              "odds": 3.82
+              "odds": 3.75
             },
             {
               "key": "a",
               "label": "让负",
-              "odds": 2.69
+              "odds": 2.62
             }
           ]
         },
@@ -527,7 +527,7 @@
           "label": "比分",
           "single": "支持单关",
           "goalLine": "",
-          "updateAt": "2026-06-08 10:02:19",
+          "updateAt": "2026-06-12 11:12:48",
           "optionCount": 31,
           "options": [
             {
@@ -568,7 +568,7 @@
             {
               "key": "s02s04",
               "label": "2:4",
-              "odds": 60
+              "odds": 64
             }
           ]
         },
@@ -632,7 +632,7 @@
       "homeTeam": "巴西",
       "awayTeam": "摩洛哥",
       "goalLine": "",
-      "status": "暂停销售",
+      "status": "已开售",
       "matchStatus": "Selling",
       "remark": "比赛将在美国-新泽西州东拉瑟福德举行",
       "sourceUrl": "https://www.sporttery.cn/jc/zqdz/index.html?showType=3&mid=2040167",
@@ -844,7 +844,7 @@
       "homeTeam": "海地",
       "awayTeam": "苏格兰",
       "goalLine": "",
-      "status": "暂停销售",
+      "status": "已开售",
       "matchStatus": "Selling",
       "remark": "比赛将在美国-马萨诸塞州福克斯伯勒举行",
       "sourceUrl": "https://www.sporttery.cn/jc/zqdz/index.html?showType=3&mid=2040168",
@@ -1056,7 +1056,7 @@
       "homeTeam": "澳大利亚",
       "awayTeam": "土耳其",
       "goalLine": "",
-      "status": "暂停销售",
+      "status": "已开售",
       "matchStatus": "Selling",
       "remark": "比赛将在加拿大-温哥华举行",
       "sourceUrl": "https://www.sporttery.cn/jc/zqdz/index.html?showType=3&mid=2040169",
@@ -1268,7 +1268,7 @@
       "homeTeam": "德国",
       "awayTeam": "库拉索",
       "goalLine": "",
-      "status": "暂停销售",
+      "status": "已开售",
       "matchStatus": "Selling",
       "remark": "比赛将在美国-得克萨斯州休斯敦举行",
       "sourceUrl": "https://www.sporttery.cn/jc/zqdz/index.html?showType=3&mid=2040170",
@@ -1406,7 +1406,7 @@
       "homeTeam": "荷兰",
       "awayTeam": "日本",
       "goalLine": "",
-      "status": "暂停销售",
+      "status": "已开售",
       "matchStatus": "Selling",
       "remark": "比赛将在美国-得克萨斯州阿灵顿举行",
       "sourceUrl": "https://www.sporttery.cn/jc/zqdz/index.html?showType=3&mid=2040171",
@@ -1618,7 +1618,7 @@
       "homeTeam": "科特迪瓦",
       "awayTeam": "厄瓜多尔",
       "goalLine": "",
-      "status": "暂停销售",
+      "status": "已开售",
       "matchStatus": "Selling",
       "remark": "比赛将在美国-宾夕法尼亚州费城举行",
       "sourceUrl": "https://www.sporttery.cn/jc/zqdz/index.html?showType=3&mid=2040172",
@@ -1830,7 +1830,7 @@
       "homeTeam": "瑞典",
       "awayTeam": "突尼斯",
       "goalLine": "",
-      "status": "暂停销售",
+      "status": "已开售",
       "matchStatus": "Selling",
       "remark": "比赛将在墨西哥-瓜达卢佩举行",
       "sourceUrl": "https://www.sporttery.cn/jc/zqdz/index.html?showType=3&mid=2040173",
@@ -1840,22 +1840,22 @@
           "label": "胜平负",
           "single": "支持单关",
           "goalLine": "",
-          "updateAt": "2026-06-08 10:02:19",
+          "updateAt": "2026-06-12 11:33:49",
           "options": [
             {
               "key": "h",
               "label": "主胜",
-              "odds": 1.74
+              "odds": 1.71
             },
             {
               "key": "d",
               "label": "平",
-              "odds": 3.1
+              "odds": 3.15
             },
             {
               "key": "a",
               "label": "客胜",
-              "odds": 4.3
+              "odds": 4.4
             }
           ]
         },
@@ -1864,22 +1864,22 @@
           "label": "让球胜平负",
           "single": "需过关",
           "goalLine": "-1",
-          "updateAt": "2026-06-08 10:02:19",
+          "updateAt": "2026-06-12 11:34:02",
           "options": [
             {
               "key": "h",
               "label": "让胜",
-              "odds": 3.55
+              "odds": 3.45
             },
             {
               "key": "d",
               "label": "让平",
-              "odds": 3.3
+              "odds": 3.25
             },
             {
               "key": "a",
               "label": "让负",
-              "odds": 1.84
+              "odds": 1.88
             }
           ]
         },
@@ -2042,7 +2042,7 @@
       "homeTeam": "西班牙",
       "awayTeam": "佛得角",
       "goalLine": "",
-      "status": "暂停销售",
+      "status": "已开售",
       "matchStatus": "Selling",
       "remark": "比赛将在美国-佐治亚州亚特兰大举行",
       "sourceUrl": "https://www.sporttery.cn/jc/zqdz/index.html?showType=3&mid=2040174",
@@ -2230,7 +2230,7 @@
       "homeTeam": "比利时",
       "awayTeam": "埃及",
       "goalLine": "",
-      "status": "暂停销售",
+      "status": "已开售",
       "matchStatus": "Selling",
       "remark": "比赛将在美国-华盛顿州西雅图举行",
       "sourceUrl": "https://www.sporttery.cn/jc/zqdz/index.html?showType=3&mid=2040175",
@@ -2442,7 +2442,7 @@
       "homeTeam": "沙特阿拉伯",
       "awayTeam": "乌拉圭",
       "goalLine": "",
-      "status": "暂停销售",
+      "status": "已开售",
       "matchStatus": "Selling",
       "remark": "比赛将在美国-佛罗里达州迈阿密加登斯举行",
       "sourceUrl": "https://www.sporttery.cn/jc/zqdz/index.html?showType=3&mid=2040176",
@@ -2452,22 +2452,22 @@
           "label": "胜平负",
           "single": "支持单关",
           "goalLine": "",
-          "updateAt": "2026-06-08 10:02:19",
+          "updateAt": "2026-06-12 10:06:25",
           "options": [
             {
               "key": "h",
               "label": "主胜",
-              "odds": 8.45
+              "odds": 7.65
             },
             {
               "key": "d",
               "label": "平",
-              "odds": 4.35
+              "odds": 4.25
             },
             {
               "key": "a",
               "label": "客胜",
-              "odds": 1.28
+              "odds": 1.31
             }
           ]
         },
@@ -2476,12 +2476,12 @@
           "label": "让球胜平负",
           "single": "需过关",
           "goalLine": "+1",
-          "updateAt": "2026-06-08 10:02:19",
+          "updateAt": "2026-06-12 10:06:31",
           "options": [
             {
               "key": "h",
               "label": "让胜",
-              "odds": 2.95
+              "odds": 2.84
             },
             {
               "key": "d",
@@ -2491,7 +2491,7 @@
             {
               "key": "a",
               "label": "让负",
-              "odds": 2.05
+              "odds": 2.11
             }
           ]
         },
@@ -2549,7 +2549,7 @@
           "label": "比分",
           "single": "支持单关",
           "goalLine": "",
-          "updateAt": "2026-06-08 10:02:19",
+          "updateAt": "2026-06-12 10:16:46",
           "optionCount": 31,
           "options": [
             {
@@ -2599,13 +2599,13 @@
           "label": "半全场",
           "single": "支持单关",
           "goalLine": "",
-          "updateAt": "2026-06-08 10:02:19",
+          "updateAt": "2026-06-12 10:13:31",
           "optionCount": 9,
           "options": [
             {
               "key": "aa",
               "label": "负/负",
-              "odds": 1.85
+              "odds": 1.87
             },
             {
               "key": "dd",
@@ -2615,7 +2615,7 @@
             {
               "key": "hh",
               "label": "胜/胜",
-              "odds": 15
+              "odds": 14
             },
             {
               "key": "ad",
@@ -2654,7 +2654,7 @@
       "homeTeam": "伊朗",
       "awayTeam": "新西兰",
       "goalLine": "",
-      "status": "暂停销售",
+      "status": "已开售",
       "matchStatus": "Selling",
       "remark": "比赛将在美国-加利福尼亚州英格尔伍德举行",
       "sourceUrl": "https://www.sporttery.cn/jc/zqdz/index.html?showType=3&mid=2040177",
@@ -2866,7 +2866,7 @@
       "homeTeam": "法国",
       "awayTeam": "塞内加尔",
       "goalLine": "",
-      "status": "暂停销售",
+      "status": "已开售",
       "matchStatus": "Selling",
       "remark": "比赛将在美国-新泽西州东拉瑟福德举行",
       "sourceUrl": "https://www.sporttery.cn/jc/zqdz/index.html?showType=3&mid=2040178",
@@ -3078,7 +3078,7 @@
       "homeTeam": "伊拉克",
       "awayTeam": "挪威",
       "goalLine": "",
-      "status": "暂停销售",
+      "status": "已开售",
       "matchStatus": "Selling",
       "remark": "比赛将在美国-马萨诸塞州福克斯伯勒举行",
       "sourceUrl": "https://www.sporttery.cn/jc/zqdz/index.html?showType=3&mid=2040179",
@@ -3266,7 +3266,7 @@
       "homeTeam": "阿根廷",
       "awayTeam": "阿尔及利亚",
       "goalLine": "",
-      "status": "暂停销售",
+      "status": "已开售",
       "matchStatus": "Selling",
       "remark": "比赛将在美国-密苏里州堪萨斯城举行",
       "sourceUrl": "https://www.sporttery.cn/jc/zqdz/index.html?showType=3&mid=2040180",
@@ -3478,7 +3478,7 @@
       "homeTeam": "奥地利",
       "awayTeam": "约旦",
       "goalLine": "",
-      "status": "暂停销售",
+      "status": "已开售",
       "matchStatus": "Selling",
       "remark": "比赛将在美国-加利福尼亚州圣克拉拉举行",
       "sourceUrl": "https://www.sporttery.cn/jc/zqdz/index.html?showType=3&mid=2040181",
@@ -3690,7 +3690,7 @@
       "homeTeam": "葡萄牙",
       "awayTeam": "刚果(金)",
       "goalLine": "",
-      "status": "暂停销售",
+      "status": "已开售",
       "matchStatus": "Selling",
       "remark": "比赛将在美国-得克萨斯州休斯敦举行",
       "sourceUrl": "https://www.sporttery.cn/jc/zqdz/index.html?showType=3&mid=2040182",
@@ -3902,7 +3902,7 @@
       "homeTeam": "英格兰",
       "awayTeam": "克罗地亚",
       "goalLine": "",
-      "status": "暂停销售",
+      "status": "已开售",
       "matchStatus": "Selling",
       "remark": "比赛将在美国-得克萨斯州阿灵顿举行",
       "sourceUrl": "https://www.sporttery.cn/jc/zqdz/index.html?showType=3&mid=2040183",
@@ -4009,7 +4009,7 @@
           "label": "比分",
           "single": "支持单关",
           "goalLine": "",
-          "updateAt": "2026-06-08 10:02:19",
+          "updateAt": "2026-06-12 11:35:02",
           "optionCount": 31,
           "options": [
             {
@@ -4020,7 +4020,7 @@
             {
               "key": "s-1sd",
               "label": "平其他",
-              "odds": 600
+              "odds": 400
             },
             {
               "key": "s-1sh",
@@ -4114,7 +4114,7 @@
       "homeTeam": "加纳",
       "awayTeam": "巴拿马",
       "goalLine": "",
-      "status": "暂停销售",
+      "status": "已开售",
       "matchStatus": "Selling",
       "remark": "比赛将在加拿大-多伦多举行",
       "sourceUrl": "https://www.sporttery.cn/jc/zqdz/index.html?showType=3&mid=2040184",
@@ -4326,7 +4326,7 @@
       "homeTeam": "乌兹别克斯坦",
       "awayTeam": "哥伦比亚",
       "goalLine": "",
-      "status": "暂停销售",
+      "status": "已开售",
       "matchStatus": "Selling",
       "remark": "比赛将在墨西哥-墨西哥城举行",
       "sourceUrl": "https://www.sporttery.cn/jc/zqdz/index.html?showType=3&mid=2040185",

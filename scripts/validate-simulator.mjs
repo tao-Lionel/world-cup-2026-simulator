@@ -7,6 +7,7 @@ const stylesSource = await readFile(new URL("../styles.css", import.meta.url), "
 const realSportteryOddsJson = await readFile(new URL("../data/sporttery_football_odds_snapshot.json", import.meta.url), "utf8");
 const thirdPlaceMapSource = await readFile(new URL("../data/third_place_assignment_map.js", import.meta.url), "utf8");
 const squadBrowserDataSource = await readFile(new URL("../data/squads_2026.js", import.meta.url), "utf8");
+const goalProfileSource = await readFile(new URL("../data/recent_goal_profiles.js", import.meta.url), "utf8");
 const runtimeSource = source.slice(0, source.indexOf("document.addEventListener"));
 const featureSources = [
   ["index.html", indexSource],
@@ -52,6 +53,7 @@ vm.createContext(context);
 
 vm.runInContext(`${thirdPlaceMapSource}
 ${squadBrowserDataSource}
+${goalProfileSource}
 globalThis.SPORTTERY_FOOTBALL_ODDS_SNAPSHOT = {
   window: { startDate: "2026-06-10", endDate: "2026-06-17" },
   matches: [
@@ -100,6 +102,7 @@ let invalidSportteryVolatileRender = 0;
 let invalidSportterySinglePriority = 0;
 let invalidSportterySlipFilter = 0;
 let invalidRealSportterySnapshot = 0;
+let invalidSportteryGoalCalibration = 0;
 function combinations(items, size) {
   const output = [];
   function walk(start, picked) {
@@ -219,7 +222,14 @@ const sportteryAdvice = rankSportteryOptions({
       label: "总进球",
       single: "需过关",
       options: [
+        { key: "s0", label: "0球", odds: 9.5 },
+        { key: "s1", label: "1球", odds: 4.3 },
+        { key: "s2", label: "2球", odds: 3.1 },
         { key: "s3", label: "3球", odds: 3 },
+        { key: "s4", label: "4球", odds: 6.2 },
+        { key: "s5", label: "5球", odds: 12.5 },
+        { key: "s6", label: "6球", odds: 22 },
+        { key: "s7", label: "7+球", odds: 35 },
       ],
     },
   ],
@@ -231,12 +241,21 @@ const sportteryAdvice = rankSportteryOptions({
 ], 1000);
 if (
   !sportteryAdvice.complete ||
-  sportteryAdvice.ratedOptions.length !== 4 ||
+  sportteryAdvice.ratedOptions.length !== 11 ||
   sportteryAdvice.recommended.poolCode !== "HAD" ||
   sportteryAdvice.recommended.optionKey !== "h" ||
   sportteryAdvice.recommended.modelProbability <= 0.55 ||
   sportteryAdvice.recommended.expectedReturn <= 0
 ) invalidSportteryRecommendation += 1;
+const ttgAdvice = sportteryAdvice.ratedOptions.find((row) => row.poolCode === "TTG" && row.optionKey === "s3");
+if (
+  !ttgAdvice ||
+  ttgAdvice.calibrationSource !== "free_recent_goals_market" ||
+  ttgAdvice.rawModelProbability !== 0.48 ||
+  !(ttgAdvice.marketProbability > 0 && ttgAdvice.marketProbability < 1) ||
+  !(ttgAdvice.recentGoalProbability > 0 && ttgAdvice.recentGoalProbability < 1) ||
+  ttgAdvice.modelProbability === ttgAdvice.rawModelProbability
+) invalidSportteryGoalCalibration += 1;
 
 const singlePriorityAdvice = rankSportteryOptions({
   matchId: "ci-sporttery-single",
@@ -288,6 +307,7 @@ if (
   !sportteryRenderHtml.includes("投注清单") ||
   !sportteryRenderHtml.includes("周三001") ||
   !sportteryRenderHtml.includes("模型") ||
+  !sportteryRenderHtml.includes("免费总进球调校") ||
   !sportteryRenderHtml.includes("EV") ||
   !sportteryRenderHtml.includes("亏损") ||
   !sportteryRenderHtml.includes("安全垫") ||
@@ -399,6 +419,7 @@ globalThis.validation = {
   invalidSportterySinglePriority,
   invalidSportterySlipFilter,
   invalidRealSportterySnapshot,
+  invalidSportteryGoalCalibration,
 };
 `, context);
 
@@ -424,7 +445,8 @@ if (
   result.invalidSportteryVolatileRender ||
   result.invalidSportterySinglePriority ||
   result.invalidSportterySlipFilter ||
-  result.invalidRealSportterySnapshot
+  result.invalidRealSportterySnapshot ||
+  result.invalidSportteryGoalCalibration
 ) {
   throw new Error(`Simulator validation failed: ${JSON.stringify(result)}`);
 }
